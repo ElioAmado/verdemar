@@ -18,7 +18,7 @@
   "home": {
     "hero": {
       "title": "Experimenta Lujo y Confort",
-      "subtitle": "Descubre la perfecta combinación de elegancia y relajación en LuxStay Hotel",
+      "subtitle": "Descubre la perfecta combinación de elegancia y relajación en Apartamentos Verde Mar",
       "cta": "Reserva tu Estancia"
     },
     "search": {
@@ -84,5 +84,16 @@
     "presidential": "Suite Presidencial",
     "family": "Habitación Familiar",
     "selectRoom": "Seleccionar tipo de habitación"
+  },
+    "footer": {
+    "quickLinks": "Enlaces Rápidos",
+    "contact": "Contacto",
+    "newsletter": "Boletín Informativo",
+    "subscribeText": "Suscríbete para recibir ofertas especiales y actualizaciones.",
+    "emailPlaceholder": "Tu dirección de correo",
+    "subscribe": "Suscribirse",
+    "address": "Camp D'es Pou 3877, Es Pujols ",
+    "phone": "+34 626 70 39 85",
+    "email": "aptosverdemar@gmail.com"
   }
 }

@@ -25,7 +25,7 @@ export default function AboutPage() {
           <div className="absolute inset-0 z-20 flex items-center justify-center">
             <div className="container px-4 md:px-6 text-center">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl text-white">
-                About LuxStay Hotel
+                About Apartamentos Verde Mar
               </h1>
               <p className="mx-auto max-w-[700px] text-white/90 md:text-xl mt-4">
                 A legacy of luxury and exceptional hospitality since 1995
@@ -41,13 +41,13 @@ export default function AboutPage() {
                 <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Our Story</div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">A Tradition of Excellence</h2>
                 <p className="text-muted-foreground md:text-lg">
-                  Founded in 1995 by the visionary hotelier Jonathan Maxwell, LuxStay Hotel began as a boutique
+                  Founded in 1995 by the visionary hotelier Jonathan Maxwell, Apartamentos Verde Mar began as a boutique
                   establishment with just 20 rooms. With a commitment to personalized service and attention to detail,
                   the hotel quickly gained a reputation for excellence.
                 </p>
                 <p className="text-muted-foreground md:text-lg">
                   Over the years, we've expanded our facilities while maintaining the intimate atmosphere and
-                  personalized service that made us famous. Today, LuxStay Hotel stands as a symbol of luxury
+                  personalized service that made us famous. Today, Apartamentos Verde Mar stands as a symbol of luxury
                   hospitality, welcoming guests from around the world.
                 </p>
                 <p className="text-muted-foreground md:text-lg">
@@ -206,7 +206,7 @@ export default function AboutPage() {
                 <div className="inline-block rounded-lg bg-background px-3 py-1 text-sm">Milestones</div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Our Journey</h2>
                 <p className="max-w-[700px] text-muted-foreground md:text-lg">
-                  Key moments in our history that have shaped LuxStay Hotel into what it is today.
+                  Key moments in our history that have shaped Apartamentos Verde Mar into what it is today.
                 </p>
               </div>
             </div>
@@ -222,7 +222,7 @@ export default function AboutPage() {
                 <div className="space-y-2 pb-8">
                   <h3 className="text-xl font-bold">1995</h3>
                   <p className="text-muted-foreground">
-                    LuxStay Hotel opens its doors with 20 rooms, founded by Jonathan Maxwell with a vision to create a
+                    Apartamentos Verde Mar opens its doors with 20 rooms, founded by Jonathan Maxwell with a vision to create a
                     new standard in luxury hospitality.
                   </p>
                 </div>
@@ -285,7 +285,7 @@ export default function AboutPage() {
                 <div className="space-y-2">
                   <h3 className="text-xl font-bold">Today</h3>
                   <p className="text-muted-foreground">
-                    LuxStay Hotel Group now comprises 15 properties worldwide, each embodying our commitment to luxury,
+                    Apartamentos Verde Mar Group now comprises 15 properties worldwide, each embodying our commitment to luxury,
                     comfort, and exceptional service.
                   </p>
                 </div>
@@ -301,12 +301,12 @@ export default function AboutPage() {
                 <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Our Location</div>
                 <h2 className="text-3xl font-bold tracking-tighter">Perfectly Situated</h2>
                 <p className="text-muted-foreground md:text-lg">
-                  Located in the heart of the city, LuxStay Hotel offers easy access to major attractions, business
+                  Located in the heart of the city, Apartamentos Verde Mar offers easy access to major attractions, business
                   districts, and transportation hubs.
                 </p>
                 <div className="flex items-center gap-2 text-muted-foreground">
                   <MapPin className="h-5 w-5 text-primary" />
-                  <span>123 Luxury Avenue, City Center</span>
+                  <span>Camp D'es Pou 3877, Es Pujols </span>
                 </div>
                 <p className="text-muted-foreground">
                   Just 20 minutes from International Airport and a 5-minute walk to Central Station, our location
@@ -332,7 +332,7 @@ export default function AboutPage() {
           <div className="container px-4 md:px-6 text-center">
             <h2 className="text-3xl font-bold tracking-tighter mb-4">Experience Our Legacy of Luxury</h2>
             <p className="max-w-[700px] mx-auto md:text-lg mb-8">
-              Join the thousands of guests who have made LuxStay Hotel their home away from home.
+              Join the thousands of guests who have made Apartamentos Verde Mar their home away from home.
             </p>
             <Button size="lg" variant="secondary">
               Book Your Stay
@@ -346,7 +346,7 @@ export default function AboutPage() {
             <div className="space-y-4">
               <Link href="/" className="flex items-center gap-2 text-xl font-bold">
                 <Image src="/placeholder.svg?height=32&width=32" alt="Logo" width={32} height={32} />
-                <span>LuxStay Hotel</span>
+                <span>Apartamentos Verde Mar</span>
               </Link>
               <p className="text-muted-foreground">Experience luxury and comfort in the heart of the city.</p>
               <div className="flex gap-4">
@@ -431,9 +431,9 @@ export default function AboutPage() {
             <div>
               <h3 className="text-lg font-semibold mb-4">Contact</h3>
               <address className="not-italic space-y-2 text-muted-foreground">
-                <p>123 Luxury Avenue, City Center</p>
-                <p>+1 (123) 456-7890</p>
-                <p>info@luxstayhotel.com</p>
+                <p>Camp D'es Pou 3877, Es Pujols </p>
+                <p>+34 626 70 39 85</p>
+                <p>aptosverdemar@gmail.com</p>
               </address>
             </div>
             <div>
@@ -450,7 +450,7 @@ export default function AboutPage() {
             </div>
           </div>
           <div className="border-t mt-12 pt-8 text-center text-muted-foreground">
-            <p>&copy; {new Date().getFullYear()} LuxStay Hotel. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Apartamentos Verde Mar. All rights reserved.</p>
           </div>
         </div>
       </footer>

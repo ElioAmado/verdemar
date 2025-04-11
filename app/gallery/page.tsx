@@ -119,7 +119,7 @@ export default function GalleryPage() {
             <h2 className="text-3xl font-bold tracking-tighter mb-4">Experience the Luxury in Person</h2>
             <p className="max-w-[700px] mx-auto text-muted-foreground md:text-lg mb-8">
               Photos can only capture a glimpse of what we offer. Visit us to experience the true luxury and comfort of
-              LuxStay Hotel.
+              Apartamentos Verde Mar.
             </p>
             <Button size="lg">Book Your Stay Now</Button>
           </div>
@@ -170,7 +170,7 @@ export default function GalleryPage() {
             <div className="space-y-4">
               <Link href="/" className="flex items-center gap-2 text-xl font-bold">
                 <Image src="/placeholder.svg?height=32&width=32" alt="Logo" width={32} height={32} />
-                <span>LuxStay Hotel</span>
+                <span>Apartamentos Verde Mar</span>
               </Link>
               <p className="text-muted-foreground">Experience luxury and comfort in the heart of the city.</p>
               <div className="flex gap-4">
@@ -255,9 +255,9 @@ export default function GalleryPage() {
             <div>
               <h3 className="text-lg font-semibold mb-4">Contact</h3>
               <address className="not-italic space-y-2 text-muted-foreground">
-                <p>123 Luxury Avenue, City Center</p>
-                <p>+1 (123) 456-7890</p>
-                <p>info@luxstayhotel.com</p>
+                <p>Camp D'es Pou 3877, Es Pujols </p>
+                <p>+34 626 70 39 85</p>
+                <p>aptosverdemar@gmail.com</p>
               </address>
             </div>
             <div>
@@ -274,7 +274,7 @@ export default function GalleryPage() {
             </div>
           </div>
           <div className="border-t mt-12 pt-8 text-center text-muted-foreground">
-            <p>&copy; {new Date().getFullYear()} LuxStay Hotel. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Apartamentos Verde Mar. All rights reserved.</p>
           </div>
         </div>
       </footer>

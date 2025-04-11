@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { SiteHeader } from "@/components/site-header"
+import { SiteFooter } from "@/components/site-footer"
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("")
@@ -95,24 +96,7 @@ export default function ForgotPasswordPage() {
           </Card>
         </div>
       </main>
-      <footer className="border-t bg-muted py-6">
-        <div className="container px-4 md:px-6">
-          <div className="text-center text-muted-foreground text-sm">
-            <p>&copy; {new Date().getFullYear()} LuxStay Hotel. All rights reserved.</p>
-            <div className="flex justify-center gap-4 mt-2">
-              <Link href="/terms" className="hover:text-foreground">
-                Terms
-              </Link>
-              <Link href="/privacy" className="hover:text-foreground">
-                Privacy
-              </Link>
-              <Link href="/contact" className="hover:text-foreground">
-                Contact
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }

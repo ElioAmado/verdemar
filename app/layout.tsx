@@ -8,8 +8,8 @@ import { LanguageProvider } from "@/contexts/language-context"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "LuxStay Hotel - Luxury Accommodations",
-  description: "Experience luxury and comfort at LuxStay Hotel. Book your perfect stay today.",
+  title: "Apartamentos Verde Mar - Luxury Accommodations",
+  description: "Experience luxury and comfort at Apartamentos Verde Mar. Book your perfect stay today.",
     generator: 'v0.dev'
 }
 

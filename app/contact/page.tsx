@@ -84,7 +84,7 @@ export default function ContactPage() {
                       <MapPin className="h-5 w-5 text-primary mt-1" />
                       <div>
                         <h3 className="font-semibold">Address</h3>
-                        <p className="text-muted-foreground">123 Luxury Avenue, City Center</p>
+                        <p className="text-muted-foreground">Camp D'es Pou 3877, Es Pujols </p>
                       </div>
                     </div>
 
@@ -92,7 +92,7 @@ export default function ContactPage() {
                       <Phone className="h-5 w-5 text-primary mt-1" />
                       <div>
                         <h3 className="font-semibold">Phone</h3>
-                        <p className="text-muted-foreground">+1 (123) 456-7890</p>
+                        <p className="text-muted-foreground">+34 626 70 39 85</p>
                         <p className="text-muted-foreground">Reservations: +1 (123) 456-7891</p>
                       </div>
                     </div>
@@ -101,7 +101,7 @@ export default function ContactPage() {
                       <Mail className="h-5 w-5 text-primary mt-1" />
                       <div>
                         <h3 className="font-semibold">Email</h3>
-                        <p className="text-muted-foreground">info@luxstayhotel.com</p>
+                        <p className="text-muted-foreground">aptosverdemar@gmail.com</p>
                         <p className="text-muted-foreground">reservations@luxstayhotel.com</p>
                       </div>
                     </div>
@@ -298,7 +298,7 @@ export default function ContactPage() {
                   </CardHeader>
                   <CardContent>
                     <p>
-                      LuxStay Hotel is a 100% non-smoking property. Smoking is not permitted in any guest rooms or
+                      Apartamentos Verde Mar is a 100% non-smoking property. Smoking is not permitted in any guest rooms or
                       public areas. A cleaning fee of $250 will be charged for smoking in non-designated areas.
                     </p>
                   </CardContent>
@@ -344,7 +344,7 @@ export default function ContactPage() {
             <div className="space-y-4">
               <Link href="/" className="flex items-center gap-2 text-xl font-bold">
                 <Image src="/placeholder.svg?height=32&width=32" alt="Logo" width={32} height={32} />
-                <span>LuxStay Hotel</span>
+                <span>Apartamentos Verde Mar</span>
               </Link>
               <p className="text-muted-foreground">Experience luxury and comfort in the heart of the city.</p>
               <div className="flex gap-4">
@@ -429,9 +429,9 @@ export default function ContactPage() {
             <div>
               <h3 className="text-lg font-semibold mb-4">Contact</h3>
               <address className="not-italic space-y-2 text-muted-foreground">
-                <p>123 Luxury Avenue, City Center</p>
-                <p>+1 (123) 456-7890</p>
-                <p>info@luxstayhotel.com</p>
+                <p>Camp D'es Pou 3877, Es Pujols </p>
+                <p>+34 626 70 39 85</p>
+                <p>aptosverdemar@gmail.com</p>
               </address>
             </div>
             <div>
@@ -448,7 +448,7 @@ export default function ContactPage() {
             </div>
           </div>
           <div className="border-t mt-12 pt-8 text-center text-muted-foreground">
-            <p>&copy; {new Date().getFullYear()} LuxStay Hotel. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Apartamentos Verde Mar. All rights reserved.</p>
           </div>
         </div>
       </footer>

@@ -9,7 +9,7 @@
     "signIn": "Sign In",
     "bookNow": "Book Now",
     "footer": {
-      "copyright": "© {year} LuxStay Hotel. All rights reserved.",
+      "copyright": "© {year} Apartamentos Verde Mar. All rights reserved.",
       "terms": "Terms",
       "privacy": "Privacy",
       "contact": "Contact"
@@ -18,7 +18,7 @@
   "home": {
     "hero": {
       "title": "Experience Luxury & Comfort",
-      "subtitle": "Discover the perfect blend of elegance and relaxation at LuxStay Hotel",
+      "subtitle": "Discover the perfect blend of elegance and relaxation at Apartamentos Verde Mar",
       "cta": "Book Your Stay"
     },
     "search": {
@@ -84,5 +84,16 @@
     "presidential": "Presidential Suite",
     "family": "Family Room",
     "selectRoom": "Select room type"
+  },
+    "footer": {
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "newsletter": "Newsletter",
+    "subscribeText": "Subscribe to receive special offers and updates.",
+    "emailPlaceholder": "Your email address",
+    "subscribe": "Subscribe",
+    "address": "Camp D'es Pou 3877, Es Pujols",
+    "phone": "+34 626 70 39 85",
+    "email": "aptosverdemar@gmail.com"
   }
 }

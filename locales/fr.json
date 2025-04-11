@@ -9,7 +9,7 @@
     "signIn": "Connexion",
     "bookNow": "Réserver",
     "footer": {
-      "copyright": "© {year} LuxStay Hotel. Tous droits réservés.",
+      "copyright": "© {year} Apartamentos Verde Mar. Tous droits réservés.",
       "terms": "Conditions",
       "privacy": "Confidentialité",
       "contact": "Contact"
@@ -84,5 +84,16 @@
     "presidential": "Suite Présidentielle",
     "family": "Chambre Familiale",
     "selectRoom": "Sélectionner le type de chambre"
+  },
+  "footer": {
+    "quickLinks": "Liens Rapides",
+    "contact": "Contact",
+    "newsletter": "Newsletter",
+    "subscribeText": "Abonnez-vous pour recevoir des offres spéciales et des mises à jour.",
+    "emailPlaceholder": "Votre adresse e-mail",
+    "subscribe": "S'abonner",
+    "address": "Camp D'es Pou 3877, Es Pujols ",
+    "phone": "+34 626 70 39 85",
+    "email": "aptosverdemar@gmail.com"
   }
 }

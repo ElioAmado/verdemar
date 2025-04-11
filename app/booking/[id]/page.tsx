@@ -248,7 +248,7 @@ export default function BookingPage({ params }: { params: { id: string } }) {
                     </div>
                     <div className="flex items-center gap-2 text-sm">
                       <MapPinIcon className="h-4 w-4" />
-                      <span>123 Luxury Avenue, City Center</span>
+                      <span>Camp D'es Pou 3877, Es Pujols </span>
                     </div>
                   </div>
 
@@ -291,7 +291,7 @@ export default function BookingPage({ params }: { params: { id: string } }) {
       <footer className="border-t bg-muted">
         <div className="container px-4 md:px-6 py-6">
           <div className="text-center text-muted-foreground text-sm">
-            <p>&copy; {new Date().getFullYear()} LuxStay Hotel. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Apartamentos Verde Mar. All rights reserved.</p>
             <div className="flex justify-center gap-4 mt-2">
               <Link href="/terms" className="hover:text-foreground">
                 Terms
