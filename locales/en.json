@@ -1,0 +1,88 @@
+{
+  "common": {
+    "home": "Home",
+    "rooms": "Rooms",
+    "amenities": "Amenities",
+    "gallery": "Gallery",
+    "about": "About",
+    "contact": "Contact",
+    "signIn": "Sign In",
+    "bookNow": "Book Now",
+    "footer": {
+      "copyright": "© {year} LuxStay Hotel. All rights reserved.",
+      "terms": "Terms",
+      "privacy": "Privacy",
+      "contact": "Contact"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Experience Luxury & Comfort",
+      "subtitle": "Discover the perfect blend of elegance and relaxation at LuxStay Hotel",
+      "cta": "Book Your Stay"
+    },
+    "search": {
+      "checkIn": "Check-in / Check-out",
+      "roomType": "Room Type",
+      "guests": "Guests",
+      "search": "Search Availability",
+      "pickDate": "Pick a date"
+    },
+    "rooms": {
+      "title": "Luxurious Rooms & Suites",
+      "subtitle": "Choose from our selection of elegantly designed rooms and suites, each offering unique amenities and stunning views.",
+      "viewAll": "View All Rooms",
+      "guests": "Guests",
+      "reviews": "reviews",
+      "night": "/night"
+    },
+    "amenities": {
+      "title": "Exceptional Facilities",
+      "subtitle": "Enjoy our world-class amenities designed to make your stay unforgettable.",
+      "spa": "Wellness Spa",
+      "spaDesc": "Relax and rejuvenate with our premium spa treatments.",
+      "pool": "Infinity Pool",
+      "poolDesc": "Swim with a view in our stunning infinity pool.",
+      "dining": "Fine Dining",
+      "diningDesc": "Experience culinary excellence at our gourmet restaurants.",
+      "service": "24/7 Service",
+      "serviceDesc": "Round-the-clock concierge and room service for your convenience."
+    },
+    "location": {
+      "title": "Prime Location",
+      "subtitle": "Situated in the heart of the city, with easy access to major attractions and business districts.",
+      "airport": "From the Airport",
+      "airportDesc": "Just 20 minutes by car from International Airport. Airport shuttle available.",
+      "transport": "Public Transport",
+      "transportDesc": "5-minute walk to Central Station with connections to all city lines.",
+      "attractions": "Nearby Attractions",
+      "attractionsDesc": "Walking distance to museums, shopping districts, and historic landmarks."
+    },
+    "testimonials": {
+      "title": "What Our Guests Say",
+      "subtitle": "Read about experiences from our valued guests around the world."
+    },
+    "offers": {
+      "title": "Exclusive Packages",
+      "subtitle": "Take advantage of our special offers and packages designed to enhance your stay and provide exceptional value.",
+      "breakfast": "Complimentary breakfast for two",
+      "spa": "Spa credit included",
+      "checkout": "Late check-out upon availability",
+      "transfer": "Free airport transfer",
+      "cta": "View Special Offers"
+    },
+    "cta": {
+      "title": "Ready to Experience Luxury?",
+      "subtitle": "Book your stay today and enjoy exclusive benefits when you book directly with us.",
+      "bookNow": "Book Now",
+      "contactUs": "Contact Us"
+    }
+  },
+  "roomSelector": {
+    "deluxe": "Deluxe Room",
+    "executive": "Executive Suite",
+    "presidential": "Presidential Suite",
+    "family": "Family Room",
+    "selectRoom": "Select room type"
+  }
+}

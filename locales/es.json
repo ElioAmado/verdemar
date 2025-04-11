@@ -1,0 +1,88 @@
+{
+  "common": {
+    "home": "Inicio",
+    "rooms": "Habitaciones",
+    "amenities": "Servicios",
+    "gallery": "Galería",
+    "about": "Nosotros",
+    "contact": "Contacto",
+    "signIn": "Iniciar Sesión",
+    "bookNow": "Reservar Ahora",
+    "footer": {
+      "copyright": "© {year} Apartamentos Verde Mar. Todos los derechos reservados.",
+      "terms": "Términos",
+      "privacy": "Privacidad",
+      "contact": "Contacto"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Experimenta Lujo y Confort",
+      "subtitle": "Descubre la perfecta combinación de elegancia y relajación en LuxStay Hotel",
+      "cta": "Reserva tu Estancia"
+    },
+    "search": {
+      "checkIn": "Entrada / Salida",
+      "roomType": "Tipo de Habitación",
+      "guests": "Huéspedes",
+      "search": "Buscar Disponibilidad",
+      "pickDate": "Selecciona una fecha"
+    },
+    "rooms": {
+      "title": "Habitaciones y Suites Lujosas",
+      "subtitle": "Elige entre nuestra selección de habitaciones y suites elegantemente diseñadas, cada una ofreciendo comodidades únicas y vistas impresionantes.",
+      "viewAll": "Ver Todas las Habitaciones",
+      "guests": "Huéspedes",
+      "reviews": "reseñas",
+      "night": "/noche"
+    },
+    "amenities": {
+      "title": "Instalaciones Excepcionales",
+      "subtitle": "Disfruta de nuestras instalaciones de clase mundial diseñadas para hacer tu estancia inolvidable.",
+      "spa": "Spa de Bienestar",
+      "spaDesc": "Relájate y rejuvenece con nuestros tratamientos premium de spa.",
+      "pool": "Piscina Infinita",
+      "poolDesc": "Nada con vistas en nuestra impresionante piscina infinita.",
+      "dining": "Alta Gastronomía",
+      "diningDesc": "Experimenta la excelencia culinaria en nuestros restaurantes gourmet.",
+      "service": "Servicio 24/7",
+      "serviceDesc": "Conserje y servicio a la habitación las 24 horas para tu conveniencia."
+    },
+    "location": {
+      "title": "Ubicación Privilegiada",
+      "subtitle": "Situado en el corazón de la ciudad, con fácil acceso a las principales atracciones y distritos de negocios.",
+      "airport": "Desde el Aeropuerto",
+      "airportDesc": "A solo 20 minutos en coche del Aeropuerto Internacional. Servicio de traslado disponible.",
+      "transport": "Transporte Público",
+      "transportDesc": "A 5 minutos a pie de la Estación Central con conexiones a todas las líneas de la ciudad.",
+      "attractions": "Atracciones Cercanas",
+      "attractionsDesc": "A poca distancia de museos, zonas comerciales y monumentos históricos."
+    },
+    "testimonials": {
+      "title": "Lo que Dicen Nuestros Huéspedes",
+      "subtitle": "Lee sobre las experiencias de nuestros valiosos huéspedes de todo el mundo."
+    },
+    "offers": {
+      "title": "Paquetes Exclusivos",
+      "subtitle": "Aprovecha nuestras ofertas especiales y paquetes diseñados para mejorar tu estancia y proporcionar un valor excepcional.",
+      "breakfast": "Desayuno de cortesía para dos",
+      "spa": "Crédito para spa incluido",
+      "checkout": "Salida tardía según disponibilidad",
+      "transfer": "Traslado gratuito al aeropuerto",
+      "cta": "Ver Ofertas Especiales"
+    },
+    "cta": {
+      "title": "¿Listo para Experimentar el Lujo?",
+      "subtitle": "Reserva tu estancia hoy y disfruta de beneficios exclusivos cuando reservas directamente con nosotros.",
+      "bookNow": "Reservar Ahora",
+      "contactUs": "Contáctanos"
+    }
+  },
+  "roomSelector": {
+    "deluxe": "Habitación Deluxe",
+    "executive": "Suite Ejecutiva",
+    "presidential": "Suite Presidencial",
+    "family": "Habitación Familiar",
+    "selectRoom": "Seleccionar tipo de habitación"
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "common": {
+    "home": "Accueil",
+    "rooms": "Chambres",
+    "amenities": "Services",
+    "gallery": "Galerie",
+    "about": "À Propos",
+    "contact": "Contact",
+    "signIn": "Connexion",
+    "bookNow": "Réserver",
+    "footer": {
+      "copyright": "© {year} LuxStay Hotel. Tous droits réservés.",
+      "terms": "Conditions",
+      "privacy": "Confidentialité",
+      "contact": "Contact"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Découvrez le Luxe et le Confort",
+      "subtitle": "Découvrez le mélange parfait d'élégance et de détente à l'hôtel LuxStay",
+      "cta": "Réservez Votre Séjour"
+    },
+    "search": {
+      "checkIn": "Arrivée / Départ",
+      "roomType": "Type de Chambre",
+      "guests": "Invités",
+      "search": "Rechercher Disponibilité",
+      "pickDate": "Choisir une date"
+    },
+    "rooms": {
+      "title": "Chambres et Suites Luxueuses",
+      "subtitle": "Choisissez parmi notre sélection de chambres et suites élégamment conçues, chacune offrant des équipements uniques et des vues impressionnantes.",
+      "viewAll": "Voir Toutes les Chambres",
+      "guests": "Invités",
+      "reviews": "avis",
+      "night": "/nuit"
+    },
+    "amenities": {
+      "title": "Installations Exceptionnelles",
+      "subtitle": "Profitez de nos installations de classe mondiale conçues pour rendre votre séjour inoubliable.",
+      "spa": "Spa Bien-être",
+      "spaDesc": "Détendez-vous et rajeunissez avec nos soins spa premium.",
+      "pool": "Piscine à Débordement",
+      "poolDesc": "Nagez avec vue dans notre magnifique piscine à débordement.",
+      "dining": "Gastronomie Raffinée",
+      "diningDesc": "Découvrez l'excellence culinaire dans nos restaurants gastronomiques.",
+      "service": "Service 24/7",
+      "serviceDesc": "Conciergerie et service en chambre 24h/24 pour votre confort."
+    },
+    "location": {
+      "title": "Emplacement Privilégié",
+      "subtitle": "Situé au cœur de la ville, avec un accès facile aux principales attractions et aux quartiers d'affaires.",
+      "airport": "Depuis l'Aéroport",
+      "airportDesc": "À seulement 20 minutes en voiture de l'aéroport international. Navette aéroport disponible.",
+      "transport": "Transport Public",
+      "transportDesc": "À 5 minutes à pied de la gare centrale avec des connexions vers toutes les lignes de la ville.",
+      "attractions": "Attractions à Proximité",
+      "attractionsDesc": "À distance de marche des musées, des quartiers commerçants et des monuments historiques."
+    },
+    "testimonials": {
+      "title": "Ce que Disent Nos Clients",
+      "subtitle": "Lisez les expériences de nos précieux clients du monde entier."
+    },
+    "offers": {
+      "title": "Forfaits Exclusifs",
+      "subtitle": "Profitez de nos offres spéciales et forfaits conçus pour améliorer votre séjour et offrir une valeur exceptionnelle.",
+      "breakfast": "Petit-déjeuner offert pour deux",
+      "spa": "Crédit spa inclus",
+      "checkout": "Départ tardif selon disponibilité",
+      "transfer": "Transfert aéroport gratuit",
+      "cta": "Voir les Offres Spéciales"
+    },
+    "cta": {
+      "title": "Prêt à Vivre le Luxe?",
+      "subtitle": "Réservez votre séjour aujourd'hui et profitez d'avantages exclusifs lorsque vous réservez directement avec nous.",
+      "bookNow": "Réserver Maintenant",
+      "contactUs": "Contactez-Nous"
+    }
+  },
+  "roomSelector": {
+    "deluxe": "Chambre Deluxe",
+    "executive": "Suite Exécutive",
+    "presidential": "Suite Présidentielle",
+    "family": "Chambre Familiale",
+    "selectRoom": "Sélectionner le type de chambre"
+  }
+}
