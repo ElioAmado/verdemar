@@ -97,7 +97,14 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }
 
   // Translation function
-  const t = (key: string, params?: Record<string, string | number>): string => {
+  const t = (key: string, params?: Record<string, string | number> & { defaultValue?: string }): string => {
+    const defaultValue = params?.defaultValue
+    // Eliminar defaultValue de params para no usarlo como parámetro de reemplazo
+    if (params?.defaultValue) {
+      const { defaultValue: _, ...restParams } = params
+      params = restParams
+    }
+
     const keys = key.split(".")
     let value = translations[currentLanguage.code]
 
@@ -112,7 +119,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
           if (fallbackValue && typeof fallbackValue === "object" && fallbackKey in fallbackValue) {
             fallbackValue = fallbackValue[fallbackKey]
           } else {
-            return key // Return the key itself if not found in fallback
+            return defaultValue || key // Return the defaultValue or key itself if not found in fallback
           }
         }
         value = fallbackValue
@@ -126,7 +133,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       }, value)
     }
 
-    return typeof value === "string" ? value : key
+    return typeof value === "string" ? value : defaultValue || key
   }
 
   return <LanguageContext.Provider value={{ currentLanguage, setLanguage, t }}>{children}</LanguageContext.Provider>
