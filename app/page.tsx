@@ -11,6 +11,7 @@ import { RoomTypeSelector } from "@/components/room-type-selector"
 import { GuestCounter } from "@/components/guest-counter"
 import { SiteHeader } from "@/components/site-header"
 import { useLanguage } from "@/contexts/language-context"
+import Calendar from "@/components/calendar"
 
 export default function Home() {
   const { t } = useLanguage()
@@ -52,6 +53,7 @@ export default function Home() {
                       {t("home.search.checkIn")}
                     </label>
                     <DatePickerWithRange />
+                    {/* <Calendar /> */}
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
