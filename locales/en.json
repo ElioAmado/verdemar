@@ -95,5 +95,30 @@
     "address": "Camp D'es Pou 3877, Es Pujols",
     "phone": "+34 626 70 39 85",
     "email": "aptosverdemar@gmail.com"
+  },
+  "calendar": {
+    "monthNames": [
+      "Enero",
+      "Febrero",
+      "Marzo",
+      "Abril",
+      "Mayo",
+      "Junio",
+      "Julio",
+      "Agosto",
+      "Septiembre",
+      "Octubre",
+      "Noviembre",
+      "Diciembre"
+    ],
+    "daysOfWeek": [
+      "Domingo",
+      "Lunes",
+      "Martes",
+      "Miércoles",
+      "Jueves",
+      "Viernes",
+      "Sábado"
+    ]
   }
 }

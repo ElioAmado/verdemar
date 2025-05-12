@@ -33,25 +33,10 @@ export const languages: Language[] = [
     flag: "/placeholder.svg?height=20&width=30&text=🇩🇪",
   },
   {
-    code: "zh",
-    name: "中文",
-    flag: "/placeholder.svg?height=20&width=30&text=🇨🇳",
-  },
-  {
-    code: "ja",
-    name: "日本語",
-    flag: "/placeholder.svg?height=20&width=30&text=🇯🇵",
-  },
-  {
-    code: "ar",
-    name: "العربية",
-    flag: "/placeholder.svg?height=20&width=30&text=🇸🇦",
-  },
-  {
-    code: "ru",
-    name: "Русский",
-    flag: "/placeholder.svg?height=20&width=30&text=🇷🇺",
-  },
+    code: "it",
+    name: "Italiano",
+    flag: "/placeholder.svg?height=20&width=30&text=IT",
+  }
 ]
 
 const translations: Record<string, any> = {
@@ -59,11 +44,11 @@ const translations: Record<string, any> = {
   es: esTranslations,
   fr: frTranslations,
   // For other languages, we'll fallback to English for now
-  de: enTranslations,
-  zh: enTranslations,
-  ja: enTranslations,
-  ar: enTranslations,
-  ru: enTranslations,
+  // de: enTranslations,
+  // zh: enTranslations,
+  // ja: enTranslations,
+  // ar: enTranslations,
+  // ru: enTranslations,
 }
 
 type LanguageContextType = {
@@ -133,7 +118,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       }, value)
     }
 
-    return typeof value === "string" ? value : defaultValue || key
+    // return typeof value === "string" ? value : defaultValue || key
+    return value // Return the value if it's a string, otherwise return the defaultValue or key itself
   }
 
   return <LanguageContext.Provider value={{ currentLanguage, setLanguage, t }}>{children}</LanguageContext.Provider>

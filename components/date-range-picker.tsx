@@ -1,5 +1,3 @@
-"use client"
-
 import * as React from "react"
 import { addDays, format } from "date-fns"
 import { es } from "date-fns/locale"
@@ -10,36 +8,37 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import Calendar from "@/components/calendar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-
-export interface CalendarProps {
-    initialStartDate?: Date | null;
-    initialEndDate?: Date | null;
-    onRangeChange?: (range: DateRange) => void;
-  }
+import { useIsMobile } from "@/hooks/use-mobile"
 
 export function DatePickerWithRange({
-    className,
-    onRangeChange,
-  } : {
-    className?: string
-    onRangeChange?: (range: DateRange | undefined) => void
-  }) {
-
+  className,
+  onRangeChange,
+}: {
+  className?: string
+  onRangeChange?: (range: DateRange | undefined) => void
+}) {
   const [date, setDate] = React.useState<DateRange | undefined>({
     from: new Date(),
     to: addDays(new Date(), 7),
   })
 
+  const [open, setOpen] = React.useState(false)
+
   const handleRangeChange = (range: DateRange | undefined) => {
     setDate(range)
-    if (onRangeChange) {
-      onRangeChange(range)
+    if (onRangeChange) onRangeChange(range)
+
+    // Cerrar el Popover si se seleccionó un rango completo
+    if (range?.from && range?.to) {
+      setOpen(false)
     }
   }
 
+  const numberOfMonths = useIsMobile() ? 1 : 2
+
   return (
     <div className={cn("grid gap-2", className)}>
-      <Popover>
+      <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
             id="date"
@@ -66,8 +65,8 @@ export function DatePickerWithRange({
             initialStartDate={date?.from ?? null}
             initialEndDate={date?.to ?? null}
             onRangeChange={handleRangeChange}
+            numberOfMonths={numberOfMonths}
           />
-
         </PopoverContent>
       </Popover>
     </div>

@@ -11,7 +11,6 @@ import { RoomTypeSelector } from "@/components/room-type-selector"
 import { GuestCounter } from "@/components/guest-counter"
 import { SiteHeader } from "@/components/site-header"
 import { useLanguage } from "@/contexts/language-context"
-import Calendar from "@/components/calendar"
 
 export default function Home() {
   const { t } = useLanguage()
