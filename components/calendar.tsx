@@ -1,4 +1,4 @@
-// Calendar.tsx
+"use client";
 import React, { useState } from 'react';
 import { CalendarProps } from './date-range-picker';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
