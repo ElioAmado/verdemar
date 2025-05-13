@@ -4,10 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "devCaught": "NODE_OPTIONS='--trace-uncaught' next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "lint:fix": "eslint . --fix",
     "format": "prettier --write ."
+    
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
@@ -65,6 +68,11 @@
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "eslint": "^9.26.0",
+    "eslint-config-next": "^15.3.2",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.4.0",
+    "eslint-plugin-react": "^7.37.5",
     "postcss": "^8",
     "prettier": "^3.5.3",
     "tailwindcss": "^3.4.17",

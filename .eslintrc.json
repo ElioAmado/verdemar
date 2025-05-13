@@ -1,0 +1,17 @@
+{
+  "root": true,
+  "extends": [
+    "next",
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["react", "prettier"],
+  "rules": {
+    "prettier/prettier": ["error"],
+    "react/react-in-jsx-scope": "off",  // innecesario en Next.js 12+
+    "no-unused-vars": "warn",
+    "react/prop-types": "off"  // si no usas PropTypes
+  }
+}

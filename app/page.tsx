@@ -5,6 +5,7 @@ import Image from 'next/image';
 import {
   AirVent,
   ChevronRightIcon,
+  CircleParking,
   MapPinIcon,
   StarIcon,
   UsersIcon,
