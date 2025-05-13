@@ -10,7 +10,6 @@
     "lint": "next lint",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write ."
-    
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
