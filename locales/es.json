@@ -29,6 +29,7 @@
       "pickDate": "Selecciona una fecha"
     },
     "rooms": {
+      "littleMsg": "Nuestras habitaciones",
       "title": "Habitaciones y Suites Lujosas",
       "subtitle": "Elige entre nuestra selección de habitaciones y suites elegantemente diseñadas, cada una ofreciendo comodidades únicas y vistas impresionantes.",
       "viewAll": "Ver Todas las Habitaciones",
@@ -39,10 +40,10 @@
     "amenities": {
       "title": "Instalaciones Excepcionales",
       "subtitle": "Disfruta de nuestras instalaciones de clase mundial diseñadas para hacer tu estancia inolvidable.",
-      "spa": "Spa de Bienestar",
-      "spaDesc": "Relájate y rejuvenece con nuestros tratamientos premium de spa.",
-      "pool": "Piscina Infinita",
-      "poolDesc": "Nada con vistas en nuestra impresionante piscina infinita.",
+      "safe": "Caja Fuerte",
+      "safeDesc": "Mantén tus objetos de valor seguros en nuestras cajas fuertes en la habitación.",
+      "AC": " Aire Acondicionado",
+      "ACDesc": "Disfruta de un ambiente fresco y cómodo durante tu estancia.",
       "dining": "Alta Gastronomía",
       "diningDesc": "Experimenta la excelencia culinaria en nuestros restaurantes gourmet.",
       "service": "Servicio 24/7",
@@ -85,7 +86,7 @@
     "family": "Habitación Familiar",
     "selectRoom": "Seleccionar tipo de habitación"
   },
-    "footer": {
+  "footer": {
     "quickLinks": "Enlaces Rápidos",
     "contact": "Contacto",
     "newsletter": "Boletín Informativo",

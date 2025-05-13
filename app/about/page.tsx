@@ -1,10 +1,10 @@
-import Link from "next/link"
-import Image from "next/image"
-import { Award, Clock, Heart, MapPin, Star, Users } from "lucide-react"
+import Link from 'next/link';
+import Image from 'next/image';
+import { Award, Clock, Heart, MapPin, Star, Users } from 'lucide-react';
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { SiteHeader } from "@/components/site-header"
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { SiteHeader } from '@/components/site-header';
 
 export default function AboutPage() {
   return (
@@ -38,22 +38,32 @@ export default function AboutPage() {
           <div className="container px-4 md:px-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
-                <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Our Story</div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">A Tradition of Excellence</h2>
+                <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">
+                  Our Story
+                </div>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
+                  A Tradition of Excellence
+                </h2>
                 <p className="text-muted-foreground md:text-lg">
-                  Founded in 1995 by the visionary hotelier Jonathan Maxwell, Apartamentos Verde Mar began as a boutique
-                  establishment with just 20 rooms. With a commitment to personalized service and attention to detail,
-                  the hotel quickly gained a reputation for excellence.
+                  Founded in 1995 by the visionary hotelier Jonathan Maxwell,
+                  Apartamentos Verde Mar began as a boutique establishment with
+                  just 20 rooms. With a commitment to personalized service and
+                  attention to detail, the hotel quickly gained a reputation for
+                  excellence.
                 </p>
                 <p className="text-muted-foreground md:text-lg">
-                  Over the years, we've expanded our facilities while maintaining the intimate atmosphere and
-                  personalized service that made us famous. Today, Apartamentos Verde Mar stands as a symbol of luxury
-                  hospitality, welcoming guests from around the world.
+                  Over the years, we've expanded our facilities while
+                  maintaining the intimate atmosphere and personalized service
+                  that made us famous. Today, Apartamentos Verde Mar stands as a
+                  symbol of luxury hospitality, welcoming guests from around the
+                  world.
                 </p>
                 <p className="text-muted-foreground md:text-lg">
-                  Our philosophy is simple: create memorable experiences through exceptional service, luxurious
-                  accommodations, and attention to every detail. This commitment has earned us numerous accolades and
-                  the loyalty of our guests, many of whom return year after year.
+                  Our philosophy is simple: create memorable experiences through
+                  exceptional service, luxurious accommodations, and attention
+                  to every detail. This commitment has earned us numerous
+                  accolades and the loyalty of our guests, many of whom return
+                  year after year.
                 </p>
               </div>
               <div className="relative">
@@ -74,10 +84,15 @@ export default function AboutPage() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
               <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-background px-3 py-1 text-sm">Our Values</div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">What Drives Us</h2>
+                <div className="inline-block rounded-lg bg-background px-3 py-1 text-sm">
+                  Our Values
+                </div>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
+                  What Drives Us
+                </h2>
                 <p className="max-w-[700px] text-muted-foreground md:text-lg">
-                  Our core values guide every decision we make and every interaction we have with our guests.
+                  Our core values guide every decision we make and every
+                  interaction we have with our guests.
                 </p>
               </div>
             </div>
@@ -90,8 +105,8 @@ export default function AboutPage() {
                   </div>
                   <h3 className="text-xl font-bold">Excellence</h3>
                   <p className="text-muted-foreground">
-                    We strive for excellence in everything we do, from the cleanliness of our rooms to the quality of
-                    our service.
+                    We strive for excellence in everything we do, from the
+                    cleanliness of our rooms to the quality of our service.
                   </p>
                 </CardContent>
               </Card>
@@ -103,8 +118,8 @@ export default function AboutPage() {
                   </div>
                   <h3 className="text-xl font-bold">Passion</h3>
                   <p className="text-muted-foreground">
-                    Our team is passionate about hospitality and dedicated to creating memorable experiences for every
-                    guest.
+                    Our team is passionate about hospitality and dedicated to
+                    creating memorable experiences for every guest.
                   </p>
                 </CardContent>
               </Card>
@@ -116,8 +131,8 @@ export default function AboutPage() {
                   </div>
                   <h3 className="text-xl font-bold">Respect</h3>
                   <p className="text-muted-foreground">
-                    We treat our guests, our team members, and our environment with the utmost respect and
-                    consideration.
+                    We treat our guests, our team members, and our environment
+                    with the utmost respect and consideration.
                   </p>
                 </CardContent>
               </Card>
@@ -129,8 +144,8 @@ export default function AboutPage() {
                   </div>
                   <h3 className="text-xl font-bold">Innovation</h3>
                   <p className="text-muted-foreground">
-                    We continuously seek new ways to enhance our services and facilities to exceed our guests'
-                    expectations.
+                    We continuously seek new ways to enhance our services and
+                    facilities to exceed our guests' expectations.
                   </p>
                 </CardContent>
               </Card>
@@ -142,10 +157,15 @@ export default function AboutPage() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
               <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Our Team</div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Meet the Leadership</h2>
+                <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">
+                  Our Team
+                </div>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
+                  Meet the Leadership
+                </h2>
                 <p className="max-w-[700px] text-muted-foreground md:text-lg">
-                  Our experienced leadership team is dedicated to upholding our tradition of excellence.
+                  Our experienced leadership team is dedicated to upholding our
+                  tradition of excellence.
                 </p>
               </div>
             </div>
@@ -153,27 +173,38 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="flex flex-col items-center text-center space-y-4">
                 <div className="relative w-48 h-48 rounded-full overflow-hidden">
-                  <Image src="/placeholder.svg?height=200&width=200&text=CEO" alt="CEO" fill className="object-cover" />
+                  <Image
+                    src="/placeholder.svg?height=200&width=200&text=CEO"
+                    alt="CEO"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold">Emily Richardson</h3>
                   <p className="text-primary">Chief Executive Officer</p>
                   <p className="text-muted-foreground mt-2">
-                    With over 20 years of experience in luxury hospitality, Emily leads our team with vision and
-                    passion.
+                    With over 20 years of experience in luxury hospitality,
+                    Emily leads our team with vision and passion.
                   </p>
                 </div>
               </div>
 
               <div className="flex flex-col items-center text-center space-y-4">
                 <div className="relative w-48 h-48 rounded-full overflow-hidden">
-                  <Image src="/placeholder.svg?height=200&width=200&text=COO" alt="COO" fill className="object-cover" />
+                  <Image
+                    src="/placeholder.svg?height=200&width=200&text=COO"
+                    alt="COO"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold">Michael Chen</h3>
                   <p className="text-primary">Chief Operations Officer</p>
                   <p className="text-muted-foreground mt-2">
-                    Michael ensures that every aspect of our operations meets our high standards of excellence.
+                    Michael ensures that every aspect of our operations meets
+                    our high standards of excellence.
                   </p>
                 </div>
               </div>
@@ -191,7 +222,8 @@ export default function AboutPage() {
                   <h3 className="text-xl font-bold">Sofia Martinez</h3>
                   <p className="text-primary">Executive Chef</p>
                   <p className="text-muted-foreground mt-2">
-                    Award-winning chef Sofia creates culinary masterpieces that delight our guests' palates.
+                    Award-winning chef Sofia creates culinary masterpieces that
+                    delight our guests' palates.
                   </p>
                 </div>
               </div>
@@ -203,10 +235,15 @@ export default function AboutPage() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
               <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-background px-3 py-1 text-sm">Milestones</div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Our Journey</h2>
+                <div className="inline-block rounded-lg bg-background px-3 py-1 text-sm">
+                  Milestones
+                </div>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
+                  Our Journey
+                </h2>
                 <p className="max-w-[700px] text-muted-foreground md:text-lg">
-                  Key moments in our history that have shaped Apartamentos Verde Mar into what it is today.
+                  Key moments in our history that have shaped Apartamentos Verde
+                  Mar into what it is today.
                 </p>
               </div>
             </div>
@@ -222,8 +259,9 @@ export default function AboutPage() {
                 <div className="space-y-2 pb-8">
                   <h3 className="text-xl font-bold">1995</h3>
                   <p className="text-muted-foreground">
-                    Apartamentos Verde Mar opens its doors with 20 rooms, founded by Jonathan Maxwell with a vision to create a
-                    new standard in luxury hospitality.
+                    Apartamentos Verde Mar opens its doors with 20 rooms,
+                    founded by Jonathan Maxwell with a vision to create a new
+                    standard in luxury hospitality.
                   </p>
                 </div>
               </div>
@@ -238,8 +276,9 @@ export default function AboutPage() {
                 <div className="space-y-2 pb-8">
                   <h3 className="text-xl font-bold">2003</h3>
                   <p className="text-muted-foreground">
-                    Major expansion adds 50 more rooms, a luxury spa, and our signature Azure Restaurant, establishing
-                    LuxStay as a premier destination.
+                    Major expansion adds 50 more rooms, a luxury spa, and our
+                    signature Azure Restaurant, establishing LuxStay as a
+                    premier destination.
                   </p>
                 </div>
               </div>
@@ -254,8 +293,9 @@ export default function AboutPage() {
                 <div className="space-y-2 pb-8">
                   <h3 className="text-xl font-bold">2010</h3>
                   <p className="text-muted-foreground">
-                    LuxStay receives its first five-star rating and begins international expansion with properties in
-                    major European cities.
+                    LuxStay receives its first five-star rating and begins
+                    international expansion with properties in major European
+                    cities.
                   </p>
                 </div>
               </div>
@@ -270,8 +310,9 @@ export default function AboutPage() {
                 <div className="space-y-2 pb-8">
                   <h3 className="text-xl font-bold">2018</h3>
                   <p className="text-muted-foreground">
-                    Complete renovation of our flagship property introduces cutting-edge technology while preserving our
-                    classic elegance.
+                    Complete renovation of our flagship property introduces
+                    cutting-edge technology while preserving our classic
+                    elegance.
                   </p>
                 </div>
               </div>
@@ -285,8 +326,9 @@ export default function AboutPage() {
                 <div className="space-y-2">
                   <h3 className="text-xl font-bold">Today</h3>
                   <p className="text-muted-foreground">
-                    Apartamentos Verde Mar Group now comprises 15 properties worldwide, each embodying our commitment to luxury,
-                    comfort, and exceptional service.
+                    Apartamentos Verde Mar Group now comprises 15 properties
+                    worldwide, each embodying our commitment to luxury, comfort,
+                    and exceptional service.
                   </p>
                 </div>
               </div>
@@ -298,19 +340,25 @@ export default function AboutPage() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col md:flex-row gap-12 items-center">
               <div className="md:w-1/2 space-y-4">
-                <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Our Location</div>
-                <h2 className="text-3xl font-bold tracking-tighter">Perfectly Situated</h2>
+                <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">
+                  Our Location
+                </div>
+                <h2 className="text-3xl font-bold tracking-tighter">
+                  Perfectly Situated
+                </h2>
                 <p className="text-muted-foreground md:text-lg">
-                  Located in the heart of the city, Apartamentos Verde Mar offers easy access to major attractions, business
-                  districts, and transportation hubs.
+                  Located in the heart of the city, Apartamentos Verde Mar
+                  offers easy access to major attractions, business districts,
+                  and transportation hubs.
                 </p>
                 <div className="flex items-center gap-2 text-muted-foreground">
                   <MapPin className="h-5 w-5 text-primary" />
                   <span>Camp D'es Pou 3877, Es Pujols </span>
                 </div>
                 <p className="text-muted-foreground">
-                  Just 20 minutes from International Airport and a 5-minute walk to Central Station, our location
-                  combines convenience with the tranquility of our beautifully landscaped grounds.
+                  Just 20 minutes from International Airport and a 5-minute walk
+                  to Central Station, our location combines convenience with the
+                  tranquility of our beautifully landscaped grounds.
                 </p>
                 <Button className="mt-2">Get Directions</Button>
               </div>
@@ -330,9 +378,12 @@ export default function AboutPage() {
 
         <section className="py-16 bg-primary text-primary-foreground">
           <div className="container px-4 md:px-6 text-center">
-            <h2 className="text-3xl font-bold tracking-tighter mb-4">Experience Our Legacy of Luxury</h2>
+            <h2 className="text-3xl font-bold tracking-tighter mb-4">
+              Experience Our Legacy of Luxury
+            </h2>
             <p className="max-w-[700px] mx-auto md:text-lg mb-8">
-              Join the thousands of guests who have made Apartamentos Verde Mar their home away from home.
+              Join the thousands of guests who have made Apartamentos Verde Mar
+              their home away from home.
             </p>
             <Button size="lg" variant="secondary">
               Book Your Stay
@@ -344,11 +395,21 @@ export default function AboutPage() {
         <div className="container px-4 md:px-6 py-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="space-y-4">
-              <Link href="/" className="flex items-center gap-2 text-xl font-bold">
-                <Image src="/placeholder.svg?height=32&width=32" alt="Logo" width={32} height={32} />
+              <Link
+                href="/"
+                className="flex items-center gap-2 text-xl font-bold"
+              >
+                <Image
+                  src="/placeholder.svg?height=32&width=32"
+                  alt="Logo"
+                  width={32}
+                  height={32}
+                />
                 <span>Apartamentos Verde Mar</span>
               </Link>
-              <p className="text-muted-foreground">Experience luxury and comfort in the heart of the city.</p>
+              <p className="text-muted-foreground">
+                Experience luxury and comfort in the heart of the city.
+              </p>
               <div className="flex gap-4">
                 <Button variant="ghost" size="icon" className="rounded-full">
                   <svg
@@ -408,22 +469,40 @@ export default function AboutPage() {
             <div>
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
               <nav className="flex flex-col space-y-2">
-                <Link href="/" className="text-muted-foreground hover:text-foreground">
+                <Link
+                  href="/"
+                  className="text-muted-foreground hover:text-foreground"
+                >
                   Home
                 </Link>
-                <Link href="/rooms" className="text-muted-foreground hover:text-foreground">
+                <Link
+                  href="/rooms"
+                  className="text-muted-foreground hover:text-foreground"
+                >
                   Rooms & Suites
                 </Link>
-                <Link href="/dining" className="text-muted-foreground hover:text-foreground">
+                <Link
+                  href="/dining"
+                  className="text-muted-foreground hover:text-foreground"
+                >
                   Dining
                 </Link>
-                <Link href="/spa" className="text-muted-foreground hover:text-foreground">
+                <Link
+                  href="/spa"
+                  className="text-muted-foreground hover:text-foreground"
+                >
                   Spa & Wellness
                 </Link>
-                <Link href="/events" className="text-muted-foreground hover:text-foreground">
+                <Link
+                  href="/events"
+                  className="text-muted-foreground hover:text-foreground"
+                >
                   Events
                 </Link>
-                <Link href="/gallery" className="text-muted-foreground hover:text-foreground">
+                <Link
+                  href="/gallery"
+                  className="text-muted-foreground hover:text-foreground"
+                >
                   Gallery
                 </Link>
               </nav>
@@ -438,7 +517,9 @@ export default function AboutPage() {
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-4">Newsletter</h3>
-              <p className="text-muted-foreground mb-4">Subscribe to receive special offers and updates.</p>
+              <p className="text-muted-foreground mb-4">
+                Subscribe to receive special offers and updates.
+              </p>
               <form className="space-y-2">
                 <input
                   type="email"
@@ -450,10 +531,13 @@ export default function AboutPage() {
             </div>
           </div>
           <div className="border-t mt-12 pt-8 text-center text-muted-foreground">
-            <p>&copy; {new Date().getFullYear()} Apartamentos Verde Mar. All rights reserved.</p>
+            <p>
+              &copy; {new Date().getFullYear()} Apartamentos Verde Mar. All
+              rights reserved.
+            </p>
           </div>
         </div>
       </footer>
     </div>
-  )
+  );
 }

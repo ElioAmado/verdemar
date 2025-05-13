@@ -1,13 +1,13 @@
-"use client"
+'use client';
 
-import * as React from "react"
-import { MinusIcon, PlusIcon } from "lucide-react"
+import * as React from 'react';
+import { MinusIcon, PlusIcon } from 'lucide-react';
 
-import { Button } from "@/components/ui/button"
+import { Button } from '@/components/ui/button';
 
 export function GuestCounter() {
-  const [adults, setAdults] = React.useState(2)
-  const [children, setChildren] = React.useState(0)
+  const [adults, setAdults] = React.useState(2);
+  const [children, setChildren] = React.useState(0);
 
   return (
     <div className="flex flex-col space-y-2">
@@ -64,5 +64,5 @@ export function GuestCounter() {
         </div>
       </div>
     </div>
-  )
+  );
 }

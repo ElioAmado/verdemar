@@ -1,17 +1,16 @@
-"use client";
+'use client';
 import React, { useState } from 'react';
 import { CalendarProps } from './date-range-picker';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { useLanguage } from "@/contexts/language-context";
+import { useLanguage } from '@/contexts/language-context';
 
 const Calendar: React.FC<CalendarProps> = ({
   initialStartDate = null,
   initialEndDate = null,
   onRangeChange,
-  numberOfMonths
+  numberOfMonths,
 }) => {
-
-  const { t } = useLanguage()
+  const { t } = useLanguage();
   const daysOfWeek: string[] = t('calendar.daysOfWeek');
 
   const today = new Date();
@@ -49,19 +48,24 @@ const Calendar: React.FC<CalendarProps> = ({
     //   yearStep: yearStep,
     //   monthStep: mounthStep,
     // });
-
   };
 
   const isInRange = (day: number, mounthStep: number): boolean => {
     const yearStep = mounthStep == -11 ? 1 : 0;
     if (!startDate || !endDate) return false;
-    const current = new Date(currentYear + yearStep, currentMonth + mounthStep, day).getTime();
+    const current = new Date(
+      currentYear + yearStep,
+      currentMonth + mounthStep,
+      day
+    ).getTime();
     return current > startDate.getTime() && current < endDate.getTime();
   };
 
-
-
-  const isSameDay = (date: Date | null, day: number, mounthStep: number): boolean => {
+  const isSameDay = (
+    date: Date | null,
+    day: number,
+    mounthStep: number
+  ): boolean => {
     const yearStep = mounthStep == -11 ? 1 : 0;
     return (
       !!date &&
@@ -108,13 +112,11 @@ const Calendar: React.FC<CalendarProps> = ({
           <button onClick={prevMonth}>
             <ChevronLeft />
           </button>
-        )
+        );
       } else {
-        return (
-          <div></div>
-        )
+        return <div></div>;
       }
-    }
+    };
 
     const showNextMonth = () => {
       if (changeMounth == 2 || changeMounth == 0) {
@@ -122,25 +124,34 @@ const Calendar: React.FC<CalendarProps> = ({
           <button onClick={nextMonth}>
             <ChevronRight />
           </button>
-        )
+        );
       } else {
-        return (
-          <div></div>
-        )
+        return <div></div>;
       }
-    }
+    };
 
     return (
       <div>
         <div className="flex items-center justify-between">
           {showPrevMonth()}
-          <h2>{monthNames[realMonth]} {realYear}</h2>
+          <h2>
+            {monthNames[realMonth]} {realYear}
+          </h2>
           {showNextMonth()}
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '4px', marginTop: '10px' }}>
-          {daysOfWeek.map(day => (
-            <div key={day} style={{ fontWeight: 'bold' }}>{day.slice(0, 2)}</div>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(7, 1fr)',
+            gap: '4px',
+            marginTop: '10px',
+          }}
+        >
+          {daysOfWeek.map((day) => (
+            <div key={day} style={{ fontWeight: 'bold' }}>
+              {day.slice(0, 2)}
+            </div>
           ))}
           {Array.from({ length: firstDayOfMonth }).map((_, i) => (
             <div key={`empty-${i}`} />
@@ -151,11 +162,8 @@ const Calendar: React.FC<CalendarProps> = ({
             const isEnd = isSameDay(endDate, day, mounthStep);
             const inRange = isInRange(day, mounthStep);
 
-            const backgroundColor = isStart || isEnd
-              ? '#4caf50'
-              : inRange
-                ? '#c8e6c9'
-                : '#f0f0f0';
+            const backgroundColor =
+              isStart || isEnd ? '#4caf50' : inRange ? '#c8e6c9' : '#f0f0f0';
 
             const textColor = isStart || isEnd ? 'white' : 'black';
 
@@ -168,7 +176,7 @@ const Calendar: React.FC<CalendarProps> = ({
                   backgroundColor,
                   color: textColor,
                   borderRadius: '4px',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
                 }}
               >
                 {day}
@@ -182,15 +190,14 @@ const Calendar: React.FC<CalendarProps> = ({
 
   return (
     <div style={{ width: 'auto', textAlign: 'center', margin: '20px' }}>
-      <div className='flex gap-6 justify-center'>
+      <div className="flex gap-6 justify-center">
         {
-        // Usando un ciclo 'map'
-          numberOfMonths == 1 ? gridMonth(0, 0) : (
-          Array.from({ length: numberOfMonths }).map((_, i) => (
-            <div key={i}>
-              {gridMonth(i, i+1)}
-            </div>
-          )))
+          // Usando un ciclo 'map'
+          numberOfMonths == 1
+            ? gridMonth(0, 0)
+            : Array.from({ length: numberOfMonths }).map((_, i) => (
+                <div key={i}>{gridMonth(i, i + 1)}</div>
+              ))
         }
       </div>
     </div>

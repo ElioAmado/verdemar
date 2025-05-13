@@ -1,14 +1,14 @@
-import Link from "next/link"
-import Image from "next/image"
-import { Mail, MapPin, Phone } from "lucide-react"
+import Link from 'next/link';
+import Image from 'next/image';
+import { Mail, MapPin, Phone } from 'lucide-react';
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { SiteHeader } from "@/components/site-header"
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { SiteHeader } from '@/components/site-header';
 
 export default function ContactPage() {
   return (
@@ -19,9 +19,12 @@ export default function ContactPage() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">Contact Us</h1>
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                  Contact Us
+                </h1>
                 <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed">
-                  We're here to assist you with any questions or special requests you may have.
+                  We're here to assist you with any questions or special
+                  requests you may have.
                 </p>
               </div>
             </div>
@@ -37,18 +40,28 @@ export default function ContactPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="first-name">First Name</Label>
-                      <Input id="first-name" placeholder="Enter your first name" />
+                      <Input
+                        id="first-name"
+                        placeholder="Enter your first name"
+                      />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="last-name">Last Name</Label>
-                      <Input id="last-name" placeholder="Enter your last name" />
+                      <Input
+                        id="last-name"
+                        placeholder="Enter your last name"
+                      />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="email">Email Address</Label>
-                      <Input id="email" type="email" placeholder="Enter your email" />
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder="Enter your email"
+                      />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="phone">Phone Number</Label>
@@ -58,7 +71,10 @@ export default function ContactPage() {
 
                   <div className="space-y-2">
                     <Label htmlFor="subject">Subject</Label>
-                    <Input id="subject" placeholder="What is your message regarding?" />
+                    <Input
+                      id="subject"
+                      placeholder="What is your message regarding?"
+                    />
                   </div>
 
                   <div className="space-y-2">
@@ -78,13 +94,17 @@ export default function ContactPage() {
 
               <div className="space-y-8">
                 <div>
-                  <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
+                  <h2 className="text-2xl font-bold mb-6">
+                    Contact Information
+                  </h2>
                   <div className="space-y-4">
                     <div className="flex items-start gap-4">
                       <MapPin className="h-5 w-5 text-primary mt-1" />
                       <div>
                         <h3 className="font-semibold">Address</h3>
-                        <p className="text-muted-foreground">Camp D'es Pou 3877, Es Pujols </p>
+                        <p className="text-muted-foreground">
+                          Camp D'es Pou 3877, Es Pujols{' '}
+                        </p>
                       </div>
                     </div>
 
@@ -92,8 +112,12 @@ export default function ContactPage() {
                       <Phone className="h-5 w-5 text-primary mt-1" />
                       <div>
                         <h3 className="font-semibold">Phone</h3>
-                        <p className="text-muted-foreground">+34 626 70 39 85</p>
-                        <p className="text-muted-foreground">Reservations: +1 (123) 456-7891</p>
+                        <p className="text-muted-foreground">
+                          +34 626 70 39 85
+                        </p>
+                        <p className="text-muted-foreground">
+                          Reservations: +1 (123) 456-7891
+                        </p>
                       </div>
                     </div>
 
@@ -101,8 +125,12 @@ export default function ContactPage() {
                       <Mail className="h-5 w-5 text-primary mt-1" />
                       <div>
                         <h3 className="font-semibold">Email</h3>
-                        <p className="text-muted-foreground">aptosverdemar@gmail.com</p>
-                        <p className="text-muted-foreground">reservations@luxstayhotel.com</p>
+                        <p className="text-muted-foreground">
+                          aptosverdemar@gmail.com
+                        </p>
+                        <p className="text-muted-foreground">
+                          reservations@luxstayhotel.com
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -121,27 +149,39 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <h2 className="text-2xl font-bold mb-6">Hours of Operation</h2>
+                  <h2 className="text-2xl font-bold mb-6">
+                    Hours of Operation
+                  </h2>
                   <div className="space-y-2">
                     <div className="flex justify-between">
                       <span className="font-medium">Front Desk</span>
-                      <span className="text-muted-foreground">24 hours, 7 days a week</span>
+                      <span className="text-muted-foreground">
+                        24 hours, 7 days a week
+                      </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="font-medium">Concierge</span>
-                      <span className="text-muted-foreground">7:00 AM - 11:00 PM</span>
+                      <span className="text-muted-foreground">
+                        7:00 AM - 11:00 PM
+                      </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="font-medium">Azure Restaurant</span>
-                      <span className="text-muted-foreground">6:30 AM - 10:30 PM</span>
+                      <span className="text-muted-foreground">
+                        6:30 AM - 10:30 PM
+                      </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="font-medium">Skyline Lounge</span>
-                      <span className="text-muted-foreground">4:00 PM - 1:00 AM</span>
+                      <span className="text-muted-foreground">
+                        4:00 PM - 1:00 AM
+                      </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="font-medium">Spa & Wellness</span>
-                      <span className="text-muted-foreground">9:00 AM - 8:00 PM</span>
+                      <span className="text-muted-foreground">
+                        9:00 AM - 8:00 PM
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -154,9 +194,12 @@ export default function ContactPage() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
               <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter">Frequently Asked Questions</h2>
+                <h2 className="text-3xl font-bold tracking-tighter">
+                  Frequently Asked Questions
+                </h2>
                 <p className="max-w-[700px] text-muted-foreground md:text-lg">
-                  Find quick answers to common questions about our hotel and services.
+                  Find quick answers to common questions about our hotel and
+                  services.
                 </p>
               </div>
             </div>
@@ -174,12 +217,15 @@ export default function ContactPage() {
               <TabsContent value="general" className="space-y-6">
                 <Card>
                   <CardHeader>
-                    <CardTitle>What are your check-in and check-out times?</CardTitle>
+                    <CardTitle>
+                      What are your check-in and check-out times?
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p>
-                      Check-in time is 3:00 PM and check-out time is 12:00 PM. Early check-in and late check-out may be
-                      available upon request, subject to availability and additional charges.
+                      Check-in time is 3:00 PM and check-out time is 12:00 PM.
+                      Early check-in and late check-out may be available upon
+                      request, subject to availability and additional charges.
                     </p>
                   </CardContent>
                 </Card>
@@ -189,8 +235,9 @@ export default function ContactPage() {
                   </CardHeader>
                   <CardContent>
                     <p>
-                      Yes, we offer airport transportation services for our guests. Please contact our concierge at
-                      least 24 hours in advance to arrange pickup or drop-off.
+                      Yes, we offer airport transportation services for our
+                      guests. Please contact our concierge at least 24 hours in
+                      advance to arrange pickup or drop-off.
                     </p>
                   </CardContent>
                 </Card>
@@ -200,8 +247,9 @@ export default function ContactPage() {
                   </CardHeader>
                   <CardContent>
                     <p>
-                      Yes, we offer both self-parking and valet parking options. Self-parking is $25 per day, while
-                      valet parking is $35 per day with unlimited in-and-out privileges.
+                      Yes, we offer both self-parking and valet parking options.
+                      Self-parking is $25 per day, while valet parking is $35
+                      per day with unlimited in-and-out privileges.
                     </p>
                   </CardContent>
                 </Card>
@@ -214,8 +262,9 @@ export default function ContactPage() {
                   </CardHeader>
                   <CardContent>
                     <p>
-                      Reservations can be made through our website, by calling our reservations line at +1 (123)
-                      456-7891, or by emailing reservations@luxstayhotel.com.
+                      Reservations can be made through our website, by calling
+                      our reservations line at +1 (123) 456-7891, or by emailing
+                      reservations@luxstayhotel.com.
                     </p>
                   </CardContent>
                 </Card>
@@ -225,9 +274,10 @@ export default function ContactPage() {
                   </CardHeader>
                   <CardContent>
                     <p>
-                      Our standard cancellation policy allows for free cancellation up to 48 hours before check-in.
-                      Cancellations made within 48 hours of arrival may be subject to a charge equivalent to one night's
-                      stay.
+                      Our standard cancellation policy allows for free
+                      cancellation up to 48 hours before check-in. Cancellations
+                      made within 48 hours of arrival may be subject to a charge
+                      equivalent to one night's stay.
                     </p>
                   </CardContent>
                 </Card>
@@ -237,8 +287,9 @@ export default function ContactPage() {
                   </CardHeader>
                   <CardContent>
                     <p>
-                      A credit card is required to secure your reservation, but no charges will be made until check-in
-                      unless specified by a special rate or promotion.
+                      A credit card is required to secure your reservation, but
+                      no charges will be made until check-in unless specified by
+                      a special rate or promotion.
                     </p>
                   </CardContent>
                 </Card>
@@ -251,8 +302,9 @@ export default function ContactPage() {
                   </CardHeader>
                   <CardContent>
                     <p>
-                      Yes, complimentary high-speed Wi-Fi is available throughout the hotel, including all guest rooms
-                      and public areas.
+                      Yes, complimentary high-speed Wi-Fi is available
+                      throughout the hotel, including all guest rooms and public
+                      areas.
                     </p>
                   </CardContent>
                 </Card>
@@ -262,8 +314,9 @@ export default function ContactPage() {
                   </CardHeader>
                   <CardContent>
                     <p>
-                      Yes, our state-of-the-art fitness center is open 24 hours a day and features modern cardio and
-                      strength training equipment, as well as daily fitness classes.
+                      Yes, our state-of-the-art fitness center is open 24 hours
+                      a day and features modern cardio and strength training
+                      equipment, as well as daily fitness classes.
                     </p>
                   </CardContent>
                 </Card>
@@ -273,8 +326,9 @@ export default function ContactPage() {
                   </CardHeader>
                   <CardContent>
                     <p>
-                      Breakfast is included with some room rates. Please check your reservation details or contact our
-                      reservations team to add a breakfast package to your stay.
+                      Breakfast is included with some room rates. Please check
+                      your reservation details or contact our reservations team
+                      to add a breakfast package to your stay.
                     </p>
                   </CardContent>
                 </Card>
@@ -287,8 +341,9 @@ export default function ContactPage() {
                   </CardHeader>
                   <CardContent>
                     <p>
-                      Yes, we welcome pets under 25 pounds with a non-refundable fee of $75 per stay. Please notify us
-                      in advance if you plan to bring a pet.
+                      Yes, we welcome pets under 25 pounds with a non-refundable
+                      fee of $75 per stay. Please notify us in advance if you
+                      plan to bring a pet.
                     </p>
                   </CardContent>
                 </Card>
@@ -298,8 +353,10 @@ export default function ContactPage() {
                   </CardHeader>
                   <CardContent>
                     <p>
-                      Apartamentos Verde Mar is a 100% non-smoking property. Smoking is not permitted in any guest rooms or
-                      public areas. A cleaning fee of $250 will be charged for smoking in non-designated areas.
+                      Apartamentos Verde Mar is a 100% non-smoking property.
+                      Smoking is not permitted in any guest rooms or public
+                      areas. A cleaning fee of $250 will be charged for smoking
+                      in non-designated areas.
                     </p>
                   </CardContent>
                 </Card>
@@ -309,8 +366,10 @@ export default function ContactPage() {
                   </CardHeader>
                   <CardContent>
                     <p>
-                      Yes, we offer ADA-compliant rooms with various accessibility features. Please specify your
-                      requirements when making a reservation to ensure we can accommodate your needs.
+                      Yes, we offer ADA-compliant rooms with various
+                      accessibility features. Please specify your requirements
+                      when making a reservation to ensure we can accommodate
+                      your needs.
                     </p>
                   </CardContent>
                 </Card>
@@ -321,9 +380,12 @@ export default function ContactPage() {
 
         <section className="py-12">
           <div className="container px-4 md:px-6 text-center">
-            <h2 className="text-3xl font-bold tracking-tighter mb-4">Need Immediate Assistance?</h2>
+            <h2 className="text-3xl font-bold tracking-tighter mb-4">
+              Need Immediate Assistance?
+            </h2>
             <p className="max-w-[700px] mx-auto text-muted-foreground md:text-lg mb-8">
-              Our dedicated team is available 24/7 to assist with urgent inquiries.
+              Our dedicated team is available 24/7 to assist with urgent
+              inquiries.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="gap-2">
@@ -342,11 +404,21 @@ export default function ContactPage() {
         <div className="container px-4 md:px-6 py-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="space-y-4">
-              <Link href="/" className="flex items-center gap-2 text-xl font-bold">
-                <Image src="/placeholder.svg?height=32&width=32" alt="Logo" width={32} height={32} />
+              <Link
+                href="/"
+                className="flex items-center gap-2 text-xl font-bold"
+              >
+                <Image
+                  src="/placeholder.svg?height=32&width=32"
+                  alt="Logo"
+                  width={32}
+                  height={32}
+                />
                 <span>Apartamentos Verde Mar</span>
               </Link>
-              <p className="text-muted-foreground">Experience luxury and comfort in the heart of the city.</p>
+              <p className="text-muted-foreground">
+                Experience luxury and comfort in the heart of the city.
+              </p>
               <div className="flex gap-4">
                 <Button variant="ghost" size="icon" className="rounded-full">
                   <svg
@@ -406,22 +478,40 @@ export default function ContactPage() {
             <div>
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
               <nav className="flex flex-col space-y-2">
-                <Link href="/" className="text-muted-foreground hover:text-foreground">
+                <Link
+                  href="/"
+                  className="text-muted-foreground hover:text-foreground"
+                >
                   Home
                 </Link>
-                <Link href="/rooms" className="text-muted-foreground hover:text-foreground">
+                <Link
+                  href="/rooms"
+                  className="text-muted-foreground hover:text-foreground"
+                >
                   Rooms & Suites
                 </Link>
-                <Link href="/dining" className="text-muted-foreground hover:text-foreground">
+                <Link
+                  href="/dining"
+                  className="text-muted-foreground hover:text-foreground"
+                >
                   Dining
                 </Link>
-                <Link href="/spa" className="text-muted-foreground hover:text-foreground">
+                <Link
+                  href="/spa"
+                  className="text-muted-foreground hover:text-foreground"
+                >
                   Spa & Wellness
                 </Link>
-                <Link href="/events" className="text-muted-foreground hover:text-foreground">
+                <Link
+                  href="/events"
+                  className="text-muted-foreground hover:text-foreground"
+                >
                   Events
                 </Link>
-                <Link href="/gallery" className="text-muted-foreground hover:text-foreground">
+                <Link
+                  href="/gallery"
+                  className="text-muted-foreground hover:text-foreground"
+                >
                   Gallery
                 </Link>
               </nav>
@@ -436,7 +526,9 @@ export default function ContactPage() {
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-4">Newsletter</h3>
-              <p className="text-muted-foreground mb-4">Subscribe to receive special offers and updates.</p>
+              <p className="text-muted-foreground mb-4">
+                Subscribe to receive special offers and updates.
+              </p>
               <form className="space-y-2">
                 <input
                   type="email"
@@ -448,10 +540,13 @@ export default function ContactPage() {
             </div>
           </div>
           <div className="border-t mt-12 pt-8 text-center text-muted-foreground">
-            <p>&copy; {new Date().getFullYear()} Apartamentos Verde Mar. All rights reserved.</p>
+            <p>
+              &copy; {new Date().getFullYear()} Apartamentos Verde Mar. All
+              rights reserved.
+            </p>
           </div>
         </div>
       </footer>
     </div>
-  )
+  );
 }

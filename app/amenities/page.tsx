@@ -1,5 +1,5 @@
-import Link from "next/link"
-import Image from "next/image"
+import Link from 'next/link';
+import Image from 'next/image';
 import {
   Coffee,
   Dumbbell,
@@ -13,12 +13,18 @@ import {
   Users,
   Briefcase,
   Palmtree,
-} from "lucide-react"
+} from 'lucide-react';
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { SiteHeader } from "@/components/site-header"
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { SiteHeader } from '@/components/site-header';
 
 export default function AmenitiesPage() {
   return (
@@ -29,9 +35,12 @@ export default function AmenitiesPage() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">Hotel Amenities & Services</h1>
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                  Hotel Amenities & Services
+                </h1>
                 <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed">
-                  Discover our world-class facilities and services designed to make your stay unforgettable.
+                  Discover our world-class facilities and services designed to
+                  make your stay unforgettable.
                 </p>
               </div>
             </div>
@@ -53,7 +62,9 @@ export default function AmenitiesPage() {
               <TabsContent value="all" className="space-y-16">
                 {/* Wellness Section */}
                 <div>
-                  <h2 className="text-2xl font-bold mb-8 text-center">Wellness & Recreation</h2>
+                  <h2 className="text-2xl font-bold mb-8 text-center">
+                    Wellness & Recreation
+                  </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <Card>
                       <div className="relative h-48">
@@ -69,12 +80,15 @@ export default function AmenitiesPage() {
                           <Waves className="h-5 w-5 text-primary" />
                           Infinity Pool
                         </CardTitle>
-                        <CardDescription>Open daily from 7:00 AM to 10:00 PM</CardDescription>
+                        <CardDescription>
+                          Open daily from 7:00 AM to 10:00 PM
+                        </CardDescription>
                       </CardHeader>
                       <CardContent>
                         <p>
-                          Our stunning infinity pool offers breathtaking views of the surrounding landscape. Relax in
-                          the sun loungers or take a refreshing dip.
+                          Our stunning infinity pool offers breathtaking views
+                          of the surrounding landscape. Relax in the sun
+                          loungers or take a refreshing dip.
                         </p>
                       </CardContent>
                     </Card>
@@ -93,12 +107,16 @@ export default function AmenitiesPage() {
                           <Palmtree className="h-5 w-5 text-primary" />
                           Luxury Spa
                         </CardTitle>
-                        <CardDescription>Open daily from 9:00 AM to 8:00 PM</CardDescription>
+                        <CardDescription>
+                          Open daily from 9:00 AM to 8:00 PM
+                        </CardDescription>
                       </CardHeader>
                       <CardContent>
                         <p>
-                          Indulge in our range of spa treatments designed to rejuvenate your body and mind. From
-                          massages to facials, our skilled therapists will ensure your relaxation.
+                          Indulge in our range of spa treatments designed to
+                          rejuvenate your body and mind. From massages to
+                          facials, our skilled therapists will ensure your
+                          relaxation.
                         </p>
                       </CardContent>
                     </Card>
@@ -121,8 +139,9 @@ export default function AmenitiesPage() {
                       </CardHeader>
                       <CardContent>
                         <p>
-                          Stay fit during your stay with our state-of-the-art fitness center featuring modern equipment,
-                          personal trainers, and daily fitness classes.
+                          Stay fit during your stay with our state-of-the-art
+                          fitness center featuring modern equipment, personal
+                          trainers, and daily fitness classes.
                         </p>
                       </CardContent>
                     </Card>
@@ -131,7 +150,9 @@ export default function AmenitiesPage() {
 
                 {/* Dining Section */}
                 <div>
-                  <h2 className="text-2xl font-bold mb-8 text-center">Dining & Entertainment</h2>
+                  <h2 className="text-2xl font-bold mb-8 text-center">
+                    Dining & Entertainment
+                  </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <Card>
                       <div className="relative h-48">
@@ -147,12 +168,16 @@ export default function AmenitiesPage() {
                           <Utensils className="h-5 w-5 text-primary" />
                           Azure Restaurant
                         </CardTitle>
-                        <CardDescription>Breakfast: 6:30 AM - 10:30 AM | Dinner: 6:00 PM - 10:30 PM</CardDescription>
+                        <CardDescription>
+                          Breakfast: 6:30 AM - 10:30 AM | Dinner: 6:00 PM -
+                          10:30 PM
+                        </CardDescription>
                       </CardHeader>
                       <CardContent>
                         <p>
-                          Experience fine dining at our signature restaurant featuring international cuisine prepared by
-                          our award-winning chefs using locally sourced ingredients.
+                          Experience fine dining at our signature restaurant
+                          featuring international cuisine prepared by our
+                          award-winning chefs using locally sourced ingredients.
                         </p>
                       </CardContent>
                     </Card>
@@ -171,31 +196,42 @@ export default function AmenitiesPage() {
                           <Wine className="h-5 w-5 text-primary" />
                           Skyline Lounge
                         </CardTitle>
-                        <CardDescription>Open daily from 4:00 PM to 1:00 AM</CardDescription>
+                        <CardDescription>
+                          Open daily from 4:00 PM to 1:00 AM
+                        </CardDescription>
                       </CardHeader>
                       <CardContent>
                         <p>
-                          Enjoy handcrafted cocktails and panoramic views at our rooftop bar. The perfect spot to unwind
-                          after a day of exploration or business.
+                          Enjoy handcrafted cocktails and panoramic views at our
+                          rooftop bar. The perfect spot to unwind after a day of
+                          exploration or business.
                         </p>
                       </CardContent>
                     </Card>
 
                     <Card>
                       <div className="relative h-48">
-                        <Image src="/placeholder.svg?height=300&width=500" alt="Café" fill className="object-cover" />
+                        <Image
+                          src="/placeholder.svg?height=300&width=500"
+                          alt="Café"
+                          fill
+                          className="object-cover"
+                        />
                       </div>
                       <CardHeader>
                         <CardTitle className="flex items-center gap-2">
                           <Coffee className="h-5 w-5 text-primary" />
                           Breeze Café
                         </CardTitle>
-                        <CardDescription>Open daily from 7:00 AM to 7:00 PM</CardDescription>
+                        <CardDescription>
+                          Open daily from 7:00 AM to 7:00 PM
+                        </CardDescription>
                       </CardHeader>
                       <CardContent>
                         <p>
-                          Our casual café offers light meals, pastries, and specialty coffees throughout the day.
-                          Perfect for a quick bite or informal meeting.
+                          Our casual café offers light meals, pastries, and
+                          specialty coffees throughout the day. Perfect for a
+                          quick bite or informal meeting.
                         </p>
                       </CardContent>
                     </Card>
@@ -204,7 +240,9 @@ export default function AmenitiesPage() {
 
                 {/* Services Section */}
                 <div>
-                  <h2 className="text-2xl font-bold mb-8 text-center">Premium Services</h2>
+                  <h2 className="text-2xl font-bold mb-8 text-center">
+                    Premium Services
+                  </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <Card>
                       <CardHeader>
@@ -215,8 +253,9 @@ export default function AmenitiesPage() {
                       </CardHeader>
                       <CardContent>
                         <p>
-                          Stay connected with high-speed internet access available throughout the hotel, including all
-                          guest rooms and public areas.
+                          Stay connected with high-speed internet access
+                          available throughout the hotel, including all guest
+                          rooms and public areas.
                         </p>
                       </CardContent>
                     </Card>
@@ -230,8 +269,9 @@ export default function AmenitiesPage() {
                       </CardHeader>
                       <CardContent>
                         <p>
-                          Enjoy convenient valet parking service and luxury airport transfers upon request. Our
-                          concierge can arrange transportation to any destination.
+                          Enjoy convenient valet parking service and luxury
+                          airport transfers upon request. Our concierge can
+                          arrange transportation to any destination.
                         </p>
                       </CardContent>
                     </Card>
@@ -245,8 +285,9 @@ export default function AmenitiesPage() {
                       </CardHeader>
                       <CardContent>
                         <p>
-                          Our express laundry and dry cleaning service ensures your clothes are cleaned, pressed, and
-                          returned to your room within 24 hours.
+                          Our express laundry and dry cleaning service ensures
+                          your clothes are cleaned, pressed, and returned to
+                          your room within 24 hours.
                         </p>
                       </CardContent>
                     </Card>
@@ -260,8 +301,9 @@ export default function AmenitiesPage() {
                       </CardHeader>
                       <CardContent>
                         <p>
-                          Our dedicated concierge team is available around the clock to assist with restaurant
-                          reservations, tour bookings, and special requests.
+                          Our dedicated concierge team is available around the
+                          clock to assist with restaurant reservations, tour
+                          bookings, and special requests.
                         </p>
                       </CardContent>
                     </Card>
@@ -275,8 +317,9 @@ export default function AmenitiesPage() {
                       </CardHeader>
                       <CardContent>
                         <p>
-                          Our fully equipped business center offers computers, printing services, and private meeting
-                          rooms for your professional needs.
+                          Our fully equipped business center offers computers,
+                          printing services, and private meeting rooms for your
+                          professional needs.
                         </p>
                       </CardContent>
                     </Card>
@@ -290,8 +333,9 @@ export default function AmenitiesPage() {
                       </CardHeader>
                       <CardContent>
                         <p>
-                          Let us help you explore the area with customized tour itineraries, activity recommendations,
-                          and exclusive access to local attractions.
+                          Let us help you explore the area with customized tour
+                          itineraries, activity recommendations, and exclusive
+                          access to local attractions.
                         </p>
                       </CardContent>
                     </Card>
@@ -315,12 +359,15 @@ export default function AmenitiesPage() {
                         <Waves className="h-5 w-5 text-primary" />
                         Infinity Pool
                       </CardTitle>
-                      <CardDescription>Open daily from 7:00 AM to 10:00 PM</CardDescription>
+                      <CardDescription>
+                        Open daily from 7:00 AM to 10:00 PM
+                      </CardDescription>
                     </CardHeader>
                     <CardContent>
                       <p>
-                        Our stunning infinity pool offers breathtaking views of the surrounding landscape. Relax in the
-                        sun loungers or take a refreshing dip.
+                        Our stunning infinity pool offers breathtaking views of
+                        the surrounding landscape. Relax in the sun loungers or
+                        take a refreshing dip.
                       </p>
                     </CardContent>
                   </Card>
@@ -339,12 +386,15 @@ export default function AmenitiesPage() {
                         <Palmtree className="h-5 w-5 text-primary" />
                         Luxury Spa
                       </CardTitle>
-                      <CardDescription>Open daily from 9:00 AM to 8:00 PM</CardDescription>
+                      <CardDescription>
+                        Open daily from 9:00 AM to 8:00 PM
+                      </CardDescription>
                     </CardHeader>
                     <CardContent>
                       <p>
-                        Indulge in our range of spa treatments designed to rejuvenate your body and mind. From massages
-                        to facials, our skilled therapists will ensure your relaxation.
+                        Indulge in our range of spa treatments designed to
+                        rejuvenate your body and mind. From massages to facials,
+                        our skilled therapists will ensure your relaxation.
                       </p>
                     </CardContent>
                   </Card>
@@ -367,8 +417,9 @@ export default function AmenitiesPage() {
                     </CardHeader>
                     <CardContent>
                       <p>
-                        Stay fit during your stay with our state-of-the-art fitness center featuring modern equipment,
-                        personal trainers, and daily fitness classes.
+                        Stay fit during your stay with our state-of-the-art
+                        fitness center featuring modern equipment, personal
+                        trainers, and daily fitness classes.
                       </p>
                     </CardContent>
                   </Card>
@@ -391,12 +442,16 @@ export default function AmenitiesPage() {
                         <Utensils className="h-5 w-5 text-primary" />
                         Azure Restaurant
                       </CardTitle>
-                      <CardDescription>Breakfast: 6:30 AM - 10:30 AM | Dinner: 6:00 PM - 10:30 PM</CardDescription>
+                      <CardDescription>
+                        Breakfast: 6:30 AM - 10:30 AM | Dinner: 6:00 PM - 10:30
+                        PM
+                      </CardDescription>
                     </CardHeader>
                     <CardContent>
                       <p>
-                        Experience fine dining at our signature restaurant featuring international cuisine prepared by
-                        our award-winning chefs using locally sourced ingredients.
+                        Experience fine dining at our signature restaurant
+                        featuring international cuisine prepared by our
+                        award-winning chefs using locally sourced ingredients.
                       </p>
                     </CardContent>
                   </Card>
@@ -415,31 +470,42 @@ export default function AmenitiesPage() {
                         <Wine className="h-5 w-5 text-primary" />
                         Skyline Lounge
                       </CardTitle>
-                      <CardDescription>Open daily from 4:00 PM to 1:00 AM</CardDescription>
+                      <CardDescription>
+                        Open daily from 4:00 PM to 1:00 AM
+                      </CardDescription>
                     </CardHeader>
                     <CardContent>
                       <p>
-                        Enjoy handcrafted cocktails and panoramic views at our rooftop bar. The perfect spot to unwind
-                        after a day of exploration or business.
+                        Enjoy handcrafted cocktails and panoramic views at our
+                        rooftop bar. The perfect spot to unwind after a day of
+                        exploration or business.
                       </p>
                     </CardContent>
                   </Card>
 
                   <Card>
                     <div className="relative h-48">
-                      <Image src="/placeholder.svg?height=300&width=500" alt="Café" fill className="object-cover" />
+                      <Image
+                        src="/placeholder.svg?height=300&width=500"
+                        alt="Café"
+                        fill
+                        className="object-cover"
+                      />
                     </div>
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
                         <Coffee className="h-5 w-5 text-primary" />
                         Breeze Café
                       </CardTitle>
-                      <CardDescription>Open daily from 7:00 AM to 7:00 PM</CardDescription>
+                      <CardDescription>
+                        Open daily from 7:00 AM to 7:00 PM
+                      </CardDescription>
                     </CardHeader>
                     <CardContent>
                       <p>
-                        Our casual café offers light meals, pastries, and specialty coffees throughout the day. Perfect
-                        for a quick bite or informal meeting.
+                        Our casual café offers light meals, pastries, and
+                        specialty coffees throughout the day. Perfect for a
+                        quick bite or informal meeting.
                       </p>
                     </CardContent>
                   </Card>
@@ -457,8 +523,9 @@ export default function AmenitiesPage() {
                     </CardHeader>
                     <CardContent>
                       <p>
-                        Stay connected with high-speed internet access available throughout the hotel, including all
-                        guest rooms and public areas.
+                        Stay connected with high-speed internet access available
+                        throughout the hotel, including all guest rooms and
+                        public areas.
                       </p>
                     </CardContent>
                   </Card>
@@ -472,8 +539,9 @@ export default function AmenitiesPage() {
                     </CardHeader>
                     <CardContent>
                       <p>
-                        Enjoy convenient valet parking service and luxury airport transfers upon request. Our concierge
-                        can arrange transportation to any destination.
+                        Enjoy convenient valet parking service and luxury
+                        airport transfers upon request. Our concierge can
+                        arrange transportation to any destination.
                       </p>
                     </CardContent>
                   </Card>
@@ -487,8 +555,9 @@ export default function AmenitiesPage() {
                     </CardHeader>
                     <CardContent>
                       <p>
-                        Our express laundry and dry cleaning service ensures your clothes are cleaned, pressed, and
-                        returned to your room within 24 hours.
+                        Our express laundry and dry cleaning service ensures
+                        your clothes are cleaned, pressed, and returned to your
+                        room within 24 hours.
                       </p>
                     </CardContent>
                   </Card>
@@ -502,8 +571,9 @@ export default function AmenitiesPage() {
                     </CardHeader>
                     <CardContent>
                       <p>
-                        Our dedicated concierge team is available around the clock to assist with restaurant
-                        reservations, tour bookings, and special requests.
+                        Our dedicated concierge team is available around the
+                        clock to assist with restaurant reservations, tour
+                        bookings, and special requests.
                       </p>
                     </CardContent>
                   </Card>
@@ -517,8 +587,9 @@ export default function AmenitiesPage() {
                     </CardHeader>
                     <CardContent>
                       <p>
-                        Our fully equipped business center offers computers, printing services, and private meeting
-                        rooms for your professional needs.
+                        Our fully equipped business center offers computers,
+                        printing services, and private meeting rooms for your
+                        professional needs.
                       </p>
                     </CardContent>
                   </Card>
@@ -532,8 +603,9 @@ export default function AmenitiesPage() {
                     </CardHeader>
                     <CardContent>
                       <p>
-                        Let us help you explore the area with customized tour itineraries, activity recommendations, and
-                        exclusive access to local attractions.
+                        Let us help you explore the area with customized tour
+                        itineraries, activity recommendations, and exclusive
+                        access to local attractions.
                       </p>
                     </CardContent>
                   </Card>
@@ -547,15 +619,20 @@ export default function AmenitiesPage() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col md:flex-row gap-12 items-center">
               <div className="md:w-1/2 space-y-4">
-                <h2 className="text-3xl font-bold tracking-tighter">Experience Luxury at Every Turn</h2>
+                <h2 className="text-3xl font-bold tracking-tighter">
+                  Experience Luxury at Every Turn
+                </h2>
                 <p className="text-muted-foreground md:text-lg">
-                  At Apartamentos Verde Mar, we believe that exceptional amenities and services are the foundation of an
-                  unforgettable stay. From the moment you arrive until your departure, our dedicated team is committed
-                  to providing you with the highest level of comfort and convenience.
+                  At Apartamentos Verde Mar, we believe that exceptional
+                  amenities and services are the foundation of an unforgettable
+                  stay. From the moment you arrive until your departure, our
+                  dedicated team is committed to providing you with the highest
+                  level of comfort and convenience.
                 </p>
                 <p className="text-muted-foreground md:text-lg">
-                  Whether you're traveling for business or leisure, our comprehensive range of facilities ensures that
-                  all your needs are met with the utmost care and attention to detail.
+                  Whether you're traveling for business or leisure, our
+                  comprehensive range of facilities ensures that all your needs
+                  are met with the utmost care and attention to detail.
                 </p>
                 <Button size="lg" className="mt-2">
                   Book Your Stay
@@ -581,11 +658,21 @@ export default function AmenitiesPage() {
         <div className="container px-4 md:px-6 py-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="space-y-4">
-              <Link href="/" className="flex items-center gap-2 text-xl font-bold">
-                <Image src="/placeholder.svg?height=32&width=32" alt="Logo" width={32} height={32} />
+              <Link
+                href="/"
+                className="flex items-center gap-2 text-xl font-bold"
+              >
+                <Image
+                  src="/placeholder.svg?height=32&width=32"
+                  alt="Logo"
+                  width={32}
+                  height={32}
+                />
                 <span>Apartamentos Verde Mar</span>
               </Link>
-              <p className="text-muted-foreground">Experience luxury and comfort in the heart of the city.</p>
+              <p className="text-muted-foreground">
+                Experience luxury and comfort in the heart of the city.
+              </p>
               <div className="flex gap-4">
                 <Button variant="ghost" size="icon" className="rounded-full">
                   <svg
@@ -645,22 +732,40 @@ export default function AmenitiesPage() {
             <div>
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
               <nav className="flex flex-col space-y-2">
-                <Link href="/" className="text-muted-foreground hover:text-foreground">
+                <Link
+                  href="/"
+                  className="text-muted-foreground hover:text-foreground"
+                >
                   Home
                 </Link>
-                <Link href="/rooms" className="text-muted-foreground hover:text-foreground">
+                <Link
+                  href="/rooms"
+                  className="text-muted-foreground hover:text-foreground"
+                >
                   Rooms & Suites
                 </Link>
-                <Link href="/dining" className="text-muted-foreground hover:text-foreground">
+                <Link
+                  href="/dining"
+                  className="text-muted-foreground hover:text-foreground"
+                >
                   Dining
                 </Link>
-                <Link href="/spa" className="text-muted-foreground hover:text-foreground">
+                <Link
+                  href="/spa"
+                  className="text-muted-foreground hover:text-foreground"
+                >
                   Spa & Wellness
                 </Link>
-                <Link href="/events" className="text-muted-foreground hover:text-foreground">
+                <Link
+                  href="/events"
+                  className="text-muted-foreground hover:text-foreground"
+                >
                   Events
                 </Link>
-                <Link href="/gallery" className="text-muted-foreground hover:text-foreground">
+                <Link
+                  href="/gallery"
+                  className="text-muted-foreground hover:text-foreground"
+                >
                   Gallery
                 </Link>
               </nav>
@@ -675,7 +780,9 @@ export default function AmenitiesPage() {
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-4">Newsletter</h3>
-              <p className="text-muted-foreground mb-4">Subscribe to receive special offers and updates.</p>
+              <p className="text-muted-foreground mb-4">
+                Subscribe to receive special offers and updates.
+              </p>
               <form className="space-y-2">
                 <input
                   type="email"
@@ -687,10 +794,13 @@ export default function AmenitiesPage() {
             </div>
           </div>
           <div className="border-t mt-12 pt-8 text-center text-muted-foreground">
-            <p>&copy; {new Date().getFullYear()} Apartamentos Verde Mar. All rights reserved.</p>
+            <p>
+              &copy; {new Date().getFullYear()} Apartamentos Verde Mar. All
+              rights reserved.
+            </p>
           </div>
         </div>
       </footer>
     </div>
-  )
+  );
 }

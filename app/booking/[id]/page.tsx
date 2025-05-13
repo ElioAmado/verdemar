@@ -1,31 +1,51 @@
-import Link from "next/link"
-import Image from "next/image"
-import { ArrowLeftIcon, CalendarIcon, CreditCardIcon, MapPinIcon, StarIcon, UsersIcon } from "lucide-react"
+import Link from 'next/link';
+import Image from 'next/image';
+import {
+  ArrowLeftIcon,
+  CalendarIcon,
+  CreditCardIcon,
+  MapPinIcon,
+  StarIcon,
+  UsersIcon,
+} from 'lucide-react';
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { DatePickerWithRange } from "@/components/date-range-picker"
-import { GuestCounter } from "@/components/guest-counter"
-import { Separator } from "@/components/ui/separator"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Checkbox } from "@/components/ui/checkbox"
-import { SiteHeader } from "@/components/site-header"
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { DatePickerWithRange } from '@/components/date-range-picker';
+import { GuestCounter } from '@/components/guest-counter';
+import { Separator } from '@/components/ui/separator';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Checkbox } from '@/components/ui/checkbox';
+import { SiteHeader } from '@/components/site-header';
 
 export default function BookingPage({ params }: { params: { id: string } }) {
   // In a real application, you would fetch the room details based on the ID
   const roomDetails = {
     id: params.id,
-    name: "Executive Suite",
-    description: "Spacious accommodation with separate living area",
+    name: 'Executive Suite',
+    description: 'Spacious accommodation with separate living area',
     price: 299,
-    image: "/placeholder.svg?height=400&width=600",
+    image: '/placeholder.svg?height=400&width=600',
     capacity: 3,
     rating: 4.9,
     reviews: 85,
-    features: ["King-size bed", "55 m²", "Ocean view", "Free WiFi", "Living room", "Mini bar"],
-  }
+    features: [
+      'King-size bed',
+      '55 m²',
+      'Ocean view',
+      'Free WiFi',
+      'Living room',
+      'Mini bar',
+    ],
+  };
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -45,14 +65,20 @@ export default function BookingPage({ params }: { params: { id: string } }) {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2 space-y-8">
               <div>
-                <h1 className="text-3xl font-bold tracking-tight">Complete Your Booking</h1>
-                <p className="text-muted-foreground mt-2">Please fill in your details to confirm your reservation.</p>
+                <h1 className="text-3xl font-bold tracking-tight">
+                  Complete Your Booking
+                </h1>
+                <p className="text-muted-foreground mt-2">
+                  Please fill in your details to confirm your reservation.
+                </p>
               </div>
 
               <Card>
                 <CardHeader>
                   <CardTitle>Your Stay Details</CardTitle>
-                  <CardDescription>Confirm your dates and guest information</CardDescription>
+                  <CardDescription>
+                    Confirm your dates and guest information
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -85,18 +111,28 @@ export default function BookingPage({ params }: { params: { id: string } }) {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="first-name">First Name</Label>
-                      <Input id="first-name" placeholder="Enter your first name" />
+                      <Input
+                        id="first-name"
+                        placeholder="Enter your first name"
+                      />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="last-name">Last Name</Label>
-                      <Input id="last-name" placeholder="Enter your last name" />
+                      <Input
+                        id="last-name"
+                        placeholder="Enter your last name"
+                      />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="email">Email Address</Label>
-                      <Input id="email" type="email" placeholder="Enter your email" />
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder="Enter your email"
+                      />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="phone">Phone Number</Label>
@@ -154,7 +190,10 @@ export default function BookingPage({ params }: { params: { id: string } }) {
                   <div className="grid grid-cols-1 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="card-number">Card Number</Label>
-                      <Input id="card-number" placeholder="1234 5678 9012 3456" />
+                      <Input
+                        id="card-number"
+                        placeholder="1234 5678 9012 3456"
+                      />
                     </div>
 
                     <div className="grid grid-cols-2 gap-6">
@@ -170,13 +209,18 @@ export default function BookingPage({ params }: { params: { id: string } }) {
 
                     <div className="space-y-2">
                       <Label htmlFor="name-on-card">Name on Card</Label>
-                      <Input id="name-on-card" placeholder="Enter the name on your card" />
+                      <Input
+                        id="name-on-card"
+                        placeholder="Enter the name on your card"
+                      />
                     </div>
                   </div>
 
                   <div className="flex items-center space-x-2">
                     <Checkbox id="save-card" />
-                    <Label htmlFor="save-card">Save card for future bookings</Label>
+                    <Label htmlFor="save-card">
+                      Save card for future bookings
+                    </Label>
                   </div>
                 </CardContent>
               </Card>
@@ -185,11 +229,11 @@ export default function BookingPage({ params }: { params: { id: string } }) {
                 <div className="flex items-center space-x-2">
                   <Checkbox id="terms" />
                   <Label htmlFor="terms">
-                    I agree to the{" "}
+                    I agree to the{' '}
                     <Link href="/terms" className="text-primary underline">
                       Terms and Conditions
-                    </Link>{" "}
-                    and{" "}
+                    </Link>{' '}
+                    and{' '}
                     <Link href="/privacy" className="text-primary underline">
                       Privacy Policy
                     </Link>
@@ -201,7 +245,8 @@ export default function BookingPage({ params }: { params: { id: string } }) {
                 </Button>
 
                 <p className="text-sm text-muted-foreground text-center">
-                  Your credit card will not be charged until check-in. Cancellation policy applies.
+                  Your credit card will not be charged until check-in.
+                  Cancellation policy applies.
                 </p>
               </div>
             </div>
@@ -210,13 +255,15 @@ export default function BookingPage({ params }: { params: { id: string } }) {
               <Card className="sticky top-24">
                 <CardHeader>
                   <CardTitle>Booking Summary</CardTitle>
-                  <CardDescription>Review your reservation details</CardDescription>
+                  <CardDescription>
+                    Review your reservation details
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="flex gap-4">
                     <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-md">
                       <Image
-                        src={roomDetails.image || "/placeholder.svg"}
+                        src={roomDetails.image || '/placeholder.svg'}
                         alt={roomDetails.name}
                         fill
                         className="object-cover"
@@ -256,7 +303,9 @@ export default function BookingPage({ params }: { params: { id: string } }) {
 
                   <div className="space-y-2">
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">${roomDetails.price} x 7 nights</span>
+                      <span className="text-muted-foreground">
+                        ${roomDetails.price} x 7 nights
+                      </span>
                       <span>${roomDetails.price * 7}</span>
                     </div>
                     <div className="flex justify-between">
@@ -273,13 +322,19 @@ export default function BookingPage({ params }: { params: { id: string } }) {
 
                   <div className="flex justify-between font-semibold">
                     <span>Total</span>
-                    <span>${roomDetails.price * 7 + Math.round(roomDetails.price * 7 * 0.12) + 150}</span>
+                    <span>
+                      $
+                      {roomDetails.price * 7 +
+                        Math.round(roomDetails.price * 7 * 0.12) +
+                        150}
+                    </span>
                   </div>
 
                   <div className="bg-muted p-3 rounded-md text-sm">
                     <p className="font-medium">Cancellation Policy</p>
                     <p className="text-muted-foreground mt-1">
-                      Free cancellation until 48 hours before check-in. After that, the first night is non-refundable.
+                      Free cancellation until 48 hours before check-in. After
+                      that, the first night is non-refundable.
                     </p>
                   </div>
                 </CardContent>
@@ -291,7 +346,10 @@ export default function BookingPage({ params }: { params: { id: string } }) {
       <footer className="border-t bg-muted">
         <div className="container px-4 md:px-6 py-6">
           <div className="text-center text-muted-foreground text-sm">
-            <p>&copy; {new Date().getFullYear()} Apartamentos Verde Mar. All rights reserved.</p>
+            <p>
+              &copy; {new Date().getFullYear()} Apartamentos Verde Mar. All
+              rights reserved.
+            </p>
             <div className="flex justify-center gap-4 mt-2">
               <Link href="/terms" className="hover:text-foreground">
                 Terms
@@ -307,5 +365,5 @@ export default function BookingPage({ params }: { params: { id: string } }) {
         </div>
       </footer>
     </div>
-  )
+  );
 }
