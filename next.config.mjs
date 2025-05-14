@@ -30,22 +30,36 @@ const nextConfig = {
 }
 
 if (userConfig) {
-  // ESM imports will have a "default" property
-  const config = userConfig.default || userConfig
+  try {
+    // ESM imports will have a "default" property
+    const config = userConfig.default || userConfig;
+    console.log("Array next.config.mjs");
 
-  for (const key in config) {
-    if (
-      typeof nextConfig[key] === 'object' &&
-      !Array.isArray(nextConfig[key])
-    ) {
-      nextConfig[key] = {
-        ...nextConfig[key],
-        ...config[key],
+    for (const key in config) {
+      try {
+        if (
+          typeof nextConfig[key] === 'object' &&
+          !Array.isArray(nextConfig[key])
+        ) {
+          nextConfig[key] = {
+            ...nextConfig[key],
+            ...config[key],
+          };
+        } else {
+          nextConfig[key] = config[key];
+        }
+      } catch (innerError) {
+        console.error(`Error al fusionar la clave: ${key}`, innerError);
+        throw innerError; // Vuelve a lanzar el error para que se registre globalmente si es necesario
       }
-    } else {
-      nextConfig[key] = config[key]
     }
+
+  } catch (error) {
+    console.error("Error al procesar el archivo de configuración:", error);
   }
 }
+
+
+console.log("Array next.config.mjs completado")
 
 export default nextConfig
