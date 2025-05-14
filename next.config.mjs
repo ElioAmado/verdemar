@@ -30,7 +30,6 @@ const nextConfig = {
 };
 
 if (userConfig) {
-<<<<<<< HEAD
   try {
     // ESM imports will have a "default" property
     const config = userConfig.default || userConfig;
@@ -53,22 +52,6 @@ if (userConfig) {
         console.error(`Error al fusionar la clave: ${key}`, innerError);
         throw innerError; // Vuelve a lanzar el error para que se registre globalmente si es necesario
       }
-=======
-  // ESM imports will have a "default" property
-  const config = userConfig.default || userConfig;
-
-  for (const key in config) {
-    if (
-      typeof nextConfig[key] === 'object' &&
-      !Array.isArray(nextConfig[key])
-    ) {
-      nextConfig[key] = {
-        ...nextConfig[key],
-        ...config[key],
-      };
-    } else {
-      nextConfig[key] = config[key];
->>>>>>> main
     }
 
   } catch (error) {
@@ -76,11 +59,4 @@ if (userConfig) {
   }
 }
 
-<<<<<<< HEAD
-
-console.log("Array next.config.mjs completado")
-
-export default nextConfig
-=======
 export default nextConfig;
->>>>>>> main
