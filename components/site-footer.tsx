@@ -1,26 +1,36 @@
-"use client"
+'use client';
 
-import Link from "next/link"
-import Image from "next/image"
-import { MapPin } from "lucide-react"
+import Link from 'next/link';
+import Image from 'next/image';
+import { MapPin } from 'lucide-react';
 
-import { Button } from "@/components/ui/button"
-import { useLanguage } from "@/contexts/language-context"
+import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/contexts/language-context';
 
 export function SiteFooter() {
-  const { t } = useLanguage()
-  const currentYear = new Date().getFullYear()
+  const { t } = useLanguage();
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="border-t bg-muted">
       <div className="container px-4 md:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <Link href="/" className="flex items-center gap-2 text-xl font-bold">
-              <Image src="/placeholder.svg?height=32&width=32" alt="Logo" width={32} height={32} />
+            <Link
+              href="/"
+              className="flex items-center gap-2 text-xl font-bold"
+            >
+              <Image
+                src="/placeholder.svg?height=32&width=32"
+                alt="Logo"
+                width={32}
+                height={32}
+              />
               <span>Apartamentos Verde Mar</span>
             </Link>
-            <p className="text-muted-foreground">Experience luxury and comfort in the heart of the city.</p>
+            <p className="text-muted-foreground">
+              Experience luxury and comfort in the heart of the city.
+            </p>
             <div className="flex gap-4">
               <Button variant="ghost" size="icon" className="rounded-full">
                 <svg
@@ -78,34 +88,56 @@ export function SiteFooter() {
             </div>
           </div>
           <div>
-            <h3 className="text-lg font-semibold mb-4">{t("footer.quickLinks")}</h3>
+            <h3 className="text-lg font-semibold mb-4">
+              {t('footer.quickLinks')}
+            </h3>
             <nav className="flex flex-col space-y-2">
-              <Link href="/" className="text-muted-foreground hover:text-foreground">
-                {t("common.home")}
+              <Link
+                href="/"
+                className="text-muted-foreground hover:text-foreground"
+              >
+                {t('common.home')}
               </Link>
-              <Link href="/rooms" className="text-muted-foreground hover:text-foreground">
-                {t("common.rooms")}
+              <Link
+                href="/rooms"
+                className="text-muted-foreground hover:text-foreground"
+              >
+                {t('common.rooms')}
               </Link>
-              <Link href="/amenities" className="text-muted-foreground hover:text-foreground">
-                {t("common.amenities")}
+              <Link
+                href="/amenities"
+                className="text-muted-foreground hover:text-foreground"
+              >
+                {t('common.amenities')}
               </Link>
-              <Link href="/gallery" className="text-muted-foreground hover:text-foreground">
-                {t("common.gallery")}
+              <Link
+                href="/gallery"
+                className="text-muted-foreground hover:text-foreground"
+              >
+                {t('common.gallery')}
               </Link>
-              <Link href="/about" className="text-muted-foreground hover:text-foreground">
-                {t("common.about")}
+              <Link
+                href="/about"
+                className="text-muted-foreground hover:text-foreground"
+              >
+                {t('common.about')}
               </Link>
-              <Link href="/contact" className="text-muted-foreground hover:text-foreground">
-                {t("common.contact")}
+              <Link
+                href="/contact"
+                className="text-muted-foreground hover:text-foreground"
+              >
+                {t('common.contact')}
               </Link>
             </nav>
           </div>
           <div>
-            <h3 className="text-lg font-semibold mb-4">{t("footer.contact")}</h3>
+            <h3 className="text-lg font-semibold mb-4">
+              {t('footer.contact')}
+            </h3>
             <address className="not-italic space-y-2 text-muted-foreground">
               <p className="flex items-center gap-2">
                 <MapPin className="h-4 w-4" />
-                {t("footer.address")}
+                {t('footer.address')}
               </p>
               <p className="flex items-center gap-2">
                 <svg
@@ -122,7 +154,7 @@ export function SiteFooter() {
                 >
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                 </svg>
-                {t("footer.phone")}
+                {t('footer.phone')}
               </p>
               <p className="flex items-center gap-2">
                 <svg
@@ -140,38 +172,42 @@ export function SiteFooter() {
                   <rect width="20" height="16" x="2" y="4" rx="2" />
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                 </svg>
-                {t("footer.email")}
+                {t('footer.email')}
               </p>
             </address>
           </div>
           <div>
-            <h3 className="text-lg font-semibold mb-4">{t("footer.newsletter")}</h3>
-            <p className="text-muted-foreground mb-4">{t("footer.subscribeText")}</p>
+            <h3 className="text-lg font-semibold mb-4">
+              {t('footer.newsletter')}
+            </h3>
+            <p className="text-muted-foreground mb-4">
+              {t('footer.subscribeText')}
+            </p>
             <form className="space-y-2">
               <input
                 type="email"
-                placeholder={t("footer.emailPlaceholder")}
+                placeholder={t('footer.emailPlaceholder')}
                 className="w-full px-3 py-2 border rounded-md text-sm"
               />
-              <Button className="w-full">{t("footer.subscribe")}</Button>
+              <Button className="w-full">{t('footer.subscribe')}</Button>
             </form>
           </div>
         </div>
         <div className="border-t mt-12 pt-8 text-center text-muted-foreground">
-          <p>{t("common.footer.copyright", { year: currentYear })}</p>
+          <p>{t('common.footer.copyright', { year: currentYear })}</p>
           <div className="flex justify-center gap-4 mt-2">
             <Link href="/terms" className="hover:text-foreground">
-              {t("common.footer.terms")}
+              {t('common.footer.terms')}
             </Link>
             <Link href="/privacy" className="hover:text-foreground">
-              {t("common.footer.privacy")}
+              {t('common.footer.privacy')}
             </Link>
             <Link href="/contact" className="hover:text-foreground">
-              {t("common.footer.contact")}
+              {t('common.footer.contact')}
             </Link>
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }

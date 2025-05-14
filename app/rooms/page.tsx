@@ -1,14 +1,21 @@
-"use client"
-import Link from "next/link"
-import Image from "next/image"
-import { StarIcon, UsersIcon } from "lucide-react"
+'use client';
+import Link from 'next/link';
+import Image from 'next/image';
+import { StarIcon, UsersIcon } from 'lucide-react';
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { DatePickerWithRange } from "@/components/date-range-picker"
-import { RoomTypeSelector } from "@/components/room-type-selector"
-import { GuestCounter } from "@/components/guest-counter"
-import { SiteHeader } from "@/components/site-header"
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { DatePickerWithRange } from '@/components/date-range-picker';
+import { RoomTypeSelector } from '@/components/room-type-selector';
+import { GuestCounter } from '@/components/guest-counter';
+import { SiteHeader } from '@/components/site-header';
 
 export default function RoomsPage() {
   return (
@@ -19,9 +26,12 @@ export default function RoomsPage() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">Our Rooms & Suites</h1>
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                  Our Rooms & Suites
+                </h1>
                 <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed">
-                  Discover our selection of luxurious accommodations designed for your comfort and relaxation.
+                  Discover our selection of luxurious accommodations designed
+                  for your comfort and relaxation.
                 </p>
               </div>
             </div>
@@ -70,7 +80,9 @@ export default function RoomsPage() {
                 </div>
                 <CardHeader>
                   <CardTitle>Deluxe Room</CardTitle>
-                  <CardDescription>Perfect for solo travelers or couples</CardDescription>
+                  <CardDescription>
+                    Perfect for solo travelers or couples
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
@@ -91,7 +103,10 @@ export default function RoomsPage() {
                       <div>• Flat-screen TV</div>
                     </div>
                     <p className="text-2xl font-bold">
-                      $199<span className="text-sm font-normal text-muted-foreground">/night</span>
+                      $199
+                      <span className="text-sm font-normal text-muted-foreground">
+                        /night
+                      </span>
                     </p>
                   </div>
                 </CardContent>
@@ -111,7 +126,9 @@ export default function RoomsPage() {
                 </div>
                 <CardHeader>
                   <CardTitle>Executive Suite</CardTitle>
-                  <CardDescription>Spacious accommodation with separate living area</CardDescription>
+                  <CardDescription>
+                    Spacious accommodation with separate living area
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
@@ -132,7 +149,10 @@ export default function RoomsPage() {
                       <div>• Mini bar</div>
                     </div>
                     <p className="text-2xl font-bold">
-                      $299<span className="text-sm font-normal text-muted-foreground">/night</span>
+                      $299
+                      <span className="text-sm font-normal text-muted-foreground">
+                        /night
+                      </span>
                     </p>
                   </div>
                 </CardContent>
@@ -152,7 +172,9 @@ export default function RoomsPage() {
                 </div>
                 <CardHeader>
                   <CardTitle>Presidential Suite</CardTitle>
-                  <CardDescription>Our most luxurious accommodation</CardDescription>
+                  <CardDescription>
+                    Our most luxurious accommodation
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
@@ -173,7 +195,10 @@ export default function RoomsPage() {
                       <div>• Butler service</div>
                     </div>
                     <p className="text-2xl font-bold">
-                      $499<span className="text-sm font-normal text-muted-foreground">/night</span>
+                      $499
+                      <span className="text-sm font-normal text-muted-foreground">
+                        /night
+                      </span>
                     </p>
                   </div>
                 </CardContent>
@@ -193,7 +218,9 @@ export default function RoomsPage() {
                 </div>
                 <CardHeader>
                   <CardTitle>Family Room</CardTitle>
-                  <CardDescription>Comfortable space for the whole family</CardDescription>
+                  <CardDescription>
+                    Comfortable space for the whole family
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
@@ -214,7 +241,10 @@ export default function RoomsPage() {
                       <div>• Game console</div>
                     </div>
                     <p className="text-2xl font-bold">
-                      $349<span className="text-sm font-normal text-muted-foreground">/night</span>
+                      $349
+                      <span className="text-sm font-normal text-muted-foreground">
+                        /night
+                      </span>
                     </p>
                   </div>
                 </CardContent>
@@ -234,7 +264,9 @@ export default function RoomsPage() {
                 </div>
                 <CardHeader>
                   <CardTitle>Ocean View Room</CardTitle>
-                  <CardDescription>Wake up to stunning ocean views</CardDescription>
+                  <CardDescription>
+                    Wake up to stunning ocean views
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
@@ -255,7 +287,10 @@ export default function RoomsPage() {
                       <div>• Breakfast included</div>
                     </div>
                     <p className="text-2xl font-bold">
-                      $249<span className="text-sm font-normal text-muted-foreground">/night</span>
+                      $249
+                      <span className="text-sm font-normal text-muted-foreground">
+                        /night
+                      </span>
                     </p>
                   </div>
                 </CardContent>
@@ -275,7 +310,9 @@ export default function RoomsPage() {
                 </div>
                 <CardHeader>
                   <CardTitle>Honeymoon Suite</CardTitle>
-                  <CardDescription>Romantic setting for special occasions</CardDescription>
+                  <CardDescription>
+                    Romantic setting for special occasions
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
@@ -296,7 +333,10 @@ export default function RoomsPage() {
                       <div>• Couples massage</div>
                     </div>
                     <p className="text-2xl font-bold">
-                      $399<span className="text-sm font-normal text-muted-foreground">/night</span>
+                      $399
+                      <span className="text-sm font-normal text-muted-foreground">
+                        /night
+                      </span>
                     </p>
                   </div>
                 </CardContent>
@@ -312,11 +352,21 @@ export default function RoomsPage() {
         <div className="container px-4 md:px-6 py-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="space-y-4">
-              <Link href="/" className="flex items-center gap-2 text-xl font-bold">
-                <Image src="/placeholder.svg?height=32&width=32" alt="Logo" width={32} height={32} />
+              <Link
+                href="/"
+                className="flex items-center gap-2 text-xl font-bold"
+              >
+                <Image
+                  src="/placeholder.svg?height=32&width=32"
+                  alt="Logo"
+                  width={32}
+                  height={32}
+                />
                 <span>Apartamentos Verde Mar</span>
               </Link>
-              <p className="text-muted-foreground">Experience luxury and comfort in the heart of the city.</p>
+              <p className="text-muted-foreground">
+                Experience luxury and comfort in the heart of the city.
+              </p>
               <div className="flex gap-4">
                 <Button variant="ghost" size="icon" className="rounded-full">
                   <svg
@@ -376,22 +426,40 @@ export default function RoomsPage() {
             <div>
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
               <nav className="flex flex-col space-y-2">
-                <Link href="/" className="text-muted-foreground hover:text-foreground">
+                <Link
+                  href="/"
+                  className="text-muted-foreground hover:text-foreground"
+                >
                   Home
                 </Link>
-                <Link href="/rooms" className="text-muted-foreground hover:text-foreground">
+                <Link
+                  href="/rooms"
+                  className="text-muted-foreground hover:text-foreground"
+                >
                   Rooms & Suites
                 </Link>
-                <Link href="/dining" className="text-muted-foreground hover:text-foreground">
+                <Link
+                  href="/dining"
+                  className="text-muted-foreground hover:text-foreground"
+                >
                   Dining
                 </Link>
-                <Link href="/spa" className="text-muted-foreground hover:text-foreground">
+                <Link
+                  href="/spa"
+                  className="text-muted-foreground hover:text-foreground"
+                >
                   Spa & Wellness
                 </Link>
-                <Link href="/events" className="text-muted-foreground hover:text-foreground">
+                <Link
+                  href="/events"
+                  className="text-muted-foreground hover:text-foreground"
+                >
                   Events
                 </Link>
-                <Link href="/gallery" className="text-muted-foreground hover:text-foreground">
+                <Link
+                  href="/gallery"
+                  className="text-muted-foreground hover:text-foreground"
+                >
                   Gallery
                 </Link>
               </nav>
@@ -406,7 +474,9 @@ export default function RoomsPage() {
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-4">Newsletter</h3>
-              <p className="text-muted-foreground mb-4">Subscribe to receive special offers and updates.</p>
+              <p className="text-muted-foreground mb-4">
+                Subscribe to receive special offers and updates.
+              </p>
               <form className="space-y-2">
                 <input
                   type="email"
@@ -418,10 +488,13 @@ export default function RoomsPage() {
             </div>
           </div>
           <div className="border-t mt-12 pt-8 text-center text-muted-foreground">
-            <p>&copy; {new Date().getFullYear()} Apartamentos Verde Mar. All rights reserved.</p>
+            <p>
+              &copy; {new Date().getFullYear()} Apartamentos Verde Mar. All
+              rights reserved.
+            </p>
           </div>
         </div>
       </footer>
     </div>
-  )
+  );
 }

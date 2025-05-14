@@ -1,90 +1,97 @@
-"use client"
+'use client';
 
-import type React from "react"
+import type React from 'react';
 
-import { useState } from "react"
-import Link from "next/link"
-import { Eye, EyeOff } from "lucide-react"
+import { useState } from 'react';
+import Link from 'next/link';
+import { Eye, EyeOff } from 'lucide-react';
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Checkbox } from "@/components/ui/checkbox"
-import { SiteHeader } from "@/components/site-header"
-import { SiteFooter } from "@/components/site-footer"
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Checkbox } from '@/components/ui/checkbox';
+import { SiteHeader } from '@/components/site-header';
+import { SiteFooter } from '@/components/site-footer';
 
 export default function SignUpPage() {
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
     agreeToTerms: false,
-  })
-  const [errors, setErrors] = useState<Record<string, string>>({})
+  });
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword)
-  }
+    setShowPassword(!showPassword);
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target
+    const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
-      [name]: type === "checkbox" ? checked : value,
-    })
+      [name]: type === 'checkbox' ? checked : value,
+    });
 
     // Clear error when user starts typing
     if (errors[name]) {
       setErrors({
         ...errors,
-        [name]: "",
-      })
+        [name]: '',
+      });
     }
-  }
+  };
 
   const validateForm = () => {
-    const newErrors: Record<string, string> = {}
+    const newErrors: Record<string, string> = {};
 
     if (!formData.firstName.trim()) {
-      newErrors.firstName = "First name is required"
+      newErrors.firstName = 'First name is required';
     }
 
     if (!formData.lastName.trim()) {
-      newErrors.lastName = "Last name is required"
+      newErrors.lastName = 'Last name is required';
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = "Email is required"
+      newErrors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Email is invalid"
+      newErrors.email = 'Email is invalid';
     }
 
     if (!formData.password) {
-      newErrors.password = "Password is required"
+      newErrors.password = 'Password is required';
     } else if (formData.password.length < 8) {
-      newErrors.password = "Password must be at least 8 characters"
+      newErrors.password = 'Password must be at least 8 characters';
     }
 
     if (!formData.agreeToTerms) {
-      newErrors.agreeToTerms = "You must agree to the terms and conditions"
+      newErrors.agreeToTerms = 'You must agree to the terms and conditions';
     }
 
-    setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
-  }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (validateForm()) {
       // In a real application, you would submit the form data to your backend
-      console.log("Form submitted:", formData)
+      console.log('Form submitted:', formData);
       // Redirect or show success message
     }
-  }
+  };
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -93,8 +100,12 @@ export default function SignUpPage() {
         <div className="w-full max-w-md">
           <Card className="border shadow-lg">
             <CardHeader className="space-y-1">
-              <CardTitle className="text-2xl font-bold text-center">Create an Account</CardTitle>
-              <CardDescription className="text-center">Sign up to access exclusive member benefits</CardDescription>
+              <CardTitle className="text-2xl font-bold text-center">
+                Create an Account
+              </CardTitle>
+              <CardDescription className="text-center">
+                Sign up to access exclusive member benefits
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -107,9 +118,13 @@ export default function SignUpPage() {
                       placeholder="John"
                       value={formData.firstName}
                       onChange={handleInputChange}
-                      className={errors.firstName ? "border-red-500" : ""}
+                      className={errors.firstName ? 'border-red-500' : ''}
                     />
-                    {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>}
+                    {errors.firstName && (
+                      <p className="text-red-500 text-xs mt-1">
+                        {errors.firstName}
+                      </p>
+                    )}
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="lastName">Last Name</Label>
@@ -119,9 +134,13 @@ export default function SignUpPage() {
                       placeholder="Doe"
                       value={formData.lastName}
                       onChange={handleInputChange}
-                      className={errors.lastName ? "border-red-500" : ""}
+                      className={errors.lastName ? 'border-red-500' : ''}
                     />
-                    {errors.lastName && <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>}
+                    {errors.lastName && (
+                      <p className="text-red-500 text-xs mt-1">
+                        {errors.lastName}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -134,9 +153,11 @@ export default function SignUpPage() {
                     placeholder="john.doe@example.com"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className={errors.email ? "border-red-500" : ""}
+                    className={errors.email ? 'border-red-500' : ''}
                   />
-                  {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
+                  {errors.email && (
+                    <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+                  )}
                 </div>
 
                 <div className="space-y-2">
@@ -147,23 +168,37 @@ export default function SignUpPage() {
                     <Input
                       id="password"
                       name="password"
-                      type={showPassword ? "text" : "password"}
+                      type={showPassword ? 'text' : 'password'}
                       placeholder="••••••••"
                       value={formData.password}
                       onChange={handleInputChange}
-                      className={errors.password ? "border-red-500 pr-10" : "pr-10"}
+                      className={
+                        errors.password ? 'border-red-500 pr-10' : 'pr-10'
+                      }
                     />
                     <button
                       type="button"
                       onClick={togglePasswordVisibility}
                       className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
                     >
-                      {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                      <span className="sr-only">{showPassword ? "Hide password" : "Show password"}</span>
+                      {showPassword ? (
+                        <EyeOff className="h-4 w-4" />
+                      ) : (
+                        <Eye className="h-4 w-4" />
+                      )}
+                      <span className="sr-only">
+                        {showPassword ? 'Hide password' : 'Show password'}
+                      </span>
                     </button>
                   </div>
-                  {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password}</p>}
-                  <p className="text-xs text-muted-foreground mt-1">Password must be at least 8 characters long</p>
+                  {errors.password && (
+                    <p className="text-red-500 text-xs mt-1">
+                      {errors.password}
+                    </p>
+                  )}
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Password must be at least 8 characters long
+                  </p>
                 </div>
 
                 <div className="flex items-center space-x-2">
@@ -171,25 +206,40 @@ export default function SignUpPage() {
                     id="terms"
                     name="agreeToTerms"
                     checked={formData.agreeToTerms}
-                    onCheckedChange={(checked) => setFormData({ ...formData, agreeToTerms: checked as boolean })}
+                    onCheckedChange={(checked) =>
+                      setFormData({
+                        ...formData,
+                        agreeToTerms: checked as boolean,
+                      })
+                    }
                   />
                   <label
                     htmlFor="terms"
                     className={`text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${
-                      errors.agreeToTerms ? "text-red-500" : ""
+                      errors.agreeToTerms ? 'text-red-500' : ''
                     }`}
                   >
-                    I agree to the{" "}
-                    <Link href="/terms" className="text-primary underline hover:text-primary/90">
+                    I agree to the{' '}
+                    <Link
+                      href="/terms"
+                      className="text-primary underline hover:text-primary/90"
+                    >
                       Terms of Service
-                    </Link>{" "}
-                    and{" "}
-                    <Link href="/privacy" className="text-primary underline hover:text-primary/90">
+                    </Link>{' '}
+                    and{' '}
+                    <Link
+                      href="/privacy"
+                      className="text-primary underline hover:text-primary/90"
+                    >
                       Privacy Policy
                     </Link>
                   </label>
                 </div>
-                {errors.agreeToTerms && <p className="text-red-500 text-xs mt-1">{errors.agreeToTerms}</p>}
+                {errors.agreeToTerms && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {errors.agreeToTerms}
+                  </p>
+                )}
 
                 <Button type="submit" className="w-full">
                   Create Account
@@ -201,7 +251,9 @@ export default function SignUpPage() {
                   <div className="w-full border-t"></div>
                 </div>
                 <div className="relative flex justify-center text-xs uppercase">
-                  <span className="bg-background px-2 text-muted-foreground">Or continue with</span>
+                  <span className="bg-background px-2 text-muted-foreground">
+                    Or continue with
+                  </span>
                 </div>
               </div>
 
@@ -244,8 +296,11 @@ export default function SignUpPage() {
             </CardContent>
             <CardFooter className="flex flex-col space-y-4">
               <div className="text-center text-sm">
-                Already have an account?{" "}
-                <Link href="/sign-in" className="text-primary underline hover:text-primary/90">
+                Already have an account?{' '}
+                <Link
+                  href="/sign-in"
+                  className="text-primary underline hover:text-primary/90"
+                >
                   Sign in
                 </Link>
               </div>
@@ -255,5 +310,5 @@ export default function SignUpPage() {
       </main>
       <SiteFooter />
     </div>
-  )
+  );
 }

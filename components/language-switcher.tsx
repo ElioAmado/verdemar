@@ -1,23 +1,28 @@
-"use client"
+'use client';
 
-import Image from "next/image"
-import { Check, ChevronDown } from "lucide-react"
+import Image from 'next/image';
+import { Check, ChevronDown } from 'lucide-react';
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { useLanguage, languages } from "@/contexts/language-context"
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { useLanguage, languages } from '@/contexts/language-context';
 
 interface LanguageSwitcherProps {
-  className?: string
+  className?: string;
 }
 
 export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
-  const { currentLanguage, setLanguage } = useLanguage()
+  const { currentLanguage, setLanguage } = useLanguage();
 
   const handleLanguageChange = (code: string) => {
-    setLanguage(code)
-  }
+    setLanguage(code);
+  };
 
   return (
     <DropdownMenu>
@@ -25,17 +30,19 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
         <Button
           variant="ghost"
           size="sm"
-          className={cn("flex items-center gap-1 px-2", className)}
+          className={cn('flex items-center gap-1 px-2', className)}
           aria-label="Select language"
         >
           <Image
-            src={currentLanguage.flag || "/placeholder.svg"}
+            src={currentLanguage.flag || '/placeholder.svg'}
             alt={currentLanguage.name}
             width={20}
             height={15}
             className="rounded-sm"
           />
-          <span className="hidden sm:inline-block ml-1">{currentLanguage.name}</span>
+          <span className="hidden sm:inline-block ml-1">
+            {currentLanguage.name}
+          </span>
           <ChevronDown className="h-4 w-4 opacity-50" />
         </Button>
       </DropdownMenuTrigger>
@@ -44,23 +51,25 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
           <DropdownMenuItem
             key={language.code}
             className={cn(
-              "flex items-center gap-2 cursor-pointer",
-              currentLanguage.code === language.code && "bg-muted",
+              'flex items-center gap-2 cursor-pointer',
+              currentLanguage.code === language.code && 'bg-muted'
             )}
             onClick={() => handleLanguageChange(language.code)}
           >
             <Image
-              src={language.flag || "/placeholder.svg"}
+              src={language.flag || '/placeholder.svg'}
               alt={language.name}
               width={20}
               height={15}
               className="rounded-sm"
             />
             <span className="flex-1">{language.name}</span>
-            {currentLanguage.code === language.code && <Check className="h-4 w-4" />}
+            {currentLanguage.code === language.code && (
+              <Check className="h-4 w-4" />
+            )}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
     </DropdownMenu>
-  )
+  );
 }

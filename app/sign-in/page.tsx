@@ -1,74 +1,81 @@
-"use client"
+'use client';
 
-import type React from "react"
+import type React from 'react';
 
-import { useState } from "react"
-import Link from "next/link"
-import { Eye, EyeOff } from "lucide-react"
+import { useState } from 'react';
+import Link from 'next/link';
+import { Eye, EyeOff } from 'lucide-react';
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Checkbox } from "@/components/ui/checkbox"
-import { SiteHeader } from "@/components/site-header"
-import { SiteFooter } from "@/components/site-footer"
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Checkbox } from '@/components/ui/checkbox';
+import { SiteHeader } from '@/components/site-header';
+import { SiteFooter } from '@/components/site-footer';
 
 export default function SignInPage() {
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
     rememberMe: false,
-  })
-  const [errors, setErrors] = useState<Record<string, string>>({})
+  });
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword)
-  }
+    setShowPassword(!showPassword);
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target
+    const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
-      [name]: type === "checkbox" ? checked : value,
-    })
+      [name]: type === 'checkbox' ? checked : value,
+    });
 
     // Clear error when user starts typing
     if (errors[name]) {
       setErrors({
         ...errors,
-        [name]: "",
-      })
+        [name]: '',
+      });
     }
-  }
+  };
 
   const validateForm = () => {
-    const newErrors: Record<string, string> = {}
+    const newErrors: Record<string, string> = {};
 
     if (!formData.email.trim()) {
-      newErrors.email = "Email is required"
+      newErrors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Email is invalid"
+      newErrors.email = 'Email is invalid';
     }
 
     if (!formData.password) {
-      newErrors.password = "Password is required"
+      newErrors.password = 'Password is required';
     }
 
-    setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
-  }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (validateForm()) {
       // In a real application, you would submit the form data to your backend
-      console.log("Form submitted:", formData)
+      console.log('Form submitted:', formData);
       // Redirect or show success message
     }
-  }
+  };
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -77,7 +84,9 @@ export default function SignInPage() {
         <div className="w-full max-w-md">
           <Card className="border shadow-lg">
             <CardHeader className="space-y-1">
-              <CardTitle className="text-2xl font-bold text-center">Welcome Back</CardTitle>
+              <CardTitle className="text-2xl font-bold text-center">
+                Welcome Back
+              </CardTitle>
               <CardDescription className="text-center">
                 Sign in to your account to access your bookings and preferences
               </CardDescription>
@@ -93,15 +102,20 @@ export default function SignInPage() {
                     placeholder="john.doe@example.com"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className={errors.email ? "border-red-500" : ""}
+                    className={errors.email ? 'border-red-500' : ''}
                   />
-                  {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
+                  {errors.email && (
+                    <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+                  )}
                 </div>
 
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
                     <Label htmlFor="password">Password</Label>
-                    <Link href="/forgot-password" className="text-sm text-primary underline hover:text-primary/90">
+                    <Link
+                      href="/forgot-password"
+                      className="text-sm text-primary underline hover:text-primary/90"
+                    >
                       Forgot password?
                     </Link>
                   </div>
@@ -109,22 +123,34 @@ export default function SignInPage() {
                     <Input
                       id="password"
                       name="password"
-                      type={showPassword ? "text" : "password"}
+                      type={showPassword ? 'text' : 'password'}
                       placeholder="••••••••"
                       value={formData.password}
                       onChange={handleInputChange}
-                      className={errors.password ? "border-red-500 pr-10" : "pr-10"}
+                      className={
+                        errors.password ? 'border-red-500 pr-10' : 'pr-10'
+                      }
                     />
                     <button
                       type="button"
                       onClick={togglePasswordVisibility}
                       className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
                     >
-                      {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                      <span className="sr-only">{showPassword ? "Hide password" : "Show password"}</span>
+                      {showPassword ? (
+                        <EyeOff className="h-4 w-4" />
+                      ) : (
+                        <Eye className="h-4 w-4" />
+                      )}
+                      <span className="sr-only">
+                        {showPassword ? 'Hide password' : 'Show password'}
+                      </span>
                     </button>
                   </div>
-                  {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password}</p>}
+                  {errors.password && (
+                    <p className="text-red-500 text-xs mt-1">
+                      {errors.password}
+                    </p>
+                  )}
                 </div>
 
                 <div className="flex items-center space-x-2">
@@ -132,7 +158,12 @@ export default function SignInPage() {
                     id="remember"
                     name="rememberMe"
                     checked={formData.rememberMe}
-                    onCheckedChange={(checked) => setFormData({ ...formData, rememberMe: checked as boolean })}
+                    onCheckedChange={(checked) =>
+                      setFormData({
+                        ...formData,
+                        rememberMe: checked as boolean,
+                      })
+                    }
                   />
                   <label
                     htmlFor="remember"
@@ -152,7 +183,9 @@ export default function SignInPage() {
                   <div className="w-full border-t"></div>
                 </div>
                 <div className="relative flex justify-center text-xs uppercase">
-                  <span className="bg-background px-2 text-muted-foreground">Or continue with</span>
+                  <span className="bg-background px-2 text-muted-foreground">
+                    Or continue with
+                  </span>
                 </div>
               </div>
 
@@ -195,8 +228,11 @@ export default function SignInPage() {
             </CardContent>
             <CardFooter className="flex flex-col space-y-4">
               <div className="text-center text-sm">
-                Don't have an account?{" "}
-                <Link href="/sign-up" className="text-primary underline hover:text-primary/90">
+                Don't have an account?{' '}
+                <Link
+                  href="/sign-up"
+                  className="text-primary underline hover:text-primary/90"
+                >
                   Sign up
                 </Link>
               </div>
@@ -206,5 +242,5 @@ export default function SignInPage() {
       </main>
       <SiteFooter />
     </div>
-  )
+  );
 }
