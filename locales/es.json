@@ -8,6 +8,7 @@
     "contact": "Contacto",
     "signIn": "Iniciar Sesión",
     "bookNow": "Reservar Ahora",
+    "apartaments": "Apartamentos",
     "footer": {
       "copyright": "© {year} Apartamentos Verde Mar. Todos los derechos reservados.",
       "terms": "Términos",
@@ -23,7 +24,7 @@
     },
     "search": {
       "checkIn": "Entrada / Salida",
-      "roomType": "Tipo de Habitación",
+      "roomType": "Tipo de Apartamento",
       "guests": "Huéspedes",
       "search": "Buscar Disponibilidad",
       "pickDate": "Selecciona una fecha"
@@ -80,11 +81,9 @@
     }
   },
   "roomSelector": {
-    "deluxe": "Habitación Deluxe",
-    "executive": "Suite Ejecutiva",
-    "presidential": "Suite Presidencial",
-    "family": "Habitación Familiar",
-    "selectRoom": "Seleccionar tipo de habitación"
+    "ONE_BEDROOM": "Apartamento de 1 dormitorio",
+    "TWO_BEDROOM": "Apartamento de 2 dormitorios",
+    "selectRoom": "Selecciona tu habitación"
   },
   "footer": {
     "quickLinks": "Enlaces Rápidos",

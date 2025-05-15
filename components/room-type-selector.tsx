@@ -10,6 +10,9 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { useLanguage } from '@/contexts/language-context';
+import { apartmentTypes, ApartmentType } from '@/api/apartment';
+
+
 
 export function RoomTypeSelector() {
   const { t } = useLanguage();
@@ -21,15 +24,12 @@ export function RoomTypeSelector() {
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectLabel>{t('common.rooms')}</SelectLabel>
-          <SelectItem value="deluxe">{t('roomSelector.deluxe')}</SelectItem>
-          <SelectItem value="executive">
-            {t('roomSelector.executive')}
-          </SelectItem>
-          <SelectItem value="presidential">
-            {t('roomSelector.presidential')}
-          </SelectItem>
-          <SelectItem value="family">{t('roomSelector.family')}</SelectItem>
+          <SelectLabel>{t('common.apartaments')}</SelectLabel>
+          {apartmentTypes.map((type) => (
+            <SelectItem key={type} value={type}>
+              {t(`roomSelector.${type}`)}
+            </SelectItem>
+          ))}
         </SelectGroup>
       </SelectContent>
     </Select>
