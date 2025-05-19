@@ -18,7 +18,7 @@ export default function AvailabilityPage() {
       const guests = searchParams.get('guests');
       const type = searchParams.get('type');
 
-      const data = await getAvailableApartments({ startDate, endDate, guests, type });
+      const data = await getAvailableApartments({ startDate, endDate, type });
       setApartments(data);
     };
 
@@ -32,19 +32,18 @@ export default function AvailabilityPage() {
         {apartments.map((apt) => (
           <Card key={apt.id}>
             <div className="relative h-48">
-              <Image
+              {/* <Image
                 src={apt.image || '/placeholder.svg'}
                 alt={apt.name}
                 fill
                 className="object-cover"
-              />
+              /> */}
             </div>
             <CardHeader>
-              <CardTitle>{apt.name}</CardTitle>
+              {/* <CardTitle>{apt.name}</CardTitle> */}
             </CardHeader>
             <CardContent>
               <p>Capacidad: {apt.capacity}</p>
-              <p>Precio: {apt.price}€ / noche</p>
               <Button className="mt-4 w-full">Reservar</Button>
             </CardContent>
           </Card>
