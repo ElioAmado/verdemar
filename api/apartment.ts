@@ -52,3 +52,18 @@ export const getApartmentTypes = async (): Promise<ApartmentType[]> => {
   const res = await axios.get<ApartmentType[]>(`${BASE_URL}/types`);
   return res.data;
 };
+
+export const getAvailableApartments = async ({
+  startDate,
+  endDate,
+  type,
+}: {
+  startDate: string | null;
+  endDate: string | null;
+  type: ApartmentType | null;
+}): Promise<Apartment[]> => {
+  const res = await axios.get<Apartment[]>(`${BASE_URL}/available`, {
+    params: { startDate, endDate, type },
+  });
+  return res.data;
+};

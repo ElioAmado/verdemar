@@ -12,13 +12,15 @@ import {
 import { useLanguage } from '@/contexts/language-context';
 import { apartmentTypes, ApartmentType } from '@/api/apartment';
 
-
-
-export function RoomTypeSelector() {
+export function RoomTypeSelector({
+  onChange,
+}: {
+  onChange: (value: string) => void;
+}) {
   const { t } = useLanguage();
 
   return (
-    <Select>
+    <Select onValueChange={onChange}>
       <SelectTrigger className="w-full">
         <SelectValue placeholder={t('roomSelector.selectRoom')} />
       </SelectTrigger>

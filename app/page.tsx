@@ -26,10 +26,32 @@ import { RoomTypeSelector } from '@/components/room-type-selector';
 import { GuestCounter } from '@/components/guest-counter';
 import { SiteHeader } from '@/components/site-header';
 import { useLanguage } from '@/contexts/language-context';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { DateRange } from 'react-day-picker';
 
 export default function Home() {
   const { t } = useLanguage();
+  const router = useRouter();
+  const defaultDateRange: DateRange = {
+    from: new Date(),
+    to: undefined,
+  };
 
+  const [dateRange, setDateRange] = useState<DateRange>(defaultDateRange);
+  const [roomType, setRoomType] = useState<string>('');
+  const [guests, setGuests] = useState<number>(1);
+
+  const handleSearch = () => {
+    const params = new URLSearchParams();
+
+    if (dateRange.from) params.append('start', dateRange.from.toISOString().split('T')[0]);
+    if (dateRange.to) params.append('end', dateRange.to.toISOString().split('T')[0]);
+    if (roomType) params.append('type', roomType);
+    if (guests) params.append('guests', guests.toString());
+
+    router.push(`/availability?${params.toString()}`);
+  };
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
@@ -71,23 +93,28 @@ export default function Home() {
                     <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                       {t('home.search.checkIn')}
                     </label>
-                    <DatePickerWithRange />
+                    <DatePickerWithRange onRangeChange={setDateRange} />
                     {/* <Calendar /> */}
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                       {t('home.search.roomType')}
                     </label>
-                    <RoomTypeSelector />
+                    <RoomTypeSelector onChange={setRoomType} />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                       {t('home.search.guests')}
                     </label>
-                    <GuestCounter />
+                    <GuestCounter
+                      onChange={(guests) => {
+                        setGuests(guests); // guests = { adults: number, children: number }
+                      }}
+                    />
+
                   </div>
                   <div className="flex items-end">
-                    <Button className="w-full">
+                    <Button className="w-full" onClick={handleSearch}>
                       {t('home.search.search')}
                     </Button>
                   </div>
