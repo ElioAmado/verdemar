@@ -29,6 +29,7 @@ import { useLanguage } from '@/contexts/language-context';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { DateRange } from 'react-day-picker';
+import { apartament, get } from "@/api/apartament";
 
 export default function Home() {
   const { t } = useLanguage();
@@ -139,56 +140,34 @@ export default function Home() {
             </div>
           </div>
           <div className="mx-auto grid max-w-5xl grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-            <Card className="overflow-hidden">
-              <div className="relative h-48">
-                <Image
-                  src="/placeholder.svg?height=300&width=500"
-                  alt="Deluxe Room"
-                  fill
-                  className="object-cover transition-transform hover:scale-105"
-                />
-              </div>
-              <CardHeader>
-                <CardTitle>{t('roomSelector.deluxe')}</CardTitle>
-                <CardDescription>
-                  Perfect for solo travelers or couples
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center gap-2 text-sm">
-                  <UsersIcon className="h-4 w-4" />
-                  <span>2 {t('home.rooms.guests')}</span>
-                </div>
-              </CardContent>
-              <CardFooter>
-                <Button className="w-full">{t('common.bookNow')}</Button>
-              </CardFooter>
-            </Card>
-            <Card className="overflow-hidden">
-              <div className="relative h-48">
-                <Image
-                  src="/placeholder.svg?height=300&width=500"
-                  alt="Executive Suite"
-                  fill
-                  className="object-cover transition-transform hover:scale-105"
-                />
-              </div>
-              <CardHeader>
-                <CardTitle>{t('roomSelector.executive')}</CardTitle>
-                <CardDescription>
-                  Spacious accommodation with separate living area
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center gap-2 text-sm">
-                  <UsersIcon className="h-4 w-4" />
-                  <span>3 {t('home.rooms.guests')}</span>
-                </div>
-              </CardContent>
-              <CardFooter>
-                <Button className="w-full">{t('common.bookNow')}</Button>
-              </CardFooter>
-            </Card>
+           {apartaments.map((apto) => (
+  <Card key={apto.id} className="overflow-hidden">
+    <div className="relative h-48">
+      <Image
+        src={apto.imageUrl || "/placeholder.svg?height=300&width=500"}
+        alt={apto.type}
+        fill
+        className="object-cover transition-transform hover:scale-105"
+      />
+    </div>
+    <CardHeader>
+      <CardTitle>{t(`roomSelector.${apto.type.toLowerCase()}`)}</CardTitle>
+      <CardDescription>{apto.description}</CardDescription>
+    </CardHeader>
+    <CardContent>
+      <div className="flex items-center gap-2 text-sm">
+        <UsersIcon className="h-4 w-4" />
+        <span>
+          {apto.maxGuests} {t('home.rooms.guests')}
+        </span>
+      </div>
+    </CardContent>
+    <CardFooter>
+      <Button className="w-full">{t('common.bookNow')}</Button>
+    </CardFooter>
+  </Card>
+))}
+
           </div>
           <div className="flex justify-center mt-12">
             <Button variant="outline" className="gap-2">

@@ -30,10 +30,10 @@
       "pickDate": "Selecciona una fecha"
     },
     "rooms": {
-      "littleMsg": "Nuestras habitaciones",
-      "title": "Habitaciones y Suites Lujosas",
-      "subtitle": "Elige entre nuestra selección de habitaciones y suites elegantemente diseñadas, cada una ofreciendo comodidades únicas y vistas impresionantes.",
-      "viewAll": "Ver Todas las Habitaciones",
+      "littleMsg": "Nuestros apartamentos",
+      "title": "Apartamentos",
+      "subtitle": "[Añadir]",
+      "viewAll": "Ver Todos Los Apartamentos",
       "guests": "Huéspedes",
       "reviews": "reseñas",
       "night": "/noche"
