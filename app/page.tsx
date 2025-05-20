@@ -46,13 +46,45 @@ export default function Home() {
   const handleSearch = () => {
     const params = new URLSearchParams();
 
-    if (dateRange.from) params.append('start', dateRange.from.toISOString().split('T')[0]);
-    if (dateRange.to) params.append('end', dateRange.to.toISOString().split('T')[0]);
-    if (roomType) params.append('type', roomType);
-    if (guests) params.append('guests', guests.toString());
+    // Validamos y agregamos start
+    if (dateRange.from instanceof Date && !isNaN(dateRange.from.getTime())) {
+      params.append('start', dateRange.from.toISOString().split('T')[0]);
+    } else {
+      // Puedes poner un valor por defecto o manejar error
+      console.warn('Fecha "from" inválida o no definida');
+      // Por ejemplo: return; para no hacer la búsqueda sin fechas
+    }
+
+    // Validamos y agregamos end
+    if (dateRange.to instanceof Date && !isNaN(dateRange.to.getTime())) {
+      params.append('end', dateRange.to.toISOString().split('T')[0]);
+    } else {
+      console.warn('Fecha "to" inválida o no definida');
+      alert('Por favor, selecciona una fecha de salida válida.');
+      return; // Evitamos hacer la búsqueda sin fechas
+    }
+
+    // Validamos y agregamos tipo de habitación, con valor por defecto si quieres
+    if (typeof roomType === 'string' && roomType.trim() !== '') {
+      params.append('type', roomType);
+    } else {
+      console.warn('Tipo de habitación inválido o no definido');
+    }
+
+    // Validamos y agregamos cantidad de invitados, al menos 1
+    const guestsNumber = Number(guests);
+    if (!isNaN(guestsNumber) && guestsNumber > 0) {
+      params.append('guests', guestsNumber.toString());
+    } else {
+      console.warn('Número de invitados inválido o no definido');
+    }
+
+    // Si quieres evitar hacer la búsqueda sin algunos parámetros claves,
+    // puedes validar aquí antes de hacer router.push
 
     router.push(`/availability?${params.toString()}`);
   };
+
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
