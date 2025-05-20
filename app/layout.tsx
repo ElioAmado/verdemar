@@ -20,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className="light" style={{ colorScheme: 'light' }}>
+      <body /*className={inter.className}*/>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
@@ -36,5 +36,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-import './globals.css';

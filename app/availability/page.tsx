@@ -15,10 +15,10 @@ export default function AvailabilityPage() {
     const fetchData = async () => {
       const startDate = searchParams.get('start');
       const endDate = searchParams.get('end');
-      // const guests = searchParams.get('guests');
+      const guests = searchParams.get('guests');
       const type = searchParams.get('type');
 
-      const data = await getAvailableApartments({ startDate, endDate, type });
+      const data = await getAvailableApartments({type, startDate, endDate });
       setApartments(data);
     };
 

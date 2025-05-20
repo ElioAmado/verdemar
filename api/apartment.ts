@@ -1,11 +1,13 @@
-// src/api/apartment.api.ts
-
 import axios from "axios";
 
-import dotenv from "dotenv";
-dotenv.config();
-
-const BASE_URL = process.env.REACT_APP_API_BASE_URL + "/apartments";
+// ✅ Esta función se asegura de que siempre obtienes la variable correctamente
+function getBaseUrl(): string {
+  const base = process.env.NEXT_PUBLIC_API_BASE_URL;
+  if (!base) {
+    throw new Error("❌ NEXT_PUBLIC_API_BASE_URL is not defined");
+  }
+  return `${base}/apartments`;
+}
 
 export enum ApartmentType {
   ONE_BEDROOM = "ONE_BEDROOM",
@@ -21,35 +23,35 @@ export interface Apartment {
   floor: number;
   bedrooms: number;
   description: string;
-  beds: any[]; // Puedes definir mejor si tienes un modelo Bed
+  beds: any[];
 }
 
 export const getAllApartments = async (): Promise<Apartment[]> => {
-  const res = await axios.get<Apartment[]>(BASE_URL);
+  const res = await axios.get<Apartment[]>(getBaseUrl());
   return res.data;
 };
 
 export const getApartmentById = async (id: number): Promise<Apartment> => {
-  const res = await axios.get<Apartment>(`${BASE_URL}/${id}`);
+  const res = await axios.get<Apartment>(`${getBaseUrl()}/${id}`);
   return res.data;
 };
 
 export const createApartment = async (apartment: Apartment): Promise<Apartment> => {
-  const res = await axios.post<Apartment>(BASE_URL, apartment);
+  const res = await axios.post<Apartment>(getBaseUrl(), apartment);
   return res.data;
 };
 
 export const updateApartment = async (id: number, apartment: Apartment): Promise<Apartment> => {
-  const res = await axios.put<Apartment>(`${BASE_URL}/${id}`, apartment);
+  const res = await axios.put<Apartment>(`${getBaseUrl()}/${id}`, apartment);
   return res.data;
 };
 
 export const deleteApartment = async (id: number): Promise<void> => {
-  await axios.delete(`${BASE_URL}/${id}`);
+  await axios.delete(`${getBaseUrl()}/${id}`);
 };
 
 export const getApartmentTypes = async (): Promise<ApartmentType[]> => {
-  const res = await axios.get<ApartmentType[]>(`${BASE_URL}/types`);
+  const res = await axios.get<ApartmentType[]>(`${getBaseUrl()}/types`);
   return res.data;
 };
 
@@ -62,8 +64,8 @@ export const getAvailableApartments = async ({
   endDate: string | null;
   type: ApartmentType | null;
 }): Promise<Apartment[]> => {
-  const res = await axios.get<Apartment[]>(`${BASE_URL}/available`, {
-    params: { startDate, endDate, type },
+  const res = await axios.get<Apartment[]>(`${getBaseUrl()}/available`, {
+    params: { type, startDate, endDate },
   });
   return res.data;
 };
