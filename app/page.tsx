@@ -30,7 +30,6 @@ import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { DateRange } from 'react-day-picker';
 import { Apartment, getApartmentById } from '@/api/apartment';
-import { get } from 'http';
 
 export default function Home() {
   const { t } = useLanguage();
@@ -107,7 +106,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-black/40 z-10" />
           <div className="relative h-[600px]">
             <Image
-              src="/placeholder.svg?height=600&width=1920"
+              src='/apartments/main/index.jpg'
               alt="Hotel exterior"
               fill
               className="object-cover"
@@ -186,33 +185,33 @@ export default function Home() {
             </div>
           </div>
           <div className="mx-auto grid max-w-5xl grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-           {apartments.map((apto) => (
-  <Card key={apto.id} className="overflow-hidden">
-    <div className="relative h-48">
-      <Image
-        src={apto.imageUrl || "/placeholder.svg?height=300&width=500"}
-        alt={apto.apartmentType}
-        fill
-        className="object-cover transition-transform hover:scale-105"
-      />
-    </div>
-    <CardHeader>
-      <CardTitle>{t(`roomSelector.${apto.apartmentType.toLowerCase()}`)}</CardTitle>
-      <CardDescription>{apto.description}</CardDescription>
-    </CardHeader>
-    <CardContent>
-      <div className="flex items-center gap-2 text-sm">
-        <UsersIcon className="h-4 w-4" />
-        <span>
-          {apto.capacity} {t('home.rooms.guests')}
-        </span>
-      </div>
-    </CardContent>
-    <CardFooter>
-      <Button className="w-full">{t('common.bookNow')}</Button>
-    </CardFooter>
-  </Card>
-))}
+            {apartments.map((apt) => (
+              <Card key={apt.id} className="overflow-hidden">
+                <div className="relative h-48">
+                  <Image
+                    src={`/apartments/${apt.id}/index.jpg`}
+                    alt={apt.apartmentType}
+                    fill
+                    className="object-cover transition-transform hover:scale-105"
+                  />
+                </div>
+                <CardHeader>
+                  <CardTitle>{t(`${apt.apartmentType}`)}</CardTitle>
+                  <CardDescription>{apt.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex items-center gap-2 text-sm">
+                    <UsersIcon className="h-4 w-4" />
+                    <span>
+                      {apt.capacity} {t('home.rooms.guests')}
+                    </span>
+                  </div>
+                </CardContent>
+                <CardFooter>
+                  <Button className="w-full">{t('common.bookNow')}</Button>
+                </CardFooter>
+              </Card>
+            ))}
 
           </div>
           <div className="flex justify-center mt-12">
@@ -241,7 +240,7 @@ export default function Home() {
             <div className="mx-auto grid max-w-6xl grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
               <div className="flex flex-col items-center text-center space-y-3">
                 <div className="bg-primary/10 p-4 rounded-full">
-                  <Vault />
+                  <Vault className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold">
                   {t('home.amenities.safe')}
@@ -252,7 +251,7 @@ export default function Home() {
               </div>
               <div className="flex flex-col items-center text-center space-y-3">
                 <div className="bg-primary/10 p-4 rounded-full">
-                  <AirVent />
+                  <AirVent className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold">{t('home.amenities.AC')}</h3>
                 <p className="text-muted-foreground">
@@ -261,7 +260,7 @@ export default function Home() {
               </div>
               <div className="flex flex-col items-center text-center space-y-3">
                 <div className="bg-primary/10 p-4 rounded-full">
-                  <CircleParking />
+                  <CircleParking className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold">
                   {t('home.amenities.dining')}

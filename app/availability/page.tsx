@@ -32,15 +32,15 @@ export default function AvailabilityPage() {
         {apartments.map((apt) => (
           <Card key={apt.id}>
             <div className="relative h-48">
-              {/*<Image
-                src={apt.image || '/placeholder.svg'}
-                alt={apt.name}
+              <Image
+                src={`/apartments/${apt.id}/index.jpg`}
+                alt={apt.apartmentType}
                 fill
                 className="object-cover"
-              />*/}
+              />
             </div>
             <CardHeader>
-              <CardTitle>{apt.id}</CardTitle>
+              <CardTitle>Apartamento {apt.id}</CardTitle>
             </CardHeader>
             <CardContent>
               <p>Capacidad: {apt.capacity}</p>

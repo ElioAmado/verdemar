@@ -1,4 +1,8 @@
 {
+  "two_bedroom": "Apartamento de 1 dormitorio",
+  "one_bedroom": "Apartamento de 2 dormitorios",
+  "ONE_BEDROOM": "Apartamento de 1 dormitorio",
+  "TWO_BEDROOM": "Apartamento de 2 dormitorios",
   "common": {
     "home": "Inicio",
     "rooms": "Habitaciones",
@@ -10,7 +14,7 @@
     "bookNow": "Reservar Ahora",
     "apartaments": "Apartamentos",
     "footer": {
-      "copyright": "© {year} Apartamentos Verde Mar. Todos los derechos reservados.",
+      "copyright": "© 2025 Apartamentos Verde Mar. Todos los derechos reservados.",
       "terms": "Términos",
       "privacy": "Privacidad",
       "contact": "Contacto"
@@ -18,8 +22,8 @@
   },
   "home": {
     "hero": {
-      "title": "Experimenta Lujo y Confort",
-      "subtitle": "Descubre la perfecta combinación de elegancia y relajación en Apartamentos Verde Mar",
+      "title": "[Añadir]",
+      "subtitle": "[Añadir]",
       "cta": "Reserva tu Estancia"
     },
     "search": {

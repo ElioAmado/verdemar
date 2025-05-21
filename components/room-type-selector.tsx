@@ -29,7 +29,7 @@ export function RoomTypeSelector({
           <SelectLabel>{t('common.apartaments')}</SelectLabel>
           {apartmentTypes.map((type) => (
             <SelectItem key={type} value={type}>
-              {t(`roomSelector.${type}`)}
+              {t(`${type}`)}
             </SelectItem>
           ))}
         </SelectGroup>
