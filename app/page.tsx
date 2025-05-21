@@ -29,7 +29,7 @@ import { useLanguage } from '@/contexts/language-context';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { DateRange } from 'react-day-picker';
-import { apartament, get } from "@/api/apartament";
+import { Apartament, getApartmentTypes } from "@/api/apartament";
 
 export default function Home() {
   const { t } = useLanguage();
