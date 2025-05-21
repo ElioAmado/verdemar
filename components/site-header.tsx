@@ -10,6 +10,13 @@ import { useLanguage } from '@/contexts/language-context';
 export function SiteHeader() {
   const { t } = useLanguage();
 
+  const scrollToSearchButton = () => {
+    const element = document.getElementById('search-button');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
@@ -61,14 +68,13 @@ export function SiteHeader() {
           </Link>
         </nav>
         <div className="flex items-center gap-4">
-          {/* <ThemeSwitcher /> */}
           <LanguageSwitcher className="mr-2" />
-          <Link href="/sign-in">
+          {/* <Link href="/sign-in">
             <Button variant="ghost" size="sm" className="hidden md:flex">
               {t('common.signIn')}
             </Button>
-          </Link>
-          <Button size="sm" className="hidden md:flex">
+          </Link> */}
+          <Button size="sm" className="hidden md:flex" onClick={scrollToSearchButton}>
             {t('common.bookNow')}
           </Button>
           <Button variant="outline" size="icon" className="md:hidden">

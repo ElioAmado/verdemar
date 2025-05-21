@@ -27,9 +27,10 @@ import { GuestCounter } from '@/components/guest-counter';
 import { SiteHeader } from '@/components/site-header';
 import { useLanguage } from '@/contexts/language-context';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { DateRange } from 'react-day-picker';
-import { Apartament, getApartmentTypes } from "@/api/apartament";
+import { Apartment, getApartmentById } from '@/api/apartment';
+import { get } from 'http';
 
 export default function Home() {
   const { t } = useLanguage();
@@ -42,6 +43,19 @@ export default function Home() {
   const [dateRange, setDateRange] = useState<DateRange>(defaultDateRange);
   const [roomType, setRoomType] = useState<string>('');
   const [guests, setGuests] = useState<number>(1);
+  const [apartments, setApartments] = useState<Apartment[]>([]);
+
+  useEffect(() => {
+    const fetchApartments = async () => {
+      const results = await Promise.all([
+        getApartmentById(1),
+        getApartmentById(5),
+      ]);
+      setApartments(results);
+    };
+
+    fetchApartments();
+  }, []);
 
   const handleSearch = () => {
     const params = new URLSearchParams();
@@ -147,7 +161,7 @@ export default function Home() {
 
                   </div>
                   <div className="flex items-end">
-                    <Button className="w-full" onClick={handleSearch}>
+                    <Button className="w-full" onClick={handleSearch} id="search-button">
                       {t('home.search.search')}
                     </Button>
                   </div>
@@ -172,25 +186,25 @@ export default function Home() {
             </div>
           </div>
           <div className="mx-auto grid max-w-5xl grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-           {apartaments.map((apto) => (
+           {apartments.map((apto) => (
   <Card key={apto.id} className="overflow-hidden">
     <div className="relative h-48">
       <Image
         src={apto.imageUrl || "/placeholder.svg?height=300&width=500"}
-        alt={apto.type}
+        alt={apto.apartmentType}
         fill
         className="object-cover transition-transform hover:scale-105"
       />
     </div>
     <CardHeader>
-      <CardTitle>{t(`roomSelector.${apto.type.toLowerCase()}`)}</CardTitle>
+      <CardTitle>{t(`roomSelector.${apto.apartmentType.toLowerCase()}`)}</CardTitle>
       <CardDescription>{apto.description}</CardDescription>
     </CardHeader>
     <CardContent>
       <div className="flex items-center gap-2 text-sm">
         <UsersIcon className="h-4 w-4" />
         <span>
-          {apto.maxGuests} {t('home.rooms.guests')}
+          {apto.capacity} {t('home.rooms.guests')}
         </span>
       </div>
     </CardContent>
