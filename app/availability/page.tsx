@@ -6,10 +6,12 @@ import { getAvailableApartments, Apartment} from '@/api/apartment';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import {useRouter} from 'next/navigation';
 
 export default function AvailabilityPage() {
   const searchParams = useSearchParams();
   const [apartments, setApartments] = useState<Apartment[]>([]);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,6 +26,24 @@ export default function AvailabilityPage() {
 
     fetchData();
   }, [searchParams]);
+
+  const handleReserve = (apartmentId: number) => {
+  const start = searchParams.get('start');
+  const end = searchParams.get('end');
+  const guests = searchParams.get('guests');
+
+  const booking = {
+    apartmentId,
+    startDate: start,
+    endDate: end,
+    guests: guests ? parseInt(guests) : 1,
+  };
+
+  localStorage.setItem('pendingBooking', JSON.stringify(booking));
+
+  router.push('/payment');
+};
+
 
   return (
     <div className="container py-12">
@@ -45,7 +65,9 @@ export default function AvailabilityPage() {
             <CardContent>
               <p>Capacidad: {apt.capacity}</p>
               <p>Precio: </p>
-              <Button className="mt-4 w-full">Reservar</Button>
+              <Button className="mt-4 w-full" onClick={() => handleReserve(apt.id)}>
+                Reservar
+              </Button>
             </CardContent>
           </Card>
         ))}
