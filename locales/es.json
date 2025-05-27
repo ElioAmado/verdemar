@@ -22,8 +22,8 @@
   },
   "home": {
     "hero": {
-      "title": "[Añadir]",
-      "subtitle": "[Añadir]",
+      "title": "Bienvenido a tu Hogar en Formentera",
+      "subtitle": "Apartamentos de lujo frente al mar para una escapada inolvidable.",
       "cta": "Reserva tu Estancia"
     },
     "search": {
@@ -35,26 +35,17 @@
       "search": "Buscar Disponibilidad",
       "pickDate": "Selecciona una fecha"
     },
-    "rooms": {
-      "littleMsg": "Nuestros apartamentos",
-      "title": "Apartamentos",
-      "subtitle": "[Añadir]",
-      "viewAll": "Ver Todos Los Apartamentos",
-      "guests": "Huéspedes",
-      "reviews": "reseñas",
-      "night": "/noche"
-    },
     "amenities": {
       "title": "Instalaciones Excepcionales",
       "subtitle": "Disfruta de nuestras instalaciones de clase mundial diseñadas para hacer tu estancia inolvidable.",
       "safe": "Caja Fuerte",
       "safeDesc": "Mantén tus objetos de valor seguros en nuestras cajas fuertes en la habitación.",
-      "AC": " Aire Acondicionado",
+      "AC": "Aire Acondicionado",
       "ACDesc": "Disfruta de un ambiente fresco y cómodo durante tu estancia.",
-      "dining": "Alta Gastronomía",
-      "diningDesc": "Experimenta la excelencia culinaria en nuestros restaurantes gourmet.",
-      "service": "Servicio 24/7",
-      "serviceDesc": "Conserje y servicio a la habitación las 24 horas para tu conveniencia."
+      "parking": "Aparcamiento",
+      "parkingDesc": "Plazas de aparcamiento privadas disponibles para nuestros huéspedes.",
+      "kitchen": "Cocina Equipada",
+      "kitchenDesc": "Todos los apartamentos disponen de cocina completamente equipada para tu comodidad."
     },
     "location": {
       "title": "Ubicación Privilegiada",
@@ -86,6 +77,15 @@
       "contactUs": "Contáctanos"
     }
   },
+  "rooms": {
+    "littleMsg": "Nuestros apartamentos",
+    "title": "Apartamentos",
+    "subtitle": "Elige entre una cuidada selección de apartamentos diseñados para tu confort y descanso.",
+    "viewAll": "Ver Todos Los Apartamentos",
+    "guests": "Huéspedes",
+    "reviews": "reseñas",
+    "night": "/noche"
+  },
   "roomSelector": {
     "ONE_BEDROOM": "Apartamento de 1 dormitorio",
     "TWO_BEDROOM": "Apartamento de 2 dormitorios",
@@ -94,10 +94,7 @@
   "footer": {
     "quickLinks": "Enlaces Rápidos",
     "contact": "Contacto",
-    "newsletter": "Boletín Informativo",
-    "subscribeText": "Suscríbete para recibir ofertas especiales y actualizaciones.",
-    "emailPlaceholder": "Tu dirección de correo",
-    "subscribe": "Suscribirse",
+    "description": "Disfruta de lujo y comodidad en el corazón de la ciudad.",
     "address": "Camp D'es Pou 3877, Es Pujols ",
     "phone": "+34 626 70 39 85",
     "email": "aptosverdemar@gmail.com"

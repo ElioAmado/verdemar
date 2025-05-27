@@ -98,6 +98,7 @@ export default function RoomsPage() {
 }
 
 function RoomCard({ image, title, description, guests, rating, features, price }: any) {
+  const { t } = useLanguage();
   return (
     <Card className="overflow-hidden">
       <div className="relative h-64">
