@@ -30,6 +30,8 @@
       "checkIn": "Entrada / Salida",
       "roomType": "Tipo de Apartamento",
       "guests": "Huéspedes",
+      "adults": "Adultos",
+      "children": "Niños",
       "search": "Buscar Disponibilidad",
       "pickDate": "Selecciona una fecha"
     },
@@ -87,7 +89,7 @@
   "roomSelector": {
     "ONE_BEDROOM": "Apartamento de 1 dormitorio",
     "TWO_BEDROOM": "Apartamento de 2 dormitorios",
-    "selectRoom": "Selecciona tu habitación"
+    "selectRoom": "Selecciona tu apartamento"
   },
   "footer": {
     "quickLinks": "Enlaces Rápidos",

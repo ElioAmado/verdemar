@@ -4,15 +4,17 @@ import * as React from 'react';
 import { MinusIcon, PlusIcon } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/contexts/language-context';
 
 export function GuestCounter() {
   const [adults, setAdults] = React.useState(2);
   const [children, setChildren] = React.useState(0);
+  const { t } = useLanguage();
 
   return (
     <div className="flex flex-col space-y-2">
       <div className="flex items-center justify-between">
-        <span className="text-sm">Adults</span>
+        <span className="text-sm">{t("home.search.adults")}</span>
         <div className="flex items-center">
           <Button
             variant="outline"
@@ -38,7 +40,7 @@ export function GuestCounter() {
         </div>
       </div>
       <div className="flex items-center justify-between">
-        <span className="text-sm">Children</span>
+        <span className="text-sm">{t("home.search.children")}</span>
         <div className="flex items-center">
           <Button
             variant="outline"
