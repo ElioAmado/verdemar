@@ -68,12 +68,14 @@ export function DatePickerWithRange({
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-auto p-0" align="start">
-          <Calendar
-            initialStartDate={date?.from ?? null}
-            initialEndDate={date?.to ?? null}
-            onRangeChange={handleRangeChange}
-            numberOfMonths={numberOfMonths}
-          />
+        <Calendar
+          initialStartDate={date?.from ?? null}
+          initialEndDate={date?.to ?? null}
+          onRangeChange={handleRangeChange}
+          numberOfMonths={numberOfMonths}
+          disabled={{ before: new Date() }} // ⛔ Evita seleccionar días pasados
+        />
+
         </PopoverContent>
       </Popover>
     </div>

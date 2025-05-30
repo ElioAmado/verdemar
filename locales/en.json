@@ -1,17 +1,20 @@
 {
+  "two_bedroom": "Two-Bedroom Apartment",
+  "one_bedroom": "One-Bedroom Apartment",
+  "ONE_BEDROOM": "One-Bedroom Apartment",
+  "TWO_BEDROOM": "Two-Bedroom Apartment",
   "common": {
     "home": "Home",
     "rooms": "Rooms",
     "amenities": "Amenities",
     "gallery": "Gallery",
-    "about": "About",
+    "about": "About Us",
     "contact": "Contact",
     "signIn": "Sign In",
     "bookNow": "Book Now",
-    "guests": "Guests",
-    "reviews": "reviews",
+    "apartaments": "Apartments",
     "footer": {
-      "copyright": "© {year} Apartamentos Verde Mar. All rights reserved.",
+      "copyright": "© 2025 Verde Mar Apartments. All rights reserved.",
       "terms": "Terms",
       "privacy": "Privacy",
       "contact": "Contact"
@@ -19,50 +22,44 @@
   },
   "home": {
     "hero": {
-      "title": "Experience Luxury & Comfort",
-      "subtitle": "Discover the perfect blend of elegance and relaxation at Apartamentos Verde Mar",
+      "title": "Welcome to Your Home in Formentera",
+      "subtitle": "Luxury beachfront apartments for an unforgettable getaway.",
       "cta": "Book Your Stay"
     },
     "search": {
       "checkIn": "Check-in / Check-out",
-      "roomType": "Room Type",
+      "roomType": "Apartment Type",
       "guests": "Guests",
+      "adults": "Adults",
+      "children": "Children",
       "search": "Search Availability",
-      "pickDate": "Pick a date"
-    },
-    "rooms": {
-      "title": "Luxurious Rooms & Suites",
-      "subtitle": "Choose from our selection of elegantly designed rooms and suites, each offering unique amenities and stunning views.",
-      "viewAll": "View All Rooms",
-      "guests": "Guests",
-      "reviews": "reviews",
-      "night": "/night"
+      "pickDate": "Select a date"
     },
     "amenities": {
       "title": "Exceptional Facilities",
       "subtitle": "Enjoy our world-class amenities designed to make your stay unforgettable.",
-      "spa": "Wellness Spa",
-      "spaDesc": "Relax and rejuvenate with our premium spa treatments.",
-      "pool": "Infinity Pool",
-      "poolDesc": "Swim with a view in our stunning infinity pool.",
-      "dining": "Fine Dining",
-      "diningDesc": "Experience culinary excellence at our gourmet restaurants.",
-      "service": "24/7 Service",
-      "serviceDesc": "Round-the-clock concierge and room service for your convenience."
+      "safe": "Safe Box",
+      "safeDesc": "Keep your valuables secure with our in-room safes.",
+      "AC": "Air Conditioning",
+      "ACDesc": "Enjoy a cool and comfortable environment during your stay.",
+      "parking": "Parking",
+      "parkingDesc": "Private parking spaces available for our guests.",
+      "kitchen": "Equipped Kitchen",
+      "kitchenDesc": "All apartments feature fully equipped kitchens for your convenience."
     },
     "location": {
       "title": "Prime Location",
-      "subtitle": "Situated in the heart of the city, with easy access to major attractions and business districts.",
+      "subtitle": "Located in the heart of the city, with easy access to major attractions and business districts.",
       "airport": "From the Airport",
-      "airportDesc": "Just 20 minutes by car from International Airport. Airport shuttle available.",
+      "airportDesc": "Just 20 minutes by car from the International Airport. Shuttle service available.",
       "transport": "Public Transport",
-      "transportDesc": "5-minute walk to Central Station with connections to all city lines.",
+      "transportDesc": "A 5-minute walk from Central Station with connections to all city lines.",
       "attractions": "Nearby Attractions",
-      "attractionsDesc": "Walking distance to museums, shopping districts, and historic landmarks."
+      "attractionsDesc": "Walking distance to museums, shopping areas, and historic landmarks."
     },
     "testimonials": {
       "title": "What Our Guests Say",
-      "subtitle": "Read about experiences from our valued guests around the world."
+      "subtitle": "Read about the experiences of our valued guests from around the world."
     },
     "offers": {
       "title": "Exclusive Packages",
@@ -80,47 +77,82 @@
       "contactUs": "Contact Us"
     }
   },
+  "rooms": {
+    "littleMsg": "Our Apartments",
+    "title": "Apartments",
+    "subtitle": "Choose from a carefully selected range of apartments designed for your comfort and relaxation.",
+    "viewAll": "View All Apartments",
+    "guests": "Guests",
+    "reviews": "reviews",
+    "night": "/night"
+  },
   "roomSelector": {
-    "deluxe": "Deluxe Room",
-    "executive": "Executive Suite",
-    "presidential": "Presidential Suite",
-    "family": "Family Room",
-    "selectRoom": "Select room type"
+    "ONE_BEDROOM": "One-Bedroom Apartment",
+    "TWO_BEDROOM": "Two-Bedroom Apartment",
+    "selectRoom": "Select your apartment"
   },
   "footer": {
     "quickLinks": "Quick Links",
     "contact": "Contact",
-    "newsletter": "Newsletter",
-    "subscribeText": "Subscribe to receive special offers and updates.",
-    "emailPlaceholder": "Your email address",
-    "subscribe": "Subscribe",
+    "description": "Enjoy luxury and comfort in the heart of the city.",
     "address": "Camp D'es Pou 3877, Es Pujols",
     "phone": "+34 626 70 39 85",
     "email": "aptosverdemar@gmail.com"
   },
   "calendar": {
     "monthNames": [
-      "Enero",
-      "Febrero",
-      "Marzo",
-      "Abril",
-      "Mayo",
-      "Junio",
-      "Julio",
-      "Agosto",
-      "Septiembre",
-      "Octubre",
-      "Noviembre",
-      "Diciembre"
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
     ],
     "daysOfWeek": [
-      "Domingo",
-      "Lunes",
-      "Martes",
-      "Miércoles",
-      "Jueves",
-      "Viernes",
-      "Sábado"
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
     ]
+  },
+  "booking": {
+    "title": "Complete Your Booking",
+    "subtitle": "Please fill in your details to confirm your reservation.",
+    "backToRooms": "Back to Rooms",
+    "yourStayDetails": "Your Stay Details",
+    "confirmDetails": "Confirm your dates and guest information",
+    "checkInOut": "Check-in / Check-out",
+    "guests": "Guests",
+    "specialRequests": "Special Requests (Optional)",
+    "guestInfo": "Guest Information",
+    "enterPersonalDetails": "Enter your personal details",
+    "paymentInfo": "Payment Information",
+    "securePayment": "Secure payment processing",
+    "confirmBooking": "Confirm Booking"
+  },
+  "form": {
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "address": "Address",
+    "city": "City",
+    "state": "State/Province",
+    "zip": "Zip/Postal Code",
+    "country": "Country",
+    "cardNumber": "Card Number",
+    "expiry": "Expiry Date",
+    "cvv": "CVV",
+    "nameOnCard": "Name on Card"
   }
+
 }

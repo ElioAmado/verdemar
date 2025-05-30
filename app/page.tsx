@@ -74,20 +74,22 @@ export default function Home() {
               </div>
             </div>
           </div>
+           <div className="absolute -bottom-20 left-1/2 transform -translate-x-1/2 z-30 w-full max-w-5xl">
           <RoomsSearch />
+          </div>
         </section>
 
         {/* Featured Apartments */}
         <section className="container px-4 md:px-6 py-24 mt-20">
           <div className="text-center space-y-4">
             <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">
-              {t('home.rooms.littleMsg')}
+              {t('rooms.littleMsg')}
             </div>
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-              {t('home.rooms.title')}
+              {t('rooms.title')}
             </h2>
             <p className="max-w-[900px] mx-auto text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              {t('home.rooms.subtitle')}
+              {t('rooms.subtitle')}
             </p>
           </div>
 

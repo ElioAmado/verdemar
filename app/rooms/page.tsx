@@ -1,4 +1,6 @@
 'use client';
+
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { StarIcon, UsersIcon } from 'lucide-react';
@@ -12,14 +14,23 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { DatePickerWithRange } from '@/components/date-range-picker';
-import { RoomTypeSelector } from '@/components/room-type-selector';
-import { GuestCounter } from '@/components/guest-counter';
+
 import { SiteHeader } from '@/components/site-header';
+import RoomsSearch from '@/components/rooms-search';
+
 import { useLanguage } from '@/contexts/language-context';
+import { Apartment, getAllApartments } from '@/api/apartment';
 
 export default function RoomsPage() {
   const { t } = useLanguage();
+  const [apartments, setApartments] = useState<Apartment[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getAllApartments()
+      .then(setApartments)
+      .finally(() => setLoading(false));
+  }, []);
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -42,53 +53,33 @@ export default function RoomsPage() {
 
         <section className="py-12">
           <div className="container px-4 md:px-6">
-            <Card className="mb-12">
-              <CardContent className="p-6">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">
-                      {t('rooms.filters.dates')}
-                    </label>
-                    <DatePickerWithRange />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">
-                      {t('rooms.filters.roomType')}
-                    </label>
-                    <RoomTypeSelector />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">
-                      {t('rooms.filters.guests')}
-                    </label>
-                    <GuestCounter />
-                  </div>
-                  <div className="flex items-end">
-                    <Button className="w-full">{t('rooms.filters.search')}</Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
+            <RoomsSearch />
+            <br />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Este bloque deberías repetirlo con un array de habitaciones para evitar duplicación */}
-              <RoomCard
-                image="/placeholder.svg?height=400&width=600"
-                title={t('rooms.cards.deluxe.title')}
-                description={t('rooms.cards.deluxe.description')}
-                guests="2"
-                rating="4.8 (120 reviews)"
-                features={[
-                  t('rooms.features.king'),
-                  '35 m²',
-                  t('rooms.features.cityView'),
-                  t('rooms.features.wifi'),
-                  t('rooms.features.ac'),
-                  t('rooms.features.tv'),
-                ]}
-                price="199"
-              />
-              {/* Repite el componente RoomCard con los datos traducidos para cada habitación */}
+              {loading ? (
+                <p>{t('rooms.loading')}</p>
+              ) : apartments.length === 0 ? (
+                <p>{t('rooms.noResults')}</p>
+              ) : (
+                apartments.map((apartment) => (
+                  <RoomCard
+                    key={apartment.id}
+                    image="/placeholder.svg?height=400&width=600"
+                    title={`${t(`${apartment.apartmentType}`)}`}
+                    description={apartment.description}
+                    guests={apartment.capacity}
+                    rating="4.8 (120 reviews)"
+                    features={[
+                      `${apartment.bedrooms} ${t('rooms.features.bedrooms')}`,
+                      `${apartment.floor}º ${t('rooms.features.floor')}`,
+                      t('rooms.features.wifi'),
+                      t('rooms.features.ac'),
+                      t('rooms.features.tv'),
+                    ]}
+                    price={(apartment.capacity * 50).toFixed(0)} // ejemplo de precio
+                  />
+                ))
+              )}
             </div>
           </div>
         </section>
@@ -97,12 +88,36 @@ export default function RoomsPage() {
   );
 }
 
-function RoomCard({ image, title, description, guests, rating, features, price }: any) {
+interface RoomCardProps {
+  image: string;
+  title: string;
+  description: string;
+  guests: number;
+  rating: string;
+  features: string[];
+  price: string;
+}
+
+function RoomCard({
+  image,
+  title,
+  description,
+  guests,
+  rating,
+  features,
+  price,
+}: RoomCardProps) {
   const { t } = useLanguage();
+
   return (
     <Card className="overflow-hidden">
       <div className="relative h-64">
-        <Image src={image} alt={title} fill className="object-cover transition-transform hover:scale-105" />
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className="object-cover transition-transform hover:scale-105"
+        />
       </div>
       <CardHeader>
         <CardTitle>{title}</CardTitle>
@@ -119,7 +134,7 @@ function RoomCard({ image, title, description, guests, rating, features, price }
             <span>{rating}</span>
           </div>
           <div className="grid grid-cols-2 gap-2 text-sm">
-            {features.map((f: string, i: number) => (
+            {features.map((f, i) => (
               <div key={i}>• {f}</div>
             ))}
           </div>

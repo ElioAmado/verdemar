@@ -3,7 +3,7 @@
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { getAvailableApartments, Apartment } from '@/api/apartment';
-import { getTotalPrice } from '@/api/booking';
+import { getTotalPrice, createBooking, Booking } from '@/api/booking';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
@@ -19,7 +19,6 @@ export default function AvailabilityPage() {
     const fetchData = async () => {
       const startDate = searchParams.get('start');
       const endDate = searchParams.get('end');
-      const guests = searchParams.get('guests');
       const type = searchParams.get('type');
 
       if (!startDate || !endDate) return;
@@ -29,7 +28,13 @@ export default function AvailabilityPage() {
 
       const newPrices: Record<number, number> = {};
       for (const apt of data) {
-        const price = await getTotalPrice(apt.id, startDate, endDate);
+        let price = 0;
+        try {
+          price = await getTotalPrice(apt.id, startDate, endDate);
+        } catch (error) {
+          console.error(`Error fetching price for apartment ${apt.id}:`, error);
+        }
+        
         newPrices[apt.id] = price;
       }
       setPrices(newPrices);
@@ -38,20 +43,40 @@ export default function AvailabilityPage() {
     fetchData();
   }, [searchParams]);
 
-  const handleReserve = (apartmentId: number) => {
+  const handleReserve = async (apartmentId: number) => {
     const start = searchParams.get('start');
     const end = searchParams.get('end');
-    const guests = searchParams.get('guests');
+    const adults = searchParams.get('adults');
+    const children = searchParams.get('children');
 
-    const booking = {
-      apartmentId,
+    if (!start || !end || !adults) {
+      alert('Por favor, selecciona fechas y número de huéspedes válidos.');
+      return;
+    }
+
+    const totalPrice = prices[apartmentId];
+    if (totalPrice === undefined) {
+      alert('El precio total aún no está disponible.');
+      return;
+    }
+
+    const booking: Booking = {
+      guests: parseInt(adults, 10) + (children ? parseInt(children, 10) : 0),
+      apartmentId: apartmentId,
       startDate: start,
       endDate: end,
-      guests: guests ? parseInt(guests) : 1,
+      totalPrice: totalPrice,
+      status: 'PENDING',
     };
 
-    localStorage.setItem('pendingBooking', JSON.stringify(booking));
-    router.push('/payment');
+    try {
+      const created = await createBooking(booking);
+      localStorage.setItem('pendingBookingId', JSON.stringify(created.id));
+      router.push('/booking');
+    } catch (error) {
+      console.error('Error al crear la reserva:', error);
+      alert('Hubo un problema al crear la reserva. Intenta de nuevo.');
+    }
   };
 
   return (

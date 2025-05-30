@@ -10,13 +10,14 @@ function getBookingBaseUrl(): string {
 
 export interface Booking {
   id?: number;
-  clientId: number;
+  clientId?: number;
+  guests: number;
   apartmentId: number;
   startDate: string;
   endDate: string;
   totalPrice: number;
   status: string;
-  notes: string;
+  notes?: string;
 }
 
 // ✅ Obtener todas las reservas
