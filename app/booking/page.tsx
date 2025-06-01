@@ -29,15 +29,25 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { SiteHeader } from "@/components/site-header";
 
-import { getBookingById, Booking } from "@/api/booking";
+import { getBookingById, Booking, updateBooking } from "@/api/booking";
 import { useLanguage } from "@/contexts/language-context";
+import { useRouter } from "next/navigation";
+import { Client, createClient } from "@/api/client";
 
 export default function BookingPage() {
   const { t } = useLanguage();
+  const router = useRouter();
 
   const [booking, setBooking] = useState<Booking | null>(null);
   const [loading, setLoading] = useState(true);
   const [guests, setGuests] = useState({ adults: 1, children: 0 });
+  const [clientInfo, setClientInfo] = useState<Client>({
+  name: "",
+  lastName: "",
+  email: "",
+  phone: "",
+});
+
 
   useEffect(() => {
     async function fetchBooking() {
@@ -65,14 +75,61 @@ export default function BookingPage() {
     fetchBooking();
   }, []);
 
-  console.log("Booking data:", booking);
-  // Datos ficticios de habitación para el ejemplo (puedes traer los reales según booking.apartmentId)
+  const handleConfirmBooking = async () => {
+  try {
+    if (!booking) return;
+
+    // 1. Crear el cliente
+    const newClient = await createClient(clientInfo);
+
+    // 2. Actualizar la reserva con el cliente y confirmar
+    const updatedBooking = {
+      ...booking,
+      status: "CONFIRMED",
+      apartmentId: booking.apartment?.id, // o booking.apartment si tu API lo acepta así
+      clientId: newClient.id, // o client: newClient si tu API lo acepta así
+    };
+
+    await updateBooking(updatedBooking.id, updatedBooking);
+    localStorage.removeItem("pendingBookingId");
+    router.push("/confirmation");
+  } catch (error) {
+    console.error("Error confirming booking:", error);
+    alert("There was a problem confirming your booking.");
+  }
+};
+
+  if (loading) {
+    return (
+      <div className="text-center mt-20 text-muted-foreground">
+        Loading booking...
+      </div>
+    );
+  }
+
+  if (!booking) {
+    return (
+      <div className="text-center mt-20 text-destructive">
+        Booking not found.
+      </div>
+    );
+  }
+
+  if (!booking.apartment) {
+    return (
+      <div className="text-center mt-20 text-destructive">
+        Apartment details not found for booking.
+      </div>
+    );
+  }
+
+  const apt = booking.apartment;
   const roomDetails = {
-    id: booking?.apartment.id ?? 0,
-    name: "Apartamento " + booking?.apartment.id,
+    id: apt.id ?? 0,
+    name: "Apartamento " + apt.id,
     description: "Spacious accommodation with separate living area",
     price: 299,
-    image: "/placeholder.svg?height=400&width=600",
+    image: `/apartments/${apt.id}/index.jpg`,
     capacity: 3,
     rating: 4.9,
     reviews: 85,
@@ -104,15 +161,15 @@ export default function BookingPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2 space-y-8">
               <div>
-<h1 className="text-3xl font-bold tracking-tight">
-  {t("booking.title")}
-</h1>
-<p className="text-muted-foreground mt-2">
-  {t("booking.subtitle")}
-</p>
-
+                <h1 className="text-3xl font-bold tracking-tight">
+                  {t("booking.title")}
+                </h1>
+                <p className="text-muted-foreground mt-2">
+                  {t("booking.subtitle")}
+                </p>
               </div>
 
+              {/* Stay Details */}
               <Card>
                 <CardHeader>
                   <CardTitle>Your Stay Details</CardTitle>
@@ -121,18 +178,24 @@ export default function BookingPage() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
-                  {/* Aquí podrías pasar props a DatePickerWithRange y GuestCounter para mostrar datos iniciales si quieres */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label>Check-in / Check-out</Label>
                       <DatePickerWithRange
-                        // Aquí podrías manejar fechas con estado, por ejemplo:
-                        // initialRange={{ startDate: new Date(booking?.startDate), endDate: new Date(booking?.endDate) }}
+                        readOnly
+                        initialRange={{
+                          from: new Date(booking.startDate),
+                          to: new Date(booking.endDate),
+                        }}
                       />
                     </div>
-                    <div className="space-y-2">
-                      <Label>Guests</Label>
-                       <GuestCounter value={guests} onChange={setGuests} />
+
+                    <div className="space-y-1">
+                      <Label className="text-sm text-muted-foreground">Guests</Label>
+                      <div className="flex items-center gap-2 text-base font-medium">
+                        <UsersIcon className="h-4 w-4 text-primary" />
+                        <span>{booking?.guests}</span>
+                      </div>
                     </div>
                   </div>
 
@@ -147,62 +210,59 @@ export default function BookingPage() {
                 </CardContent>
               </Card>
 
+              {/* Guest Information */}
               <Card>
                 <CardHeader>
                   <CardTitle>Guest Information</CardTitle>
                   <CardDescription>Enter your personal details</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
-                  {/* Aquí puedes precargar campos si tienes datos del cliente */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="first-name">First Name</Label>
-                      <Input id="first-name" placeholder="Enter your first name" />
+                      <Input
+  id="first-name"
+  placeholder="Enter your first name"
+  value={clientInfo.name}
+  onChange={(e) => setClientInfo({ ...clientInfo, name: e.target.value })}
+/>
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="last-name">Last Name</Label>
-                      <Input id="last-name" placeholder="Enter your last name" />
+                      <Input
+  id="last-name"
+  placeholder="Enter your last name"
+  value={clientInfo.lastName}
+  onChange={(e) => setClientInfo({ ...clientInfo, lastName: e.target.value })}
+/>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="email">Email Address</Label>
-                      <Input id="email" type="email" placeholder="Enter your email" />
+                     <Input
+  id="email"
+  type="email"
+  placeholder="Enter your email"
+  value={clientInfo.email}
+  onChange={(e) => setClientInfo({ ...clientInfo, email: e.target.value })}
+/>
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="phone">Phone Number</Label>
-                      <Input id="phone" placeholder="Enter your phone number" />
+                      <Input
+  id="phone"
+  placeholder="Enter your phone number"
+  value={clientInfo.phone}
+  onChange={(e) => setClientInfo({ ...clientInfo, phone: e.target.value })}
+/>
                     </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="address">Address</Label>
-                    <Input id="address" placeholder="Enter your address" />
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="city">City</Label>
-                      <Input id="city" placeholder="City" />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="state">State/Province</Label>
-                      <Input id="state" placeholder="State/Province" />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="zip">Zip/Postal Code</Label>
-                      <Input id="zip" placeholder="Zip/Postal Code" />
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="country">Country</Label>
-                    <Input id="country" placeholder="Country" />
                   </div>
                 </CardContent>
               </Card>
 
+              {/* Payment Info */}
               <Card>
                 <CardHeader>
                   <CardTitle>Payment Information</CardTitle>
@@ -248,11 +308,12 @@ export default function BookingPage() {
                 </CardContent>
               </Card>
 
-              <Button className="w-full" size="lg">
+              <Button className="w-full" size="lg" onClick={handleConfirmBooking}>
                 Confirm Booking
               </Button>
             </div>
 
+            {/* Sidebar */}
             <aside className="space-y-6">
               <Card>
                 <Image
@@ -272,7 +333,9 @@ export default function BookingPage() {
 
                   <div className="flex items-center gap-2 text-muted-foreground text-sm">
                     <StarIcon className="h-4 w-4 text-yellow-400" />
-                    <span>{roomDetails.rating} ({roomDetails.reviews} reviews)</span>
+                    <span>
+                      {roomDetails.rating} ({roomDetails.reviews} reviews)
+                    </span>
                   </div>
 
                   <div className="text-lg font-semibold">

@@ -1,4 +1,7 @@
 import axios from "axios";
+import { Client } from "./client";
+import { Apartment } from "./apartment";
+import { DateRange } from "react-day-picker";
 
 function getBookingBaseUrl(): string {
   const base = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -10,9 +13,11 @@ function getBookingBaseUrl(): string {
 
 export interface Booking {
   id?: number;
-  clientId?: number;
+  clientId?: number; // sigue siendo útil si a veces usas solo el ID
+  client?: Client;
   guests: number;
-  apartmentId: number;
+  apartmentId?: number;
+  apartment?: Apartment;
   startDate: string;
   endDate: string;
   totalPrice: number;
@@ -63,3 +68,8 @@ export const getTotalPrice = async (
   );
   return res.data;
 };
+
+export const getDatesByApartmentId = async (apartmentId: number): Promise<DateRange[]> => {
+  const res = await axios.get<DateRange[]>(`${getBookingBaseUrl()}/getDates/${apartmentId}`);
+  return res.data;
+}

@@ -55,6 +55,11 @@ export const getApartmentTypes = async (): Promise<ApartmentType[]> => {
   return res.data;
 };
 
+export const getAllIds = async (): Promise<number[]> => {
+  const res = await axios.get<number[]>(`${getBaseUrl()}/ids`);
+  return res.data;
+}
+
 export const getAvailableApartments = async ({
   startDate,
   endDate,
