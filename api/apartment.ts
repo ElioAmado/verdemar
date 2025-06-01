@@ -60,6 +60,11 @@ export const getAllIds = async (): Promise<number[]> => {
   return res.data;
 }
 
+export interface ApartmentAvailability {
+  apartment: Apartment;
+  available: boolean;
+}
+
 export const getAvailableApartments = async ({
   startDate,
   endDate,
@@ -68,9 +73,10 @@ export const getAvailableApartments = async ({
   startDate: string | null;
   endDate: string | null;
   type: ApartmentType | null;
-}): Promise<Apartment[]> => {
-  const res = await axios.get<Apartment[]>(`${getBaseUrl()}/available`, {
+}): Promise<ApartmentAvailability[]> => {
+  const res = await axios.get<ApartmentAvailability[]>(`${getBaseUrl()}/available`, {
     params: { type, startDate, endDate },
   });
+
   return res.data;
 };
