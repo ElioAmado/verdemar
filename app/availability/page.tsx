@@ -1,6 +1,8 @@
 "use client"
 
-import { useSearchParams } from "next/navigation"
+import type React from "react"
+
+import { useSearchParams, useRouter } from "next/navigation"
 import { useEffect, useState, useMemo } from "react"
 import { getAvailableApartments, type ApartmentAvailability } from "@/api/apartment"
 import { getTotalPrice, createBooking, type Booking } from "@/api/booking"
@@ -11,10 +13,10 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Separator } from "@/components/ui/separator"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import Image from "next/image"
-import { useRouter } from "next/navigation"
 import { SiteHeader } from "@/components/site-header"
-import RoomsSearch from "@/components/rooms-search"
 import {
   Calendar,
   Users,
@@ -28,6 +30,8 @@ import {
   CheckCircle,
   XCircle,
   ArrowLeft,
+  Search,
+  Edit3,
 } from "lucide-react"
 import { format } from "date-fns"
 import { es } from "date-fns/locale"
@@ -41,16 +45,35 @@ interface ExtendedApartmentAvailability extends ApartmentAvailability {
   error?: string
 }
 
+interface SearchFormData {
+  startDate: string
+  endDate: string
+  type: string
+  adults: string
+  children: string
+}
+
 export default function AvailabilityPage() {
   const searchParams = useSearchParams()
+  const router = useRouter()
   const [apartments, setApartments] = useState<ExtendedApartmentAvailability[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [sortBy, setSortBy] = useState<SortOption>("price-asc")
   const [filterByAvailability, setFilterByAvailability] = useState<"all" | "available" | "unavailable">("all")
-  const router = useRouter()
+  const [showSearchForm, setShowSearchForm] = useState(false)
+  const [searchLoading, setSearchLoading] = useState(false)
 
-  // Extract search parameters
+  // Initialize search form with current parameters
+  const [searchForm, setSearchForm] = useState<SearchFormData>({
+    startDate: searchParams.get("start") || "",
+    endDate: searchParams.get("end") || "",
+    type: searchParams.get("type") || "",
+    adults: searchParams.get("adults") || "1",
+    children: searchParams.get("children") || "0",
+  })
+
+  // Extract current search parameters
   const startDate = searchParams.get("start")
   const endDate = searchParams.get("end")
   const type = searchParams.get("type")
@@ -73,6 +96,43 @@ export default function AvailabilityPage() {
       end: format(new Date(endDate), "dd MMM yyyy", { locale: es }),
     }
   }, [startDate, endDate])
+
+  const handleSearchFormChange = (field: keyof SearchFormData, value: string) => {
+    setSearchForm((prev) => ({ ...prev, [field]: value }))
+  }
+
+  const handleSearchSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+
+    if (!searchForm.startDate || !searchForm.endDate || !searchForm.type) {
+      alert("Por favor, completa todos los campos obligatorios")
+      return
+    }
+
+    // Validate dates
+    const start = new Date(searchForm.startDate)
+    const end = new Date(searchForm.endDate)
+    if (start >= end) {
+      alert("La fecha de salida debe ser posterior a la fecha de entrada")
+      return
+    }
+
+    setSearchLoading(true)
+
+    // Update URL with new search parameters
+    const params = new URLSearchParams()
+    params.set("start", searchForm.startDate)
+    params.set("end", searchForm.endDate)
+    params.set("type", searchForm.type)
+    params.set("adults", searchForm.adults)
+    if (searchForm.children && searchForm.children !== "0") {
+      params.set("children", searchForm.children)
+    }
+
+    router.push(`/availability?${params.toString()}`)
+    setShowSearchForm(false)
+    setSearchLoading(false)
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -252,11 +312,119 @@ export default function AvailabilityPage() {
     <div>
       <SiteHeader />
       <div className="container py-12">
-        {/* Search Form */}
-
         {/* Header Section */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-4">Apartamentos Disponibles</h1>
+          <div className="flex items-center justify-between mb-4">
+            <h1 className="text-3xl font-bold">Apartamentos Disponibles</h1>
+            <Button
+              variant="outline"
+              onClick={() => setShowSearchForm(!showSearchForm)}
+              className="flex items-center gap-2"
+            >
+              <Edit3 className="h-4 w-4" />
+              Modificar búsqueda
+            </Button>
+          </div>
+
+          {/* Search Form */}
+          {showSearchForm && (
+            <Card className="mb-6">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Search className="h-5 w-5" />
+                  Modificar criterios de búsqueda
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <form onSubmit={handleSearchSubmit} className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="startDate">Fecha de entrada</Label>
+                      <Input
+                        id="startDate"
+                        type="date"
+                        value={searchForm.startDate}
+                        onChange={(e) => handleSearchFormChange("startDate", e.target.value)}
+                        required
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="endDate">Fecha de salida</Label>
+                      <Input
+                        id="endDate"
+                        type="date"
+                        value={searchForm.endDate}
+                        onChange={(e) => handleSearchFormChange("endDate", e.target.value)}
+                        required
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="type">Tipo de apartamento</Label>
+                      <Select value={searchForm.type} onValueChange={(value) => handleSearchFormChange("type", value)}>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Seleccionar tipo" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="studio">Estudio</SelectItem>
+                          <SelectItem value="apartment">Apartamento</SelectItem>
+                          <SelectItem value="suite">Suite</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="adults">Adultos</Label>
+                      <Select
+                        value={searchForm.adults}
+                        onValueChange={(value) => handleSearchFormChange("adults", value)}
+                      >
+                        <SelectTrigger>
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {[1, 2, 3, 4, 5, 6].map((num) => (
+                            <SelectItem key={num} value={num.toString()}>
+                              {num} {num === 1 ? "adulto" : "adultos"}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="children">Niños</Label>
+                      <Select
+                        value={searchForm.children}
+                        onValueChange={(value) => handleSearchFormChange("children", value)}
+                      >
+                        <SelectTrigger>
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {[0, 1, 2, 3, 4].map((num) => (
+                            <SelectItem key={num} value={num.toString()}>
+                              {num} {num === 1 ? "niño" : "niños"}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-2">
+                    <Button type="submit" disabled={searchLoading}>
+                      {searchLoading ? "Buscando..." : "Buscar apartamentos"}
+                    </Button>
+                    <Button type="button" variant="outline" onClick={() => setShowSearchForm(false)}>
+                      Cancelar
+                    </Button>
+                  </div>
+                </form>
+              </CardContent>
+            </Card>
+          )}
 
           {/* Search Summary */}
           {formattedDates && (
@@ -341,10 +509,16 @@ export default function AvailabilityPage() {
             <p className="text-muted-foreground mb-4">
               No hay apartamentos disponibles para los criterios seleccionados.
             </p>
-            <Button onClick={handleGoBack} variant="outline">
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Modificar búsqueda
-            </Button>
+            <div className="flex gap-2 justify-center">
+              <Button onClick={() => setShowSearchForm(true)} variant="default">
+                <Edit3 className="h-4 w-4 mr-2" />
+                Modificar búsqueda
+              </Button>
+              <Button onClick={handleGoBack} variant="outline">
+                <ArrowLeft className="h-4 w-4 mr-2" />
+                Volver
+              </Button>
+            </div>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
