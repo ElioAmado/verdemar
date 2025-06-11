@@ -19,7 +19,7 @@ export function SiteFooter() {
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2 text-xl font-bold">
               <Image
-                src="/placeholder.svg?height=32&width=32"
+                src="/logo.png"
                 alt="Logo de Apartamentos Verde Mar"
                 width={32}
                 height={32}

@@ -4,14 +4,18 @@ import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import { ThemeConfigProvider } from '@/components/theme-config';
 import { LanguageProvider } from '@/contexts/language-context';
+import { icons } from 'lucide-react';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Apartamentos Verde Mar - Luxury Accommodations',
+  title: 'Apartamentos Verde Mar',
   description:
     'Experience luxury and comfort at Apartamentos Verde Mar. Book your perfect stay today.',
   generator: 'v0.dev',
+  icons: {
+    icon: '/logo.png',
+  }
 };
 
 export default function RootLayout({

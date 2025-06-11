@@ -33,13 +33,7 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
           className={cn('flex items-center gap-1 px-2', className)}
           aria-label="Select language"
         >
-          <Image
-            src={currentLanguage.flag || '/placeholder.svg'}
-            alt={currentLanguage.name}
-            width={20}
-            height={15}
-            className="rounded-sm"
-          />
+          <span className={`fi fi-${currentLanguage.flag}`} style={{ width: 24, height: 16 }}></span>
           <span className="hidden sm:inline-block ml-1">
             {currentLanguage.name}
           </span>
@@ -56,13 +50,7 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
             )}
             onClick={() => handleLanguageChange(language.code)}
           >
-            <Image
-              src={language.flag || '/placeholder.svg'}
-              alt={language.name}
-              width={20}
-              height={15}
-              className="rounded-sm"
-            />
+            <span className={`fi fi-${language.flag}`} style={{ width: 24, height: 16 }}></span>
             <span className="flex-1">{language.name}</span>
             {currentLanguage.code === language.code && (
               <Check className="h-4 w-4" />

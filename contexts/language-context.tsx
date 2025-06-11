@@ -18,32 +18,14 @@ type Language = {
 };
 
 export const languages: Language[] = [
-  {
-    code: 'en',
-    name: 'English',
-    flag: '/placeholder.svg?height=20&width=30&text=🇺🇸',
-  },
-  {
-    code: 'es',
-    name: 'Español',
-    flag: '/placeholder.svg?height=20&width=30&text=🇪🇸',
-  },
-  {
-    code: 'fr',
-    name: 'Français',
-    flag: '/placeholder.svg?height=20&width=30&text=🇫🇷',
-  },
-  {
-    code: 'de',
-    name: 'Deutsch',
-    flag: '/placeholder.svg?height=20&width=30&text=🇩🇪',
-  },
-  {
-    code: 'it',
-    name: 'Italiano',
-    flag: '/placeholder.svg?height=20&width=30&text=IT',
-  },
+  { code: 'en', name: 'English', flag: 'gb' },
+  { code: 'es', name: 'Español', flag: 'es' },
+  { code: 'fr', name: 'Français', flag: 'fr' },
+  { code: 'de', name: 'Deutsch', flag: 'de' },
+  { code: 'it', name: 'Italiano', flag: 'it' },
+  { code: 'pt', name: 'Português', flag: 'pt' },
 ];
+
 
 const translations: Record<string, any> = {
   en: enTranslations,
