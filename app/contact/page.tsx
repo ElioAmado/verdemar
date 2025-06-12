@@ -1,4 +1,4 @@
-import Link from 'next/link';
+"use client";
 import Image from 'next/image';
 import { Mail, MapPin, Phone } from 'lucide-react';
 
@@ -9,8 +9,63 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { SiteHeader } from '@/components/site-header';
+import { useLanguage } from '@/contexts/language-context';
+import { useEffect } from 'react';
+
+
+
+// Declare google as a global variable for TypeScript
+declare global {
+  interface Window {
+    google: typeof google;
+    initMap: () => void;
+  }
+  var google: any;
+}
 
 export default function ContactPage() {
+  const { t } = useLanguage();
+  
+
+  const Mapa = () => {
+    useEffect(() => {
+        // Evitar múltiples inclusiones
+  const existingScript = document.querySelector(`script[src*="maps.googleapis.com/maps/api/js"]`);
+  if (existingScript) {
+    if (window.google) {
+      window.initMap(); // Ejecutar callback si ya está cargado
+    }
+    return;
+  }
+  
+      // Define global initMap callback
+      (window as any).initMap = function () {
+        const map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
+          center: { lat: 38.722110140342515, lng: 1.4594708860911132 }, // Coordenadas de ejemplo: Formentera
+          zoom: 15.5,
+        });
+
+        new google.maps.Marker({
+          position: { lat: 38.722110140342515, lng: 1.4594708860911132 }, 
+          map,
+          title: "Apartamentos Verde Mar",
+        });
+      };
+
+      const script = document.createElement("script");
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_API_KEY_MAP}&callback=initMap&libraries=maps,marker&v=beta`;
+      script.async = true;
+      document.body.appendChild(script);
+
+      return () => {
+        document.body.removeChild(script);
+        delete (window as any).initMap;
+      };
+    }, []);
+
+    return <div id="map" style={{ height: "400px", width: "100%" }} />;
+  };
+
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
@@ -20,11 +75,10 @@ export default function ContactPage() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  Contact Us
+                  {t('contact.title')}
                 </h1>
                 <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed">
-                  We're here to assist you with any questions or special
-                  requests you may have.
+                  {t('contact.subtitle')}
                 </p>
               </div>
             </div>
@@ -35,75 +89,56 @@ export default function ContactPage() {
           <div className="container px-4 md:px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <div>
-                <h2 className="text-2xl font-bold mb-6">Get in Touch</h2>
+                <h2 className="text-2xl font-bold mb-6">{t('contact.formTitle')}</h2>
                 <form className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <Label htmlFor="first-name">First Name</Label>
-                      <Input
-                        id="first-name"
-                        placeholder="Enter your first name"
-                      />
+                      <Label htmlFor="first-name">{t('contact.firstName')}</Label>
+                      <Input id="first-name" placeholder={t('contact.firstNamePlaceholder')} />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="last-name">Last Name</Label>
-                      <Input
-                        id="last-name"
-                        placeholder="Enter your last name"
-                      />
+                      <Label htmlFor="last-name">{t('contact.lastName')}</Label>
+                      <Input id="last-name" placeholder={t('contact.lastNamePlaceholder')} />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <Label htmlFor="email">Email Address</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="Enter your email"
-                      />
+                      <Label htmlFor="email">{t('contact.email')}</Label>
+                      <Input id="email" type="email" placeholder={t('contact.emailPlaceholder')} />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="phone">Phone Number</Label>
-                      <Input id="phone" placeholder="Enter your phone number" />
+                      <Label htmlFor="phone">{t('contact.phone')}</Label>
+                      <Input id="phone" placeholder={t('contact.phonePlaceholder')} />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="subject">Subject</Label>
-                    <Input
-                      id="subject"
-                      placeholder="What is your message regarding?"
-                    />
+                    <Label htmlFor="subject">{t('contact.subject')}</Label>
+                    <Input id="subject" placeholder={t('contact.subjectPlaceholder')} />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="message">Message</Label>
-                    <Textarea
-                      id="message"
-                      placeholder="Please provide details about your inquiry"
-                      className="min-h-[150px]"
-                    />
+                    <Label htmlFor="message">{t('contact.message')}</Label>
+                    <Textarea id="message" placeholder={t('contact.messagePlaceholder')} className="min-h-[150px]" />
                   </div>
 
                   <Button type="submit" className="w-full">
-                    Send Message
+                    {t('contact.send')}
                   </Button>
                 </form>
               </div>
 
               <div className="space-y-8">
                 <div>
-                  <h2 className="text-2xl font-bold mb-6">
-                    Contact Information
-                  </h2>
+                  <h2 className="text-2xl font-bold mb-6">{t('contact.infoTitle')}</h2>
                   <div className="space-y-4">
                     <div className="flex items-start gap-4">
                       <MapPin className="h-5 w-5 text-primary mt-1" />
                       <div>
-                        <h3 className="font-semibold">Address</h3>
+                        <h3 className="font-semibold">{t('contact.address')}</h3>
                         <p className="text-muted-foreground">
-                          Camp D'es Pou 3877, Es Pujols{' '}
+                          Camp D'es Pou 3877, Es Pujols
                         </p>
                       </div>
                     </div>
@@ -111,77 +146,50 @@ export default function ContactPage() {
                     <div className="flex items-start gap-4">
                       <Phone className="h-5 w-5 text-primary mt-1" />
                       <div>
-                        <h3 className="font-semibold">Phone</h3>
-                        <p className="text-muted-foreground">
-                          +34 626 70 39 85
-                        </p>
-                        <p className="text-muted-foreground">
-                          Reservations: +1 (123) 456-7891
-                        </p>
+                        <h3 className="font-semibold">{t('contact.phone')}</h3>
+                        <p className="text-muted-foreground">+34 626 70 39 85</p>
                       </div>
                     </div>
 
                     <div className="flex items-start gap-4">
                       <Mail className="h-5 w-5 text-primary mt-1" />
                       <div>
-                        <h3 className="font-semibold">Email</h3>
-                        <p className="text-muted-foreground">
-                          aptosverdemar@gmail.com
-                        </p>
-                        <p className="text-muted-foreground">
-                          reservations@luxstayhotel.com
-                        </p>
+                        <h3 className="font-semibold">{t('contact.email')}</h3>
+                        <p className="text-muted-foreground">aptosverdemar@gmail.com</p>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <h2 className="text-2xl font-bold mb-6">Our Location</h2>
+                  <h2 className="text-2xl font-bold mb-6">{t('contact.locationTitle')}</h2>
                   <div className="aspect-video relative rounded-xl overflow-hidden border">
-                    <Image
-                      src="/placeholder.svg?height=400&width=600&text=Map"
-                      alt="Hotel location map"
-                      fill
-                      className="object-cover"
-                    />
+                    <Mapa />
                   </div>
                 </div>
 
                 <div>
-                  <h2 className="text-2xl font-bold mb-6">
-                    Hours of Operation
-                  </h2>
+                  <h2 className="text-2xl font-bold mb-6">{t('contact.hoursTitle')}</h2>
                   <div className="space-y-2">
                     <div className="flex justify-between">
-                      <span className="font-medium">Front Desk</span>
-                      <span className="text-muted-foreground">
-                        24 hours, 7 days a week
-                      </span>
+                      <span className="font-medium">{t('contact.hours.frontDesk')}</span>
+                      <span className="text-muted-foreground">{t('contact.hours.frontDeskHours')}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="font-medium">Concierge</span>
-                      <span className="text-muted-foreground">
-                        7:00 AM - 11:00 PM
-                      </span>
+                      <span className="font-medium">{t('contact.hours.concierge')}</span>
+                      <span className="text-muted-foreground">{t('contact.hours.conciergeHours')}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="font-medium">Azure Restaurant</span>
-                      <span className="text-muted-foreground">
-                        6:30 AM - 10:30 PM
-                      </span>
+                      <span className="font-medium">{t('contact.hours.restaurant')}</span>
+                      <span className="text-muted-foreground">{t('contact.hours.restaurantHours')}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="font-medium">Skyline Lounge</span>
-                      <span className="text-muted-foreground">
-                        4:00 PM - 1:00 AM
-                      </span>
+                      <span className="font-medium">{t('contact.hours.lounge')}</span>
+                      <span className="text-muted-foreground">{t('contact.hours.loungeHours')}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="font-medium">Spa & Wellness</span>
-                      <span className="text-muted-foreground">
-                        9:00 AM - 8:00 PM
-                      </span>
+                      <span className="font-medium">{t('contact.hours.spa')}</span>
+                      <span className="text-muted-foreground">{t('contact.hours.spaHours')}</span>
                     </div>
                   </div>
                 </div>
@@ -399,154 +407,8 @@ export default function ContactPage() {
             </div>
           </div>
         </section>
+
       </main>
-      <footer className="border-t bg-muted">
-        <div className="container px-4 md:px-6 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="space-y-4">
-              <Link
-                href="/"
-                className="flex items-center gap-2 text-xl font-bold"
-              >
-                <Image
-                  src="/placeholder.svg?height=32&width=32"
-                  alt="Logo"
-                  width={32}
-                  height={32}
-                />
-                <span>Apartamentos Verde Mar</span>
-              </Link>
-              <p className="text-muted-foreground">
-                Experience luxury and comfort in the heart of the city.
-              </p>
-              <div className="flex gap-4">
-                <Button variant="ghost" size="icon" className="rounded-full">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-5 w-5"
-                  >
-                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                  </svg>
-                  <span className="sr-only">Facebook</span>
-                </Button>
-                <Button variant="ghost" size="icon" className="rounded-full">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-5 w-5"
-                  >
-                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                  </svg>
-                  <span className="sr-only">Instagram</span>
-                </Button>
-                <Button variant="ghost" size="icon" className="rounded-full">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-5 w-5"
-                  >
-                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
-                  </svg>
-                  <span className="sr-only">Twitter</span>
-                </Button>
-              </div>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-              <nav className="flex flex-col space-y-2">
-                <Link
-                  href="/"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  Home
-                </Link>
-                <Link
-                  href="/rooms"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  Rooms & Suites
-                </Link>
-                <Link
-                  href="/dining"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  Dining
-                </Link>
-                <Link
-                  href="/spa"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  Spa & Wellness
-                </Link>
-                <Link
-                  href="/events"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  Events
-                </Link>
-                <Link
-                  href="/gallery"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  Gallery
-                </Link>
-              </nav>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Contact</h3>
-              <address className="not-italic space-y-2 text-muted-foreground">
-                <p>Camp D'es Pou 3877, Es Pujols </p>
-                <p>+34 626 70 39 85</p>
-                <p>aptosverdemar@gmail.com</p>
-              </address>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Newsletter</h3>
-              <p className="text-muted-foreground mb-4">
-                Subscribe to receive special offers and updates.
-              </p>
-              <form className="space-y-2">
-                <input
-                  type="email"
-                  placeholder="Your email address"
-                  className="w-full px-3 py-2 border rounded-md text-sm"
-                />
-                <Button className="w-full">Subscribe</Button>
-              </form>
-            </div>
-          </div>
-          <div className="border-t mt-12 pt-8 text-center text-muted-foreground">
-            <p>
-              &copy; {new Date().getFullYear()} Apartamentos Verde Mar. All
-              rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

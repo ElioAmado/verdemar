@@ -18,8 +18,10 @@ yarn-error.log*
 *.zip
 
 # env files
+.env.local
+*.env.local
 *.env
-#*.env.local
+
 
 # vercel
 .vercel
