@@ -99,6 +99,49 @@
     "phone": "+34 626 70 39 85",
     "email": "aptosverdemar@gmail.com"
   },
+  "gallery": {
+    "title": "Galería",
+    "subtitle": "Descubre la belleza de nuestros apartamentos y las impresionantes vistas que te esperan.",
+    "all": "Todos",
+    "rooms": "Habitaciones",
+    "amenities": "Servicios"
+  },
+  "contact": {
+    "title": "Contáctanos",
+    "subtitle": "Estamos aquí para ayudarte con cualquier pregunta o solicitud especial.",
+    "formTitle": "Ponte en contacto",
+    "firstName": "Nombre",
+    "firstNamePlaceholder": "Introduce tu nombre",
+    "lastName": "Apellido",
+    "lastNamePlaceholder": "Introduce tu apellido",
+    "email": "Correo electrónico",
+    "emailPlaceholder": "Introduce tu correo",
+    "phone": "Teléfono",
+    "phonePlaceholder": "Introduce tu teléfono",
+    "subject": "Asunto",
+    "subjectPlaceholder": "¿Sobre qué es tu mensaje?",
+    "message": "Mensaje",
+    "messagePlaceholder": "Proporciónanos detalles sobre tu consulta",
+    "send": "Enviar mensaje",
+    "infoTitle": "Información de contacto",
+    "address": "Dirección",
+    "locationTitle": "Nuestra ubicación",
+    "mapAlt": "Mapa de ubicación del hotel",
+    "hoursTitle": "Horario de atención",
+    "hours": {
+      "frontDesk": "Recepción",
+      "frontDeskHours": "24 horas, 7 días a la semana",
+      "concierge": "Conserjería",
+      "conciergeHours": "7:00 - 23:00",
+      "restaurant": "Restaurante Azure",
+      "restaurantHours": "6:30 - 22:30",
+      "lounge": "Skyline Lounge",
+      "loungeHours": "16:00 - 01:00",
+      "spa": "Spa & Bienestar",
+      "spaHours": "9:00 - 20:00"
+    }
+  },
+
   "calendar": {
     "monthNames": [
       "Enero",
