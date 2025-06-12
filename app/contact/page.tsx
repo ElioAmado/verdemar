@@ -10,14 +10,64 @@ import { Textarea } from '@/components/ui/textarea';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { SiteHeader } from '@/components/site-header';
 import { useLanguage } from '@/contexts/language-context';
+import { useEffect } from 'react';
+
+
+
+// Declare google as a global variable for TypeScript
+declare global {
+  interface Window {
+    google: typeof google;
+    initMap: () => void;
+  }
+  var google: any;
+}
 
 export default function ContactPage() {
   const { t } = useLanguage();
+  
+
+  const Mapa = () => {
+    useEffect(() => {
+        // Evitar múltiples inclusiones
+  const existingScript = document.querySelector(`script[src*="maps.googleapis.com/maps/api/js"]`);
+  if (existingScript) {
+    if (window.google) {
+      window.initMap(); // Ejecutar callback si ya está cargado
+    }
+    return;
+  }
+  
+      // Define global initMap callback
+      (window as any).initMap = function () {
+        const map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
+          center: { lat: 38.722110140342515, lng: 1.4594708860911132 }, // Coordenadas de ejemplo: Formentera
+          zoom: 15.5,
+        });
+
+        new google.maps.Marker({
+          position: { lat: 38.722110140342515, lng: 1.4594708860911132 }, 
+          map,
+          title: "Apartamentos Verde Mar",
+        });
+      };
+
+      const script = document.createElement("script");
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_API_KEY_MAP}&callback=initMap&libraries=maps,marker&v=beta`;
+      script.async = true;
+      document.body.appendChild(script);
+
+      return () => {
+        document.body.removeChild(script);
+        delete (window as any).initMap;
+      };
+    }, []);
+
+    return <div id="map" style={{ height: "400px", width: "100%" }} />;
+  };
 
   return (
     <div className="flex min-h-screen flex-col">
-      <script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE&callback=console.debug&libraries=maps,marker&v=beta">
-    </script>
       <SiteHeader />
       <main className="flex-1">
         <section className="bg-muted py-12">
@@ -98,7 +148,6 @@ export default function ContactPage() {
                       <div>
                         <h3 className="font-semibold">{t('contact.phone')}</h3>
                         <p className="text-muted-foreground">+34 626 70 39 85</p>
-                        <p className="text-muted-foreground">Reservations: +1 (123) 456-7891</p>
                       </div>
                     </div>
 
@@ -107,7 +156,6 @@ export default function ContactPage() {
                       <div>
                         <h3 className="font-semibold">{t('contact.email')}</h3>
                         <p className="text-muted-foreground">aptosverdemar@gmail.com</p>
-                        <p className="text-muted-foreground">reservations@luxstayhotel.com</p>
                       </div>
                     </div>
                   </div>
@@ -116,12 +164,7 @@ export default function ContactPage() {
                 <div>
                   <h2 className="text-2xl font-bold mb-6">{t('contact.locationTitle')}</h2>
                   <div className="aspect-video relative rounded-xl overflow-hidden border">
-                    <Image
-                      src="/placeholder.svg?height=400&width=600&text=Map"
-                      alt={t('contact.mapAlt')}
-                      fill
-                      className="object-cover"
-                    />
+                    <Mapa />
                   </div>
                 </div>
 
@@ -155,7 +198,216 @@ export default function ContactPage() {
           </div>
         </section>
 
-        {/* Aquí continúa la sección de FAQ que también puedes traducir de forma similar */}
+        <section className="py-12 bg-muted">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+              <div className="space-y-2">
+                <h2 className="text-3xl font-bold tracking-tighter">
+                  Frequently Asked Questions
+                </h2>
+                <p className="max-w-[700px] text-muted-foreground md:text-lg">
+                  Find quick answers to common questions about our hotel and
+                  services.
+                </p>
+              </div>
+            </div>
+
+            <Tabs defaultValue="general" className="w-full max-w-4xl mx-auto">
+              <div className="flex justify-center mb-8">
+                <TabsList className="grid grid-cols-2 md:grid-cols-4 w-full">
+                  <TabsTrigger value="general">General</TabsTrigger>
+                  <TabsTrigger value="reservations">Reservations</TabsTrigger>
+                  <TabsTrigger value="amenities">Amenities</TabsTrigger>
+                  <TabsTrigger value="policies">Policies</TabsTrigger>
+                </TabsList>
+              </div>
+
+              <TabsContent value="general" className="space-y-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>
+                      What are your check-in and check-out times?
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p>
+                      Check-in time is 3:00 PM and check-out time is 12:00 PM.
+                      Early check-in and late check-out may be available upon
+                      request, subject to availability and additional charges.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Is airport transportation available?</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p>
+                      Yes, we offer airport transportation services for our
+                      guests. Please contact our concierge at least 24 hours in
+                      advance to arrange pickup or drop-off.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Do you have parking facilities?</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p>
+                      Yes, we offer both self-parking and valet parking options.
+                      Self-parking is $25 per day, while valet parking is $35
+                      per day with unlimited in-and-out privileges.
+                    </p>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+
+              <TabsContent value="reservations" className="space-y-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>How can I make a reservation?</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p>
+                      Reservations can be made through our website, by calling
+                      our reservations line at +1 (123) 456-7891, or by emailing
+                      reservations@luxstayhotel.com.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>What is your cancellation policy?</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p>
+                      Our standard cancellation policy allows for free
+                      cancellation up to 48 hours before check-in. Cancellations
+                      made within 48 hours of arrival may be subject to a charge
+                      equivalent to one night's stay.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Do you require a deposit?</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p>
+                      A credit card is required to secure your reservation, but
+                      no charges will be made until check-in unless specified by
+                      a special rate or promotion.
+                    </p>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+
+              <TabsContent value="amenities" className="space-y-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Is Wi-Fi available?</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p>
+                      Yes, complimentary high-speed Wi-Fi is available
+                      throughout the hotel, including all guest rooms and public
+                      areas.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Do you have a fitness center?</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p>
+                      Yes, our state-of-the-art fitness center is open 24 hours
+                      a day and features modern cardio and strength training
+                      equipment, as well as daily fitness classes.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Is breakfast included with the room?</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p>
+                      Breakfast is included with some room rates. Please check
+                      your reservation details or contact our reservations team
+                      to add a breakfast package to your stay.
+                    </p>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+
+              <TabsContent value="policies" className="space-y-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Is the hotel pet-friendly?</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p>
+                      Yes, we welcome pets under 25 pounds with a non-refundable
+                      fee of $75 per stay. Please notify us in advance if you
+                      plan to bring a pet.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>What is your smoking policy?</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p>
+                      Apartamentos Verde Mar is a 100% non-smoking property.
+                      Smoking is not permitted in any guest rooms or public
+                      areas. A cleaning fee of $250 will be charged for smoking
+                      in non-designated areas.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Do you have accessible rooms?</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p>
+                      Yes, we offer ADA-compliant rooms with various
+                      accessibility features. Please specify your requirements
+                      when making a reservation to ensure we can accommodate
+                      your needs.
+                    </p>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+            </Tabs>
+          </div>
+        </section>
+
+        <section className="py-12">
+          <div className="container px-4 md:px-6 text-center">
+            <h2 className="text-3xl font-bold tracking-tighter mb-4">
+              Need Immediate Assistance?
+            </h2>
+            <p className="max-w-[700px] mx-auto text-muted-foreground md:text-lg mb-8">
+              Our dedicated team is available 24/7 to assist with urgent
+              inquiries.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" className="gap-2">
+                <Phone className="h-5 w-5" />
+                Call Now
+              </Button>
+              <Button size="lg" variant="outline" className="gap-2">
+                <Mail className="h-5 w-5" />
+                Email Us
+              </Button>
+            </div>
+          </div>
+        </section>
+
       </main>
     </div>
   );
