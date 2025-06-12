@@ -64,9 +64,9 @@ export default function RoomsPage() {
                 apartments.map((apartment) => (
                   <RoomCard
                     key={apartment.id}
-                    image="/placeholder.svg?height=400&width=600"
-                    title={`${t(`${apartment.apartmentType}`)}`}
-                    description={apartment.description}
+                    image={`/apartments/${apartment.id}/index.jpg`} // imagen por defecto, se puede mejorar
+                    title={`${t('rooms.apartmentnumber')} ${apartment.id}`}
+                    description={`${t(`${apartment.apartmentType}`)}`}
                     guests={apartment.capacity}
                     rating="4.8 (120 reviews)"
                     features={[

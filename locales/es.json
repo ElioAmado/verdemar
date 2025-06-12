@@ -36,8 +36,8 @@
       "pickDate": "Selecciona una fecha"
     },
     "amenities": {
-      "title": "Instalaciones Excepcionales",
-      "subtitle": "Disfruta de nuestras instalaciones de clase mundial diseñadas para hacer tu estancia inolvidable.",
+      "title": "Servicios del alojamiento",
+      "subtitle": "Descubre todas las comodidades que ofrecen nuestros apartamentos para que disfrutes de una estancia perfecta.",
       "safe": "Caja Fuerte",
       "safeDesc": "Mantén tus objetos de valor seguros en nuestras cajas fuertes en la habitación.",
       "AC": "Aire Acondicionado",
@@ -84,7 +84,8 @@
     "viewAll": "Ver Todos Los Apartamentos",
     "guests": "Huéspedes",
     "reviews": "reseñas",
-    "night": "/noche"
+    "night": "/noche",
+    "apartmentnumber": "Apartamento número"
   },
   "roomSelector": {
     "ONE_BEDROOM": "Apartamento de 1 dormitorio",
