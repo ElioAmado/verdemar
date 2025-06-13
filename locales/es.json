@@ -3,6 +3,7 @@
   "one_bedroom": "Apartamento de 2 dormitorios",
   "ONE_BEDROOM": "Apartamento de 1 dormitorio",
   "TWO_BEDROOM": "Apartamento de 2 dormitorios",
+
   "common": {
     "home": "Inicio",
     "rooms": "Habitaciones",
@@ -18,7 +19,11 @@
       "terms": "Términos",
       "privacy": "Privacidad",
       "contact": "Contacto"
-    }
+    },
+    "phone": "+34 626 703 985",
+    "phone_24h": "+34 900 123 456",
+    "email": "aptosverdemar@gmail.com"
+    
   },
   "home": {
     "hero": {
@@ -96,9 +101,7 @@
     "quickLinks": "Enlaces Rápidos",
     "contact": "Contacto",
     "description": "Disfruta de lujo y comodidad en el corazón de la ciudad.",
-    "address": "Camp D'es Pou 3877, Es Pujols ",
-    "phone": "+34 626 70 39 85",
-    "email": "aptosverdemar@gmail.com"
+    "address": "Camp D'es Pou 3877, Es Pujols "
   },
   "gallery": {
     "title": "Galería",

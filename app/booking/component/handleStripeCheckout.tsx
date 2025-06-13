@@ -1,22 +1,29 @@
-const handleStripeCheckout = async () => {
+const handleStripeCheckout = async (totalPrice: number, reservationId: string) => {
   try {
     const res = await fetch('http://localhost:8080/api/create-checkout-session', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        items: [{ id: 'product_001', quantity: 1 }],
+        amount: totalPrice,
+        reservationId: reservationId,
       }),
     });
 
+    if (!res.ok) {
+      throw new Error('Failed to create checkout session');
+    }
+
     const data = await res.json();
+
     if (data.url) {
       window.location.href = data.url; // Redirige al Checkout de Stripe
     } else {
-      alert('Failed to initiate payment session.');
+      alert('No URL returned from Stripe.');
     }
   } catch (error) {
     console.error('Error creating checkout session:', error);
-    alert('Payment failed. Please try again.');
+    alert('Error processing payment. Please try again.');
   }
 };
+
 export default handleStripeCheckout;

@@ -263,53 +263,6 @@ export default function BookingPage() {
                 </CardContent>
               </Card>
 
-              {/* Payment Info */}
-             <Card>
-  <CardHeader>
-    <CardTitle>Payment Information</CardTitle>
-    <CardDescription>Secure payment processing</CardDescription>
-  </CardHeader>
-  <CardContent className="space-y-6">
-    <RadioGroup defaultValue="card" className="space-y-4">
-      <div className="flex items-center space-x-2">
-        <RadioGroupItem value="card" id="card" />
-        <Label htmlFor="card" className="flex items-center gap-2">
-          <CreditCardIcon className="h-4 w-4" />
-          Credit/Debit Card
-        </Label>
-      </div>
-      <div className="flex items-center space-x-2">
-        <RadioGroupItem value="paypal" id="paypal" />
-        <Label htmlFor="paypal">PayPal</Label>
-      </div>
-    </RadioGroup>
-
-    <div className="grid grid-cols-1 gap-6">
-      <div className="space-y-2">
-        <Label htmlFor="card-number">Card Number</Label>
-        <Input id="card-number" placeholder="1234 5678 9012 3456" />
-      </div>
-
-      <div className="grid grid-cols-2 gap-6">
-        <div className="space-y-2">
-          <Label htmlFor="expiry">Expiry Date</Label>
-          <Input id="expiry" placeholder="MM/YY" />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="cvv">CVV</Label>
-          <Input id="cvv" placeholder="123" />
-        </div>
-      </div>
-
-      <div className="space-y-2">
-        <Label htmlFor="name-on-card">Name on Card</Label>
-        <Input id="name-on-card" placeholder="Name as on card" />
-      </div>
-    </div>
-
-  </CardContent>
-</Card>
-
 
               <Button className="w-full" size="lg" onClick={handleStripeCheckout}>
                 Confirm Booking

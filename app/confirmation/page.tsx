@@ -24,8 +24,10 @@ import { Separator } from "@/components/ui/separator"
 import { SiteHeader } from "@/components/site-header"
 import { Badge } from "@/components/ui/badge"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { useLanguage } from "@/contexts/language-context"
 
 export default function ConfirmationPage() {
+  const {t} = useLanguage()
   const [bookingDetails, setBookingDetails] = useState({
     id: "BK-" + Math.floor(10000 + Math.random() * 90000),
     apartment: {
@@ -244,18 +246,18 @@ export default function ConfirmationPage() {
                       <div className="font-medium">Atención al cliente</div>
                       <div className="flex items-center gap-2">
                         <PhoneIcon className="h-4 w-4 text-primary" />
-                        <span>+34 900 123 456</span>
+                        <span>{t("common.phone")}</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <MailIcon className="h-4 w-4 text-primary" />
-                        <span>reservas@ejemplo.com</span>
+                        <span>{t("common.email")}</span>
                       </div>
                     </div>
                     <div className="space-y-2">
                       <div className="font-medium">Emergencias 24/7</div>
                       <div className="flex items-center gap-2">
                         <PhoneIcon className="h-4 w-4 text-primary" />
-                        <span>+34 900 789 012</span>
+                        <span>{t("common.phone_24h")}</span>
                       </div>
                     </div>
                   </div>
