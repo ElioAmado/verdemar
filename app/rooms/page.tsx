@@ -68,14 +68,6 @@ export default function RoomsPage() {
                     title={`${t('rooms.apartmentnumber')} ${apartment.id}`}
                     description={`${t(`${apartment.apartmentType}`)}`}
                     guests={apartment.capacity}
-                    rating="4.8 (120 reviews)"
-                    features={[
-                      `${apartment.bedrooms} ${t('rooms.features.bedrooms')}`,
-                      `${apartment.floor}º ${t('rooms.features.floor')}`,
-                      t('rooms.features.wifi'),
-                      t('rooms.features.ac'),
-                      t('rooms.features.tv'),
-                    ]}
                     price={(apartment.capacity * 50).toFixed(0)} // ejemplo de precio
                   />
                 ))
@@ -93,8 +85,8 @@ interface RoomCardProps {
   title: string;
   description: string;
   guests: number;
-  rating: string;
-  features: string[];
+  rating?: string;
+  features?: string[];
   price: string;
 }
 
@@ -130,11 +122,11 @@ function RoomCard({
             <span>{guests} {t('rooms.guests')}</span>
           </div>
           <div className="flex items-center gap-2 text-sm">
-            <StarIcon className="h-4 w-4 fill-primary" />
+            {rating? <StarIcon className="h-4 w-4 fill-primary" /> : null}
             <span>{rating}</span>
           </div>
           <div className="grid grid-cols-2 gap-2 text-sm">
-            {features.map((f, i) => (
+            {features?.map((f, i) => (
               <div key={i}>• {f}</div>
             ))}
           </div>
@@ -145,7 +137,7 @@ function RoomCard({
         </div>
       </CardContent>
       <CardFooter>
-        <Button className="w-full">{t('rooms.book')}</Button>
+        <Button className="w-full">{t('common.bookNow')}</Button>
       </CardFooter>
     </Card>
   );

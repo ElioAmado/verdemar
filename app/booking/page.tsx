@@ -264,9 +264,20 @@ export default function BookingPage() {
               </Card>
 
 
-              <Button className="w-full" size="lg" onClick={handleStripeCheckout}>
-                Confirm Booking
-              </Button>
+              <Button
+  className="w-full"
+  size="lg"
+  onClick={() => {
+    if (booking?.totalPrice && booking?.id) {
+      handleStripeCheckout(booking.totalPrice, booking.id.toString());
+    } else {
+      alert("Booking is missing total price or ID.");
+    }
+  }}
+>
+  Confirm Booking
+</Button>
+
             </div>
 
             {/* Sidebar */}

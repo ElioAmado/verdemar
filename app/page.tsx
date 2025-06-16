@@ -112,7 +112,7 @@ export default function Home() {
                   <div className="flex items-center gap-2 text-sm">
                     <UsersIcon className="h-4 w-4" />
                     <span>
-                      {apt.capacity} {t('home.rooms.guests')}
+                      {apt.capacity} {t('common.guests')}
                     </span>
                   </div>
                 </CardContent>
@@ -125,7 +125,7 @@ export default function Home() {
 
           <div className="flex justify-center mt-12">
             <Button variant="outline" className="gap-2">
-              {t('home.rooms.viewAll')}
+              {t('common.viewAll')}
               <ChevronRightIcon className="h-4 w-4" />
             </Button>
           </div>
