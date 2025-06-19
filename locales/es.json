@@ -147,6 +147,19 @@
       "spaHours": "9:00 - 20:00"
     }
   },
+  "signIn": {
+    "title": "Iniciar Sesión",
+    "subtitle": "Accede a tu cuenta para gestionar tus reservas y preferencias.",
+    "email": "Correo electrónico",
+    "emailPlaceholder": "Introduce tu correo electrónico",
+    "password": "Contraseña",
+    "passwordPlaceholder": "Introduce tu contraseña",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "signInButton": "Iniciar Sesión",
+    "noAccount": "¿No tienes una cuenta?",
+    "registerLink": "Regístrate aquí",
+    "rememberMe": "Recuérdame"
+  },
 
   "calendar": {
     "monthNames": [
