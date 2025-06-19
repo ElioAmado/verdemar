@@ -43,11 +43,11 @@ export default function BookingPage() {
   const [loading, setLoading] = useState(true);
   const [guests, setGuests] = useState({ adults: 1, children: 0 });
   const [clientInfo, setClientInfo] = useState<Client>({
-  name: "",
-  lastName: "",
-  email: "",
-  phone: "",
-});
+    name: "",
+    lastName: "",
+    email: "",
+    phone: "",
+  });
 
 
   useEffect(() => {
@@ -77,28 +77,28 @@ export default function BookingPage() {
   }, []);
 
   const handleConfirmBooking = async () => {
-  try {
-    if (!booking) return;
+    try {
+      if (!booking) return;
 
-    // 1. Crear el cliente
-    const newClient = await createClient(clientInfo);
+      // 1. Crear el cliente
+      const newClient = await createClient(clientInfo);
 
-    // 2. Actualizar la reserva con el cliente y confirmar
-    const updatedBooking = {
-      ...booking,
-      status: "CONFIRMED",
-      apartmentId: booking.apartment?.id, // o booking.apartment si tu API lo acepta así
-      clientId: newClient.id, // o client: newClient si tu API lo acepta así
-    };
+      // 2. Actualizar la reserva con el cliente y confirmar
+      const updatedBooking = {
+        ...booking,
+        status: "CONFIRMED",
+        apartmentId: booking.apartment?.id, // o booking.apartment si tu API lo acepta así
+        clientId: newClient.id, // o client: newClient si tu API lo acepta así
+      };
 
-    await updateBooking(updatedBooking.id!, updatedBooking);
-    localStorage.removeItem("pendingBookingId");
-    router.push("/confirmation");
-  } catch (error) {
-    console.error("Error confirming booking:", error);
-    alert("There was a problem confirming your booking.");
-  }
-};
+      await updateBooking(updatedBooking.id!, updatedBooking);
+      localStorage.removeItem("pendingBookingId");
+      router.push("/confirmation");
+    } catch (error) {
+      console.error("Error confirming booking:", error);
+      alert("There was a problem confirming your booking.");
+    }
+  };
 
   if (loading) {
     return (
@@ -222,61 +222,60 @@ export default function BookingPage() {
                     <div className="space-y-2">
                       <Label htmlFor="first-name">First Name</Label>
                       <Input
-  id="first-name"
-  placeholder="Enter your first name"
-  value={clientInfo.name}
-  onChange={(e) => setClientInfo({ ...clientInfo, name: e.target.value })}
-/>
+                        id="first-name"
+                        placeholder="Enter your first name"
+                        value={clientInfo.name}
+                        onChange={(e) => setClientInfo({ ...clientInfo, name: e.target.value })}
+                      />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="last-name">Last Name</Label>
                       <Input
-  id="last-name"
-  placeholder="Enter your last name"
-  value={clientInfo.lastName}
-  onChange={(e) => setClientInfo({ ...clientInfo, lastName: e.target.value })}
-/>
+                        id="last-name"
+                        placeholder="Enter your last name"
+                        value={clientInfo.lastName}
+                        onChange={(e) => setClientInfo({ ...clientInfo, lastName: e.target.value })}
+                      />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="email">Email Address</Label>
-                     <Input
-  id="email"
-  type="email"
-  placeholder="Enter your email"
-  value={clientInfo.email}
-  onChange={(e) => setClientInfo({ ...clientInfo, email: e.target.value })}
-/>
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder="Enter your email"
+                        value={clientInfo.email}
+                        onChange={(e) => setClientInfo({ ...clientInfo, email: e.target.value })}
+                      />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="phone">Phone Number</Label>
                       <Input
-  id="phone"
-  placeholder="Enter your phone number"
-  value={clientInfo.phone}
-  onChange={(e) => setClientInfo({ ...clientInfo, phone: e.target.value })}
-/>
+                        id="phone"
+                        placeholder="Enter your phone number"
+                        value={clientInfo.phone}
+                        onChange={(e) => setClientInfo({ ...clientInfo, phone: e.target.value })}
+                      />
                     </div>
                   </div>
                 </CardContent>
               </Card>
 
-
               <Button
-  className="w-full"
-  size="lg"
-  onClick={() => {
-    if (booking?.totalPrice && booking?.id) {
-      handleStripeCheckout(booking.totalPrice, booking.id.toString());
-    } else {
-      alert("Booking is missing total price or ID.");
-    }
-  }}
->
-  Confirm Booking
-</Button>
+                className="w-full"
+                size="lg"
+                onClick={() => {
+                  if (booking?.totalPrice && booking?.id) {
+                    handleStripeCheckout(booking.totalPrice, booking.id.toString());
+                  } else {
+                    alert("Booking is missing total price or ID.");
+                  }
+                }}
+              >
+                Confirm Booking
+              </Button>
 
             </div>
 

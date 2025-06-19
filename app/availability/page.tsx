@@ -62,7 +62,7 @@ export default function AvailabilityPage() {
         <div className="container py-12">
           <Alert variant="destructive">
             <AlertCircle className="h-4 w-4" />
-            <AlertDescription>{error}</AlertDescription>
+            <AlertDescription>{error}</AlertDescription>*-
           </Alert>
           <Button onClick={handleGoBack} variant="outline" className="mt-4">
             <ArrowLeft className="h-4 w-4 mr-2" />

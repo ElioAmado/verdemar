@@ -8,6 +8,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { Separator } from "@/components/ui/separator"
 import { Users, Bed, Euro, MapPin, CheckCircle, XCircle } from "lucide-react"
 import type { ExtendedApartmentAvailability } from "@/types/availability"
+import { useLanguage } from "@/contexts/language-context"
 
 interface ApartmentCardProps {
   apartment: ExtendedApartmentAvailability
@@ -15,6 +16,7 @@ interface ApartmentCardProps {
 }
 
 export function ApartmentCard({ apartment, onReserve }: ApartmentCardProps) {
+  const { t } = useLanguage();
   const { apartment: apt, available, price, pricePerNight, loading: priceLoading, error: priceError } = apartment
 
   return (
@@ -43,7 +45,7 @@ export function ApartmentCard({ apartment, onReserve }: ApartmentCardProps) {
 
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center justify-between">
-          <span className="capitalize">{apt.apartmentType}</span>
+          <span className="capitalize">{t(apt.apartmentType)}</span>
           <div className="flex items-center gap-1 text-sm text-muted-foreground">
             <MapPin className="h-3 w-3" />
             Piso {apt.floor}
@@ -57,12 +59,6 @@ export function ApartmentCard({ apartment, onReserve }: ApartmentCardProps) {
           <div className="flex items-center gap-2">
             <Users className="h-4 w-4 text-muted-foreground" />
             <span>{apt.capacity} huéspedes</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Bed className="h-4 w-4 text-muted-foreground" />
-            <span>
-              {apt.bedrooms} habitación{apt.bedrooms !== 1 ? "es" : ""}
-            </span>
           </div>
         </div>
 
@@ -86,7 +82,6 @@ export function ApartmentCard({ apartment, onReserve }: ApartmentCardProps) {
                 <div className="text-sm text-muted-foreground">{pricePerNight.toFixed(2)} € por noche</div>
               )}
               <div className="flex items-center gap-2">
-                <Euro className="h-4 w-4 text-muted-foreground" />
                 <span className="text-lg font-bold">{price?.toFixed(2)} € total</span>
               </div>
             </>
