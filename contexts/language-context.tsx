@@ -11,18 +11,19 @@ import enTranslations from '@/locales/en.json';
 import esTranslations from '@/locales/es.json';
 import frTranslations from '@/locales/fr.json';
 
-type Language = {
+export type Language = {
   code: string;
   name: string;
   flag: string;
 };
 
 export const languages: Language[] = [
-  { code: 'en', name: 'English', flag: 'gb' },
   { code: 'es', name: 'Español', flag: 'es' },
+  { code: 'cat', name: 'Català', flag: '/flags/catala.svg' },
+  { code: 'it', name: 'Italiano', flag: 'it' },
+  { code: 'en', name: 'English', flag: 'gb' },
   { code: 'fr', name: 'Français', flag: 'fr' },
   { code: 'de', name: 'Deutsch', flag: 'de' },
-  { code: 'it', name: 'Italiano', flag: 'it' },
   { code: 'pt', name: 'Português', flag: 'pt' },
 ];
 
