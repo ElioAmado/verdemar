@@ -168,7 +168,7 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div>
+                {/* <div>
                   <h2 className="text-2xl font-bold mb-6">{t('contact.hoursTitle')}</h2>
                   <div className="space-y-2">
                     <div className="flex justify-between">
@@ -192,13 +192,13 @@ export default function ContactPage() {
                       <span className="text-muted-foreground">{t('contact.hours.spaHours')}</span>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
         </section>
 
-        <section className="py-12 bg-muted">
+        {/* <section className="py-12 bg-muted">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
               <div className="space-y-2">
@@ -384,9 +384,9 @@ export default function ContactPage() {
               </TabsContent>
             </Tabs>
           </div>
-        </section>
+        </section> */}
 
-        <section className="py-12">
+        {/* <section className="py-12">
           <div className="container px-4 md:px-6 text-center">
             <h2 className="text-3xl font-bold tracking-tighter mb-4">
               Need Immediate Assistance?
@@ -406,7 +406,7 @@ export default function ContactPage() {
               </Button>
             </div>
           </div>
-        </section>
+        </section> */}
 
       </main>
     </div>

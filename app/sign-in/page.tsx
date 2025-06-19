@@ -20,8 +20,10 @@ import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
+import { useLanguage } from '@/contexts/language-context';
 
 export default function SignInPage() {
+  const { t } = useLanguage();
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
@@ -85,10 +87,10 @@ export default function SignInPage() {
           <Card className="border shadow-lg">
             <CardHeader className="space-y-1">
               <CardTitle className="text-2xl font-bold text-center">
-                Welcome Back
+                {t('signIn.title')}
               </CardTitle>
               <CardDescription className="text-center">
-                Sign in to your account to access your bookings and preferences
+                {t('signIn.subtitle')}
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -99,7 +101,7 @@ export default function SignInPage() {
                     id="email"
                     name="email"
                     type="email"
-                    placeholder="john.doe@example.com"
+                    placeholder={t('signIn.emailPlaceholder')}
                     value={formData.email}
                     onChange={handleInputChange}
                     className={errors.email ? 'border-red-500' : ''}
@@ -111,12 +113,12 @@ export default function SignInPage() {
 
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <Label htmlFor="password">Password</Label>
+                    <Label htmlFor="password">{t("signIn.password")}</Label>
                     <Link
                       href="/forgot-password"
                       className="text-sm text-primary underline hover:text-primary/90"
                     >
-                      Forgot password?
+                      {t('signIn.forgotPassword')}
                     </Link>
                   </div>
                   <div className="relative">
@@ -169,7 +171,7 @@ export default function SignInPage() {
                     htmlFor="remember"
                     className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                   >
-                    Remember me
+                    {t('signIn.rememberMe')}
                   </label>
                 </div>
 
@@ -182,61 +184,11 @@ export default function SignInPage() {
                 <div className="absolute inset-0 flex items-center">
                   <div className="w-full border-t"></div>
                 </div>
-                <div className="relative flex justify-center text-xs uppercase">
-                  <span className="bg-background px-2 text-muted-foreground">
-                    Or continue with
-                  </span>
-                </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <Button variant="outline" className="w-full">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="mr-2 h-4 w-4"
-                  >
-                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                  </svg>
-                  Facebook
-                </Button>
-                <Button variant="outline" className="w-full">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="mr-2 h-4 w-4"
-                  >
-                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
-                  </svg>
-                  Google
-                </Button>
               </div>
             </CardContent>
-            <CardFooter className="flex flex-col space-y-4">
-              <div className="text-center text-sm">
-                Don't have an account?{' '}
-                <Link
-                  href="/sign-up"
-                  className="text-primary underline hover:text-primary/90"
-                >
-                  Sign up
-                </Link>
-              </div>
-            </CardFooter>
           </Card>
         </div>
       </main>
