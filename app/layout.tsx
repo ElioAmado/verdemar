@@ -10,9 +10,6 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
   title: 'Apartamentos Verde Mar',
-  description:
-    'Experience luxury and comfort at Apartamentos Verde Mar. Book your perfect stay today.',
-  generator: 'v0.dev',
   icons: {
     icon: '/logo.png',
   }
