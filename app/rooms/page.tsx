@@ -20,6 +20,7 @@ import RoomsSearch from '@/components/rooms-search';
 
 import { useLanguage } from '@/contexts/language-context';
 import { Apartment, getAllApartments } from '@/api/apartment';
+import { SiteFooter } from '@/components/site-footer';
 
 export default function RoomsPage() {
   const { t } = useLanguage();
@@ -76,6 +77,7 @@ export default function RoomsPage() {
           </div>
         </section>
       </main>
+      <SiteFooter />
     </div>
   );
 }

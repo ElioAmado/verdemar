@@ -3,11 +3,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import {
   ArrowLeftIcon,
-  CalendarIcon,
-  CreditCardIcon,
-  MapPinIcon,
   StarIcon,
   UsersIcon,
 } from "lucide-react";
@@ -21,18 +19,15 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { DatePickerWithRange } from "@/components/date-range-picker";
-import { GuestCounter } from "@/components/guest-counter";
-import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Separator } from "@/components/ui/separator";
 import { SiteHeader } from "@/components/site-header";
 
 import { getBookingById, Booking, updateBooking } from "@/api/booking";
+import { createClient, Client } from "@/api/client";
+import { Apartment } from "@/api/apartment";
 import { useLanguage } from "@/contexts/language-context";
-import { useRouter } from "next/navigation";
-import { Client, createClient } from "@/api/client";
 import handleStripeCheckout from "./component/handleStripeCheckout";
 
 export default function BookingPage() {
@@ -41,7 +36,6 @@ export default function BookingPage() {
 
   const [booking, setBooking] = useState<Booking | null>(null);
   const [loading, setLoading] = useState(true);
-  const [guests, setGuests] = useState({ adults: 1, children: 0 });
   const [clientInfo, setClientInfo] = useState<Client>({
     name: "",
     lastName: "",
@@ -49,20 +43,13 @@ export default function BookingPage() {
     phone: "",
   });
 
-
   useEffect(() => {
     async function fetchBooking() {
       const storedId = localStorage.getItem("pendingBookingId");
-      if (!storedId) {
-        setLoading(false);
-        return;
-      }
+      if (!storedId) return setLoading(false);
 
       const id = Number(storedId);
-      if (isNaN(id)) {
-        setLoading(false);
-        return;
-      }
+      if (isNaN(id)) return setLoading(false);
 
       try {
         const bookingData = await getBookingById(id);
@@ -80,15 +67,13 @@ export default function BookingPage() {
     try {
       if (!booking) return;
 
-      // 1. Crear el cliente
       const newClient = await createClient(clientInfo);
 
-      // 2. Actualizar la reserva con el cliente y confirmar
-      const updatedBooking = {
+      const updatedBooking: Booking = {
         ...booking,
         status: "CONFIRMED",
-        apartmentId: booking.apartment?.id, // o booking.apartment si tu API lo acepta así
-        clientId: newClient.id, // o client: newClient si tu API lo acepta así
+        apartmentId: booking.apartment?.id,
+        clientId: newClient.id,
       };
 
       await updateBooking(updatedBooking.id!, updatedBooking);
@@ -96,52 +81,34 @@ export default function BookingPage() {
       router.push("/confirmation");
     } catch (error) {
       console.error("Error confirming booking:", error);
-      alert("There was a problem confirming your booking.");
+      alert(t("booking.error"));
     }
   };
 
   if (loading) {
     return (
       <div className="text-center mt-20 text-muted-foreground">
-        Loading booking...
+        {t("booking.loading")}
       </div>
     );
   }
 
-  if (!booking) {
+  if (!booking || !booking.apartment) {
     return (
       <div className="text-center mt-20 text-destructive">
-        Booking not found.
+        {t("booking.not_found")}
       </div>
     );
   }
 
-  if (!booking.apartment) {
-    return (
-      <div className="text-center mt-20 text-destructive">
-        Apartment details not found for booking.
-      </div>
-    );
-  }
+  const apartment: Apartment = booking.apartment;
 
-  const apt = booking.apartment;
   const roomDetails = {
-    id: apt.id ?? 0,
-    name: "Apartamento " + apt.id,
-    description: "Spacious accommodation with separate living area",
-    price: 299,
-    image: `/apartments/${apt.id}/index.jpg`,
-    capacity: 3,
-    rating: 4.9,
-    reviews: 85,
-    features: [
-      "King-size bed",
-      "55 m²",
-      "Ocean view",
-      "Free WiFi",
-      "Living room",
-      "Mini bar",
-    ],
+    name: `${t("rooms.apartmentnumber")} ${apartment.id}`,
+    description: apartment.description,
+    price: booking.totalPrice ?? 0,
+    image: `/apartments/${apartment.id}/index.jpg`,
+    capacity: apartment.capacity,
   };
 
   return (
@@ -155,7 +122,7 @@ export default function BookingPage() {
               className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary"
             >
               <ArrowLeftIcon className="h-4 w-4" />
-              Back to Rooms
+              {t("booking.back")}
             </Link>
           </div>
 
@@ -173,15 +140,13 @@ export default function BookingPage() {
               {/* Stay Details */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Your Stay Details</CardTitle>
-                  <CardDescription>
-                    Confirm your dates and guest information
-                  </CardDescription>
+                  <CardTitle>{t("booking.stay_title")}</CardTitle>
+                  <CardDescription>{t("booking.stay_description")}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <Label>Check-in / Check-out</Label>
+                      <Label>{t("booking.dates")}</Label>
                       <DatePickerWithRange
                         readOnly
                         initialRange={{
@@ -192,20 +157,22 @@ export default function BookingPage() {
                     </div>
 
                     <div className="space-y-1">
-                      <Label className="text-sm text-muted-foreground">Guests</Label>
+                      <Label className="text-sm text-muted-foreground">
+                        {t("booking.guests")}
+                      </Label>
                       <div className="flex items-center gap-2 text-base font-medium">
                         <UsersIcon className="h-4 w-4 text-primary" />
-                        <span>{booking?.guests}</span>
+                        <span>{booking.guests}</span>
                       </div>
                     </div>
                   </div>
 
                   <div>
-                    <Label>Special Requests (Optional)</Label>
+                    <Label>{t("booking.notes")}</Label>
                     <textarea
-                      className="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 mt-2"
-                      placeholder="Let us know if you have any special requests or requirements"
-                      defaultValue={booking?.notes || ""}
+                      className="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm mt-2"
+                      placeholder={t("booking.notes_placeholder")}
+                      defaultValue={booking.notes || ""}
                     />
                   </div>
                 </CardContent>
@@ -214,49 +181,57 @@ export default function BookingPage() {
               {/* Guest Information */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Guest Information</CardTitle>
-                  <CardDescription>Enter your personal details</CardDescription>
+                  <CardTitle>{t("booking.guest_title")}</CardTitle>
+                  <CardDescription>{t("booking.guest_description")}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <Label htmlFor="first-name">First Name</Label>
+                      <Label htmlFor="first-name">{t("form.first_name")}</Label>
                       <Input
                         id="first-name"
-                        placeholder="Enter your first name"
                         value={clientInfo.name}
-                        onChange={(e) => setClientInfo({ ...clientInfo, name: e.target.value })}
+                        onChange={(e) =>
+                          setClientInfo({ ...clientInfo, name: e.target.value })
+                        }
+                        placeholder={t("form.first_name_placeholder")}
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="last-name">Last Name</Label>
+                      <Label htmlFor="last-name">{t("form.last_name")}</Label>
                       <Input
                         id="last-name"
-                        placeholder="Enter your last name"
                         value={clientInfo.lastName}
-                        onChange={(e) => setClientInfo({ ...clientInfo, lastName: e.target.value })}
+                        onChange={(e) =>
+                          setClientInfo({ ...clientInfo, lastName: e.target.value })
+                        }
+                        placeholder={t("form.last_name_placeholder")}
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <Label htmlFor="email">Email Address</Label>
+                      <Label htmlFor="email">{t("form.email")}</Label>
                       <Input
                         id="email"
                         type="email"
-                        placeholder="Enter your email"
                         value={clientInfo.email}
-                        onChange={(e) => setClientInfo({ ...clientInfo, email: e.target.value })}
+                        onChange={(e) =>
+                          setClientInfo({ ...clientInfo, email: e.target.value })
+                        }
+                        placeholder={t("form.email_placeholder")}
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="phone">Phone Number</Label>
+                      <Label htmlFor="phone">{t("form.phone")}</Label>
                       <Input
                         id="phone"
-                        placeholder="Enter your phone number"
                         value={clientInfo.phone}
-                        onChange={(e) => setClientInfo({ ...clientInfo, phone: e.target.value })}
+                        onChange={(e) =>
+                          setClientInfo({ ...clientInfo, phone: e.target.value })
+                        }
+                        placeholder={t("form.phone_placeholder")}
                       />
                     </div>
                   </div>
@@ -270,13 +245,12 @@ export default function BookingPage() {
                   if (booking?.totalPrice && booking?.id) {
                     handleStripeCheckout(booking.totalPrice, booking.id.toString());
                   } else {
-                    alert("Booking is missing total price or ID.");
+                    alert(t("booking.missing_info"));
                   }
                 }}
               >
-                Confirm Booking
+                {t("booking.confirm")}
               </Button>
-
             </div>
 
             {/* Sidebar */}
@@ -297,24 +271,10 @@ export default function BookingPage() {
                     </p>
                   </div>
 
-                  <div className="flex items-center gap-2 text-muted-foreground text-sm">
-                    <StarIcon className="h-4 w-4 text-yellow-400" />
-                    <span>
-                      {roomDetails.rating} ({roomDetails.reviews} reviews)
-                    </span>
-                  </div>
-
                   <div className="text-lg font-semibold">
-                    ${booking?.totalPrice ?? roomDetails.price} total
+                    ${roomDetails.price} {t("common.total")}
                   </div>
 
-                  <Separator />
-
-                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                    {roomDetails.features.map((feature) => (
-                      <li key={feature}>{feature}</li>
-                    ))}
-                  </ul>
                 </CardContent>
               </Card>
             </aside>

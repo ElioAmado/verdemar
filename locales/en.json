@@ -1,8 +1,9 @@
 {
-  "two_bedroom": "Two-Bedroom Apartment",
-  "one_bedroom": "One-Bedroom Apartment",
-  "ONE_BEDROOM": "One-Bedroom Apartment",
-  "TWO_BEDROOM": "Two-Bedroom Apartment",
+  "two_bedroom": "1-Bedroom Apartment",
+  "one_bedroom": "2-Bedroom Apartment",
+  "ONE_BEDROOM": "1-Bedroom Apartment",
+  "TWO_BEDROOM": "2-Bedroom Apartment",
+
   "common": {
     "home": "Home",
     "rooms": "Rooms",
@@ -13,12 +14,18 @@
     "signIn": "Sign In",
     "bookNow": "Book Now",
     "apartaments": "Apartments",
+    "guests": "Guests",
+    "viewAll": "View All Apartments",
+    "total": "Total",
     "footer": {
       "copyright": "© 2025 Verde Mar Apartments. All rights reserved.",
       "terms": "Terms",
       "privacy": "Privacy",
       "contact": "Contact"
-    }
+    },
+    "phone": "+34 626 703 985",
+    "phone_24h": "+34 900 123 456",
+    "email": "aptosverdemar@gmail.com"
   },
   "home": {
     "hero": {
@@ -27,35 +34,35 @@
       "cta": "Book Your Stay"
     },
     "search": {
-      "checkIn": "Check-in / Check-out",
+      "checkIn": "Check-In / Check-Out",
       "roomType": "Apartment Type",
       "guests": "Guests",
       "adults": "Adults",
       "children": "Children",
-      "search": "Search Availability",
+      "search": "Check Availability",
       "pickDate": "Select a date"
     },
     "amenities": {
-      "title": "Exceptional Facilities",
-      "subtitle": "Enjoy our world-class amenities designed to make your stay unforgettable.",
-      "safe": "Safe Box",
-      "safeDesc": "Keep your valuables secure with our in-room safes.",
+      "title": "Accommodation Amenities",
+      "subtitle": "Discover all the comforts our apartments offer for a perfect stay.",
+      "safe": "Safe",
+      "safeDesc": "Keep your valuables secure with in-room safes.",
       "AC": "Air Conditioning",
-      "ACDesc": "Enjoy a cool and comfortable environment during your stay.",
+      "ACDesc": "Enjoy a cool and comfortable atmosphere during your stay.",
       "parking": "Parking",
       "parkingDesc": "Private parking spaces available for our guests.",
       "kitchen": "Equipped Kitchen",
-      "kitchenDesc": "All apartments feature fully equipped kitchens for your convenience."
+      "kitchenDesc": "All apartments come with a fully equipped kitchen for your convenience."
     },
     "location": {
       "title": "Prime Location",
-      "subtitle": "Located in the heart of the city, with easy access to major attractions and business districts.",
+      "subtitle": "Located in the heart of the city, with easy access to top attractions and business districts.",
       "airport": "From the Airport",
-      "airportDesc": "Just 20 minutes by car from the International Airport. Shuttle service available.",
+      "airportDesc": "Only 20 minutes by car from the International Airport. Shuttle service available.",
       "transport": "Public Transport",
-      "transportDesc": "A 5-minute walk from Central Station with connections to all city lines.",
+      "transportDesc": "Just a 5-minute walk from the Central Station with connections to all city lines.",
       "attractions": "Nearby Attractions",
-      "attractionsDesc": "Walking distance to museums, shopping areas, and historic landmarks."
+      "attractionsDesc": "Within walking distance of museums, shopping areas, and historic landmarks."
     },
     "testimonials": {
       "title": "What Our Guests Say",
@@ -66,13 +73,13 @@
       "subtitle": "Take advantage of our special offers and packages designed to enhance your stay and provide exceptional value.",
       "breakfast": "Complimentary breakfast for two",
       "spa": "Spa credit included",
-      "checkout": "Late check-out upon availability",
+      "checkout": "Late checkout subject to availability",
       "transfer": "Free airport transfer",
       "cta": "View Special Offers"
     },
     "cta": {
       "title": "Ready to Experience Luxury?",
-      "subtitle": "Book your stay today and enjoy exclusive benefits when you book directly with us.",
+      "subtitle": "Book your stay today and enjoy exclusive benefits when booking directly with us.",
       "bookNow": "Book Now",
       "contactUs": "Contact Us"
     }
@@ -80,24 +87,112 @@
   "rooms": {
     "littleMsg": "Our Apartments",
     "title": "Apartments",
-    "subtitle": "Choose from a carefully selected range of apartments designed for your comfort and relaxation.",
+    "subtitle": "Choose from a carefully curated selection of apartments designed for your comfort and relaxation.",
     "viewAll": "View All Apartments",
     "guests": "Guests",
     "reviews": "reviews",
-    "night": "/night"
+    "night": "/night",
+    "apartmentnumber": "Apartment Number"
   },
   "roomSelector": {
-    "ONE_BEDROOM": "One-Bedroom Apartment",
-    "TWO_BEDROOM": "Two-Bedroom Apartment",
-    "selectRoom": "Select your apartment"
+    "ONE_BEDROOM": "1-Bedroom Apartment",
+    "TWO_BEDROOM": "2-Bedroom Apartment",
+    "selectRoom": "Select Your Apartment"
   },
   "footer": {
     "quickLinks": "Quick Links",
     "contact": "Contact",
     "description": "Enjoy luxury and comfort in the heart of the city.",
-    "address": "Camp D'es Pou 3877, Es Pujols",
-    "phone": "+34 626 70 39 85",
-    "email": "aptosverdemar@gmail.com"
+    "address": "Camp D'es Pou 3877, Es Pujols"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "subtitle": "Discover the beauty of our apartments and the breathtaking views that await you.",
+    "all": "All",
+    "rooms": "Rooms",
+    "amenities": "Amenities"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We’re here to help with any questions or special requests.",
+    "formTitle": "Get in Touch",
+    "firstName": "First Name",
+    "firstNamePlaceholder": "Enter your first name",
+    "lastName": "Last Name",
+    "lastNamePlaceholder": "Enter your last name",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "phone": "Phone",
+    "phonePlaceholder": "Enter your phone number",
+    "subject": "Subject",
+    "subjectPlaceholder": "What is your message about?",
+    "message": "Message",
+    "messagePlaceholder": "Provide details about your inquiry",
+    "send": "Send Message",
+    "infoTitle": "Contact Information",
+    "address": "Address",
+    "locationTitle": "Our Location",
+    "mapAlt": "Hotel location map",
+    "hoursTitle": "Opening Hours",
+    "hours": {
+      "frontDesk": "Front Desk",
+      "frontDeskHours": "24 hours, 7 days a week",
+      "concierge": "Concierge",
+      "conciergeHours": "7:00 AM - 11:00 PM",
+      "restaurant": "Azure Restaurant",
+      "restaurantHours": "6:30 AM - 10:30 PM",
+      "lounge": "Skyline Lounge",
+      "loungeHours": "4:00 PM - 1:00 AM",
+      "spa": "Spa & Wellness",
+      "spaHours": "9:00 AM - 8:00 PM"
+    }
+  },
+  "signIn": {
+    "title": "Sign In",
+    "subtitle": "Access your account to manage your bookings and preferences.",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email address",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "forgotPassword": "Forgot your password?",
+    "signInButton": "Sign In",
+    "noAccount": "Don't have an account?",
+    "registerLink": "Register here",
+    "rememberMe": "Remember me"
+  },
+  "booking": {
+    "title": "Book Your Stay",
+    "subtitle": "Complete your booking to secure your apartment.",
+    "checkIn": "Check-In",
+    "checkOut": "Check-Out",
+    "guests": "Guests",
+    "roomType": "Apartment Type",
+    "totalPrice": "Total Price",
+    "bookNow": "Book Now",
+    "back": "Back",
+    "confirm": "Confirm Booking",
+    "payment": "Payment Information",
+    "paymentMethod": "Payment Method",
+    "stay_title": "Your Stay Details",
+    "stay_description": "Confirm your dates and number of guests",
+    "dates": "Booking Dates",
+    "notes": "Special Notes (Optional)",
+    "notes_placeholder": "Do you have any special requests?",
+    "guest_title": "Guest Information",
+    "guest_description": "Provide the details of the guests staying"
+    ,
+    "cancel": "Cancel"
+  },
+  "form": {
+    "first_name": "First Name",
+    "first_name_placeholder": "Enter your first name",
+    "last_name": "Last Name",
+    "last_name_placeholder": "Enter your last name",
+    "email": "Email",
+    "email_placeholder": "Enter your email",
+    "phone": "Phone",
+    "phone_placeholder": "Enter your phone number",
+    "submit": "Submit"
   },
   "calendar": {
     "monthNames": [
@@ -123,36 +218,5 @@
       "Friday",
       "Saturday"
     ]
-  },
-  "booking": {
-    "title": "Complete Your Booking",
-    "subtitle": "Please fill in your details to confirm your reservation.",
-    "backToRooms": "Back to Rooms",
-    "yourStayDetails": "Your Stay Details",
-    "confirmDetails": "Confirm your dates and guest information",
-    "checkInOut": "Check-in / Check-out",
-    "guests": "Guests",
-    "specialRequests": "Special Requests (Optional)",
-    "guestInfo": "Guest Information",
-    "enterPersonalDetails": "Enter your personal details",
-    "paymentInfo": "Payment Information",
-    "securePayment": "Secure payment processing",
-    "confirmBooking": "Confirm Booking"
-  },
-  "form": {
-    "firstName": "First Name",
-    "lastName": "Last Name",
-    "email": "Email Address",
-    "phone": "Phone Number",
-    "address": "Address",
-    "city": "City",
-    "state": "State/Province",
-    "zip": "Zip/Postal Code",
-    "country": "Country",
-    "cardNumber": "Card Number",
-    "expiry": "Expiry Date",
-    "cvv": "CVV",
-    "nameOnCard": "Name on Card"
   }
-
 }

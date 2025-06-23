@@ -10,6 +10,10 @@ import {
 import enTranslations from '@/locales/en.json';
 import esTranslations from '@/locales/es.json';
 import frTranslations from '@/locales/fr.json';
+import itTranslations from '@/locales/it.json';
+import ptTranslations from '@/locales/pt.json';
+import catTranslations from '@/locales/cat.json';
+import deTranslations from '@/locales/de.json';
 
 export type Language = {
   code: string;
@@ -32,12 +36,10 @@ const translations: Record<string, any> = {
   en: enTranslations,
   es: esTranslations,
   fr: frTranslations,
-  // For other languages, we'll fallback to English for now
-  // de: enTranslations,
-  // zh: enTranslations,
-  // ja: enTranslations,
-  // ar: enTranslations,
-  // ru: enTranslations,
+  it: itTranslations,
+  pt: ptTranslations,
+  cat: catTranslations,
+  de: deTranslations,
 };
 
 type LanguageContextType = {

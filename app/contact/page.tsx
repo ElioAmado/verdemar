@@ -11,6 +11,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { SiteHeader } from '@/components/site-header';
 import { useLanguage } from '@/contexts/language-context';
 import { useEffect } from 'react';
+import { SiteFooter } from '@/components/site-footer';
 
 
 
@@ -409,6 +410,7 @@ export default function ContactPage() {
         </section> */}
 
       </main>
+      <SiteFooter />
     </div>
   );
 }

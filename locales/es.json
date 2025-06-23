@@ -16,6 +16,7 @@
     "apartaments": "Apartamentos",
     "guests": "Huéspedes",
     "viewAll": "Ver Todos Los Apartamentos",
+    "total" : "Total",
     "footer": {
       "copyright": "© 2025 Apartamentos Verde Mar. Todos los derechos reservados.",
       "terms": "Términos",
@@ -159,6 +160,40 @@
     "noAccount": "¿No tienes una cuenta?",
     "registerLink": "Regístrate aquí",
     "rememberMe": "Recuérdame"
+  },
+  "booking": {
+    "title": "Reserva tu Estancia",
+    "subtitle": "Completa tu reserva para asegurar tu apartamento.",
+    "checkIn": "Entrada",
+    "checkOut": "Salida",
+    "guests": "Huéspedes",
+    "roomType": "Tipo de Apartamento",
+    "totalPrice": "Precio Total",
+    "bookNow": "Reservar Ahora",
+    "back": "Volver",
+    "confirm": "Confirmar Reserva",
+    "payment": "Información de Pago",
+    "paymentMethod": "Método de Pago",
+    "stay_title": "Detalles de tu estancia",
+    "stay_description": "Confirma tus fechas y número de huéspedes",
+    "dates": "Fechas de Reserva",
+    "notes": "Notas Especiales (Opcional)",
+    "notes_placeholder": "¿Tienes alguna solicitud especial?",
+    "guest_title": "Información del Huésped",
+    "guest_description": "Proporciona los detalles de los huéspedes que se alojarán",	
+
+    "cancel": "Cancelar"
+  },
+  "form": {
+    "first_name": "Nombre",
+    "first_name_placeholder": "Introduce tu nombre",
+    "last_name": "Apellido",
+    "last_name_placeholder": "Introduce tu apellido",
+    "email": "Correo electrónico",
+    "email_placeholder": "Introduce tu correo electrónico",
+    "phone": "Teléfono",
+    "phone_placeholder": "Introduce tu número de teléfono",
+    "submit": "Enviar"
   },
 
   "calendar": {

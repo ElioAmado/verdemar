@@ -1,99 +1,221 @@
 {
+  "two_bedroom": "Appartement 1 chambre",
+  "one_bedroom": "Appartement 2 chambres",
+  "ONE_BEDROOM": "Appartement 1 chambre",
+  "TWO_BEDROOM": "Appartement 2 chambres",
+
   "common": {
     "home": "Accueil",
     "rooms": "Chambres",
-    "amenities": "Services",
+    "amenities": "Équipements",
     "gallery": "Galerie",
-    "about": "À Propos",
+    "about": "À propos",
     "contact": "Contact",
-    "signIn": "Connexion",
-    "bookNow": "Réserver",
+    "signIn": "Se connecter",
+    "bookNow": "Réservez maintenant",
+    "apartaments": "Appartements",
+    "guests": "Invités",
+    "viewAll": "Voir tous les appartements",
+    "total": "Total",
     "footer": {
-      "copyright": "© {year} Apartamentos Verde Mar. Tous droits réservés.",
+      "copyright": "© 2025 Appartements Verde Mar. Tous droits réservés.",
       "terms": "Conditions",
       "privacy": "Confidentialité",
       "contact": "Contact"
-    }
+    },
+    "phone": "+34 626 703 985",
+    "phone_24h": "+34 900 123 456",
+    "email": "aptosverdemar@gmail.com"
   },
   "home": {
     "hero": {
-      "title": "Découvrez le Luxe et le Confort",
-      "subtitle": "Découvrez le mélange parfait d'élégance et de détente à l'hôtel LuxStay",
-      "cta": "Réservez Votre Séjour"
+      "title": "Bienvenue chez vous à Formentera",
+      "subtitle": "Appartements de luxe en bord de mer pour une escapade inoubliable.",
+      "cta": "Réservez votre séjour"
     },
     "search": {
       "checkIn": "Arrivée / Départ",
-      "roomType": "Type de Chambre",
+      "roomType": "Type d’appartement",
       "guests": "Invités",
-      "search": "Rechercher Disponibilité",
-      "pickDate": "Choisir une date"
-    },
-    "rooms": {
-      "title": "Chambres et Suites Luxueuses",
-      "subtitle": "Choisissez parmi notre sélection de chambres et suites élégamment conçues, chacune offrant des équipements uniques et des vues impressionnantes.",
-      "viewAll": "Voir Toutes les Chambres",
-      "guests": "Invités",
-      "reviews": "avis",
-      "night": "/nuit"
+      "adults": "Adultes",
+      "children": "Enfants",
+      "search": "Vérifier disponibilité",
+      "pickDate": "Sélectionnez une date"
     },
     "amenities": {
-      "title": "Installations Exceptionnelles",
-      "subtitle": "Profitez de nos installations de classe mondiale conçues pour rendre votre séjour inoubliable.",
-      "spa": "Spa Bien-être",
-      "spaDesc": "Détendez-vous et rajeunissez avec nos soins spa premium.",
-      "pool": "Piscine à Débordement",
-      "poolDesc": "Nagez avec vue dans notre magnifique piscine à débordement.",
-      "dining": "Gastronomie Raffinée",
-      "diningDesc": "Découvrez l'excellence culinaire dans nos restaurants gastronomiques.",
-      "service": "Service 24/7",
-      "serviceDesc": "Conciergerie et service en chambre 24h/24 pour votre confort."
+      "title": "Équipements de l’hébergement",
+      "subtitle": "Découvrez tout le confort que nos appartements offrent pour un séjour parfait.",
+      "safe": "Coffre-fort",
+      "safeDesc": "Gardez vos objets de valeur en sécurité dans les coffres-forts de la chambre.",
+      "AC": "Climatisation",
+      "ACDesc": "Profitez d’un environnement frais et confortable pendant votre séjour.",
+      "parking": "Parking",
+      "parkingDesc": "Places de parking privées disponibles pour nos clients.",
+      "kitchen": "Cuisine équipée",
+      "kitchenDesc": "Tous les appartements disposent d’une cuisine entièrement équipée pour votre confort."
     },
     "location": {
-      "title": "Emplacement Privilégié",
-      "subtitle": "Situé au cœur de la ville, avec un accès facile aux principales attractions et aux quartiers d'affaires.",
-      "airport": "Depuis l'Aéroport",
-      "airportDesc": "À seulement 20 minutes en voiture de l'aéroport international. Navette aéroport disponible.",
-      "transport": "Transport Public",
-      "transportDesc": "À 5 minutes à pied de la gare centrale avec des connexions vers toutes les lignes de la ville.",
-      "attractions": "Attractions à Proximité",
-      "attractionsDesc": "À distance de marche des musées, des quartiers commerçants et des monuments historiques."
+      "title": "Emplacement de choix",
+      "subtitle": "Situé en plein cœur de la ville, avec un accès facile aux principales attractions et quartiers d’affaires.",
+      "airport": "Depuis l’aéroport",
+      "airportDesc": "À seulement 20 minutes en voiture de l’aéroport international. Service de navette disponible.",
+      "transport": "Transports en commun",
+      "transportDesc": "À 5 minutes à pied de la gare centrale, avec des liaisons vers toutes les lignes de la ville.",
+      "attractions": "Attractions à proximité",
+      "attractionsDesc": "À distance de marche des musées, zones commerçantes et monuments historiques."
     },
     "testimonials": {
-      "title": "Ce que Disent Nos Clients",
-      "subtitle": "Lisez les expériences de nos précieux clients du monde entier."
+      "title": "Ce que disent nos clients",
+      "subtitle": "Découvrez les expériences de nos précieux clients venus du monde entier."
     },
     "offers": {
-      "title": "Forfaits Exclusifs",
+      "title": "Forfaits exclusifs",
       "subtitle": "Profitez de nos offres spéciales et forfaits conçus pour améliorer votre séjour et offrir une valeur exceptionnelle.",
-      "breakfast": "Petit-déjeuner offert pour deux",
+      "breakfast": "Petit déjeuner offert pour deux",
       "spa": "Crédit spa inclus",
       "checkout": "Départ tardif selon disponibilité",
-      "transfer": "Transfert aéroport gratuit",
-      "cta": "Voir les Offres Spéciales"
+      "transfer": "Transfert gratuit depuis l’aéroport",
+      "cta": "Voir les offres spéciales"
     },
     "cta": {
-      "title": "Prêt à Vivre le Luxe?",
-      "subtitle": "Réservez votre séjour aujourd'hui et profitez d'avantages exclusifs lorsque vous réservez directement avec nous.",
-      "bookNow": "Réserver Maintenant",
-      "contactUs": "Contactez-Nous"
+      "title": "Prêt à découvrir le luxe ?",
+      "subtitle": "Réservez dès aujourd’hui et bénéficiez d’avantages exclusifs en réservant directement avec nous.",
+      "bookNow": "Réservez maintenant",
+      "contactUs": "Contactez-nous"
     }
   },
+  "rooms": {
+    "littleMsg": "Nos appartements",
+    "title": "Appartements",
+    "subtitle": "Choisissez parmi une sélection soignée d’appartements conçus pour votre confort et votre détente.",
+    "viewAll": "Voir tous les appartements",
+    "guests": "Invités",
+    "reviews": "avis",
+    "night": "/nuit",
+    "apartmentnumber": "Appartement numéro"
+  },
   "roomSelector": {
-    "deluxe": "Chambre Deluxe",
-    "executive": "Suite Exécutive",
-    "presidential": "Suite Présidentielle",
-    "family": "Chambre Familiale",
-    "selectRoom": "Sélectionner le type de chambre"
+    "ONE_BEDROOM": "Appartement 1 chambre",
+    "TWO_BEDROOM": "Appartement 2 chambres",
+    "selectRoom": "Sélectionnez votre appartement"
   },
   "footer": {
-    "quickLinks": "Liens Rapides",
+    "quickLinks": "Liens rapides",
     "contact": "Contact",
-    "newsletter": "Newsletter",
-    "subscribeText": "Abonnez-vous pour recevoir des offres spéciales et des mises à jour.",
-    "emailPlaceholder": "Votre adresse e-mail",
-    "subscribe": "S'abonner",
-    "address": "Camp D'es Pou 3877, Es Pujols ",
-    "phone": "+34 626 70 39 85",
-    "email": "aptosverdemar@gmail.com"
+    "description": "Profitez du luxe et du confort au cœur de la ville.",
+    "address": "Camp D'es Pou 3877, Es Pujols"
+  },
+  "gallery": {
+    "title": "Galerie",
+    "subtitle": "Découvrez la beauté de nos appartements et les vues imprenables qui vous attendent.",
+    "all": "Tous",
+    "rooms": "Chambres",
+    "amenities": "Équipements"
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Nous sommes là pour vous aider avec toute question ou demande spéciale.",
+    "formTitle": "Entrer en contact",
+    "firstName": "Prénom",
+      "firstNamePlaceholder": "Entrez votre prénom",
+    "lastName": "Nom",
+      "lastNamePlaceholder": "Entrez votre nom",
+    "email": "Courriel",
+      "emailPlaceholder": "Entrez votre courriel",
+    "phone": "Téléphone",
+      "phonePlaceholder": "Entrez votre numéro de téléphone",
+    "subject": "Sujet",
+      "subjectPlaceholder": "À propos de votre message",
+    "message": "Message",
+      "messagePlaceholder": "Donnez-nous des détails sur votre demande",
+    "send": "Envoyer le message",
+    "infoTitle": "Informations de contact",
+    "address": "Adresse",
+    "locationTitle": "Notre emplacement",
+    "mapAlt": "Carte de localisation de l’hôtel",
+    "hoursTitle": "Horaires",
+    "hours": {
+      "frontDesk": "Réception",
+      "frontDeskHours": "24 h/24, 7 j/7",
+      "concierge": "Conciergerie",
+      "conciergeHours": "7 h à 23 h",
+      "restaurant": "Restaurant Azure",
+      "restaurantHours": "6 h 30 à 22 h 30",
+      "lounge": "Skyline Lounge",
+      "loungeHours": "16 h à 1 h",
+      "spa": "Spa & Bien‑être",
+      "spaHours": "9 h à 20 h"
+    }
+  },
+  "signIn": {
+    "title": "Se connecter",
+    "subtitle": "Accédez à votre compte pour gérer vos réservations et préférences.",
+    "email": "Courriel",
+    "emailPlaceholder": "Entrez votre adresse courriel",
+    "password": "Mot de passe",
+    "passwordPlaceholder": "Entrez votre mot de passe",
+    "forgotPassword": "Mot de passe oublié ?",
+    "signInButton": "Se connecter",
+    "noAccount": "Vous n’avez pas de compte ?",
+    "registerLink": "Inscrivez‑vous ici",
+    "rememberMe": "Se souvenir de moi"
+  },
+  "booking": {
+    "title": "Réservez votre séjour",
+    "subtitle": "Complétez votre réservation pour sécuriser votre appartement.",
+    "checkIn": "Arrivée",
+    "checkOut": "Départ",
+    "guests": "Invités",
+    "roomType": "Type d’appartement",
+    "totalPrice": "Prix total",
+    "bookNow": "Réservez maintenant",
+    "back": "Retour",
+    "confirm": "Confirmer la réservation",
+    "payment": "Informations de paiement",
+    "paymentMethod": "Mode de paiement",
+    "stay_title": "Détails de votre séjour",
+    "stay_description": "Confirmez vos dates et le nombre d’invités",
+    "dates": "Dates de réservation",
+    "notes": "Notes spéciales (Facultatif)",
+    "notes_placeholder": "Avez-vous une demande particulière ?",
+    "guest_title": "Informations sur l’invité",
+    "guest_description": "Fournissez les détails des invités qui séjourneront",
+    "cancel": "Annuler"
+  },
+  "form": {
+    "first_name": "Prénom",
+    "first_name_placeholder": "Entrez votre prénom",
+    "last_name": "Nom",
+    "last_name_placeholder": "Entrez votre nom",
+    "email": "Courriel",
+    "email_placeholder": "Entrez votre courriel",
+    "phone": "Téléphone",
+    "phone_placeholder": "Entrez votre numéro de téléphone",
+    "submit": "Envoyer"
+  },
+  "calendar": {
+    "monthNames": [
+      "Janvier",
+      "Février",
+      "Mars",
+      "Avril",
+      "Mai",
+      "Juin",
+      "Juillet",
+      "Août",
+      "Septembre",
+      "Octobre",
+      "Novembre",
+      "Décembre"
+    ],
+    "daysOfWeek": [
+      "Dimanche",
+      "Lundi",
+      "Mardi",
+      "Mercredi",
+      "Jeudi",
+      "Vendredi",
+      "Samedi"
+    ]
   }
 }

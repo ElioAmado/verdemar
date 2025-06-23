@@ -1,0 +1,222 @@
+{
+  "two_bedroom": "Appartamento con 1 camera",
+  "one_bedroom": "Appartamento con 2 camere",
+  "ONE_BEDROOM": "Appartamento con 1 camera",
+  "TWO_BEDROOM": "Appartamento con 2 camere",
+
+  "common": {
+    "home": "Home",
+    "rooms": "Camere",
+    "amenities": "Servizi",
+    "gallery": "Galleria",
+    "about": "Chi Siamo",
+    "contact": "Contatti",
+    "signIn": "Accedi",
+    "bookNow": "Prenota Ora",
+    "apartaments": "Appartamenti",
+    "guests": "Ospiti",
+    "viewAll": "Vedi Tutti gli Appartamenti",
+    "total": "Totale",
+    "footer": {
+      "copyright": "© 2025 Appartamenti Verde Mar. Tutti i diritti riservati.",
+      "terms": "Termini",
+      "privacy": "Privacy",
+      "contact": "Contatti"
+    },
+    "phone": "+34 626 703 985",
+    "phone_24h": "+34 900 123 456",
+    "email": "aptosverdemar@gmail.com"
+  },
+  "home": {
+    "hero": {
+      "title": "Benvenuto nella tua casa a Formentera",
+      "subtitle": "Appartamenti di lusso sul mare per una fuga indimenticabile.",
+      "cta": "Prenota il tuo soggiorno"
+    },
+    "search": {
+      "checkIn": "Check‑in / Check‑out",
+      "roomType": "Tipo di appartamento",
+      "guests": "Ospiti",
+      "adults": "Adulti",
+      "children": "Bambini",
+      "search": "Verifica disponibilità",
+      "pickDate": "Seleziona una data"
+    },
+    "amenities": {
+      "title": "Servizi della struttura",
+      "subtitle": "Scopri tutti i comfort che i nostri appartamenti offrono per un soggiorno perfetto.",
+      "safe": "Cassaforte",
+      "safeDesc": "Tieni al sicuro i tuoi oggetti di valore nella cassaforte in camera.",
+      "AC": "Aria Condizionata",
+      "ACDesc": "Goditi un ambiente fresco e confortevole durante il soggiorno.",
+      "parking": "Parcheggio",
+      "parkingDesc": "Posti auto privati disponibili per i nostri ospiti.",
+      "kitchen": "Cucina Attrezzata",
+      "kitchenDesc": "Tutti gli appartamenti dispongono di cucina completa per la tua comodità."
+    },
+    "location": {
+      "title": "Posizione privilegiata",
+      "subtitle": "Situato nel cuore della città, con facile accesso alle principali attrazioni e aree business.",
+      "airport": "Dall’aeroporto",
+      "airportDesc": "A solo 20 minuti di auto dall’Aeroporto Internazionale. Servizio navetta disponibile.",
+      "transport": "Trasporto Pubblico",
+      "transportDesc": "A 5 minuti a piedi dalla Stazione Centrale con collegamenti a tutte le linee.",
+      "attractions": "Attrazioni vicine",
+      "attractionsDesc": "A pochi passi da musei, aree commerciali e monumenti storici."
+    },
+    "testimonials": {
+      "title": "Cosa dicono i nostri ospiti",
+      "subtitle": "Leggi le esperienze dei nostri preziosi ospiti da tutto il mondo."
+    },
+    "offers": {
+      "title": "Pacchetti Esclusivi",
+      "subtitle": "Approfitta delle nostre offerte speciali e pacchetti creati per migliorare il tuo soggiorno e offrirti un valore eccezionale.",
+      "breakfast": "Colazione omaggio per due",
+      "spa": "Credito spa incluso",
+      "checkout": "Late check‑out su disponibilità",
+      "transfer": "Trasferimento gratuito dall’aeroporto",
+      "cta": "Vedi Offerte Speciali"
+    },
+    "cta": {
+      "title": "Pronto a vivere il lusso?",
+      "subtitle": "Prenota oggi il tuo soggiorno e goditi vantaggi esclusivi prenotando direttamente con noi.",
+      "bookNow": "Prenota Ora",
+      "contactUs": "Contattaci"
+    }
+  },
+  "rooms": {
+    "littleMsg": "I nostri appartamenti",
+    "title": "Appartamenti",
+    "subtitle": "Scegli tra una selezione curata di appartamenti progettati per il tuo comfort e relax.",
+    "viewAll": "Vedi tutti gli appartamenti",
+    "guests": "Ospiti",
+    "reviews": "recensioni",
+    "night": "/notte",
+    "apartmentnumber": "Appartamento numero"
+  },
+  "roomSelector": {
+    "ONE_BEDROOM": "Appartamento con 1 camera",
+    "TWO_BEDROOM": "Appartamento con 2 camere",
+    "selectRoom": "Seleziona il tuo appartamento"
+  },
+  "footer": {
+    "quickLinks": "Link veloci",
+    "contact": "Contatti",
+    "description": "Goditi lusso e comfort nel cuore della città.",
+    "address": "Camp D'es Pou 3877, Es Pujols"
+  },
+  "gallery": {
+    "title": "Galleria",
+    "subtitle": "Scopri la bellezza dei nostri appartamenti e le viste mozzafiato che ti aspettano.",
+    "all": "Tutti",
+    "rooms": "Camere",
+    "amenities": "Servizi"
+  },
+  "contact": {
+    "title": "Contattaci",
+    "subtitle": "Siamo qui per aiutarti con qualsiasi domanda o richiesta speciale.",
+    "formTitle": "Mettiti in contatto",
+    "firstName": "Nome",
+    "firstNamePlaceholder": "Inserisci il tuo nome",
+    "lastName": "Cognome",
+    "lastNamePlaceholder": "Inserisci il tuo cognome",
+    "email": "Email",
+    "emailPlaceholder": "Inserisci la tua email",
+    "phone": "Telefono",
+    "phonePlaceholder": "Inserisci il tuo numero di telefono",
+    "subject": "Oggetto",
+    "subjectPlaceholder": "Di cosa tratta il tuo messaggio?",
+    "message": "Messaggio",
+    "messagePlaceholder": "Fornisci dettagli sulla tua richiesta",
+    "send": "Invia messaggio",
+    "infoTitle": "Informazioni di contatto",
+    "address": "Indirizzo",
+    "locationTitle": "La nostra sede",
+    "mapAlt": "Mappa della posizione dell’hotel",
+    "hoursTitle": "Orari di apertura",
+    "hours": {
+      "frontDesk": "Reception",
+      "frontDeskHours": "24 ore su 24, 7 giorni su 7",
+      "concierge": "Concierge",
+      "conciergeHours": "7:00 – 23:00",
+      "restaurant": "Ristorante Azure",
+      "restaurantHours": "6:30 – 22:30",
+      "lounge": "Skyline Lounge",
+      "loungeHours": "16:00 – 01:00",
+      "spa": "Spa & Benessere",
+      "spaHours": "9:00 – 20:00"
+    }
+  },
+  "signIn": {
+    "title": "Accedi",
+    "subtitle": "Accedi al tuo account per gestire prenotazioni e preferenze.",
+    "email": "Email",
+    "emailPlaceholder": "Inserisci la tua email",
+    "password": "Password",
+    "passwordPlaceholder": "Inserisci la tua password",
+    "forgotPassword": "Password dimenticata?",
+    "signInButton": "Accedi",
+    "noAccount": "Non hai un account?",
+    "registerLink": "Registrati qui",
+    "rememberMe": "Ricordami"
+  },
+  "booking": {
+    "title": "Prenota il tuo soggiorno",
+    "subtitle": "Completa la prenotazione per assicurarti l’appartamento.",
+    "checkIn": "Check‑in",
+    "checkOut": "Check‑out",
+    "guests": "Ospiti",
+    "roomType": "Tipo di appartamento",
+    "totalPrice": "Prezzo totale",
+    "bookNow": "Prenota Ora",
+    "back": "Indietro",
+    "confirm": "Conferma Prenotazione",
+    "payment": "Informazioni di pagamento",
+    "paymentMethod": "Metodo di pagamento",
+    "stay_title": "Dettagli del tuo soggiorno",
+    "stay_description": "Conferma le date e il numero di ospiti",
+    "dates": "Date di prenotazione",
+    "notes": "Note speciali (opzionali)",
+    "notes_placeholder": "Hai richieste particolari?",
+    "guest_title": "Informazioni sull’ospite",
+    "guest_description": "Fornisci i dettagli degli ospiti",
+
+    "cancel": "Annulla"
+  },
+  "form": {
+    "first_name": "Nome",
+    "first_name_placeholder": "Inserisci il tuo nome",
+    "last_name": "Cognome",
+    "last_name_placeholder": "Inserisci il tuo cognome",
+    "email": "Email",
+    "email_placeholder": "Inserisci la tua email",
+    "phone": "Telefono",
+    "phone_placeholder": "Inserisci il tuo numero di telefono",
+    "submit": "Invia"
+  },
+  "calendar": {
+    "monthNames": [
+      "Gennaio",
+      "Febbraio",
+      "Marzo",
+      "Aprile",
+      "Maggio",
+      "Giugno",
+      "Luglio",
+      "Agosto",
+      "Settembre",
+      "Ottobre",
+      "Novembre",
+      "Dicembre"
+    ],
+    "daysOfWeek": [
+      "Domenica",
+      "Lunedì",
+      "Martedì",
+      "Mercoledì",
+      "Giovedì",
+      "Venerdì",
+      "Sabato"
+    ]
+  }
+}

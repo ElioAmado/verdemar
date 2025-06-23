@@ -79,8 +79,7 @@ export default function ConfirmationPage() {
             </div>
             <h1 className="text-3xl font-bold tracking-tight mb-2">¡Reserva Confirmada!</h1>
             <p className="text-muted-foreground max-w-md mx-auto">
-              Gracias por tu reserva. Hemos enviado un correo electrónico de confirmación a{" "}
-              {bookingDetails.client.email}.
+              Gracias por tu reserva. Hemos enviado un correo electrónico de confirmación
             </p>
           </div>
 
@@ -92,8 +91,8 @@ export default function ConfirmationPage() {
                   <CardTitle>Detalles de la Reserva</CardTitle>
                   <CardDescription>Referencia: {bookingDetails.id}</CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/*<CardContent className="space-y-6">
+                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <div className="text-sm text-muted-foreground">Check-in</div>
                       <div className="flex items-center gap-2">
@@ -163,7 +162,7 @@ export default function ConfirmationPage() {
                       <span className="text-sm text-muted-foreground">{bookingDetails.client.phone}</span>
                     </div>
                   </div>
-                </CardContent>
+                </CardContent> */}
                 <CardFooter className="flex flex-col sm:flex-row gap-4 sm:justify-between">
                   <div className="flex gap-2">
                     <Button variant="outline" size="sm" className="gap-1">
@@ -272,7 +271,7 @@ export default function ConfirmationPage() {
 
             {/* Sidebar */}
             <aside className="space-y-6">
-              <Card>
+              {/* <Card>
                 <Image
                   src={bookingDetails.apartment.image || "/placeholder.svg"}
                   alt={bookingDetails.apartment.name}
@@ -317,7 +316,7 @@ export default function ConfirmationPage() {
                     </Button>
                   </div>
                 </CardContent>
-              </Card>
+              </Card> */}
 
               <Card>
                 <CardHeader>
