@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { Check, ChevronDown } from 'lucide-react';
 
 import { cn } from '@/lib/utils';

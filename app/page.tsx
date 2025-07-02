@@ -24,24 +24,10 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { useLanguage } from '@/contexts/language-context';
-import { Apartment, getApartmentById } from '@/api/apartment';
 import RoomsSearch from '@/components/rooms-search';
 
 export default function Home() {
   const { t } = useLanguage();
-  const [apartments, setApartments] = useState<Apartment[]>([]);
-
-  useEffect(() => {
-    const fetchApartments = async () => {
-      const results = await Promise.all([
-        getApartmentById(1),
-        getApartmentById(5),
-      ]);
-      setApartments(results);
-    };
-
-    fetchApartments();
-  }, []);
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -94,33 +80,7 @@ export default function Home() {
           </div>
 
           <div className="grid max-w-5xl mx-auto grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-            {apartments.map((apt) => (
-              <Card key={apt.id} className="overflow-hidden">
-                <div className="relative h-48">
-                  <Image
-                    src={`/apartments/${apt.id}/index.jpg`}
-                    alt={apt.apartmentType}
-                    fill
-                    className="object-cover transition-transform hover:scale-105"
-                  />
-                </div>
-                <CardHeader>
-                  <CardTitle>{t(`${apt.apartmentType}`)}</CardTitle>
-                  <CardDescription>{apt.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center gap-2 text-sm">
-                    <UsersIcon className="h-4 w-4" />
-                    <span>
-                      {apt.capacity} {t('common.guests')}
-                    </span>
-                  </div>
-                </CardContent>
-                <CardFooter>
-                  <Button className="w-full">{t('common.bookNow')}</Button>
-                </CardFooter>
-              </Card>
-            ))}
+            // Sample data for featured apartments
           </div>
 
           <div className="flex justify-center mt-12">
