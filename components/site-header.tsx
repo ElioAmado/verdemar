@@ -54,12 +54,12 @@ export function SiteHeader() {
           >
             {t('common.gallery')}
           </Link>
-          <Link
+          {/* <Link
             href="/about"
             className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
           >
             {t('common.about')}
-          </Link>
+          </Link> */}
           <Link
             href="/contact"
             className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"

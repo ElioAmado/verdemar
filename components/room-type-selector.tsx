@@ -10,12 +10,12 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { useLanguage } from '@/contexts/language-context';
-import { apartmentTypes, ApartmentType } from '@/api/apartment';
+import { ApartmentType, ApartmentTypeArray} from '@/types/apartmentType';
 
 export function RoomTypeSelector({
   onChange,
 }: {
-  onChange: (value: string) => void;
+  onChange: (value: ApartmentType) => void;
 }) {
   const { t } = useLanguage();
 
@@ -27,7 +27,7 @@ export function RoomTypeSelector({
       <SelectContent>
         <SelectGroup>
           <SelectLabel>{t('common.apartaments')}</SelectLabel>
-          {apartmentTypes.map((type) => (
+          {ApartmentTypeArray.map((type) => (
             <SelectItem key={type} value={type}>
               {t(`${type}`)}
             </SelectItem>

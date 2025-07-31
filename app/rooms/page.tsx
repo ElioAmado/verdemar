@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { StarIcon, UsersIcon } from 'lucide-react';
+import { Apartment } from '@/types/apartment';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -19,19 +20,14 @@ import { SiteHeader } from '@/components/site-header';
 import RoomsSearch from '@/components/rooms-search';
 
 import { useLanguage } from '@/contexts/language-context';
-import { Apartment, getAllApartments } from '@/api/apartment';
 import { SiteFooter } from '@/components/site-footer';
+
+import { apartments } from '@/consts/apartaments';
+
 
 export default function RoomsPage() {
   const { t } = useLanguage();
-  const [apartments, setApartments] = useState<Apartment[]>([]);
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    getAllApartments()
-      .then(setApartments)
-      .finally(() => setLoading(false));
-  }, []);
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -57,23 +53,18 @@ export default function RoomsPage() {
             <RoomsSearch />
             <br />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {loading ? (
-                <p>{t('rooms.loading')}</p>
-              ) : apartments.length === 0 ? (
-                <p>{t('rooms.noResults')}</p>
-              ) : (
-                apartments.map((apartment) => (
-                  <RoomCard
-                    key={apartment.id}
-                    image={`/apartments/${apartment.id}/index.jpg`} // imagen por defecto, se puede mejorar
-                    title={`${t('rooms.apartmentnumber')} ${apartment.id}`}
-                    description={`${t(`${apartment.apartmentType}`)}`}
-                    guests={apartment.capacity}
-                    price={(apartment.capacity * 50).toFixed(0)} // ejemplo de precio
-                  />
-                ))
-              )}
+              {apartments.map((apartment) => (
+                <RoomCard
+                  key={apartment.id}
+                  image={`/apartments/${apartment.id}/index.jpg`} // imagen por defecto, se puede mejorar
+                  title={`${t('rooms.apartmentnumber')} ${apartment.id}`}
+                  description={`${t(`${apartment.apartmentType}`)}`}
+                  guests={apartment.capacity}
+                  price={(apartment.capacity * 50).toFixed(0)} // ejemplo de precio
+                />
+              ))}
             </div>
+
           </div>
         </section>
       </main>
@@ -124,7 +115,7 @@ function RoomCard({
             <span>{guests} {t('rooms.guests')}</span>
           </div>
           <div className="flex items-center gap-2 text-sm">
-            {rating? <StarIcon className="h-4 w-4 fill-primary" /> : null}
+            {rating ? <StarIcon className="h-4 w-4 fill-primary" /> : null}
             <span>{rating}</span>
           </div>
           <div className="grid grid-cols-2 gap-2 text-sm">
@@ -132,15 +123,8 @@ function RoomCard({
               <div key={i}>• {f}</div>
             ))}
           </div>
-          <p className="text-2xl font-bold">
-            ${price}
-            <span className="text-sm font-normal text-muted-foreground">/noche</span>
-          </p>
         </div>
       </CardContent>
-      <CardFooter>
-        <Button className="w-full">{t('common.bookNow')}</Button>
-      </CardFooter>
     </Card>
   );
 }

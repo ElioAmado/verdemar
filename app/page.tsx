@@ -1,7 +1,4 @@
 'use client';
-
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import {
   Vault,
@@ -11,23 +8,23 @@ import {
   UsersIcon,
   ChevronRightIcon,
 } from 'lucide-react';
-
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
 import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
 import { useLanguage } from '@/contexts/language-context';
 import RoomsSearch from '@/components/rooms-search';
+import { ApartmentCard } from '@/components/apartment-card';
+import { apartments } from '@/consts/apartaments';
 
 export default function Home() {
   const { t } = useLanguage();
+
+  const idsToKeep = [1, 6];
+
+  const filtered = apartments.filter((apartment) =>
+    idsToKeep.includes(apartment.id)
+  );
+
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -53,11 +50,11 @@ export default function Home() {
               <p className="mx-auto max-w-[700px] text-white/90 md:text-xl mt-4">
                 {t('home.hero.subtitle')}
               </p>
-              <div className="mt-8">
+              {/* <div className="mt-8">
                 <Button size="lg" className="bg-white text-black hover:bg-white/90">
                   {t('home.hero.cta')}
                 </Button>
-              </div>
+              </div> */}
             </div>
           </div>
            <div className="absolute -bottom-20 left-1/2 transform -translate-x-1/2 z-30 w-full max-w-5xl">
@@ -80,7 +77,14 @@ export default function Home() {
           </div>
 
           <div className="grid max-w-5xl mx-auto grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-            // Sample data for featured apartments
+            {filtered.map((apartment) => (
+              <ApartmentCard
+                key={apartment.id}
+                apartment={apartment}
+                onReserve={(id) => console.log(`Reserve apartment ${id}`)}
+              />
+            ))}
+          
           </div>
 
           <div className="flex justify-center mt-12">

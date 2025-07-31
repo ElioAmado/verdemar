@@ -1,107 +1,76 @@
-"use client"
+'use client'
 
 import Image from "next/image"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Skeleton } from "@/components/ui/skeleton"
 import { Separator } from "@/components/ui/separator"
-import { Users, Bed, Euro, MapPin, CheckCircle, XCircle } from "lucide-react"
-import type { ExtendedApartmentAvailability } from "@/types/availability"
+import { Users, MapPin, Bed } from "lucide-react"
+import type { Apartment } from "@/types/apartment"
 import { useLanguage } from "@/contexts/language-context"
 
 interface ApartmentCardProps {
-  apartment: ExtendedApartmentAvailability
+  apartment: Apartment
   onReserve: (apartmentId: number) => void
 }
 
 export function ApartmentCard({ apartment, onReserve }: ApartmentCardProps) {
-  const { t } = useLanguage();
-  const { apartment: apt, available, price, pricePerNight, loading: priceLoading, error: priceError } = apartment
+  const { t } = useLanguage()
 
   return (
-    <Card className={`overflow-hidden transition-all hover:shadow-lg ${!available ? "opacity-75" : ""}`}>
+    <Card className="overflow-hidden transition-all hover:shadow-lg">
+      {/* Imagen del apartamento */}
       <div className="relative h-48">
-        <Image src={`/apartments/${apt.id}/index.jpg`} alt={`Apartamento ${apt.id}`} fill className="object-cover" />
-        <div className="absolute top-3 right-3">
-          <Badge variant={available ? "default" : "destructive"} className="shadow-sm">
-            {available ? (
-              <>
-                <CheckCircle className="h-3 w-3 mr-1" /> Disponible
-              </>
-            ) : (
-              <>
-                <XCircle className="h-3 w-3 mr-1" /> No disponible
-              </>
-            )}
-          </Badge>
-        </div>
+        <Image
+          src={`/apartments/${apartment.id}/index.jpg`}
+          alt={`Apartamento ${apartment.id}`}
+          fill
+          className="object-cover"
+        />
         <div className="absolute top-3 left-3">
           <Badge variant="secondary" className="shadow-sm">
-            Apartamento {apt.id}
+            Apartamento {apartment.id}
           </Badge>
         </div>
       </div>
 
+      {/* Título */}
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center justify-between">
-          <span className="capitalize">{t(apt.apartmentType)}</span>
+          <span className="capitalize">{t(apartment.apartmentType)}</span>
           <div className="flex items-center gap-1 text-sm text-muted-foreground">
             <MapPin className="h-3 w-3" />
-            Piso {apt.floor}
+            Piso {apartment.floor}
           </div>
         </CardTitle>
       </CardHeader>
 
+      {/* Contenido */}
       <CardContent className="space-y-4">
-        {/* Apartment Details */}
+        {/* Detalles */}
         <div className="grid grid-cols-2 gap-4 text-sm">
           <div className="flex items-center gap-2">
             <Users className="h-4 w-4 text-muted-foreground" />
-            <span>{apt.capacity} huéspedes</span>
+            <span>{apartment.capacity} huéspedes</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Bed className="h-4 w-4 text-muted-foreground" />
+            <span>{apartment.bedrooms} dormitorios</span>
           </div>
         </div>
 
-        {/* Description */}
-        {apt.description && <p className="text-sm text-muted-foreground line-clamp-2">{apt.description}</p>}
+        {/* Descripción */}
+        {apartment.description && (
+          <p className="text-sm text-muted-foreground line-clamp-2">
+            {apartment.description}
+          </p>
+        )}
 
         <Separator />
 
-        {/* Pricing */}
-        <div className="space-y-2">
-          {priceLoading ? (
-            <div className="space-y-2">
-              <Skeleton className="h-4 w-24" />
-              <Skeleton className="h-6 w-32" />
-            </div>
-          ) : priceError ? (
-            <div className="text-sm text-destructive">{priceError}</div>
-          ) : (
-            <>
-              {pricePerNight && (
-                <div className="text-sm text-muted-foreground">{pricePerNight.toFixed(2)} € por noche</div>
-              )}
-              <div className="flex items-center gap-2">
-                <span className="text-lg font-bold">{price?.toFixed(2)} € total</span>
-              </div>
-            </>
-          )}
-        </div>
-
-        {/* Reserve Button */}
-        <Button
-          className="w-full"
-          onClick={() => onReserve(apt.id)}
-          disabled={!available || priceLoading || !!priceError}
-          variant={available ? "default" : "secondary"}
-        >
-          {!available
-            ? "No disponible"
-            : priceLoading
-              ? "Calculando precio..."
-              : priceError
-                ? "Error en precio"
-                : "Reservar ahora"}
+        {/* Botón de reserva */}
+        <Button className="w-full" onClick={() => onReserve(apartment.id)}>
+          {t("common.bookNow")}
         </Button>
       </CardContent>
     </Card>
