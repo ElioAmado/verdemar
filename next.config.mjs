@@ -11,6 +11,9 @@ try {
   }
 }
 
+const createNextIntlPlugin = (require('next-intl/plugin'));
+const withNexIntl = createNextIntlPlugin()
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
@@ -26,7 +29,7 @@ const nextConfig = {
     webpackBuildWorker: true,
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
-  },
+  }
 };
 
 if (userConfig) {
@@ -58,5 +61,7 @@ if (userConfig) {
     console.error("Error al procesar el archivo de configuración:", error);
   }
 }
+
+module.exports = withNexIntl(nextConfig);
 
 export default nextConfig;

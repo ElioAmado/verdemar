@@ -5,6 +5,8 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { ThemeConfigProvider } from '@/components/theme-config';
 import { LanguageProvider } from '@/contexts/language-context';
 import { icons } from 'lucide-react';
+import {routing} from '@/src/i18n/routing';
+import {NextIntlClientProvider, hasLocale} from 'next-intl';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -30,7 +32,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ThemeConfigProvider>
-            <LanguageProvider>{children}</LanguageProvider>
+            <NextIntlClientProvider>{children}</NextIntlClientProvider>
           </ThemeConfigProvider>
         </ThemeProvider>
       </body>
