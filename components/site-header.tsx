@@ -99,9 +99,6 @@ export function SiteHeader() {
           <Link href="/contact" onClick={() => setIsOpen(false)} className="block text-sm font-medium">
             {t('common.contact')}
           </Link>
-          <Button size="sm" className="w-full" onClick={scrollToSearchButton}>
-            {t('common.bookNow')}
-          </Button>
         </nav>
       )}
     </header>
