@@ -6,6 +6,6 @@ export interface Apartment {
   capacity: number;
   floor: number;
   bedrooms: number;
-  description: string;
+  // description: string;
   beds: any[];
 }
