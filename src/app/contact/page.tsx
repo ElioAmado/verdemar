@@ -26,19 +26,19 @@ declare global {
 
 export default function ContactPage() {
   const { t } = useLanguage();
-  
+
 
   const Mapa = () => {
     useEffect(() => {
-        // Evitar múltiples inclusiones
-  const existingScript = document.querySelector(`script[src*="maps.googleapis.com/maps/api/js"]`);
-  if (existingScript) {
-    if (window.google) {
-      window.initMap(); // Ejecutar callback si ya está cargado
-    }
-    return;
-  }
-  
+      // Evitar múltiples inclusiones
+      const existingScript = document.querySelector(`script[src*="maps.googleapis.com/maps/api/js"]`);
+      if (existingScript) {
+        if (window.google) {
+          window.initMap(); // Ejecutar callback si ya está cargado
+        }
+        return;
+      }
+
       // Define global initMap callback
       (window as any).initMap = function () {
         const map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
@@ -47,7 +47,7 @@ export default function ContactPage() {
         });
 
         new google.maps.Marker({
-          position: { lat: 38.722110140342515, lng: 1.4594708860911132 }, 
+          position: { lat: 38.722110140342515, lng: 1.4594708860911132 },
           map,
           title: "Apartamentos Verde Mar",
         });
@@ -89,7 +89,7 @@ export default function ContactPage() {
         <section className="py-12 md:py-24">
           <div className="container px-4 md:px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div>
+              {/* <div>
                 <h2 className="text-2xl font-bold mb-6">{t('contact.formTitle')}</h2>
                 <form className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -128,7 +128,7 @@ export default function ContactPage() {
                     {t('contact.send')}
                   </Button>
                 </form>
-              </div>
+              </div> */}
 
               <div className="space-y-8">
                 <div>
