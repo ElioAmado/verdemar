@@ -11,9 +11,6 @@ try {
   }
 }
 
-const createNextIntlPlugin = (require('next-intl/plugin'));
-const withNexIntl = createNextIntlPlugin()
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
@@ -61,7 +58,5 @@ if (userConfig) {
     console.error("Error al procesar el archivo de configuración:", error);
   }
 }
-
-module.exports = withNexIntl(nextConfig);
 
 export default nextConfig;
