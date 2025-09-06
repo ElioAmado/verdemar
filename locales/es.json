@@ -19,8 +19,10 @@
     "total" : "Total",
     "footer": {
       "copyright": "© 2025 Apartamentos Verde Mar. Todos los derechos reservados.",
-      "terms": "Términos",
-      "privacy": "Privacidad",
+      "cookies": "Politica de Cookies",
+      "privacy": "Politica de Privacidad",
+      "terms": "Términos y Condiciones",
+      "legal-disclaimer": "Aviso Legal",
       "contact": "Contacto"
     },
     "phone": "+34 626 703 985",

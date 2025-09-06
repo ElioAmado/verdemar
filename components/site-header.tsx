@@ -50,9 +50,9 @@ export function SiteHeader() {
         {/* Controles derecha */}
         <div className="flex items-center gap-4">
           <LanguageSwitcher className="mr-2" />
-          <Button size="sm" className="hidden md:flex" onClick={scrollToSearchButton}>
+          {/* <Button size="sm" className="hidden md:flex" onClick={scrollToSearchButton}>
             {t('common.bookNow')}
-          </Button>
+          </Button> */}
           {/* Botón hamburguesa móvil */}
           <Button
             variant="outline"

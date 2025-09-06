@@ -100,8 +100,9 @@ export function SiteFooter() {
         <div className="border-t mt-12 pt-8 text-center text-muted-foreground">
           <p>{t('common.footer.copyright', { year: currentYear })}</p>
           <div className="flex justify-center gap-4 mt-2">
-            <Link href="/terms" className="hover:text-foreground">{t('common.footer.terms')}</Link>
+            <Link href="/cookies" className="hover:text-foreground">{t('common.footer.cookies')}</Link>
             <Link href="/privacy" className="hover:text-foreground">{t('common.footer.privacy')}</Link>
+            <Link href="/legal-disclaimer" className="hover:text-foreground">{t('common.footer.legal-disclaimer')}</Link>
             <Link href="/contact" className="hover:text-foreground">{t('common.footer.contact')}</Link>
           </div>
         </div>

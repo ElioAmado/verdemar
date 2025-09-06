@@ -66,12 +66,10 @@ export function ApartmentCard({ apartment, onReserve }: ApartmentCardProps) {
           </p>
         )}
 
-        <Separator />
-
         {/* Botón de reserva */}
-        <Button className="w-full" onClick={() => onReserve(apartment.id)}>
+        {/* <Button className="w-full" onClick={() => onReserve(apartment.id)}>
           {t("common.bookNow")}
-        </Button>
+        </Button> */}
       </CardContent>
     </Card>
   )
