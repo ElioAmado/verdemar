@@ -26,7 +26,7 @@ export function SiteFooter() {
               />
               <span>Apartamentos Verde Mar</span>
             </Link>
-            <p className="text-muted-foreground">{t('footer.description')}</p>
+            {/* <p className="text-muted-foreground">{t('footer.description')}</p> */}
             {/* 
             <div className="flex gap-4">
               <Button variant="ghost" size="icon" className="rounded-full">

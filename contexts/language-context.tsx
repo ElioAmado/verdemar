@@ -97,7 +97,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
         value = value[k];
       } else {
         // Fallback to English if the key doesn't exist in the current language
-        let fallbackValue = translations['en'];
+        let fallbackValue = translations['es'];
         for (const fallbackKey of keys) {
           if (
             fallbackValue &&

@@ -24,90 +24,18 @@ export default function AmenitiesPage() {
   const { t } = useLanguage()
 
   const amenities = [
-    {
-      icon: Wifi,
-      title: "WiFi gratis",
-      description: "Conexión gratuita en todo el alojamiento.",
-      color: "text-blue-500",
-      bgColor: "bg-blue-50",
-    },
-    {
-      icon: Coffee,
-      title: "Cafetera",
-      description: "Cafetera disponible en todos los apartamentos.",
-      color: "text-amber-600",
-      bgColor: "bg-amber-50",
-    },
-    {
-      icon: Tv,
-      title: "TV de pantalla plana",
-      description: "Con canales vía satélite.",
-      color: "text-purple-500",
-      bgColor: "bg-purple-50",
-    },
-    {
-      icon: Snowflake,
-      title: "Aire acondicionado",
-      description: "Disponible en todos los alojamientos.",
-      color: "text-cyan-500",
-      bgColor: "bg-cyan-50",
-    },
-    {
-      icon: Utensils,
-      title: "Cocina equipada",
-      description: "Incluye nevera, microondas y utensilios.",
-      color: "text-green-500",
-      bgColor: "bg-green-50",
-    },
-    {
-      icon: Car,
-      title: "Parking gratis",
-      description: "Aparcamiento privado gratuito en las inmediaciones.",
-      color: "text-gray-600",
-      bgColor: "bg-gray-50",
-    },
-    {
-      icon: MapPin,
-      title: "Ubicación excelente",
-      description: "A sólo 300 metros de la playa de Es Pujols.",
-      color: "text-red-500",
-      bgColor: "bg-red-50",
-    },
-    {
-      icon: Users,
-      title: "Personal multilingüe",
-      description: "Atención en español, inglés e italiano.",
-      color: "text-indigo-500",
-      bgColor: "bg-indigo-50",
-    },
-    {
-      icon: Lock,
-      title: "Caja fuerte",
-      description: "Disponible para proteger tus pertenencias de valor.",
-      color: "text-orange-500",
-      bgColor: "bg-orange-50",
-    },
-    {
-      icon: Home,
-      title: "Apartamentos familiares",
-      description: "Ideales para familias, con espacios amplios y cómodos.",
-      color: "text-pink-500",
-      bgColor: "bg-pink-50",
-    },
-    {
-      icon: Landmark,
-      title: "Balcón privado",
-      description: "Con vistas a la zona de Es Pujols o al jardín del alojamiento.",
-      color: "text-teal-500",
-      bgColor: "bg-teal-50",
-    },
-    {
-      icon: Bath,
-      title: "Baño privado",
-      description: "Incluye ducha, secador de pelo y artículos de aseo gratuitos.",
-      color: "text-violet-500",
-      bgColor: "bg-violet-50",
-    },
+    { icon: Wifi, key: "wifi", color: "text-blue-500", bgColor: "bg-blue-50" },
+    { icon: Coffee, key: "coffee", color: "text-amber-600", bgColor: "bg-amber-50" },
+    { icon: Tv, key: "tv", color: "text-purple-500", bgColor: "bg-purple-50" },
+    { icon: Snowflake, key: "air", color: "text-cyan-500", bgColor: "bg-cyan-50" },
+    { icon: Utensils, key: "kitchen", color: "text-green-500", bgColor: "bg-green-50" },
+    { icon: Car, key: "parking", color: "text-gray-600", bgColor: "bg-gray-50" },
+    { icon: MapPin, key: "location", color: "text-red-500", bgColor: "bg-red-50" },
+    { icon: Users, key: "staff", color: "text-indigo-500", bgColor: "bg-indigo-50" },
+    { icon: Lock, key: "safe", color: "text-orange-500", bgColor: "bg-orange-50" },
+    { icon: Home, key: "family", color: "text-pink-500", bgColor: "bg-pink-50" },
+    { icon: Landmark, key: "balcony", color: "text-teal-500", bgColor: "bg-teal-50" },
+    { icon: Bath, key: "bathroom", color: "text-violet-500", bgColor: "bg-violet-50" },
   ]
 
   return (
@@ -117,8 +45,10 @@ export default function AmenitiesPage() {
         {/* Hero Section */}
         <section className="bg-muted py-12">
           <div className="container px-4 md:px-6 text-center">
-            <h1 className="text-3xl font-bold sm:text-5xl mb-4">{t("home.amenities.title")}</h1>
-            <p className="text-muted-foreground md:text-lg max-w-xl mx-auto">{t("home.amenities.subtitle")}</p>
+            <h1 className="text-3xl font-bold sm:text-5xl mb-4">{t("amenities.title")}</h1>
+            <p className="text-muted-foreground md:text-lg max-w-xl mx-auto">
+              {t("amenities.subtitle")}
+            </p>
           </div>
         </section>
 
@@ -140,14 +70,16 @@ export default function AmenitiesPage() {
                         <IconComponent className={`h-8 w-8 ${amenity.color}`} />
                       </div>
                       <CardTitle className="text-lg group-hover:text-blue-600 transition-colors">
-                        {amenity.title}
+                        {t(`amenities.items.${amenity.key}.title`)}
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-muted-foreground text-sm leading-relaxed">{amenity.description}</p>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        {t(`amenities.items.${amenity.key}.description`)}
+                      </p>
                       <div className="mt-4 flex items-center text-green-600 text-sm font-medium">
                         <CheckCircle className="w-4 h-4 mr-2" />
-                        Incluido
+                        {t("amenities.items.included")}
                       </div>
                     </CardContent>
                   </Card>

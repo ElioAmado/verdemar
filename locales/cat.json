@@ -9,18 +9,20 @@
     "rooms": "Habitacions",
     "amenities": "Serveis",
     "gallery": "Galeria",
-    "about": "Sobre nosaltres",
+    "about": "Nosaltres",
     "contact": "Contacte",
-    "signIn": "Iniciar sessió",
-    "bookNow": "Reserva ara",
+    "signIn": "Inicia Sessió",
+    "bookNow": "Reserva Ara",
     "apartaments": "Apartaments",
     "guests": "Hostes",
-    "viewAll": "Veure tots els apartaments",
-    "total": "Total",
+    "viewAll": "Veure Tots Els Apartaments",
+    "total" : "Total",
     "footer": {
-      "copyright": "© 2025 Apartaments Verde Mar. Tots els drets reservats.",
-      "terms": "Termes",
-      "privacy": "Privacitat",
+      "copyright": "© 2025 Apartaments Verd Mar. Tots els drets reservats.",
+      "cookies": "Política de Cookies",
+      "privacy": "Política de Privacitat",
+      "terms": "Termes i Condicions",
+      "legal-disclaimer": "Avís Legal",
       "contact": "Contacte"
     },
     "phone": "+34 626 703 985",
@@ -29,66 +31,121 @@
   },
   "home": {
     "hero": {
-      "title": "Benvingut a casa teva a Formentera",
-      "subtitle": "Apartaments de luxe al costat del mar per a una escapada inoblidable.",
-      "cta": "Reserva la teva estada"
+      "title": "Benvingut a la teva Llar a Formentera",
+      "subtitle": "Apartaments de luxe davant del mar per a una escapada inoblidable.",
+      "cta": "Reserva la teva Estada"
     },
     "search": {
       "checkIn": "Entrada / Sortida",
-      "roomType": "Tipus d’apartament",
+      "roomType": "Tipus d’Apartament",
       "guests": "Hostes",
       "adults": "Adults",
       "children": "Nens",
-      "search": "Comprova disponibilitat",
+      "search": "Cerca Disponibilitat",
       "pickDate": "Selecciona una data"
     },
     "amenities": {
       "title": "Serveis de l’allotjament",
-      "subtitle": "Descobreix totes les comoditats que ofereixen els nostres apartaments per a una estada perfecta.",
-      "safe": "Caixa forta",
-      "safeDesc": "Mantingues les teves pertinences segures a la caixa forta de l’habitació.",
-      "AC": "Aire condicionat",
-      "ACDesc": "Gaudeix d’un ambient fresc i confortable durant l’estada.",
+      "subtitle": "Descobreix totes les comoditats que ofereixen els nostres apartaments perquè gaudeixis d’una estada perfecta.",
+      "safe": "Caixa Forta",
+      "safeDesc": "Mantén els teus objectes de valor segurs a les nostres caixes fortes a l’habitació.",
+      "AC": "Aire Condicionat",
+      "ACDesc": "Gaudeix d’un ambient fresc i còmode durant la teva estada.",
       "parking": "Aparcament",
       "parkingDesc": "Places d’aparcament privades disponibles per als nostres hostes.",
-      "kitchen": "Cuina equipada",
+      "kitchen": "Cuina Equipada",
       "kitchenDesc": "Tots els apartaments disposen de cuina completament equipada per a la teva comoditat."
     },
     "location": {
-      "title": "Ubicació privilegiada",
+      "title": "Ubicació Privilegiada",
       "subtitle": "Situat al cor de la ciutat, amb fàcil accés a les principals atraccions i districtes de negocis.",
-      "airport": "Des de l’aeroport",
-      "airportDesc": "Només 20 minuts en cotxe de l’aeroport internacional. Servei de trasllat disponible.",
-      "transport": "Transport públic",
-      "transportDesc": "A 5 minuts a peu de l’estació central, amb connexions a totes les línies de la ciutat.",
-      "attractions": "Atraccions properes",
+      "airport": "Des de l’Aeroport",
+      "airportDesc": "Només a 20 minuts amb cotxe de l’Aeroport Internacional. Servei de trasllat disponible.",
+      "transport": "Transport Públic",
+      "transportDesc": "A 5 minuts a peu de l’Estació Central amb connexions a totes les línies de la ciutat.",
+      "attractions": "Atraccions Properes",
       "attractionsDesc": "A poca distància de museus, zones comercials i monuments històrics."
     },
     "testimonials": {
-      "title": "El que diuen els nostres hostes",
-      "subtitle": "Llegeix les experiències dels nostres valorats hostes d’arreu del món."
+      "title": "El que Diuen Els Nostres Hostes",
+      "subtitle": "Llegeix sobre les experiències dels nostres valuosos hostes d’arreu del món."
     },
     "offers": {
-      "title": "Paquets exclusius",
-      "subtitle": "Aprofita les nostres ofertes especials i paquets pensats per millorar la teva estada i oferir un valor excepcional.",
-      "breakfast": "Esmorzar gratuït per a dos",
+      "title": "Paquets Exclusius",
+      "subtitle": "Aprofita les nostres ofertes especials i paquets dissenyats per millorar la teva estada i proporcionar un valor excepcional.",
+      "breakfast": "Esmorzar de cortesia per a dos",
       "spa": "Crèdit per a spa inclòs",
       "checkout": "Sortida tardana segons disponibilitat",
-      "transfer": "Trasllat gratuït des de l’aeroport",
-      "cta": "Veure ofertes especials"
+      "transfer": "Trasllat gratuït a l’aeroport",
+      "cta": "Veure Ofertes Especials"
     },
     "cta": {
-      "title": "Preparat per viure el luxe?",
-      "subtitle": "Reserva avui la teva estada i gaudeix de beneficis exclusius reservant directament amb nosaltres.",
-      "bookNow": "Reserva ara",
-      "contactUs": "Contacta'ns"
+      "title": "Preparat per Viure el Luxe?",
+      "subtitle": "Reserva la teva estada avui i gaudeix de beneficis exclusius quan reserves directament amb nosaltres.",
+      "bookNow": "Reserva Ara",
+      "contactUs": "Contacta’ns"
+    }
+  },
+  "amenities": {
+    "title": "Comoditats",
+    "subtitle": "Tot el que necessites per a una estada perfecta.",
+    "items": {
+      "wifi": {
+        "title": "WiFi gratis",
+        "description": "Connexió gratuïta a tot l’allotjament."
+      },
+      "coffee": {
+        "title": "Cafetera",
+        "description": "Cafetera disponible a tots els apartaments."
+      },
+      "tv": {
+        "title": "TV de pantalla plana",
+        "description": "Amb canals via satèl·lit."
+      },
+      "air": {
+        "title": "Aire condicionat",
+        "description": "Disponible a tots els allotjaments."
+      },
+      "kitchen": {
+        "title": "Cuina equipada",
+        "description": "Inclou nevera, microones i utensilis."
+      },
+      "parking": {
+        "title": "Pàrquing gratis",
+        "description": "Aparcament privat gratuït a les immediacions."
+      },
+      "location": {
+        "title": "Ubicació excel·lent",
+        "description": "A només 300 metres de la platja d’Es Pujols."
+      },
+      "staff": {
+        "title": "Personal multilingüe",
+        "description": "Atenció en castellà, anglès i italià."
+      },
+      "safe": {
+        "title": "Caixa forta",
+        "description": "Disponible per protegir les teves pertinences de valor."
+      },
+      "family": {
+        "title": "Apartaments familiars",
+        "description": "Ideals per a famílies, amb espais amplis i còmodes."
+      },
+      "balcony": {
+        "title": "Balcó privat",
+        "description": "Amb vistes a la zona d’Es Pujols o al jardí de l’allotjament."
+      },
+      "bathroom": {
+        "title": "Bany privat",
+        "description": "Inclou dutxa, assecador de cabell i articles d’higiene gratuïts."
+      },
+      "included": "Inclòs"
     }
   },
   "rooms": {
     "littleMsg": "Els nostres apartaments",
     "title": "Apartaments",
-    "subtitle": "Tria entre una selecció acurada d’apartaments dissenyats per al teu confort i descans.",
-    "viewAll": "Veure tots els apartaments",
+    "subtitle": "Tria entre una acurada selecció d’apartaments dissenyats per al teu confort i descans.",
+    "viewAll": "Veure Tots Els Apartaments",
     "guests": "Hostes",
     "reviews": "ressenyes",
     "night": "/nit",
@@ -100,32 +157,32 @@
     "selectRoom": "Selecciona el teu apartament"
   },
   "footer": {
-    "quickLinks": "Enllaços ràpids",
+    "quickLinks": "Enllaços Ràpids",
     "contact": "Contacte",
-    "description": "Gaudeix de luxe i confort al cor de la ciutat.",
-    "address": "Camp D'es Pou 3877, Es Pujols"
+    "description": "Gaudeix de luxe i comoditat al cor de la ciutat.",
+    "address": "Camp D'es Pou 3877, Es Pujols "
   },
   "gallery": {
     "title": "Galeria",
-    "subtitle": "Descobreix la bellesa dels nostres apartaments i les vistes impressionants que t’esperen.",
+    "subtitle": "Descobreix la bellesa dels nostres apartaments i les impressionants vistes que t’esperen.",
     "all": "Tots",
     "rooms": "Habitacions",
     "amenities": "Serveis"
   },
   "contact": {
-    "title": "Contacta'ns",
-    "subtitle": "Som aquí per ajudar-te amb qualsevol pregunta o petició especial.",
+    "title": "Contacta’ns",
+    "subtitle": "Som aquí per ajudar-te amb qualsevol pregunta o sol·licitud especial.",
     "formTitle": "Posa’t en contacte",
     "firstName": "Nom",
     "firstNamePlaceholder": "Introdueix el teu nom",
-    "lastName": "Cognoms",
-    "lastNamePlaceholder": "Introdueix els teus cognoms",
+    "lastName": "Cognom",
+    "lastNamePlaceholder": "Introdueix el teu cognom",
     "email": "Correu electrònic",
-    "emailPlaceholder": "Introdueix el teu correu electrònic",
+    "emailPlaceholder": "Introdueix el teu correu",
     "phone": "Telèfon",
     "phonePlaceholder": "Introdueix el teu telèfon",
     "subject": "Assumpte",
-    "subjectPlaceholder": "Sobre què tracta el teu missatge?",
+    "subjectPlaceholder": "Sobre què és el teu missatge?",
     "message": "Missatge",
     "messagePlaceholder": "Proporciona’ns detalls sobre la teva consulta",
     "send": "Enviar missatge",
@@ -136,63 +193,64 @@
     "hoursTitle": "Horari d’atenció",
     "hours": {
       "frontDesk": "Recepció",
-      "frontDeskHours": "24 hores, 7 dies a la setmana",
+      "frontDeskHours": "24 hores, 7 dies a la setmana",
       "concierge": "Consergeria",
-      "conciergeHours": "7:00 – 23:00",
+      "conciergeHours": "7:00 - 23:00",
       "restaurant": "Restaurant Azure",
-      "restaurantHours": "6:30 – 22:30",
+      "restaurantHours": "6:30 - 22:30",
       "lounge": "Skyline Lounge",
-      "loungeHours": "16:00 – 1:00",
-      "spa": "Spa i benestar",
-      "spaHours": "9:00 – 20:00"
+      "loungeHours": "16:00 - 01:00",
+      "spa": "Spa & Benestar",
+      "spaHours": "9:00 - 20:00"
     }
   },
   "signIn": {
-    "title": "Iniciar sessió",
+    "title": "Inicia Sessió",
     "subtitle": "Accedeix al teu compte per gestionar les teves reserves i preferències.",
     "email": "Correu electrònic",
     "emailPlaceholder": "Introdueix el teu correu electrònic",
     "password": "Contrasenya",
     "passwordPlaceholder": "Introdueix la teva contrasenya",
-    "forgotPassword": "Has oblidat la contrasenya?",
-    "signInButton": "Iniciar sessió",
-    "noAccount": "No tens compte?",
+    "forgotPassword": "Has oblidat la teva contrasenya?",
+    "signInButton": "Inicia Sessió",
+    "noAccount": "No tens un compte?",
     "registerLink": "Registra’t aquí",
     "rememberMe": "Recorda’m"
   },
   "booking": {
-    "title": "Reserva la teva estada",
+    "title": "Reserva la teva Estada",
     "subtitle": "Completa la teva reserva per assegurar el teu apartament.",
     "checkIn": "Entrada",
     "checkOut": "Sortida",
     "guests": "Hostes",
-    "roomType": "Tipus d’apartament",
-    "totalPrice": "Preu total",
-    "bookNow": "Reserva ara",
-    "back": "Enrere",
-    "confirm": "Confirma la reserva",
-    "payment": "Informació de pagament",
-    "paymentMethod": "Mètode de pagament",
+    "roomType": "Tipus d’Apartament",
+    "totalPrice": "Preu Total",
+    "bookNow": "Reserva Ara",
+    "back": "Tornar",
+    "confirm": "Confirma la Reserva",
+    "payment": "Informació de Pagament",
+    "paymentMethod": "Mètode de Pagament",
     "stay_title": "Detalls de la teva estada",
-    "stay_description": "Confirma les dates i nombre d’hostes",
-    "dates": "Dates de reserva",
-    "notes": "Notes especials (opcional)",
-    "notes_placeholder": "Tens alguna petició especial?",
-    "guest_title": "Informació de l’hoste",
+    "stay_description": "Confirma les teves dates i nombre d’hostes",
+    "dates": "Dates de la Reserva",
+    "notes": "Notes Especials (Opcional)",
+    "notes_placeholder": "Tens alguna sol·licitud especial?",
+    "guest_title": "Informació de l’Hoste",
     "guest_description": "Proporciona les dades dels hostes que s’allotjaran",
     "cancel": "Cancel·lar"
   },
   "form": {
     "first_name": "Nom",
     "first_name_placeholder": "Introdueix el teu nom",
-    "last_name": "Cognoms",
-    "last_name_placeholder": "Introdueix els teus cognoms",
+    "last_name": "Cognom",
+    "last_name_placeholder": "Introdueix el teu cognom",
     "email": "Correu electrònic",
     "email_placeholder": "Introdueix el teu correu electrònic",
     "phone": "Telèfon",
-    "phone_placeholder": "Introdueix el teu telèfon",
+    "phone_placeholder": "Introdueix el teu número de telèfon",
     "submit": "Enviar"
   },
+
   "calendar": {
     "monthNames": [
       "Gener",

@@ -86,7 +86,63 @@
       "bookNow": "Reservar Ahora",
       "contactUs": "Contáctanos"
     }
+    
   },
+  "amenities": {
+      "title": "Comodidades",
+      "subtitle": "Todo lo que necesitas para una estancia perfecta.",
+      "items": {
+        "wifi": {
+          "title": "WiFi gratis",
+          "description": "Conexión gratuita en todo el alojamiento."
+        },
+        "coffee": {
+          "title": "Cafetera",
+          "description": "Cafetera disponible en todos los apartamentos."
+        },
+        "tv": {
+          "title": "TV de pantalla plana",
+          "description": "Con canales vía satélite."
+        },
+        "air": {
+          "title": "Aire acondicionado",
+          "description": "Disponible en todos los alojamientos."
+        },
+        "kitchen": {
+          "title": "Cocina equipada",
+          "description": "Incluye nevera, microondas y utensilios."
+        },
+        "parking": {
+          "title": "Parking gratis",
+          "description": "Aparcamiento privado gratuito en las inmediaciones."
+        },
+        "location": {
+          "title": "Ubicación excelente",
+          "description": "A sólo 300 metros de la playa de Es Pujols."
+        },
+        "staff": {
+          "title": "Personal multilingüe",
+          "description": "Atención en español, inglés e italiano."
+        },
+        "safe": {
+          "title": "Caja fuerte",
+          "description": "Disponible para proteger tus pertenencias de valor."
+        },
+        "family": {
+          "title": "Apartamentos familiares",
+          "description": "Ideales para familias, con espacios amplios y cómodos."
+        },
+        "balcony": {
+          "title": "Balcón privado",
+          "description": "Con vistas a la zona de Es Pujols o al jardín del alojamiento."
+        },
+        "bathroom": {
+          "title": "Baño privado",
+          "description": "Incluye ducha, secador de pelo y artículos de aseo gratuitos."
+        },
+        "included": "Incluido"
+      }
+    },
   "rooms": {
     "littleMsg": "Nuestros apartamentos",
     "title": "Apartamentos",
