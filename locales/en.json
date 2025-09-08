@@ -1,8 +1,8 @@
 {
-  "two_bedroom": "1-Bedroom Apartment",
-  "one_bedroom": "2-Bedroom Apartment",
-  "ONE_BEDROOM": "1-Bedroom Apartment",
-  "TWO_BEDROOM": "2-Bedroom Apartment",
+  "two_bedroom": "2-Bedroom Apartment",
+  "one_bedroom": "1-Bedroom Apartment",
+  "ONE_BEDROOM": "2-Bedroom Apartment",
+  "TWO_BEDROOM": "1-Bedroom Apartment",
 
   "common": {
     "home": "Home",

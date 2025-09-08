@@ -1,8 +1,8 @@
 {
-  "two_bedroom": "Apartment mit 1 Schlafzimmer",
-  "one_bedroom": "Apartment mit 2 Schlafzimmern",
-  "ONE_BEDROOM": "Apartment mit 1 Schlafzimmer",
-  "TWO_BEDROOM": "Apartment mit 2 Schlafzimmern",
+  "two_bedroom": "Apartment mit 2 Schlafzimmer",
+  "one_bedroom": "Apartment mit 1 Schlafzimmern",
+  "ONE_BEDROOM": "Apartment mit 2 Schlafzimmer",
+  "TWO_BEDROOM": "Apartment mit 1 Schlafzimmern",
 
   "common": {
     "home": "Startseite",

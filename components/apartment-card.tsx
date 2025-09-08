@@ -28,9 +28,9 @@ export function ApartmentCard({ apartment, onReserve }: ApartmentCardProps) {
           className="object-cover"
         />
         <div className="absolute top-3 left-3">
-          <Badge variant="secondary" className="shadow-sm">
+          {/* <Badge variant="secondary" className="shadow-sm">
             Apartamento {apartment.id}
-          </Badge>
+          </Badge> */} 
         </div>
       </div>
 
@@ -38,10 +38,10 @@ export function ApartmentCard({ apartment, onReserve }: ApartmentCardProps) {
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center justify-between">
           <span className="capitalize">{t(apartment.apartmentType)}</span>
-          <div className="flex items-center gap-1 text-sm text-muted-foreground">
+          {/* <div className="flex items-center gap-1 text-sm text-muted-foreground">
             <MapPin className="h-3 w-3" />
             Piso {apartment.floor}
-          </div>
+          </div> */}
         </CardTitle>
       </CardHeader>
 
@@ -60,11 +60,11 @@ export function ApartmentCard({ apartment, onReserve }: ApartmentCardProps) {
         </div>
 
         {/* Descripción */}
-        {apartment.description && (
+        {/* {apartment.description && (
           <p className="text-sm text-muted-foreground line-clamp-2">
             {apartment.description}
           </p>
-        )}
+        )} */}
 
         {/* Botón de reserva */}
         {/* <Button className="w-full" onClick={() => onReserve(apartment.id)}>

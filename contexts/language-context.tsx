@@ -23,23 +23,24 @@ export type Language = {
 
 export const languages: Language[] = [
   { code: 'es', name: 'Español', flag: 'es' },
-  { code: 'cat', name: 'Català', flag: '/flags/catala.svg' },
+  // { code: 'cat', name: 'Català', flag: '/flags/catala.svg' },
   { code: 'it', name: 'Italiano', flag: 'it' },
   { code: 'en', name: 'English', flag: 'gb' },
-  { code: 'fr', name: 'Français', flag: 'fr' },
+  // { code: 'fr', name: 'Français', flag: 'fr' },
   { code: 'de', name: 'Deutsch', flag: 'de' },
-  { code: 'pt', name: 'Português', flag: 'pt' },
+  // { code: 'pt', name: 'Português', flag: 'pt' },
 ];
 
 
 const translations: Record<string, any> = {
   en: enTranslations,
   es: esTranslations,
-  fr: frTranslations,
   it: itTranslations,
-  pt: ptTranslations,
-  cat: catTranslations,
   de: deTranslations,
+  // fr: frTranslations,
+  // pt: ptTranslations,
+  // cat: catTranslations,
+
 };
 
 type LanguageContextType = {
