@@ -27,20 +27,20 @@ export default function GalleryPage() {
       apartamentId: 2,
       descriptionKey: 'room1',
     },
-    {
-      category: 'rooms',
-      src: '/apartments/3/index.jpg',
-      alt: 'Room image 3',
-      apartamentId: 3,
-      descriptionKey: 'room1',
-    },
-        {
-      category: 'rooms',
-      src: '/apartments/4/index.jpg',
-      alt: 'Room image 4',
-      apartamentId: 4,
-      descriptionKey: 'room1',
-    },
+    // {
+    //   category: 'rooms',
+    //   src: '/apartments/3/index.jpg',
+    //   alt: 'Room image 3',
+    //   apartamentId: 3,
+    //   descriptionKey: 'room1',
+    // },
+    //     {
+    //   category: 'rooms',
+    //   src: '/apartments/4/index.jpg',
+    //   alt: 'Room image 4',
+    //   apartamentId: 4,
+    //   descriptionKey: 'room1',
+    // },
         {
       category: 'rooms',
       src: '/apartments/5/index.jpg',
@@ -55,13 +55,27 @@ export default function GalleryPage() {
       apartamentId: 6,
       descriptionKey: 'room1',
     },
-    {
-      category: 'amenities',
-      src: '/amenities/towel.jpg',
-      alt: 'Towel amenity image',
-      apartamentId: null,
+            {
+      category: 'rooms',
+      src: '/apartments/gallery/habitaciones.jpg',
+      alt: 'Room image 5', // cambiar
+      apartamentId: 5,
       descriptionKey: 'room1',
     },
+                {
+      category: 'rooms',
+      src: '/apartments/gallery/cama-doble.jpg',
+      alt: 'Room image 5', // cambiar
+      apartamentId: 5,
+      descriptionKey: 'room1',
+    },
+    // {
+    //   category: 'amenities',
+    //   src: '/amenities/towel.jpg',
+    //   alt: 'Towel amenity image',
+    //   apartamentId: null,
+    //   descriptionKey: 'room1',
+    // },
         {
       category: 'amenities',
       src: '/amenities/bathtub.jpg',
@@ -72,6 +86,13 @@ export default function GalleryPage() {
         {
       category: 'amenities',
       src: '/amenities/shampoo.jpg',
+      alt: 'Pool amenity image',
+      apartamentId: null,
+      descriptionKey: 'room1',
+    },
+    {
+      category: 'amenities',
+      src: '/amenities/view.jpg',
       alt: 'Pool amenity image',
       apartamentId: null,
       descriptionKey: 'room1',
