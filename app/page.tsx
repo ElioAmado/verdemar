@@ -88,14 +88,14 @@ export default function Home() {
           
           </div>
 
-          <div className="flex justify-center mt-12">
+         {/* <div className="flex justify-center mt-12">
             <Link href="/rooms">
               <Button variant="outline" className="gap-2">
                 {t('common.viewAll')}
                 <ChevronRightIcon className="h-4 w-4" />
               </Button>
             </Link>
-          </div>
+          </div>*/}
         </section>
 
         {/* Amenities Section */}
