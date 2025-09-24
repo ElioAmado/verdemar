@@ -2,6 +2,8 @@
 // React component (JSX) containing the legal notice text provided by the user.
 // Comments are in English, following user's preference.
 
+import { SiteFooter } from '@/components/site-footer';
+import { SiteHeader } from '@/components/site-header';
 import React from 'react';
 
 /**
@@ -12,7 +14,10 @@ import React from 'react';
  */
 export default function LegalNotice() {
   return (
+    <div className="flex min-h-screen flex-col">
+     <SiteHeader />
     <article className="max-w-4xl mx-auto p-6 bg-white rounded-2xl shadow-md prose lg:prose-lg">
+      
       <h1>Ley de los Servicios de la Sociedad de la Información (LSSI)</h1>
 
       <p>
@@ -79,5 +84,7 @@ export default function LegalNotice() {
         </p>
       </section>
     </article>
+    <SiteFooter />
+    </div>
   );
 }
