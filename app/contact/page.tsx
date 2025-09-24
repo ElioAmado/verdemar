@@ -44,6 +44,8 @@ export default function ContactPage() {
         const map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
           center: { lat: 38.722110140342515, lng: 1.4594708860911132 }, // Coordenadas de ejemplo: Formentera
           zoom: 15.5,
+          streetViewControl: false,
+          mapTypeControl: true,
         });
 
         new google.maps.Marker({
