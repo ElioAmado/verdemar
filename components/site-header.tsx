@@ -33,9 +33,6 @@ export function SiteHeader() {
           <Link href="/" className="text-sm font-medium transition-colors hover:text-primary">
             {t('common.home')}
           </Link>
-          <Link href="/rooms" className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
-            {t('common.rooms')}
-          </Link>
           <Link href="/amenities" className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
             {t('common.amenities')}
           </Link>
