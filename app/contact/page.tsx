@@ -12,6 +12,7 @@ import { SiteHeader } from '@/components/site-header';
 import { useLanguage } from '@/contexts/language-context';
 import { useEffect } from 'react';
 import { SiteFooter } from '@/components/site-footer';
+import { Mapa } from '@/consts/maps';
 
 
 
@@ -28,46 +29,7 @@ export default function ContactPage() {
   const { t } = useLanguage();
 
 
-  const Mapa = () => {
-    useEffect(() => {
-      // Evitar múltiples inclusiones
-      const existingScript = document.querySelector(`script[src*="maps.googleapis.com/maps/api/js"]`);
-      if (existingScript) {
-        if (window.google) {
-          window.initMap(); // Ejecutar callback si ya está cargado
-        }
-        return;
-      }
 
-      // Define global initMap callback
-      (window as any).initMap = function () {
-        const map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
-          center: { lat: 38.722110140342515, lng: 1.4594708860911132 }, // Coordenadas de ejemplo: Formentera
-          zoom: 15.5,
-          streetViewControl: false,
-          mapTypeControl: true,
-        });
-
-        new google.maps.Marker({
-          position: { lat: 38.722110140342515, lng: 1.4594708860911132 },
-          map,
-          title: "Apartamentos Verde Mar",
-        });
-      };
-
-      const script = document.createElement("script");
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_API_KEY_MAP}&callback=initMap&libraries=maps,marker&v=beta`;
-      script.async = true;
-      document.body.appendChild(script);
-
-      return () => {
-        document.body.removeChild(script);
-        delete (window as any).initMap;
-      };
-    }, []);
-
-    return <div id="map" style={{ height: "400px", width: "100%" }} />;
-  };
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -165,11 +127,15 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <h2 className="text-2xl font-bold mb-6">{t('contact.locationTitle')}</h2>
-                  <div className="aspect-video relative rounded-xl overflow-hidden border">
+                  <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">
+                    {t('contact.locationTitle')}
+                  </h2>
+
+                  <div className="relative w-full h-[300px] sm:h-[400px] md:h-[400px] rounded-xl overflow-hidden border">
                     <Mapa />
                   </div>
                 </div>
+
 
                 {/* <div>
                   <h2 className="text-2xl font-bold mb-6">{t('contact.hoursTitle')}</h2>

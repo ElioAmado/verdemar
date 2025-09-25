@@ -15,6 +15,7 @@ import { useLanguage } from '@/contexts/language-context';
 import RoomsSearch from '@/components/rooms-search';
 import { apartments } from '@/consts/apartaments';
 import { Card, CardContent } from '@/components/ui/card';
+import { Mapa } from '@/consts/maps';
 
 export default function HomePage() {
   const { t } = useLanguage();
@@ -108,8 +109,8 @@ export default function HomePage() {
 
               <Card className="border-0 bg-card/50 backdrop-blur">
                 <CardContent className="p-6 text-center">
-                  <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Home className="w-6 h-6 text-accent" />
+                  <div className="w-12 h-12 bg-foreground/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Home className="w-6 h-6 text-foreground" />
                   </div>
                   <h3 className="font-semibold mb-2">Zona Rústica</h3>
                   <p className="text-sm text-muted-foreground">
@@ -120,6 +121,12 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+        <div className="container px-4 md:px-6">
+        <div className="relative w-full h-[300px] sm:h-[400px] md:h-[600px] rounded-xl overflow-hidden border">
+          <Mapa />
+        </div>
+        </div>
+
 
         {/* Amenities Section */}
         <section className="bg-muted py-24">
