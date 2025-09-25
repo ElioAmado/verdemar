@@ -64,20 +64,18 @@ export default function HomePage() {
               <div className="inline-flex items-center gap-2 bg-accent/10 px-4 py-2 rounded-full mb-6">
                 <Waves className="w-4 h-4 text-accent" />
                 <span className="text-sm font-medium text-accent">
-                  Espujols, Formentera
+                  Es Pujols, Formentera
                 </span>
               </div>
 
               <h1 className="text-4xl md:text-6xl font-serif text-balance mb-6 text-foreground">
-                Apartamentos
-                <span className="block text-primary">Verde Mar</span>
+                {t("Apartments")}
+                <span className="block text-primary">
+                  {t("brand_name")}</span>
               </h1>
 
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-balance leading-relaxed">
-                Un complejo exclusivo de 6 apartamentos turísticos en una
-                ubicación privilegiada. A solo 150 metros de la playa y 5
-                minutos del centro de Espujols, en un entorno rústico donde
-                disfrutar de la tranquilidad mediterránea.
+                {t("home.about.text")}
               </p>
             </div>
 
@@ -88,9 +86,9 @@ export default function HomePage() {
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Waves className="w-6 h-6 text-primary" />
                   </div>
-                  <h3 className="font-semibold mb-2">150m de la Playa</h3>
+                  <h3 className="font-semibold mb-2">{t("home.about.title_waves")}</h3>
                   <p className="text-sm text-muted-foreground">
-                    Acceso directo a las cristalinas aguas de Espujols
+                    {t("home.about.text_waves")}
                   </p>
                 </CardContent>
               </Card>
@@ -100,9 +98,9 @@ export default function HomePage() {
                   <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <MapPin className="w-6 h-6 text-secondary" />
                   </div>
-                  <h3 className="font-semibold mb-2">A 5 minutos del centro</h3>
+                  <h3 className="font-semibold mb-2">{t("home.about.title_MapPin")}</h3>
                   <p className="text-sm text-muted-foreground">
-                    Caminata corta a restaurantes y servicios
+                    {t("home.about.text_MapPin")}
                   </p>
                 </CardContent>
               </Card>
@@ -112,9 +110,10 @@ export default function HomePage() {
                   <div className="w-12 h-12 bg-foreground/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Home className="w-6 h-6 text-foreground" />
                   </div>
-                  <h3 className="font-semibold mb-2">Zona Rústica</h3>
+                  <h3 className="font-semibold mb-2"> {t("home.about.title_Home")}</h3>
                   <p className="text-sm text-muted-foreground">
-                    Tranquilidad en un entorno natural preservado
+                    
+                    {t("home.about.text_Home")}
                   </p>
                 </CardContent>
               </Card>
@@ -130,6 +129,11 @@ export default function HomePage() {
           </div>
         </div>
 
+        <section>
+          <div className="container mx-auto px-4 mt-16">
+            
+          </div>
+        </section>
 
         {/* Amenities Section */}
         <section className=" mt-16 bg-muted py-24">

@@ -1,9 +1,11 @@
 {
-  "two_bedroom": "Apartment mit 2 Schlafzimmer",
-  "one_bedroom": "Apartment mit 1 Schlafzimmern",
-  "ONE_BEDROOM": "Apartment mit 2 Schlafzimmer",
-  "TWO_BEDROOM": "Apartment mit 1 Schlafzimmern",
-
+  "two_bedroom": "Apartment mit 2 Schlafzimmern",
+  "one_bedroom": "Apartment mit 1 Schlafzimmer",
+  "ONE_BEDROOM": "Apartment mit 2 Schlafzimmern",
+  "TWO_BEDROOM": "Apartment mit 1 Schlafzimmer",
+  "Apartments": "Apartments",
+  "Apartments_name": "Apartments Verde Mar",
+  "brand_name": "Verde Mar",
   "common": {
     "home": "Startseite",
     "rooms": "Zimmer",
@@ -15,8 +17,8 @@
     "bookNow": "Jetzt buchen",
     "apartaments": "Apartments",
     "guests": "Gäste",
-    "viewAll": "Alle Apartments ansehen",
-    "total" : "Gesamt",
+    "viewAll": "Alle Apartments anzeigen",
+    "total": "Gesamt",
     "footer": {
       "copyright": "© 2025 Apartments Verde Mar. Alle Rechte vorbehalten.",
       "cookies": "Cookie-Richtlinie",
@@ -31,75 +33,64 @@
   },
   "home": {
     "hero": {
-      "title": "Willkommen in Ihrem Zuhause auf Formentera",
-      "subtitle": "Luxusapartments direkt am Meer für einen unvergesslichen Aufenthalt.",
-      "cta": "Buchen Sie Ihren Aufenthalt"
+      "title": "Willkommen in deinem Zuhause auf Formentera",
+      "subtitle": "Apartments am Meer für einen unvergesslichen Aufenthalt.",
+      "cta": "Buche deinen Aufenthalt"
+    },
+    "about": {
+      "text": "Ein exklusiver Komplex mit 6 Ferienapartments in privilegierter Lage. Nur 150 Meter vom Strand und 5 Minuten vom Zentrum von Es Pujols entfernt, in einer rustikalen Umgebung, in der du die mediterrane Ruhe genießen kannst.",
+      "title_waves": "150m vom Strand",
+      "text_waves": "Direkter Zugang zu den kristallklaren Gewässern von Es Pujols",
+      "title_MapPin": "5 Minuten vom Zentrum entfernt",
+      "text_MapPin": "Kurzer Spaziergang zu Restaurants und Dienstleistungen",
+      "title_Home": "Rustikale Umgebung",
+      "text_Home": "Ruhe in einer erhaltenen natürlichen Umgebung"
     },
     "search": {
       "checkIn": "Check-in / Check-out",
-      "roomType": "Apartmenttyp",
+      "roomType": "Apartment-Typ",
       "guests": "Gäste",
       "adults": "Erwachsene",
       "children": "Kinder",
       "search": "Verfügbarkeit prüfen",
-      "pickDate": "Wählen Sie ein Datum"
+      "pickDate": "Wähle ein Datum"
     },
     "amenities": {
-      "title": "Ausstattung der Unterkunft",
-      "subtitle": "Entdecken Sie alle Annehmlichkeiten, die unsere Apartments für einen perfekten Aufenthalt bieten.",
+      "title": "Unterkunftsleistungen",
+      "subtitle": "Entdecke alle Annehmlichkeiten, die unsere Apartments bieten, damit du einen perfekten Aufenthalt genießen kannst.",
       "safe": "Safe",
-      "safeDesc": "Bewahren Sie Ihre Wertsachen sicher in unseren Zimmersafes auf.",
+      "safeDesc": "Bewahre deine Wertsachen sicher in unseren Zimmersafes auf.",
       "AC": "Klimaanlage",
-      "ACDesc": "Genießen Sie während Ihres Aufenthalts eine kühle und komfortable Umgebung.",
+      "ACDesc": "Genieße eine frische und angenehme Atmosphäre während deines Aufenthalts.",
       "parking": "Parkplatz",
-      "parkingDesc": "Private Parkplätze stehen unseren Gästen zur Verfügung.",
+      "parkingDesc": "Private Parkplätze für unsere Gäste verfügbar.",
       "kitchen": "Voll ausgestattete Küche",
-      "kitchenDesc": "Alle Apartments verfügen über eine voll ausgestattete Küche für Ihren Komfort."
-    },
-    "location": {
-      "title": "Erstklassige Lage",
-      "subtitle": "Im Herzen der Stadt gelegen, mit einfachem Zugang zu den wichtigsten Sehenswürdigkeiten und Geschäftsvierteln.",
-      "airport": "Vom Flughafen",
-      "airportDesc": "Nur 20 Autominuten vom internationalen Flughafen entfernt. Transfer-Service verfügbar.",
-      "transport": "Öffentliche Verkehrsmittel",
-      "transportDesc": "Nur 5 Gehminuten vom Hauptbahnhof entfernt, mit Verbindungen zu allen Linien der Stadt.",
-      "attractions": "Nahegelegene Attraktionen",
-      "attractionsDesc": "In der Nähe von Museen, Einkaufszonen und historischen Denkmälern."
+      "kitchenDesc": "Alle Apartments verfügen über eine komplett ausgestattete Küche für deinen Komfort."
     },
     "testimonials": {
-      "title": "Das sagen unsere Gäste",
-      "subtitle": "Lesen Sie über die Erfahrungen unserer geschätzten Gäste aus aller Welt."
+      "title": "Was unsere Gäste sagen",
+      "subtitle": "Lies über die Erfahrungen unserer geschätzten Gäste aus aller Welt."
     },
-    "offers": {
-      "title": "Exklusive Pakete",
-      "subtitle": "Nutzen Sie unsere Sonderangebote und Pakete, die Ihren Aufenthalt bereichern und außergewöhnlichen Wert bieten.",
-      "breakfast": "Kostenloses Frühstück für zwei",
-      "spa": "Spa-Guthaben inklusive",
-      "checkout": "Später Check-out je nach Verfügbarkeit",
-      "transfer": "Kostenloser Flughafentransfer",
-      "cta": "Sonderangebote ansehen"
-    },
-    "cta": {
-      "title": "Bereit für Luxus?",
-      "subtitle": "Buchen Sie noch heute und genießen Sie exklusive Vorteile bei Direktbuchung.",
-      "bookNow": "Jetzt buchen",
-      "contactUs": "Kontaktieren Sie uns"
+    "map": {
+      "title": "Unser Standort",
+      "subtitle": "Finde uns im Herzen von Es Pujols, Formentera.",
+      "address": "Camp D'es Pou 3877, Es Pujols"
     }
   },
   "amenities": {
-    "title": "Annehmlichkeiten",
-    "subtitle": "Alles, was Sie für einen perfekten Aufenthalt brauchen.",
+    "title": "Ausstattung",
+    "subtitle": "Alles, was du für einen perfekten Aufenthalt brauchst.",
     "items": {
       "wifi": {
         "title": "Kostenloses WLAN",
-        "description": "Kostenloser Zugang im gesamten Gebäude."
+        "description": "Kostenlose Verbindung im gesamten Gebäude."
       },
       "coffee": {
         "title": "Kaffeemaschine",
-        "description": "In allen Apartments verfügbar."
+        "description": "Kaffeemaschine in allen Apartments verfügbar."
       },
       "tv": {
-        "title": "Flachbildfernseher",
+        "title": "Flachbild-TV",
         "description": "Mit Satellitenkanälen."
       },
       "air": {
@@ -108,37 +99,136 @@
       },
       "kitchen": {
         "title": "Ausgestattete Küche",
-        "description": "Mit Kühlschrank, Mikrowelle und Utensilien."
+        "description": "Inklusive Kühlschrank, Mikrowelle und Utensilien."
       },
       "parking": {
         "title": "Kostenloses Parken",
-        "description": "Kostenlose Privatparkplätze in der Nähe."
+        "description": "Kostenlose private Parkplätze in der Nähe."
       },
       "location": {
-        "title": "Hervorragende Lage",
-        "description": "Nur 300 Meter vom Strand Es Pujols entfernt."
+        "title": "Ausgezeichnete Lage",
+        "description": "Nur 300 Meter vom Strand von Es Pujols entfernt."
       },
       "staff": {
         "title": "Mehrsprachiges Personal",
-        "description": "Service auf Spanisch, Englisch und Italienisch."
+        "description": "Betreuung auf Spanisch, Englisch und Italienisch."
       },
       "safe": {
         "title": "Safe",
-        "description": "Verfügbar, um Ihre Wertsachen zu schützen."
+        "description": "Zum Schutz deiner Wertsachen verfügbar."
       },
       "family": {
         "title": "Familienapartments",
-        "description": "Ideal für Familien, geräumig und komfortabel."
+        "description": "Ideal für Familien, mit geräumigen und komfortablen Bereichen."
       },
       "balcony": {
         "title": "Privater Balkon",
-        "description": "Mit Blick auf Es Pujols oder den Garten."
+        "description": "Mit Blick auf Es Pujols oder den Garten der Unterkunft."
       },
       "bathroom": {
-        "title": "Eigenes Bad",
-        "description": "Mit Dusche, Haartrockner und kostenlosen Pflegeprodukten."
+        "title": "Privates Badezimmer",
+        "description": "Inklusive Dusche, Haartrockner und kostenlosen Pflegeartikeln."
       },
       "included": "Inklusive"
     }
+  },
+  "rooms": {
+    "littleMsg": "Unsere Apartments",
+    "title": "Apartments",
+    "subtitle": "Wähle aus einer sorgfältigen Auswahl an Apartments, die für deinen Komfort und deine Erholung gestaltet wurden.",
+    "viewAll": "Alle Apartments anzeigen",
+    "guests": "Gäste",
+    "reviews": "Bewertungen",
+    "night": "/Nacht",
+    "apartmentnumber": "Apartment Nummer"
+  },
+  "roomSelector": {
+    "ONE_BEDROOM": "Apartment mit 1 Schlafzimmer",
+    "TWO_BEDROOM": "Apartment mit 2 Schlafzimmern",
+    "selectRoom": "Wähle dein Apartment"
+  },
+  "footer": {
+    "quickLinks": "Schnellzugriffe",
+    "contact": "Kontakt",
+    "description": "Genieße Luxus und Komfort im Herzen der Stadt.",
+    "address": "Camp D'es Pou 3877, Es Pujols"
+  },
+  "gallery": {
+    "title": "Galerie",
+    "subtitle": "Entdecke die Schönheit unserer Apartments und die atemberaubenden Aussichten, die dich erwarten.",
+    "all": "Alle",
+    "rooms": "Zimmer",
+    "amenities": "Ausstattung"
+  },
+  "contact": {
+    "title": "Kontaktiere uns",
+    "subtitle": "Wir sind hier, um dir bei allen Fragen oder besonderen Wünschen zu helfen.",
+    "formTitle": "Kontaktiere uns",
+    "firstName": "Vorname",
+    "firstNamePlaceholder": "Gib deinen Vornamen ein",
+    "lastName": "Nachname",
+    "lastNamePlaceholder": "Gib deinen Nachnamen ein",
+    "email": "E-Mail",
+    "emailPlaceholder": "Gib deine E-Mail ein",
+    "phone": "Telefon",
+    "phonePlaceholder": "Gib deine Telefonnummer ein",
+    "subject": "Betreff",
+    "subjectPlaceholder": "Worum geht es in deiner Nachricht?",
+    "message": "Nachricht",
+    "messagePlaceholder": "Gib Details zu deiner Anfrage an",
+    "send": "Nachricht senden",
+    "infoTitle": "Kontaktinformationen",
+    "address": "Adresse",
+    "locationTitle": "Unser Standort",
+    "mapAlt": "Standortkarte des Hotels",
+    "hoursTitle": "Öffnungszeiten",
+    "hours": {
+      "frontDesk": "Rezeption",
+      "frontDeskHours": "24 Stunden, 7 Tage die Woche",
+      "concierge": "Concierge",
+      "conciergeHours": "7:00 - 23:00",
+      "restaurant": "Restaurant Azure",
+      "restaurantHours": "6:30 - 22:30",
+      "lounge": "Skyline Lounge",
+      "loungeHours": "16:00 - 01:00",
+      "spa": "Spa & Wellness",
+      "spaHours": "9:00 - 20:00"
+    }
+  },
+  "form": {
+    "first_name": "Vorname",
+    "first_name_placeholder": "Gib deinen Vornamen ein",
+    "last_name": "Nachname",
+    "last_name_placeholder": "Gib deinen Nachnamen ein",
+    "email": "E-Mail",
+    "email_placeholder": "Gib deine E-Mail-Adresse ein",
+    "phone": "Telefon",
+    "phone_placeholder": "Gib deine Telefonnummer ein",
+    "submit": "Absenden"
+  },
+  "calendar": {
+    "monthNames": [
+      "Januar",
+      "Februar",
+      "März",
+      "April",
+      "Mai",
+      "Juni",
+      "Juli",
+      "August",
+      "September",
+      "Oktober",
+      "November",
+      "Dezember"
+    ],
+    "daysOfWeek": [
+      "Sonntag",
+      "Montag",
+      "Dienstag",
+      "Mittwoch",
+      "Donnerstag",
+      "Freitag",
+      "Samstag"
+    ]
   }
 }

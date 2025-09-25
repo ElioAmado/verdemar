@@ -3,7 +3,9 @@
   "one_bedroom": "Apartamento de 1 dormitorio",
   "ONE_BEDROOM": "Apartamento de 2 dormitorios",
   "TWO_BEDROOM": "Apartamento de 1 dormitorio",
-
+  "Apartments": "Apartamentos",
+  "Apartments_name": "Apartamentos Verde Mar",
+  "brand_name": "Verde Mar",
   "common": {
     "home": "Inicio",
     "rooms": "Habitaciones",
@@ -16,7 +18,7 @@
     "apartaments": "Apartamentos",
     "guests": "Huéspedes",
     "viewAll": "Ver Todos Los Apartamentos",
-    "total" : "Total",
+    "total": "Total",
     "footer": {
       "copyright": "© 2025 Apartamentos Verde Mar. Todos los derechos reservados.",
       "cookies": "Politica de Cookies",
@@ -28,13 +30,21 @@
     "phone": "+34 626 703 985",
     "phone_24h": "+34 900 123 456",
     "email": "aptosverdemar@gmail.com"
-    
   },
   "home": {
     "hero": {
       "title": "Bienvenido a tu Hogar en Formentera",
       "subtitle": "Apartamentos frente al mar para una escapada inolvidable.",
       "cta": "Reserva tu Estancia"
+    },
+    "about": {
+      "text": "Un complejo exclusivo de 6 apartamentos turísticos en unaubicación privilegiada. A solo 150 metros de la playa y 5minutos del centro de Espujols, en un entorno rústico dondedisfrutar de la tranquilidad mediterránea.",
+      "title_waves": "150m de la Playa ",
+      "text_waves": "Acceso directo a las cristalinas aguas de Espujols",
+      "title_MapPin": "A 5 minutos del centro ",
+      "text_MapPin": "Caminata corta a restaurantes y servicios",
+      "title_Home": "Zona Rústica",
+      "text_Home": "Tranquilidad en un entorno natural preservado"
     },
     "search": {
       "checkIn": "Entrada / Salida",
@@ -57,97 +67,71 @@
       "kitchen": "Cocina Equipada",
       "kitchenDesc": "Todos los apartamentos disponen de cocina completamente equipada para tu comodidad."
     },
-    "location": {
-      "title": "Ubicación Privilegiada",
-      "subtitle": "Situado en el corazón de la ciudad, con fácil acceso a las principales atracciones y distritos de negocios.",
-      "airport": "Desde el Aeropuerto",
-      "airportDesc": "A solo 20 minutos en coche del Aeropuerto Internacional. Servicio de traslado disponible.",
-      "transport": "Transporte Público",
-      "transportDesc": "A 5 minutos a pie de la Estación Central con conexiones a todas las líneas de la ciudad.",
-      "attractions": "Atracciones Cercanas",
-      "attractionsDesc": "A poca distancia de museos, zonas comerciales y monumentos históricos."
-    },
     "testimonials": {
       "title": "Lo que Dicen Nuestros Huéspedes",
       "subtitle": "Lee sobre las experiencias de nuestros valiosos huéspedes de todo el mundo."
-    },
-    "offers": {
-      "title": "Paquetes Exclusivos",
-      "subtitle": "Aprovecha nuestras ofertas especiales y paquetes diseñados para mejorar tu estancia y proporcionar un valor excepcional.",
-      "breakfast": "Desayuno de cortesía para dos",
-      "spa": "Crédito para spa incluido",
-      "checkout": "Salida tardía según disponibilidad",
-      "transfer": "Traslado gratuito al aeropuerto",
-      "cta": "Ver Ofertas Especiales"
-    },
-    "cta": {
-      "title": "¿Listo para Experimentar el Lujo?",
-      "subtitle": "Reserva tu estancia hoy y disfruta de beneficios exclusivos cuando reservas directamente con nosotros.",
-      "bookNow": "Reservar Ahora",
-      "contactUs": "Contáctanos"
     },
     "map": {
       "title": "Nuestra Ubicación",
       "subtitle": "Encuéntranos en el corazón de Es Pujols, Formentera.",
       "address": "Camp D'es Pou 3877, Es Pujols"
     }
-    
   },
   "amenities": {
-      "title": "Comodidades",
-      "subtitle": "Todo lo que necesitas para una estancia perfecta.",
-      "items": {
-        "wifi": {
-          "title": "WiFi gratis",
-          "description": "Conexión gratuita en todo el alojamiento."
-        },
-        "coffee": {
-          "title": "Cafetera",
-          "description": "Cafetera disponible en todos los apartamentos."
-        },
-        "tv": {
-          "title": "TV de pantalla plana",
-          "description": "Con canales vía satélite."
-        },
-        "air": {
-          "title": "Aire acondicionado",
-          "description": "Disponible en todos los alojamientos."
-        },
-        "kitchen": {
-          "title": "Cocina equipada",
-          "description": "Incluye nevera, microondas y utensilios."
-        },
-        "parking": {
-          "title": "Parking gratis",
-          "description": "Aparcamiento privado gratuito en las inmediaciones."
-        },
-        "location": {
-          "title": "Ubicación excelente",
-          "description": "A sólo 300 metros de la playa de Es Pujols."
-        },
-        "staff": {
-          "title": "Personal multilingüe",
-          "description": "Atención en español, inglés e italiano."
-        },
-        "safe": {
-          "title": "Caja fuerte",
-          "description": "Disponible para proteger tus pertenencias de valor."
-        },
-        "family": {
-          "title": "Apartamentos familiares",
-          "description": "Ideales para familias, con espacios amplios y cómodos."
-        },
-        "balcony": {
-          "title": "Balcón privado",
-          "description": "Con vistas a la zona de Es Pujols o al jardín del alojamiento."
-        },
-        "bathroom": {
-          "title": "Baño privado",
-          "description": "Incluye ducha, secador de pelo y artículos de aseo gratuitos."
-        },
-        "included": "Incluido"
-      }
-    },
+    "title": "Comodidades",
+    "subtitle": "Todo lo que necesitas para una estancia perfecta.",
+    "items": {
+      "wifi": {
+        "title": "WiFi gratis",
+        "description": "Conexión gratuita en todo el alojamiento."
+      },
+      "coffee": {
+        "title": "Cafetera",
+        "description": "Cafetera disponible en todos los apartamentos."
+      },
+      "tv": {
+        "title": "TV de pantalla plana",
+        "description": "Con canales vía satélite."
+      },
+      "air": {
+        "title": "Aire acondicionado",
+        "description": "Disponible en todos los alojamientos."
+      },
+      "kitchen": {
+        "title": "Cocina equipada",
+        "description": "Incluye nevera, microondas y utensilios."
+      },
+      "parking": {
+        "title": "Parking gratis",
+        "description": "Aparcamiento privado gratuito en las inmediaciones."
+      },
+      "location": {
+        "title": "Ubicación excelente",
+        "description": "A sólo 300 metros de la playa de Es Pujols."
+      },
+      "staff": {
+        "title": "Personal multilingüe",
+        "description": "Atención en español, inglés e italiano."
+      },
+      "safe": {
+        "title": "Caja fuerte",
+        "description": "Disponible para proteger tus pertenencias de valor."
+      },
+      "family": {
+        "title": "Apartamentos familiares",
+        "description": "Ideales para familias, con espacios amplios y cómodos."
+      },
+      "balcony": {
+        "title": "Balcón privado",
+        "description": "Con vistas a la zona de Es Pujols o al jardín del alojamiento."
+      },
+      "bathroom": {
+        "title": "Baño privado",
+        "description": "Incluye ducha, secador de pelo y artículos de aseo gratuitos."
+      },
+      "included": "Incluido"
+    }
+  },
   "rooms": {
     "littleMsg": "Nuestros apartamentos",
     "title": "Apartamentos",
@@ -211,42 +195,6 @@
       "spaHours": "9:00 - 20:00"
     }
   },
-  "signIn": {
-    "title": "Iniciar Sesión",
-    "subtitle": "Accede a tu cuenta para gestionar tus reservas y preferencias.",
-    "email": "Correo electrónico",
-    "emailPlaceholder": "Introduce tu correo electrónico",
-    "password": "Contraseña",
-    "passwordPlaceholder": "Introduce tu contraseña",
-    "forgotPassword": "¿Olvidaste tu contraseña?",
-    "signInButton": "Iniciar Sesión",
-    "noAccount": "¿No tienes una cuenta?",
-    "registerLink": "Regístrate aquí",
-    "rememberMe": "Recuérdame"
-  },
-  "booking": {
-    "title": "Reserva tu Estancia",
-    "subtitle": "Completa tu reserva para asegurar tu apartamento.",
-    "checkIn": "Entrada",
-    "checkOut": "Salida",
-    "guests": "Huéspedes",
-    "roomType": "Tipo de Apartamento",
-    "totalPrice": "Precio Total",
-    "bookNow": "Reservar Ahora",
-    "back": "Volver",
-    "confirm": "Confirmar Reserva",
-    "payment": "Información de Pago",
-    "paymentMethod": "Método de Pago",
-    "stay_title": "Detalles de tu estancia",
-    "stay_description": "Confirma tus fechas y número de huéspedes",
-    "dates": "Fechas de Reserva",
-    "notes": "Notas Especiales (Opcional)",
-    "notes_placeholder": "¿Tienes alguna solicitud especial?",
-    "guest_title": "Información del Huésped",
-    "guest_description": "Proporciona los detalles de los huéspedes que se alojarán",	
-
-    "cancel": "Cancelar"
-  },
   "form": {
     "first_name": "Nombre",
     "first_name_placeholder": "Introduce tu nombre",
@@ -258,7 +206,6 @@
     "phone_placeholder": "Introduce tu número de teléfono",
     "submit": "Enviar"
   },
-
   "calendar": {
     "monthNames": [
       "Enero",

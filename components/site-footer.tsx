@@ -24,7 +24,7 @@ export function SiteFooter() {
                 width={32}
                 height={32}
               />
-              <span>Apartamentos Verde Mar</span>
+              <span>{t("Apartments_name")}</span>
             </Link>
             {/* <p className="text-muted-foreground">{t('footer.description')}</p> */}
             {/* 
@@ -61,7 +61,6 @@ export function SiteFooter() {
             <h3 className="text-lg font-semibold mb-4">{t('footer.quickLinks')}</h3>
             <nav className="flex flex-col space-y-2">
               <Link href="/" className="text-muted-foreground hover:text-foreground">{t('common.home')}</Link>
-              <Link href="/rooms" className="text-muted-foreground hover:text-foreground">{t('common.rooms')}</Link>
               <Link href="/amenities" className="text-muted-foreground hover:text-foreground">{t('common.amenities')}</Link>
               <Link href="/gallery" className="text-muted-foreground hover:text-foreground">{t('common.gallery')}</Link>
               {/* <Link href="/about" className="text-muted-foreground hover:text-foreground">{t('common.about')}</Link> */}

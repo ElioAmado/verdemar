@@ -1,27 +1,29 @@
 {
-  "two_bedroom": "2-Bedroom Apartment",
-  "one_bedroom": "1-Bedroom Apartment",
-  "ONE_BEDROOM": "2-Bedroom Apartment",
-  "TWO_BEDROOM": "1-Bedroom Apartment",
-
+  "two_bedroom": "Two-Bedroom Apartment",
+  "one_bedroom": "One-Bedroom Apartment",
+  "ONE_BEDROOM": "Two-Bedroom Apartment",
+  "TWO_BEDROOM": "One-Bedroom Apartment",
+  "Apartments": "Apartments",
+  "Apartments_name": "Verde Mar Apartments",
+  "brand_name": "Verde Mar",
   "common": {
     "home": "Home",
     "rooms": "Rooms",
     "amenities": "Amenities",
     "gallery": "Gallery",
-    "about": "About Us",
+    "about": "About",
     "contact": "Contact",
     "signIn": "Sign In",
     "bookNow": "Book Now",
     "apartaments": "Apartments",
     "guests": "Guests",
     "viewAll": "View All Apartments",
-    "total" : "Total",
+    "total": "Total",
     "footer": {
       "copyright": "© 2025 Verde Mar Apartments. All rights reserved.",
       "cookies": "Cookie Policy",
       "privacy": "Privacy Policy",
-      "terms": "Terms and Conditions",
+      "terms": "Terms & Conditions",
       "legal-disclaimer": "Legal Notice",
       "contact": "Contact"
     },
@@ -32,8 +34,17 @@
   "home": {
     "hero": {
       "title": "Welcome to Your Home in Formentera",
-      "subtitle": "Luxury seafront apartments for an unforgettable getaway.",
+      "subtitle": "Seafront apartments for an unforgettable getaway.",
       "cta": "Book Your Stay"
+    },
+    "about": {
+      "text": "An exclusive complex of 6 tourist apartments in a privileged location. Just 150 meters from the beach and 5 minutes from the centre of Es Pujols, in a rustic setting where you can enjoy Mediterranean tranquility.",
+      "title_waves": "150m from the Beach",
+      "text_waves": "Direct access to the crystal-clear waters of Es Pujols",
+      "title_MapPin": "5 minutes from the centre",
+      "text_MapPin": "Short walk to restaurants and services",
+      "title_Home": "Rustic Area",
+      "text_Home": "Peace in a preserved natural environment"
     },
     "search": {
       "checkIn": "Check-in / Check-out",
@@ -41,49 +52,29 @@
       "guests": "Guests",
       "adults": "Adults",
       "children": "Children",
-      "search": "Check Availability",
+      "search": "Search Availability",
       "pickDate": "Select a date"
     },
     "amenities": {
       "title": "Accommodation Services",
-      "subtitle": "Discover all the comforts our apartments offer for a perfect stay.",
+      "subtitle": "Discover all the comforts our apartments offer to ensure you enjoy a perfect stay.",
       "safe": "Safe",
       "safeDesc": "Keep your valuables secure in our in-room safes.",
       "AC": "Air Conditioning",
-      "ACDesc": "Enjoy a cool and comfortable environment during your stay.",
+      "ACDesc": "Enjoy a fresh and comfortable atmosphere during your stay.",
       "parking": "Parking",
       "parkingDesc": "Private parking spaces available for our guests.",
       "kitchen": "Fully Equipped Kitchen",
       "kitchenDesc": "All apartments feature a fully equipped kitchen for your convenience."
     },
-    "location": {
-      "title": "Prime Location",
-      "subtitle": "Located in the heart of the city, with easy access to top attractions and business districts.",
-      "airport": "From the Airport",
-      "airportDesc": "Only 20 minutes by car from the International Airport. Shuttle service available.",
-      "transport": "Public Transport",
-      "transportDesc": "5 minutes’ walk from the Central Station with connections to all city lines.",
-      "attractions": "Nearby Attractions",
-      "attractionsDesc": "Within walking distance of museums, shopping areas, and historic landmarks."
-    },
     "testimonials": {
       "title": "What Our Guests Say",
       "subtitle": "Read about the experiences of our valued guests from around the world."
     },
-    "offers": {
-      "title": "Exclusive Packages",
-      "subtitle": "Take advantage of our special offers and packages designed to enhance your stay and provide exceptional value.",
-      "breakfast": "Complimentary breakfast for two",
-      "spa": "Spa credit included",
-      "checkout": "Late check-out subject to availability",
-      "transfer": "Free airport transfer",
-      "cta": "View Special Offers"
-    },
-    "cta": {
-      "title": "Ready to Experience Luxury?",
-      "subtitle": "Book your stay today and enjoy exclusive benefits when you book directly with us.",
-      "bookNow": "Book Now",
-      "contactUs": "Contact Us"
+    "map": {
+      "title": "Our Location",
+      "subtitle": "Find us in the heart of Es Pujols, Formentera.",
+      "address": "Camp D'es Pou 3877, Es Pujols"
     }
   },
   "amenities": {
@@ -96,7 +87,7 @@
       },
       "coffee": {
         "title": "Coffee Maker",
-        "description": "Available in all apartments."
+        "description": "Coffee maker available in all apartments."
       },
       "tv": {
         "title": "Flat-Screen TV",
@@ -112,11 +103,11 @@
       },
       "parking": {
         "title": "Free Parking",
-        "description": "Free private parking nearby."
+        "description": "Free private parking available nearby."
       },
       "location": {
         "title": "Excellent Location",
-        "description": "Only 300 meters from Es Pujols Beach."
+        "description": "Only 300 meters from Es Pujols beach."
       },
       "staff": {
         "title": "Multilingual Staff",
@@ -124,7 +115,7 @@
       },
       "safe": {
         "title": "Safe",
-        "description": "Available to protect your valuables."
+        "description": "Available to protect your valuable belongings."
       },
       "family": {
         "title": "Family Apartments",
@@ -132,7 +123,7 @@
       },
       "balcony": {
         "title": "Private Balcony",
-        "description": "With views of Es Pujols or the garden."
+        "description": "With views of Es Pujols or the property garden."
       },
       "bathroom": {
         "title": "Private Bathroom",
@@ -140,5 +131,104 @@
       },
       "included": "Included"
     }
+  },
+  "rooms": {
+    "littleMsg": "Our Apartments",
+    "title": "Apartments",
+    "subtitle": "Choose from a carefully selected range of apartments designed for your comfort and relaxation.",
+    "viewAll": "View All Apartments",
+    "guests": "Guests",
+    "reviews": "reviews",
+    "night": "/night",
+    "apartmentnumber": "Apartment number"
+  },
+  "roomSelector": {
+    "ONE_BEDROOM": "One-Bedroom Apartment",
+    "TWO_BEDROOM": "Two-Bedroom Apartment",
+    "selectRoom": "Select your apartment"
+  },
+  "footer": {
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "description": "Enjoy luxury and comfort in the heart of the city.",
+    "address": "Camp D'es Pou 3877, Es Pujols"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "subtitle": "Discover the beauty of our apartments and the breathtaking views that await you.",
+    "all": "All",
+    "rooms": "Rooms",
+    "amenities": "Amenities"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We are here to help you with any questions or special requests.",
+    "formTitle": "Get in Touch",
+    "firstName": "First Name",
+    "firstNamePlaceholder": "Enter your first name",
+    "lastName": "Last Name",
+    "lastNamePlaceholder": "Enter your last name",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "phone": "Phone",
+    "phonePlaceholder": "Enter your phone number",
+    "subject": "Subject",
+    "subjectPlaceholder": "What is your message about?",
+    "message": "Message",
+    "messagePlaceholder": "Provide details about your inquiry",
+    "send": "Send Message",
+    "infoTitle": "Contact Information",
+    "address": "Address",
+    "locationTitle": "Our Location",
+    "mapAlt": "Hotel location map",
+    "hoursTitle": "Opening Hours",
+    "hours": {
+      "frontDesk": "Front Desk",
+      "frontDeskHours": "24 hours, 7 days a week",
+      "concierge": "Concierge",
+      "conciergeHours": "7:00 - 23:00",
+      "restaurant": "Azure Restaurant",
+      "restaurantHours": "6:30 - 22:30",
+      "lounge": "Skyline Lounge",
+      "loungeHours": "16:00 - 01:00",
+      "spa": "Spa & Wellness",
+      "spaHours": "9:00 - 20:00"
+    }
+  },
+  "form": {
+    "first_name": "First Name",
+    "first_name_placeholder": "Enter your first name",
+    "last_name": "Last Name",
+    "last_name_placeholder": "Enter your last name",
+    "email": "Email",
+    "email_placeholder": "Enter your email address",
+    "phone": "Phone",
+    "phone_placeholder": "Enter your phone number",
+    "submit": "Submit"
+  },
+  "calendar": {
+    "monthNames": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ],
+    "daysOfWeek": [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ]
   }
 }
