@@ -5,27 +5,24 @@ import {
   AirVent,
   CircleParking,
   CookingPot,
-  UsersIcon,
-  ChevronRightIcon,
+  Waves,
+  MapPin,
+  Home,
 } from 'lucide-react';
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
-import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/language-context';
 import RoomsSearch from '@/components/rooms-search';
-import { ApartmentCard } from '@/components/apartment-card';
 import { apartments } from '@/consts/apartaments';
-import Link from 'next/link';
+import { Card, CardContent } from '@/components/ui/card';
 
-export default function Home() {
+export default function HomePage() {
   const { t } = useLanguage();
 
   const idsToKeep = [1, 6];
-
   const filtered = apartments.filter((apartment) =>
     idsToKeep.includes(apartment.id)
   );
-
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -51,51 +48,77 @@ export default function Home() {
               <p className="mx-auto max-w-[700px] text-white/90 md:text-xl mt-4">
                 {t('home.hero.subtitle')}
               </p>
-              {/* <div className="mt-8">
-                <Button size="lg" className="bg-white text-black hover:bg-white/90">
-                  {t('home.hero.cta')}
-                </Button>
-              </div> */}
             </div>
           </div>
-           <div className="absolute -bottom-20 left-1/2 transform -translate-x-1/2 z-30 w-full max-w-5xl">
-          <RoomsSearch />
+          <div className="absolute -bottom-20 left-1/2 transform -translate-x-1/2 z-30 w-full max-w-5xl">
+            <RoomsSearch />
           </div>
         </section>
 
-        {/* Featured Apartments */}
-        <section className="container px-4 md:px-6 py-24 mt-20">
-          <div className="text-center space-y-4">
-            <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">
-              {t('rooms.littleMsg')}
+        {/* Intro Section */}
+        <section className="py-20 bg-background">
+          <div className="container mx-auto px-4">
+            {/* Hero Header */}
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 bg-accent/10 px-4 py-2 rounded-full mb-6">
+                <Waves className="w-4 h-4 text-accent" />
+                <span className="text-sm font-medium text-accent">
+                  Espujols, Formentera
+                </span>
+              </div>
+
+              <h1 className="text-4xl md:text-6xl font-serif text-balance mb-6 text-foreground">
+                Apartamentos
+                <span className="block text-primary">Verde Mar</span>
+              </h1>
+
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-balance leading-relaxed">
+                Un complejo exclusivo de 6 apartamentos turísticos en una
+                ubicación privilegiada. A solo 150 metros de la playa y 5
+                minutos del centro de Espujols, en un entorno rústico donde
+                disfrutar de la tranquilidad mediterránea.
+              </p>
             </div>
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-              {t('rooms.title')}
-            </h2>
-            <p className="max-w-[900px] mx-auto text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              {t('rooms.subtitle')}
-            </p>
-          </div>
 
-          <div className="grid max-w-5xl mx-auto grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-            {filtered.map((apartment) => (
-              <ApartmentCard
-                key={apartment.id}
-                apartment={apartment}
-                onReserve={(id) => console.log(`Reserve apartment ${id}`)}
-              />
-            ))}
-          
-          </div>
+            {/* Location Highlights */}
+            <div className="grid md:grid-cols-3 gap-6 mb-16">
+              <Card className="border-0 bg-card/50 backdrop-blur">
+                <CardContent className="p-6 text-center">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Waves className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="font-semibold mb-2">150m de la Playa</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Acceso directo a las cristalinas aguas de Espujols
+                  </p>
+                </CardContent>
+              </Card>
 
-         {/* <div className="flex justify-center mt-12">
-            <Link href="/rooms">
-              <Button variant="outline" className="gap-2">
-                {t('common.viewAll')}
-                <ChevronRightIcon className="h-4 w-4" />
-              </Button>
-            </Link>
-          </div>*/}
+              <Card className="border-0 bg-card/50 backdrop-blur">
+                <CardContent className="p-6 text-center">
+                  <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <MapPin className="w-6 h-6 text-secondary" />
+                  </div>
+                  <h3 className="font-semibold mb-2">5 min al Centro</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Caminata corta a restaurantes y servicios
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-0 bg-card/50 backdrop-blur">
+                <CardContent className="p-6 text-center">
+                  <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Home className="w-6 h-6 text-accent" />
+                  </div>
+                  <h3 className="font-semibold mb-2">Zona Rústica</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Tranquilidad en un entorno natural preservado
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
         </section>
 
         {/* Amenities Section */}
@@ -136,8 +159,13 @@ export default function Home() {
                   desc: t('home.amenities.kitchenDesc'),
                 },
               ].map((amenity, idx) => (
-                <div key={idx} className="flex flex-col items-center text-center space-y-3">
-                  <div className="bg-primary/10 p-4 rounded-full">{amenity.icon}</div>
+                <div
+                  key={idx}
+                  className="flex flex-col items-center text-center space-y-3"
+                >
+                  <div className="bg-primary/10 p-4 rounded-full">
+                    {amenity.icon}
+                  </div>
                   <h3 className="text-xl font-bold">{amenity.title}</h3>
                   <p className="text-muted-foreground">{amenity.desc}</p>
                 </div>
