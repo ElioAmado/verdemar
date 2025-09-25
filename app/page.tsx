@@ -57,7 +57,7 @@ export default function HomePage() {
         </section>
 
         {/* Intro Section */}
-        <section className="py-20 bg-background">
+        <section className="mt-20 bg-background">
           <div className="container mx-auto px-4">
             {/* Hero Header */}
             <div className="text-center mb-16">
@@ -100,7 +100,7 @@ export default function HomePage() {
                   <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <MapPin className="w-6 h-6 text-secondary" />
                   </div>
-                  <h3 className="font-semibold mb-2">5 min al Centro</h3>
+                  <h3 className="font-semibold mb-2">A 5 minutos del centro</h3>
                   <p className="text-sm text-muted-foreground">
                     Caminata corta a restaurantes y servicios
                   </p>
@@ -121,20 +121,23 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-        <div className="container px-4 md:px-6">
-        <div className="relative w-full h-[300px] sm:h-[400px] md:h-[600px] rounded-xl overflow-hidden border">
-          <Mapa />
-        </div>
+        <div className="container">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center my-12">
+            {t('home.map.title')}
+          </h2>
+          <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] rounded-xl overflow-hidden border">
+            <Mapa />
+          </div>
         </div>
 
 
         {/* Amenities Section */}
-        <section className="bg-muted py-24">
+        <section className=" mt-16 bg-muted py-24">
           <div className="container px-4 md:px-6 text-center">
             <div className="space-y-2">
-              <div className="inline-block rounded-lg bg-background px-3 py-1 text-sm">
+              {/* <div className="inline-block rounded-lg bg-background px-3 py-1 text-sm">
                 Hotel Amenities
-              </div>
+              </div> */}
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
                 {t('home.amenities.title')}
               </h2>

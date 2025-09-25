@@ -1,8 +1,8 @@
 {
-  "two_bedroom": "Apartamento de 2 dormitorio",
-  "one_bedroom": "Apartamento de 1 dormitorios",
-  "ONE_BEDROOM": "Apartamento de 2 dormitorio",
-  "TWO_BEDROOM": "Apartamento de 1 dormitorios",
+  "two_bedroom": "Apartamento de 2 dormitorios",
+  "one_bedroom": "Apartamento de 1 dormitorio",
+  "ONE_BEDROOM": "Apartamento de 2 dormitorios",
+  "TWO_BEDROOM": "Apartamento de 1 dormitorio",
 
   "common": {
     "home": "Inicio",
@@ -85,6 +85,11 @@
       "subtitle": "Reserva tu estancia hoy y disfruta de beneficios exclusivos cuando reservas directamente con nosotros.",
       "bookNow": "Reservar Ahora",
       "contactUs": "Contáctanos"
+    },
+    "map": {
+      "title": "Nuestra Ubicación",
+      "subtitle": "Encuéntranos en el corazón de Es Pujols, Formentera.",
+      "address": "Camp D'es Pou 3877, Es Pujols"
     }
     
   },

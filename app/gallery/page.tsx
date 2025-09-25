@@ -19,6 +19,7 @@ export default function GalleryPage() {
       alt: 'Spacious and modern room with sea view',
       apartamentId: 1,
       descriptionKey: 'room1',
+      figcaption: t('two_bedroom'),
     },
     {
       category: 'rooms',
@@ -26,6 +27,7 @@ export default function GalleryPage() {
       alt: 'Room image 2',
       apartamentId: 2,
       descriptionKey: 'room1',
+      figcaption: t('two_bedroom'),
     },
     // {
     //   category: 'rooms',
@@ -47,6 +49,7 @@ export default function GalleryPage() {
       alt: 'Room image 5',
       apartamentId: 5,
       descriptionKey: 'room1',
+      figcaption: t('one_bedroom'),
     },
         {
       category: 'rooms',
@@ -54,13 +57,15 @@ export default function GalleryPage() {
       alt: 'Room image 6',
       apartamentId: 6,
       descriptionKey: 'room1',
+      figcaption: t('one_bedroom'),
     },
             {
       category: 'rooms',
       src: '/apartments/gallery/habitaciones.jpg',
       alt: 'Room image 5', // cambiar
-      apartamentId: 5,
+      apartamentId: null,
       descriptionKey: 'room1',
+      figcaption: t('two_bedroom'),
     },
                 {
       category: 'rooms',
@@ -68,6 +73,7 @@ export default function GalleryPage() {
       alt: 'Room image 5', // cambiar
       apartamentId: 5,
       descriptionKey: 'room1',
+      figcaption: t('one_bedroom'),
     },
     // {
     //   category: 'amenities',
@@ -147,9 +153,9 @@ export default function GalleryPage() {
                           fill
                           className="object-cover transition-transform hover:scale-105"
                         />
-                        {photo.description && (
+                        {photo.figcaption && (
                           <div className="absolute bottom-0 bg-black/50 text-white p-2 text-sm">
-                            {photo.description}
+                            {photo.figcaption}
                           </div>
                         )}
                       </div>
