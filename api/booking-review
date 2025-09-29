@@ -1,0 +1,49 @@
+import axios from "axios";
+
+import { Review } from "../types/Review"
+
+export async function getBookingReviewsForAccommodation(
+  affiliateId: string,
+  apiKey: string,
+  accommodationId: number, // Booking hotel id
+  rows = 10
+): Promise<Review[]> {
+  const url = "https://demandapi-sandbox.booking.com/3.1/accommodations/reviews"; // sandbox URL de ejemplo
+
+  try {
+    const payload = {
+      accommodation_ids: [accommodationId],
+      rows,
+      // otros parámetros permitidos por el endpoint (p. ej. language, offset, sort)
+    };
+
+    const resp = await axios.post(url, payload, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${apiKey}`,
+        "X-Affiliate-Id": affiliateId,
+      },
+      timeout: 15000,
+    });
+
+    // Ajusta la ruta de los datos según la forma exacta de la respuesta
+    const data = resp.data;
+    // Ejemplo: data.reviews o data.results -> adapta según el esquema real
+    const reviews: Review[] = data.reviews ?? data.results ?? [];
+    return reviews;
+  } catch (err: any) {
+    console.error("Error fetching Booking reviews:", err?.response?.status, err?.response?.data || err.message);
+    throw err;
+  }
+}
+
+/* Uso:
+(async () => {
+  const AFFILIATE_ID = "tu_affiliate_id";
+  const API_KEY = "tu_api_key_aqui";
+  const hotelId = 123456;
+
+  const reviews = await getBookingReviewsForAccommodation(AFFILIATE_ID, API_KEY, hotelId, 20);
+  console.log("Reviews:", reviews);
+})();
+*/
