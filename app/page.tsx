@@ -16,9 +16,6 @@ import RoomsSearch from '@/components/rooms-search';
 import { apartments } from '@/consts/apartaments';
 import { Card, CardContent } from '@/components/ui/card';
 import { Mapa } from '@/consts/maps';
-import { ReviewCard } from '@/components/review-card';
-import { Review } from '@/types/Review';
-import { getBookingReviewsForAccommodation } from '@/api/booking-review';
 
 
 
@@ -133,15 +130,6 @@ export default function HomePage() {
             <Mapa />
           </div>
         </div>
-
-        <section>
-          <div className="grid gap-4">
-            {reviews.map((r) => (
-              <ReviewCard key={r.id} review={r} />
-            ))}
-          </div>
-
-        </section>
 
         {/* Amenities Section */}
         <section className=" mt-16 bg-muted py-24">
