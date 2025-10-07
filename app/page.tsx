@@ -56,16 +56,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section>
-          <div className="container mx-auto px-4 mt-32">
-            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-              <strong className="font-bold">{t('home.errorTitle', { defaultValue: 'Error!' })}</strong>
-              <span className="block sm:inline ml-2">{t('home.error', { defaultValue: 'Something went wrong. Please try again later.' })}</span>
-            </div>
-          </div>
-        </section>
-
-
         {/* Intro Section */}
         <section className="mt-20 bg-background">
           <div className="container mx-auto px-4">
