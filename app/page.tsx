@@ -56,6 +56,16 @@ export default function HomePage() {
           </div>
         </section>
 
+        <section>
+          <div className="container mx-auto px-4 mt-32">
+            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+              <strong className="font-bold">{t('home.errorTitle', { defaultValue: 'Error!' })}</strong>
+              <span className="block sm:inline ml-2">{t('home.error', { defaultValue: 'Something went wrong. Please try again later.' })}</span>
+            </div>
+          </div>
+        </section>
+
+
         {/* Intro Section */}
         <section className="mt-20 bg-background">
           <div className="container mx-auto px-4">
@@ -112,7 +122,7 @@ export default function HomePage() {
                   </div>
                   <h3 className="font-semibold mb-2"> {t("home.about.title_Home")}</h3>
                   <p className="text-sm text-muted-foreground">
-                    
+
                     {t("home.about.text_Home")}
                   </p>
                 </CardContent>
@@ -131,7 +141,7 @@ export default function HomePage() {
 
         <section>
           <div className="container mx-auto px-4 mt-16">
-            
+
           </div>
         </section>
 
