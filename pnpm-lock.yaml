@@ -132,8 +132,8 @@ importers:
         specifier: ^0.4.4
         version: 0.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       pnpm:
-        specifier: ^10.17.1
-        version: 10.17.1
+        specifier: ^10.18.1
+        version: 10.18.1
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -2607,8 +2607,8 @@ packages:
     resolution: {integrity: sha512-ueGLflrrnvwB3xuo/uGob5pd5FN7l0MsLf0Z87o/UQmRtwjvfylfc9MurIxRAWywCYTgrvpXBcqjV4OfCYGCIQ==}
     engines: {node: '>=16.20.0'}
 
-  pnpm@10.17.1:
-    resolution: {integrity: sha512-F8Vg/KSGeulHOjiZrYSogzSRTzeb5G1FXL+S5c9LOdNJhdRS0lg7rxmWf6dstcF7yeJFUp0LmHRXIapyAOyveg==}
+  pnpm@10.18.1:
+    resolution: {integrity: sha512-d6iEoWXLui2NHBnjtIgO7m0vyr0Nh5Eh4oIZa4AEI1HV6zygk1+lmdodxRJlzGiBatK93Sot5eqf35KtvsfNNA==}
     engines: {node: '>=18.12'}
     hasBin: true
 
@@ -5685,7 +5685,7 @@ snapshots:
       next-i18next: 15.4.2(@types/react@19.1.4)(i18next@25.5.2(typescript@5.8.3))(next@15.2.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-i18next@15.7.3(i18next@25.5.2(typescript@5.8.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3))(react@18.3.1)
       next-intl: 4.3.6(next@15.2.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(typescript@5.8.3)
       next-themes: 0.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      pnpm: 10.17.1
+      pnpm: 10.18.1
       react: 18.3.1
       react-day-picker: 9.6.7(react@18.3.1)
       react-dom: 18.3.1(react@18.3.1)
@@ -5889,7 +5889,7 @@ snapshots:
 
   pkce-challenge@5.0.0: {}
 
-  pnpm@10.17.1: {}
+  pnpm@10.18.1: {}
 
   possible-typed-array-names@1.1.0: {}
 
