@@ -20,7 +20,8 @@ import {
 } from "date-fns"
 import { es } from "date-fns/locale"
 import { getAllIds } from "@/api/apartment"
-import { getDatesByApartmentId, type DateRange } from "@/api/booking"
+import { getDatesByApartmentId} from "@/api/booking"
+import type { DefaultDateRange } from "@/types/defaultDateRange"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -46,6 +47,7 @@ import {
   Clock,
   XCircle,
 } from "lucide-react"
+import { SiteHeaderAdmin } from "@/components/site-header-admin"
 
 type CalendarView = "month" | "week"
 type ViewMode = "calendar" | "list"
@@ -72,7 +74,7 @@ export default function AdminCalendarPage() {
   const router = useRouter()
   const [apartmentIds, setApartmentIds] = useState<number[]>([])
   const [selectedApartmentId, setSelectedApartmentId] = useState<number | null>(null)
-  const [dateRanges, setDateRanges] = useState<DateRange[]>([])
+  const [dateRanges, setDateRanges] = useState<DefaultDateRange[]>([])
   const [currentDate, setCurrentDate] = useState(new Date())
   const [calendarView, setCalendarView] = useState<CalendarView>("month")
   const [viewMode, setViewMode] = useState<ViewMode>("calendar")
@@ -281,7 +283,9 @@ export default function AdminCalendarPage() {
 
   if (loading) {
     return (
+      
       <div className="max-w-7xl mx-auto p-6 space-y-6">
+        
         <div className="flex justify-between items-center">
           <Skeleton className="h-8 w-64" />
           <Skeleton className="h-10 w-32" />
@@ -308,6 +312,8 @@ export default function AdminCalendarPage() {
   }
 
   return (
+    <div>
+    <SiteHeaderAdmin />
     <TooltipProvider>
       <div className="max-w-7xl mx-auto p-6 space-y-6">
         {/* Header */}
@@ -614,5 +620,6 @@ export default function AdminCalendarPage() {
         )}
       </div>
     </TooltipProvider>
+    </div>
   )
 }

@@ -1,12 +1,5 @@
+import { Client } from "@/types/client";
 import axios from "axios";
-
-export interface Client {
-  id?: number; // opcional al crear
-  name: string;
-  lastName: string;
-  phone: string;
-  email: string;
-}
 
 function getClientBaseUrl(): string {
   const base = process.env.NEXT_PUBLIC_API_BASE_URL;

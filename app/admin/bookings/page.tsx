@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useMemo } from "react"
 import { useRouter } from "next/navigation"
-import { getAllBookings, deleteBooking, type Booking } from "@/api/booking"
+import { getAllBookings, deleteBooking} from "@/api/booking"
 import { format, isAfter, isBefore, isToday, parseISO } from "date-fns"
 import { es } from "date-fns/locale"
 
@@ -51,6 +51,8 @@ import {
   XCircle,
   Eye,
 } from "lucide-react"
+import { SiteHeaderAdmin } from "@/components/site-header-admin"
+import { Booking } from "@/types/bookings"
 
 type BookingStatus = "PENDING" | "CONFIRMED" | "CANCELLED" | "COMPLETED"
 type SortField = "id" | "startDate" | "endDate" | "totalPrice" | "guests" | "status"
@@ -353,26 +355,29 @@ export default function AdminBookingsPage() {
   }
 
   return (
-    <div className="p-6 max-w-7xl mx-auto space-y-6">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <div>
-          <h1 className="text-3xl font-bold">Gestión de Reservas</h1>
-          <p className="text-muted-foreground">Administra todas las reservas del sistema</p>
-        </div>
-        <div className="flex gap-2">
-          <Button variant="outline" onClick={() => router.push("/admin")}>
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Volver al panel
-          </Button>
-          <Button onClick={handleRefresh} variant="outline" disabled={refreshing}>
-            <RefreshCw className={`h-4 w-4 mr-2 ${refreshing ? "animate-spin" : ""}`} />
-            Actualizar
-          </Button>
-          <Button onClick={() => router.push("/admin/bookings/create")}>
-            <Plus className="h-4 w-4 mr-2" />
-            Nueva reserva
-          </Button>
+    <div className="flex min-h-screen flex-col">
+      <SiteHeaderAdmin />
+      <div className="p-6 max-w-7xl mx-auto space-y-6">
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div>
+            <h1 className="text-3xl font-bold">Gestión de Reservas</h1>
+            <p className="text-muted-foreground">Administra todas las reservas del sistema</p>
+          </div>
+          <div className="flex gap-2">
+            <Button variant="outline" onClick={() => router.push("/admin")}>
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Volver al panel
+            </Button>
+            <Button onClick={handleRefresh} variant="outline" disabled={refreshing}>
+              <RefreshCw className={`h-4 w-4 mr-2 ${refreshing ? "animate-spin" : ""}`} />
+              Actualizar
+            </Button>
+            <Button onClick={() => router.push("/admin/bookings/create")}>
+              <Plus className="h-4 w-4 mr-2" />
+              Nueva reserva
+            </Button>
+          </div>
         </div>
       </div>
 

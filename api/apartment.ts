@@ -1,3 +1,5 @@
+import { Apartment } from "@/types/apartment";
+import { ApartmentType } from "@/types/apartmentType";
 import axios from "axios";
 
 // ✅ Esta función se asegura de que siempre obtienes la variable correctamente
@@ -9,22 +11,9 @@ function getBaseUrl(): string {
   return `${base}/apartments`;
 }
 
-export enum ApartmentType {
-  ONE_BEDROOM = "ONE_BEDROOM",
-  TWO_BEDROOM = "TWO_BEDROOM",
-}
+
 
 export const apartmentTypes = Object.values(ApartmentType);
-
-export interface Apartment {
-  id: number;
-  apartmentType: ApartmentType;
-  capacity: number;
-  floor: number;
-  bedrooms: number;
-  description: string;
-  beds: any[];
-}
 
 export const getAllApartments = async (): Promise<Apartment[]> => {
   const res = await axios.get<Apartment[]>(getBaseUrl());

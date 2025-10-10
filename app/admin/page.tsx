@@ -114,12 +114,6 @@ export default function SignInPage() {
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
                     <Label htmlFor="password">{t("signIn.password")}</Label>
-                    <Link
-                      href="/forgot-password"
-                      className="text-sm text-primary underline hover:text-primary/90"
-                    >
-                      {t('signIn.forgotPassword')}
-                    </Link>
                   </div>
                   <div className="relative">
                     <Input

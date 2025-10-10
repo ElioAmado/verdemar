@@ -1,7 +1,6 @@
 import axios from "axios";
-import { Client } from "./client";
-import { Apartment } from "./apartment";
 import { DateRange } from "react-day-picker";
+import { Booking } from "@/types/bookings";
 
 function getBookingBaseUrl(): string {
   const base = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -9,20 +8,6 @@ function getBookingBaseUrl(): string {
     throw new Error("❌ NEXT_PUBLIC_API_BASE_URL is not defined");
   }
   return `${base}/bookings`;
-}
-
-export interface Booking {
-  id?: number;
-  clientId?: number; // sigue siendo útil si a veces usas solo el ID
-  client?: Client;
-  guests: number;
-  apartmentId?: number;
-  apartment?: Apartment;
-  startDate: string;
-  endDate: string;
-  totalPrice: number;
-  status: string;
-  notes?: string;
 }
 
 // ✅ Obtener todas las reservas
@@ -73,3 +58,4 @@ export const getDatesByApartmentId = async (apartmentId: number): Promise<DateRa
   const res = await axios.get<DateRange[]>(`${getBookingBaseUrl()}/getDates/${apartmentId}`);
   return res.data;
 }
+
