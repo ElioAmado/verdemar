@@ -43,6 +43,7 @@ import {
   Mail,
   Phone,
 } from "lucide-react"
+import { SiteHeaderAdmin } from "@/components/site-header-admin"
 
 type SortField = "id" | "name" | "lastName" | "email" | "phone"
 type SortDirection = "asc" | "desc"
@@ -207,6 +208,7 @@ export default function AdminClientsPage() {
   if (loading) {
     return (
       <div className="p-6 max-w-7xl mx-auto space-y-6">
+      <SiteHeaderAdmin></SiteHeaderAdmin>
         <div className="flex justify-between items-center">
           <Skeleton className="h-8 w-48" />
           <div className="flex gap-2">
