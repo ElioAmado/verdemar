@@ -3,8 +3,7 @@
 import { useEffect, useState, useMemo } from "react"
 import { useRouter } from "next/navigation"
 import { getAllClients, deleteClient, type Client } from "@/api/client"
-import { format, parseISO, startOfMonth, endOfMonth } from "date-fns"
-import { es } from "date-fns/locale"
+import { format } from "date-fns"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -41,7 +40,6 @@ import {
   RefreshCw,
   AlertCircle,
   Users,
-  UserPlus,
   Mail,
   Phone,
 } from "lucide-react"
@@ -51,7 +49,6 @@ type SortDirection = "asc" | "desc"
 
 interface ClientStats {
   total: number
-  newThisMonth: number
   withEmail: number
   withPhone: number
 }
@@ -98,18 +95,8 @@ export default function AdminClientsPage() {
     const withEmail = clients.filter((c) => c.email && c.email.trim() !== "").length
     const withPhone = clients.filter((c) => c.phone && c.phone.trim() !== "").length
 
-    const currentMonth = new Date()
-    const monthStart = startOfMonth(currentMonth)
-    const monthEnd = endOfMonth(currentMonth)
-    const newThisMonth = clients.filter((c) => {
-      if (!c.createdAt) return false
-      const createdDate = parseISO(c.createdAt)
-      return createdDate >= monthStart && createdDate <= monthEnd
-    }).length
-
     return {
       total,
-      newThisMonth,
       withEmail,
       withPhone,
     }
@@ -198,15 +185,13 @@ export default function AdminClientsPage() {
   }
 
   const exportToCSV = () => {
-    const headers = ["ID", "Nombre", "Apellido", "Teléfono", "Email", "Creado", "Actualizado"]
+    const headers = ["ID", "Nombre", "Apellido", "Teléfono", "Email"]
     const csvData = filteredAndSortedClients.map((client) => [
       client.id,
       client.name,
       client.lastName,
       client.phone,
       client.email,
-      client.createdAt || "",
-      client.updatedAt || "",
     ])
 
     const csvContent = [headers, ...csvData].map((row) => row.join(",")).join("\n")
@@ -300,7 +285,7 @@ export default function AdminClientsPage() {
         </div>
 
         {/* Statistics Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Clientes</CardTitle>
@@ -314,26 +299,13 @@ export default function AdminClientsPage() {
 
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Nuevos Este Mes</CardTitle>
-              <UserPlus className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{stats.newThisMonth}</div>
-              <p className="text-xs text-muted-foreground">
-                Registrados en {format(new Date(), "MMMM", { locale: es })}
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Con Email</CardTitle>
               <Mail className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{stats.withEmail}</div>
               <p className="text-xs text-muted-foreground">
-                {((stats.withEmail / stats.total) * 100).toFixed(0)}% del total
+                {stats.total > 0 ? ((stats.withEmail / stats.total) * 100).toFixed(0) : 0}% del total
               </p>
             </CardContent>
           </Card>
@@ -346,7 +318,7 @@ export default function AdminClientsPage() {
             <CardContent>
               <div className="text-2xl font-bold">{stats.withPhone}</div>
               <p className="text-xs text-muted-foreground">
-                {((stats.withPhone / stats.total) * 100).toFixed(0)}% del total
+                {stats.total > 0 ? ((stats.withPhone / stats.total) * 100).toFixed(0) : 0}% del total
               </p>
             </CardContent>
           </Card>
