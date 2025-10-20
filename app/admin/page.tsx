@@ -89,9 +89,6 @@ export default function SignInPage() {
               <CardTitle className="text-2xl font-bold text-center">
                 {t('signIn.title')}
               </CardTitle>
-              <CardDescription className="text-center">
-                {t('signIn.subtitle')}
-              </CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
