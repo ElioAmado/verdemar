@@ -1,7 +1,7 @@
 // Mock API functions for discount management
 // In a real app, these would call your Java backend
 
-import { apartments } from "@/consts/apartaments"
+import { getAllIds } from "./apartment"
 
 export interface Discount {
   id: number
@@ -16,7 +16,7 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080"
 
 export async function getAllApartmentIds(): Promise<number[]> {
   // Mock data - replace with actual API call
-  return apartments.map((apt) => apt.id)
+  return getAllIds()
 }
 
 export async function getDiscountsByApartmentId(apartmentId: number): Promise<Discount[]> {

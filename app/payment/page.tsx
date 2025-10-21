@@ -8,7 +8,9 @@ import { Separator } from '@/components/ui/separator';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { createClient, Client } from '@/api/client';
-import { createBooking } from '@/api/booking';
+import { createBooking, updateBooking } from '@/api/booking';
+
+const stored = localStorage.getItem('pendingBookingId');
 
 interface BookingData {
   apartmentId: number;
@@ -35,7 +37,7 @@ export default function PaymentPage() {
   });
 
   useEffect(() => {
-    const stored = localStorage.getItem('pendingBooking');
+    
     if (stored) {
       const parsed: BookingData = JSON.parse(stored);
       setBooking(parsed);
@@ -70,11 +72,11 @@ const handlePayment = async () => {
       notes: ''
     };
 
-    await createBooking(newBooking);
+    await updateBooking(stored, newBooking);
 
     // 3. Limpiar y confirmar
     alert(`Reserva confirmada para ${savedClient.name} ${savedClient.lastName}`);
-    localStorage.removeItem('pendingBooking');
+    localStorage.removeItem('pendingBookingId');
 
   } catch (error) {
     console.error("Error en el proceso de pago:", error);

@@ -10,7 +10,7 @@ const mockClients: Client[] = [];
  */
 export async function getAllClients(): Promise<Client[]> {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/clients`)
+    const response = await fetch(`${API_BASE_URL}/api/client`)
     if (!response.ok) {
       throw new Error("Failed to fetch clients")
     }

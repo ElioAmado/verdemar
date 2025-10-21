@@ -8,7 +8,7 @@ function getBaseUrl(): string {
   if (!base) {
     throw new Error("❌ NEXT_PUBLIC_API_BASE_URL is not defined");
   }
-  return `${base}/apartments`;
+  return `${base}/apartment`;
 }
 
 

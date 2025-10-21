@@ -24,9 +24,10 @@ import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { SiteHeader } from "@/components/site-header";
 
-import { getBookingById, Booking, updateBooking } from "@/api/booking";
+import { getBookingById, updateBooking } from "@/api/booking";
 import { createClient, Client } from "@/api/client";
-import { Apartment } from "@/api/apartment";
+import { Booking } from "@/types/bookings";
+import { Apartment } from "@/types/apartment";
 import { useLanguage } from "@/contexts/language-context";
 import handleStripeCheckout from "./component/handleStripeCheckout";
 
@@ -42,11 +43,12 @@ export default function BookingPage() {
     email: "",
     phone: "",
   });
+  let error: String | null = null;
 
   useEffect(() => {
     async function fetchBooking() {
       const storedId = localStorage.getItem("pendingBookingId");
-      if (!storedId) return setLoading(false);
+      console.log("Stored Booking ID:", storedId);
 
       const id = Number(storedId);
       if (isNaN(id)) return setLoading(false);
@@ -94,6 +96,7 @@ export default function BookingPage() {
   }
 
   if (!booking || !booking.apartment) {
+    console.log(booking);
     return (
       <div className="text-center mt-20 text-destructive">
         {t("booking.not_found")}

@@ -1,4 +1,5 @@
-import { createBooking, type Booking } from "@/api/booking"
+import { createBooking} from "@/api/booking"
+import { Booking } from "@/types/bookings"
 
 export async function handleReservation(
   apartmentId: number,
@@ -30,6 +31,8 @@ export async function handleReservation(
 
   try {
     const created = await createBooking(booking)
+    
+    console.log("Reserva creada con ID:", created.id)
     localStorage.setItem("pendingBookingId", JSON.stringify(created.id))
     router.push("/booking")
   } catch (error) {

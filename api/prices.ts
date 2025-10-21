@@ -7,7 +7,7 @@ export interface PriceRequestDTO {
 }
 
 const base = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8080";
-const priceBaseUrl = `${base}/prices`;
+const priceBaseUrl = `${base}/price`;
 
 /**
  * Get all prices (returns entity)
