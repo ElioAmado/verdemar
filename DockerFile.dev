@@ -1,0 +1,20 @@
+# Imagen base ligera
+FROM node:18-alpine
+
+# Directorio de trabajo
+WORKDIR /app
+
+# Copiar los archivos de dependencias primero
+COPY pnpm-lock.yaml* package.json ./
+
+# Instalar pnpm y dependencias
+RUN npm install -g pnpm && pnpm install
+
+# Copiar el resto del código
+COPY . .
+
+# Exponer el puerto del servidor Next
+EXPOSE 3000
+
+# Comando por defecto (modo desarrollo)
+CMD ["pnpm", "run", "dev"]
