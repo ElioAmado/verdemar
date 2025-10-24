@@ -1,11 +1,14 @@
-# Imagen base ligera
+# Imagen base
 FROM node:18-alpine
 
-# Directorio de trabajo
+# Instalar bash y utilidades (útiles para desarrollo y VSCode)
+RUN apk add --no-cache bash curl git openssh
+
+# Crear carpeta de trabajo
 WORKDIR /app
 
-# Copiar los archivos de dependencias primero
-COPY pnpm-lock.yaml* package.json ./
+# Copiar archivos de dependencias
+COPY package.json pnpm-lock.yaml* ./
 
 # Instalar pnpm y dependencias
 RUN npm install -g pnpm && pnpm install
@@ -13,8 +16,8 @@ RUN npm install -g pnpm && pnpm install
 # Copiar el resto del código
 COPY . .
 
-# Exponer el puerto del servidor Next
+# Exponer el puerto de desarrollo
 EXPOSE 3000
 
-# Comando por defecto (modo desarrollo)
-CMD ["pnpm", "run", "dev"]
+# Evita que el contenedor se apague si pnpm run dev falla
+CMD ["sh", "-c", "pnpm run dev || (echo '❌ Falló pnpm run dev, pero el contenedor sigue vivo'; tail -f /dev/null)"]
