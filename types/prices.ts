@@ -15,3 +15,15 @@ export interface Price {
   /** The price value, stored as a decimal number */
   price: number;
 }
+
+export interface CreatePriceRequest {
+  apartmentId: number
+  date: string
+  price: number
+}
+
+export interface UpdatePriceRequest {
+  apartmentId: number
+  date: string
+  price: number
+}
