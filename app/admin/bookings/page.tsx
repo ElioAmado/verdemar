@@ -52,7 +52,7 @@ import {
   Eye,
 } from "lucide-react"
 import { SiteHeaderAdmin } from "@/components/site-header-admin"
-import { Booking } from "@/types/bookings"
+import { Booking } from "@/types/booking"
 
 type BookingStatus = "PENDING" | "CONFIRMED" | "CANCELLED" | "COMPLETED"
 type SortField = "id" | "startDate" | "endDate" | "totalPrice" | "guests" | "status"

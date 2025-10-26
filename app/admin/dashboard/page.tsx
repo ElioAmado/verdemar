@@ -73,6 +73,7 @@ import {
   XCircle,
 } from "lucide-react"
 import { SiteHeaderAdmin } from "@/components/site-header-admin" // Componente para el encabezado de la página de administración.
+import { sendBookings } from "@/app/admin/dashboard/test_csv"
 
 // Definiciones de tipos para el estado y las props internas
 type CalendarView = "month" | "week" // Tipo para la vista del calendario.
@@ -683,6 +684,15 @@ export default function AdminCalendarPage() {
           )}
         </div>
       </TooltipProvider>
+        <div>
+          <button
+            onClick={() => sendBookings()}
+            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          >
+            Crear bookings
+          </button>
+        </div>
+
     </div>
   )
 }

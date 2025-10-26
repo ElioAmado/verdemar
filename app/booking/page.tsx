@@ -26,7 +26,7 @@ import { SiteHeader } from "@/components/site-header";
 
 import { getBookingById, updateBooking } from "@/api/booking";
 import { createClient, Client } from "@/api/client";
-import { Booking } from "@/types/bookings";
+import { Booking } from "@/types/booking";
 import { Apartment } from "@/types/apartment";
 import { useLanguage } from "@/contexts/language-context";
 import handleStripeCheckout from "./component/handleStripeCheckout";

@@ -1,5 +1,5 @@
 import { createBooking} from "@/api/booking"
-import { Booking } from "@/types/bookings"
+import { Booking } from "@/types/booking"
 
 export async function handleReservation(
   apartmentId: number,

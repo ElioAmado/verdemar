@@ -49,6 +49,8 @@ import {
     TrendingUp,
     DollarSign,
     CalendarDays,
+    X,
+    Check,
 } from "lucide-react"
 
 type SortField = "id" | "date" | "price" | "apartment.id"
@@ -79,6 +81,47 @@ export default function AdminPricesPage() {
     const [priceToDelete, setPriceToDelete] = useState<Price | null>(null)
     const [refreshing, setRefreshing] = useState(false)
 
+    const [showDaySelector, setShowDaySelector] = useState(false)
+    const [selectedDays, setSelectedDays] = useState<number[]>([])
+    const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear())
+    const [selectedMonth, setSelectedMonth] = useState<number>(new Date().getMonth() + 1)
+    const [priceForDays, setPriceForDays] = useState<string>("")
+
+      const toggleDay = (day: number) => {
+    setSelectedDays((prev) =>
+      prev.includes(day) ? prev.filter((d) => d !== day) : [...prev, day].sort((a, b) => a - b),
+    )
+  }
+
+  const selectAllDays = () => {
+    const daysInMonth = new Date(selectedYear, selectedMonth, 0).getDate()
+    setSelectedDays(Array.from({ length: daysInMonth }, (_, i) => i + 1))
+  }
+
+  const clearAllDays = () => {
+    setSelectedDays([])
+  }
+
+  const handleSavePrices = () => {
+    // Aquí iría la lógica para guardar los precios
+    console.log({
+      days: selectedDays,
+      month: selectedMonth,
+      year: selectedYear,
+      price: priceForDays,
+    })
+    // Resetear el formulario
+    setShowDaySelector(false)
+    setSelectedDays([])
+    setPriceForDays("")
+  }
+  // </CHANGE>
+
+  // Added handleRefresh function
+
+  // </CHANGE>
+  // </CHANGE>
+
     useEffect(() => {
         fetchPrices()
     }, [])
@@ -97,18 +140,28 @@ export default function AdminPricesPage() {
         }
     }
 
-    const handleRefresh = async () => {
-        setRefreshing(true)
-        await fetchPrices()
+  const handleRefresh = () => {
+    setRefreshing(true)
+    getAllPrices()
+      .then((data) => {
+        setPrices(data)
+        setLoading(false)
+      })
+      .catch((err) => {
+        setError("Error al cargar los precios")
+        setLoading(false)
+      })
+      .finally(() => {
         setRefreshing(false)
-    }
+      })
+  }
 
     // Get unique apartments for filter
     const uniqueApartments = useMemo(() => {
         const apartments = new Map<number, string>()
         prices.forEach((price) => {
             if (price.apartment?.id && !apartments.has(price.apartment.id)) {
-                apartments.set(price.apartment.id, price.apartment?.name || `Apartamento ${price.apartment.id}`)
+                apartments.set(price.apartment.id, `Apartamento ${price.apartment.id}`)
             }
         })
         return Array.from(apartments.entries()).map(([id, name]) => ({ id, name }))
@@ -152,7 +205,6 @@ export default function AdminPricesPage() {
             filtered = filtered.filter(
                 (price) =>
                     price.apartment?.id?.toString().includes(searchTerm) ||
-                    price.apartment?.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
                     price.date.includes(searchTerm) ||
                     price.price.toString().includes(searchTerm),
             )
@@ -284,7 +336,7 @@ export default function AdminPricesPage() {
     const exportToCSV = () => {
         const headers = ["ID", "Apartamento", "Fecha", "Precio", "Creado", "Actualizado"]
         const csvData = filteredAndSortedPrices.map((price) => [
-            price.apartment?.name || `ID: ${price.apartment?.id}`,
+            `ID: ${price.apartment?.id}`,
             price.date,
             price.price,
         ])
@@ -372,9 +424,9 @@ export default function AdminPricesPage() {
                             <RefreshCw className={`h-4 w-4 mr-2 ${refreshing ? "animate-spin" : ""}`} />
                             Actualizar
                         </Button>
-                        <Button onClick={() => router.push("/admin/prices/create")}>
-                            <Plus className="h-4 w-4 mr-2" />
-                            Nuevo precio
+                        <Button onClick={() => setShowDaySelector(!showDaySelector)}>
+                        <Plus className="h-4 w-4 mr-2" />
+                        Añadir
                         </Button>
                     </div>
                 </div>
@@ -511,6 +563,116 @@ export default function AdminPricesPage() {
                     </CardContent>
                 </Card>
 
+                        {showDaySelector && (
+          <Card className="border-primary">
+            <CardHeader>
+              <div className="flex justify-between items-center">
+                <div>
+                  <CardTitle className="flex items-center gap-2">
+                    <CalendarDays className="h-5 w-5" />
+                    Seleccionar Días del Mes
+                  </CardTitle>
+                  <CardDescription>Elige los días y el año para asignar precios</CardDescription>
+                </div>
+                <Button variant="ghost" size="icon" onClick={() => setShowDaySelector(false)}>
+                  <X className="h-4 w-4" />
+                </Button>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              {/* Year and Month Selection */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">Año</label>
+                  <Input
+                    type="number"
+                    value={selectedYear}
+                    onChange={(e) => setSelectedYear(Number.parseInt(e.target.value) || new Date().getFullYear())}
+                    min={2024}
+                    max={2030}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">Mes</label>
+                  <Select value={selectedMonth.toString()} onValueChange={(v) => setSelectedMonth(Number.parseInt(v))}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="1">Enero</SelectItem>
+                      <SelectItem value="2">Febrero</SelectItem>
+                      <SelectItem value="3">Marzo</SelectItem>
+                      <SelectItem value="4">Abril</SelectItem>
+                      <SelectItem value="5">Mayo</SelectItem>
+                      <SelectItem value="6">Junio</SelectItem>
+                      <SelectItem value="7">Julio</SelectItem>
+                      <SelectItem value="8">Agosto</SelectItem>
+                      <SelectItem value="9">Septiembre</SelectItem>
+                      <SelectItem value="10">Octubre</SelectItem>
+                      <SelectItem value="11">Noviembre</SelectItem>
+                      <SelectItem value="12">Diciembre</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">Precio (€)</label>
+                  <Input
+                    type="number"
+                    placeholder="0.00"
+                    value={priceForDays}
+                    onChange={(e) => setPriceForDays(e.target.value)}
+                    min={0}
+                    step={0.01}
+                  />
+                </div>
+              </div>
+
+              {/* Quick Actions */}
+              <div className="flex gap-2">
+                <Button variant="outline" size="sm" onClick={selectAllDays}>
+                  <Check className="h-4 w-4 mr-2" />
+                  Seleccionar todos
+                </Button>
+                <Button variant="outline" size="sm" onClick={clearAllDays}>
+                  <X className="h-4 w-4 mr-2" />
+                  Limpiar selección
+                </Button>
+                <div className="ml-auto text-sm text-muted-foreground flex items-center">
+                  {selectedDays.length} día{selectedDays.length !== 1 ? "s" : ""} seleccionado
+                  {selectedDays.length !== 1 ? "s" : ""}
+                </div>
+              </div>
+
+              {/* Day Grid */}
+              <div className="grid grid-cols-7 gap-2">
+                {Array.from({ length: new Date(selectedYear, selectedMonth, 0).getDate() }, (_, i) => i + 1).map(
+                  (day) => (
+                    <Button
+                      key={day}
+                      variant={selectedDays.includes(day) ? "default" : "outline"}
+                      className="h-12 w-full"
+                      onClick={() => toggleDay(day)}
+                    >
+                      {day}
+                    </Button>
+                  ),
+                )}
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex justify-end gap-2 pt-4 border-t">
+                <Button variant="outline" onClick={() => setShowDaySelector(false)}>
+                  Cancelar
+                </Button>
+                <Button onClick={handleSavePrices} disabled={selectedDays.length === 0 || !priceForDays}>
+                  <Check className="h-4 w-4 mr-2" />
+                  Guardar Precios
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
                 {/* Results */}
                 <Card>
                     <CardHeader>
@@ -565,7 +727,7 @@ export default function AdminPricesPage() {
                                                             <Building className="h-4 w-4 text-muted-foreground" />
                                                             <div>
                                                                 <div className="font-medium">
-                                                                    {price.apartment?.name || `Apartamento ${price.apartment?.id}`}
+                                                                    {`Apartamento ${price.apartment?.id}`}
                                                                 </div>
                                                                 <div className="text-sm text-muted-foreground">ID: {price.apartment?.id}</div>
                                                             </div>
@@ -633,7 +795,7 @@ export default function AdminPricesPage() {
                                 ¿Estás seguro de que quieres eliminar el precio # id?
                                 {priceToDelete && (
                                     <span className="block mt-2 font-medium">
-                                        {priceToDelete.apartment?.name || `Apartamento ${priceToDelete.apartment?.id}`} -{" "}
+                                        {`Apartamento ${priceToDelete.apartment?.id}`} -{" "}
                                         {format(parseISO(priceToDelete.date), "dd MMM yyyy", { locale: es })} - €
                                         {priceToDelete.price.toFixed(2)}
                                     </span>
