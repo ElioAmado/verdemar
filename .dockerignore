@@ -1,0 +1,51 @@
+# --- Dependencias y build ---
+node_modules
+.next
+dist
+out
+build
+target
+
+# --- Archivos de entorno ---
+.env
+.env.*
+process.env
+
+# --- Configuración local y IDE ---
+.vscode
+.idea
+*.iml
+
+# --- Control de versiones ---
+# .git
+# .gitignore
+
+# --- Logs y cachés ---
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+.cache
+.DS_Store
+
+# --- Tests ---
+coverage
+*.test.js
+*.test.ts
+*.spec.js
+*.spec.ts
+__tests__/
+
+# --- Archivos del sistema ---
+Thumbs.db
+desktop.ini
+
+# --- Otros archivos que no hacen falta dentro del contenedor ---
+README.md
+*.md
+*.txt
+Dockerfile
+Dockerfile.dev
+Dockerfile.frontend.dev
+docker-compose.yml
