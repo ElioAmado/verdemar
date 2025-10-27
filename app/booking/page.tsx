@@ -26,15 +26,16 @@ import { SiteHeader } from "@/components/site-header";
 
 import { getBookingById, updateBooking } from "@/api/booking";
 import { createClient, Client } from "@/api/client";
-import { Booking } from "@/types/bookings";
+import { Booking } from "@/types/booking";
 import { Apartment } from "@/types/apartment";
 import { useLanguage } from "@/contexts/language-context";
 import handleStripeCheckout from "./component/handleStripeCheckout";
+import { getApartmentById } from "@/api/apartment";
 
 export default function BookingPage() {
   const { t } = useLanguage();
   const router = useRouter();
-
+  const [apartment, setApartment] = useState<Apartment | null>(null);
   const [booking, setBooking] = useState<Booking | null>(null);
   const [loading, setLoading] = useState(true);
   const [clientInfo, setClientInfo] = useState<Client>({
@@ -55,6 +56,7 @@ export default function BookingPage() {
 
       try {
         const bookingData = await getBookingById(id);
+        setApartment(await getApartmentById(bookingData.apartmentId!));
         setBooking(bookingData);
       } catch (error) {
         console.error("Error fetching booking:", error);
@@ -95,7 +97,7 @@ export default function BookingPage() {
     );
   }
 
-  if (!booking || !booking.apartment) {
+  if (!booking || !apartment) {
     console.log(booking);
     return (
       <div className="text-center mt-20 text-destructive">
@@ -104,7 +106,7 @@ export default function BookingPage() {
     );
   }
 
-  const apartment: Apartment = booking.apartment;
+  
 
   const roomDetails = {
     name: `${t("rooms.apartmentnumber")} ${apartment.id}`,

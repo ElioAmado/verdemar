@@ -1,6 +1,6 @@
 import axios from "axios";
 import { DateRange } from "react-day-picker";
-import { Booking } from "@/types/bookings";
+import { Booking } from "@/types/booking";
 
 function getBookingBaseUrl(): string {
   const base = process.env.NEXT_PUBLIC_API_BASE_URL;

@@ -12,8 +12,8 @@ const priceBaseUrl = `${base}/price`;
 /**
  * Get all prices (returns entity)
  */
-export async function getAllPrices(): Promise<Price[]> {
-  const response = await axios.get<Price[]>(priceBaseUrl);
+export async function getAllPrices(params?: PageableParams): Promise<Price[]> {
+  const response = await axios.get<Price[]>(priceBaseUrl, { params: params });
   return response.data;
 }
 
@@ -48,14 +48,19 @@ export async function updatePrice(
 /**
  * Delete a price (if the endpoint is re-enabled later)
  */
-// export async function deletePrice(apartmentId: number, date: string): Promise<void> {
-//   await axios.delete(`${priceBaseUrl}/${apartmentId}/${date}`);
-// }
+export async function deletePrice(apartmentId: number, date: string): Promise<void> {
+  await axios.delete(`${priceBaseUrl}/${apartmentId}/${date}`);
+}
 
 /**
  * Example of creating a price (if you re-enable POST later)
  */
-// export async function createPrice(priceData: Price): Promise<Price> {
-//   const response = await axios.post<Price>(priceBaseUrl, priceData);
-//   return response.data;
-// }
+export async function createPrice(priceData: Price): Promise<Price> {
+  const response = await axios.post<Price>(priceBaseUrl, priceData);
+  return response.data;
+}
+
+export async function createPrices(priceData: Price[]): Promise<Price> {
+  const response = await axios.post<Price>(priceBaseUrl, priceData);
+  return response.data;
+}
