@@ -1,19 +1,7 @@
 "use client"
-
+import { amenities } from "@/consts/amenities"
 import { useLanguage } from "@/contexts/language-context"
 import {
-  Wifi,
-  Coffee,
-  Tv,
-  Snowflake,
-  Utensils,
-  Car,
-  MapPin,
-  Users,
-  Lock,
-  Home,
-  Bath,
-  Landmark,
   CheckCircle,
 } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -23,92 +11,6 @@ import { SiteFooter } from "@/components/site-footer"
 export default function AmenitiesPage() {
   const { t } = useLanguage()
 
-  const amenities = [
-    {
-      icon: Wifi,
-      title: "WiFi gratis",
-      description: "Conexión gratuita en todo el alojamiento.",
-      color: "text-blue-500",
-      bgColor: "bg-blue-50",
-    },
-    {
-      icon: Coffee,
-      title: "Cafetera",
-      description: "Cafetera disponible en todos los apartamentos.",
-      color: "text-amber-600",
-      bgColor: "bg-amber-50",
-    },
-    {
-      icon: Tv,
-      title: "TV de pantalla plana",
-      description: "Con canales vía satélite.",
-      color: "text-purple-500",
-      bgColor: "bg-purple-50",
-    },
-    {
-      icon: Snowflake,
-      title: "Aire acondicionado",
-      description: "Disponible en todos los alojamientos.",
-      color: "text-cyan-500",
-      bgColor: "bg-cyan-50",
-    },
-    {
-      icon: Utensils,
-      title: "Cocina equipada",
-      description: "Incluye nevera, microondas y utensilios.",
-      color: "text-green-500",
-      bgColor: "bg-green-50",
-    },
-    {
-      icon: Car,
-      title: "Parking gratis",
-      description: "Aparcamiento privado gratuito en las inmediaciones.",
-      color: "text-gray-600",
-      bgColor: "bg-gray-50",
-    },
-    {
-      icon: MapPin,
-      title: "Ubicación excelente",
-      description: "A sólo 300 metros de la playa de Es Pujols.",
-      color: "text-red-500",
-      bgColor: "bg-red-50",
-    },
-    {
-      icon: Users,
-      title: "Personal multilingüe",
-      description: "Atención en español, inglés e italiano.",
-      color: "text-indigo-500",
-      bgColor: "bg-indigo-50",
-    },
-    {
-      icon: Lock,
-      title: "Caja fuerte",
-      description: "Disponible para proteger tus pertenencias de valor.",
-      color: "text-orange-500",
-      bgColor: "bg-orange-50",
-    },
-    {
-      icon: Home,
-      title: "Apartamentos familiares",
-      description: "Ideales para familias, con espacios amplios y cómodos.",
-      color: "text-pink-500",
-      bgColor: "bg-pink-50",
-    },
-    {
-      icon: Landmark,
-      title: "Balcón privado",
-      description: "Con vistas a la zona de Es Pujols o al jardín del alojamiento.",
-      color: "text-teal-500",
-      bgColor: "bg-teal-50",
-    },
-    {
-      icon: Bath,
-      title: "Baño privado",
-      description: "Incluye ducha, secador de pelo y artículos de aseo gratuitos.",
-      color: "text-violet-500",
-      bgColor: "bg-violet-50",
-    },
-  ]
 
   return (
     <div className="flex min-h-screen flex-col">

@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
-
+import { photos } from '@/consts/photos';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { SiteHeader } from '@/components/site-header';
@@ -12,72 +12,7 @@ import RoomsSearch from '@/components/rooms-search';
 export default function GalleryPage() {
   const { t } = useLanguage();
 
-  const photos = [
-    {
-      category: 'rooms',
-      src: '/apartments/1/index.jpg',
-      alt: 'Spacious and modern room with sea view',
-      apartamentId: 1,
-      descriptionKey: 'room1',
-    },
-    {
-      category: 'rooms',
-      src: '/apartments/2/index.jpg',
-      alt: 'Room image 2',
-      apartamentId: 2,
-      descriptionKey: 'room1',
-    },
-    {
-      category: 'rooms',
-      src: '/apartments/3/index.jpg',
-      alt: 'Room image 3',
-      apartamentId: 3,
-      descriptionKey: 'room1',
-    },
-        {
-      category: 'rooms',
-      src: '/apartments/4/index.jpg',
-      alt: 'Room image 4',
-      apartamentId: 4,
-      descriptionKey: 'room1',
-    },
-        {
-      category: 'rooms',
-      src: '/apartments/5/index.jpg',
-      alt: 'Room image 5',
-      apartamentId: 5,
-      descriptionKey: 'room1',
-    },
-        {
-      category: 'rooms',
-      src: '/apartments/6/index.jpg',
-      alt: 'Room image 6',
-      apartamentId: 6,
-      descriptionKey: 'room1',
-    },
-    {
-      category: 'amenities',
-      src: '/amenities/towel.jpg',
-      alt: 'Towel amenity image',
-      apartamentId: null,
-      descriptionKey: 'room1',
-    },
-        {
-      category: 'amenities',
-      src: '/amenities/bathtub.jpg',
-      alt: 'Bathtub amenity image',
-      apartamentId: null,
-      descriptionKey: 'room1',
-    },
-        {
-      category: 'amenities',
-      src: '/amenities/shampoo.jpg',
-      alt: 'Pool amenity image',
-      apartamentId: null,
-      descriptionKey: 'room1',
-    },
-    // Puedes seguir expandiendo el array photos
-  ];
+
 
   const categories = ['all', 'rooms', 'amenities'] as const;
 
@@ -126,9 +61,9 @@ export default function GalleryPage() {
                           fill
                           className="object-cover transition-transform hover:scale-105"
                         />
-                        {photo.description && (
+                        {photo.figcaption && (
                           <div className="absolute bottom-0 bg-black/50 text-white p-2 text-sm">
-                            {photo.description}
+                            {photo.figcaption}
                           </div>
                         )}
                       </div>
