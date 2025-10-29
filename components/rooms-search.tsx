@@ -1,7 +1,4 @@
-import {
-  Card,
-  CardContent,
-} from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import React from 'react';
 import { DatePickerWithRange } from '@/components/date-range-picker';

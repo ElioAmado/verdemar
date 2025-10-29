@@ -16,7 +16,7 @@
     "apartaments": "Apartamentos",
     "guests": "Huéspedes",
     "viewAll": "Ver Todos Los Apartamentos",
-    "total" : "Total",
+    "total": "Total",
     "footer": {
       "copyright": "© 2025 Apartamentos Verde Mar. Todos los derechos reservados.",
       "terms": "Términos",
@@ -26,7 +26,6 @@
     "phone": "+34 626 703 985",
     "phone_24h": "+34 900 123 456",
     "email": "aptosverdemar@gmail.com"
-    
   },
   "home": {
     "hero": {
@@ -180,7 +179,7 @@
     "notes": "Notas Especiales (Opcional)",
     "notes_placeholder": "¿Tienes alguna solicitud especial?",
     "guest_title": "Información del Huésped",
-    "guest_description": "Proporciona los detalles de los huéspedes que se alojarán",	
+    "guest_description": "Proporciona los detalles de los huéspedes que se alojarán",
 
     "cancel": "Cancelar"
   },

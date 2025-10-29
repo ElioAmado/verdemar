@@ -1,6 +1,6 @@
-import { DateRange } from "react-day-picker";
+import { DateRange } from 'react-day-picker';
 
 export const DefaultDateRange: DateRange = {
-from: new Date(),
-to: undefined,
+  from: new Date(),
+  to: undefined,
 };

@@ -1,16 +1,13 @@
-"use client"
-import { amenities } from "@/consts/amenities"
-import { useLanguage } from "@/contexts/language-context"
-import {
-  CheckCircle,
-} from "lucide-react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { SiteHeader } from "@/components/site-header"
-import { SiteFooter } from "@/components/site-footer"
+'use client';
+import { amenities } from '@/consts/amenities';
+import { useLanguage } from '@/contexts/language-context';
+import { CheckCircle } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { SiteHeader } from '@/components/site-header';
+import { SiteFooter } from '@/components/site-footer';
 
 export default function AmenitiesPage() {
-  const { t } = useLanguage()
-
+  const { t } = useLanguage();
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -19,8 +16,12 @@ export default function AmenitiesPage() {
         {/* Hero Section */}
         <section className="bg-muted py-12">
           <div className="container px-4 md:px-6 text-center">
-            <h1 className="text-3xl font-bold sm:text-5xl mb-4">{t("home.amenities.title")}</h1>
-            <p className="text-muted-foreground md:text-lg max-w-xl mx-auto">{t("home.amenities.subtitle")}</p>
+            <h1 className="text-3xl font-bold sm:text-5xl mb-4">
+              {t('home.amenities.title')}
+            </h1>
+            <p className="text-muted-foreground md:text-lg max-w-xl mx-auto">
+              {t('home.amenities.subtitle')}
+            </p>
           </div>
         </section>
 
@@ -29,7 +30,7 @@ export default function AmenitiesPage() {
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {amenities.map((amenity, index) => {
-                const IconComponent = amenity.icon
+                const IconComponent = amenity.icon;
                 return (
                   <Card
                     key={index}
@@ -46,14 +47,16 @@ export default function AmenitiesPage() {
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-muted-foreground text-sm leading-relaxed">{amenity.description}</p>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        {amenity.description}
+                      </p>
                       <div className="mt-4 flex items-center text-green-600 text-sm font-medium">
                         <CheckCircle className="w-4 h-4 mr-2" />
                         Incluido
                       </div>
                     </CardContent>
                   </Card>
-                )
+                );
               })}
             </div>
           </div>
@@ -61,5 +64,5 @@ export default function AmenitiesPage() {
       </main>
       <SiteFooter />
     </div>
-  )
+  );
 }

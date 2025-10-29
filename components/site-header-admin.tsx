@@ -12,21 +12,16 @@ export function SiteHeaderAdmin() {
 
   const scrollToSearchButton = () => {
     const element = document.getElementById('search-button');
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2 text-xl font-bold">
-          <Image
-            src="/logo.png"
-            alt="Logo"
-            width={32}
-            height={32}
-          />
+          <Image src="/logo.png" alt="Logo" width={32} height={32} />
           <span>Apartamentos Verde Mar</span>
         </Link>
         <nav className="hidden md:flex gap-6">

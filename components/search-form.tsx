@@ -1,63 +1,72 @@
-"use client"
+'use client';
 
-import type React from "react"
+import type React from 'react';
 
-import { useState } from "react"
-import { useRouter } from "next/navigation"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Search } from "lucide-react"
-import type { SearchFormData } from "@/types/availability"
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { Search } from 'lucide-react';
+import type { SearchFormData } from '@/types/availability';
 
 interface SearchFormProps {
-  initialData: SearchFormData
-  onClose: () => void
+  initialData: SearchFormData;
+  onClose: () => void;
 }
 
 export function SearchForm({ initialData, onClose }: SearchFormProps) {
-  const router = useRouter()
-  const [searchForm, setSearchForm] = useState<SearchFormData>(initialData)
-  const [searchLoading, setSearchLoading] = useState(false)
+  const router = useRouter();
+  const [searchForm, setSearchForm] = useState<SearchFormData>(initialData);
+  const [searchLoading, setSearchLoading] = useState(false);
 
-  const handleSearchFormChange = (field: keyof SearchFormData, value: string) => {
-    setSearchForm((prev) => ({ ...prev, [field]: value }))
-  }
+  const handleSearchFormChange = (
+    field: keyof SearchFormData,
+    value: string
+  ) => {
+    setSearchForm((prev) => ({ ...prev, [field]: value }));
+  };
 
   const handleSearchSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (!searchForm.startDate || !searchForm.endDate || !searchForm.type) {
-      alert("Por favor, completa todos los campos obligatorios")
-      return
+      alert('Por favor, completa todos los campos obligatorios');
+      return;
     }
 
     // Validate dates
-    const start = new Date(searchForm.startDate)
-    const end = new Date(searchForm.endDate)
+    const start = new Date(searchForm.startDate);
+    const end = new Date(searchForm.endDate);
     if (start >= end) {
-      alert("La fecha de salida debe ser posterior a la fecha de entrada")
-      return
+      alert('La fecha de salida debe ser posterior a la fecha de entrada');
+      return;
     }
 
-    setSearchLoading(true)
+    setSearchLoading(true);
 
     // Update URL with new search parameters
-    const params = new URLSearchParams()
-    params.set("start", searchForm.startDate)
-    params.set("end", searchForm.endDate)
-    params.set("type", searchForm.type)
-    params.set("adults", searchForm.adults)
-    if (searchForm.children && searchForm.children !== "0") {
-      params.set("children", searchForm.children)
+    const params = new URLSearchParams();
+    params.set('start', searchForm.startDate);
+    params.set('end', searchForm.endDate);
+    params.set('type', searchForm.type);
+    params.set('adults', searchForm.adults);
+    if (searchForm.children && searchForm.children !== '0') {
+      params.set('children', searchForm.children);
     }
 
-    router.push(`/availability?${params.toString()}`)
-    onClose()
-    setSearchLoading(false)
-  }
+    router.push(`/availability?${params.toString()}`);
+    onClose();
+    setSearchLoading(false);
+  };
 
   return (
     <Card className="mb-6">
@@ -76,7 +85,9 @@ export function SearchForm({ initialData, onClose }: SearchFormProps) {
                 id="startDate"
                 type="date"
                 value={searchForm.startDate}
-                onChange={(e) => handleSearchFormChange("startDate", e.target.value)}
+                onChange={(e) =>
+                  handleSearchFormChange('startDate', e.target.value)
+                }
                 required
               />
             </div>
@@ -87,14 +98,19 @@ export function SearchForm({ initialData, onClose }: SearchFormProps) {
                 id="endDate"
                 type="date"
                 value={searchForm.endDate}
-                onChange={(e) => handleSearchFormChange("endDate", e.target.value)}
+                onChange={(e) =>
+                  handleSearchFormChange('endDate', e.target.value)
+                }
                 required
               />
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="type">Tipo de apartamento</Label>
-              <Select value={searchForm.type} onValueChange={(value) => handleSearchFormChange("type", value)}>
+              <Select
+                value={searchForm.type}
+                onValueChange={(value) => handleSearchFormChange('type', value)}
+              >
                 <SelectTrigger>
                   <SelectValue placeholder="Seleccionar tipo" />
                 </SelectTrigger>
@@ -108,14 +124,19 @@ export function SearchForm({ initialData, onClose }: SearchFormProps) {
 
             <div className="space-y-2">
               <Label htmlFor="adults">Adultos</Label>
-              <Select value={searchForm.adults} onValueChange={(value) => handleSearchFormChange("adults", value)}>
+              <Select
+                value={searchForm.adults}
+                onValueChange={(value) =>
+                  handleSearchFormChange('adults', value)
+                }
+              >
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
                   {[1, 2, 3, 4, 5, 6].map((num) => (
                     <SelectItem key={num} value={num.toString()}>
-                      {num} {num === 1 ? "adulto" : "adultos"}
+                      {num} {num === 1 ? 'adulto' : 'adultos'}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -124,14 +145,19 @@ export function SearchForm({ initialData, onClose }: SearchFormProps) {
 
             <div className="space-y-2">
               <Label htmlFor="children">Niños</Label>
-              <Select value={searchForm.children} onValueChange={(value) => handleSearchFormChange("children", value)}>
+              <Select
+                value={searchForm.children}
+                onValueChange={(value) =>
+                  handleSearchFormChange('children', value)
+                }
+              >
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
                   {[0, 1, 2, 3, 4].map((num) => (
                     <SelectItem key={num} value={num.toString()}>
-                      {num} {num === 1 ? "niño" : "niños"}
+                      {num} {num === 1 ? 'niño' : 'niños'}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -141,7 +167,7 @@ export function SearchForm({ initialData, onClose }: SearchFormProps) {
 
           <div className="flex gap-2">
             <Button type="submit" disabled={searchLoading}>
-              {searchLoading ? "Buscando..." : "Buscar apartamentos"}
+              {searchLoading ? 'Buscando...' : 'Buscar apartamentos'}
             </Button>
             <Button type="button" variant="outline" onClick={onClose}>
               Cancelar
@@ -150,5 +176,5 @@ export function SearchForm({ initialData, onClose }: SearchFormProps) {
         </form>
       </CardContent>
     </Card>
-  )
+  );
 }

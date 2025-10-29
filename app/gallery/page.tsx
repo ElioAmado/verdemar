@@ -12,8 +12,6 @@ import RoomsSearch from '@/components/rooms-search';
 export default function GalleryPage() {
   const { t } = useLanguage();
 
-
-
   const categories = ['all', 'rooms', 'amenities'] as const;
 
   return (
@@ -37,11 +35,11 @@ export default function GalleryPage() {
           <div className="container px-4 md:px-6">
             <Tabs defaultValue="all" className="w-full">
               <TabsList className="grid grid-cols-3 max-w-md mx-auto mb-8">
-                {categories.map((cat) =>
+                {categories.map((cat) => (
                   <TabsTrigger key={cat} value={cat}>
                     {t(`gallery.${cat}`)}
                   </TabsTrigger>
-                )}
+                ))}
               </TabsList>
 
               {categories.map((cat) => (
@@ -75,14 +73,12 @@ export default function GalleryPage() {
           </div>
         </section>
         <div className="container px-4 md:px-6 mb-12">
-              <RoomsSearch></RoomsSearch>
+          <RoomsSearch></RoomsSearch>
         </div>
-        
-
       </main>
 
       {/* Footer */}
       <SiteFooter />
     </div>
-);
+  );
 }

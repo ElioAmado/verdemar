@@ -39,9 +39,7 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
         ></span>
       )}
       <span className="flex-1">{language.name}</span>
-      {currentLanguage.code === language.code && (
-        <Check className="h-4 w-4" />
-      )}
+      {currentLanguage.code === language.code && <Check className="h-4 w-4" />}
     </>
   );
 

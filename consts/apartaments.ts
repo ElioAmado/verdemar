@@ -1,4 +1,3 @@
-
 import { Apartment } from '@/types/apartment';
 
 export const apartments: Apartment[] = [

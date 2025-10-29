@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { createBooking, getTotalPrice } from "@/api/booking";
-import { getAllClients } from "@/api/client";
-import { getAllApartments } from "@/api/apartment";
-import { Client } from "@/api/client";
-import { Apartment } from "@/api/apartment";
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { createBooking, getTotalPrice } from '@/api/booking';
+import { getAllClients } from '@/api/client';
+import { getAllApartments } from '@/api/apartment';
+import { Client } from '@/api/client';
+import { Apartment } from '@/api/apartment';
 
 const STATUS_OPTIONS = [
-  { label: "Pendiente", value: "PENDING" },
-  { label: "Confirmado", value: "CONFIRMED" },
-  { label: "Cancelado", value: "CANCELLED" },
-  { label: "Completado", value: "COMPLETED" },
+  { label: 'Pendiente', value: 'PENDING' },
+  { label: 'Confirmado', value: 'CONFIRMED' },
+  { label: 'Cancelado', value: 'CANCELLED' },
+  { label: 'Completado', value: 'COMPLETED' },
 ];
 
 export default function CreateBookingPage() {
@@ -24,11 +24,11 @@ export default function CreateBookingPage() {
     clientId: 0,
     apartmentId: 0,
     guests: 1,
-    startDate: "",
-    endDate: "",
-    notes: "",
+    startDate: '',
+    endDate: '',
+    notes: '',
     totalPrice: 0,
-    status: "PENDING",  // Valor por defecto en mayúsculas
+    status: 'PENDING', // Valor por defecto en mayúsculas
   });
 
   useEffect(() => {
@@ -41,7 +41,11 @@ export default function CreateBookingPage() {
     fetchData();
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
@@ -63,10 +67,10 @@ export default function CreateBookingPage() {
         totalPrice: total,
       });
 
-      router.push("/admin/bookings");
+      router.push('/admin/bookings');
     } catch (err) {
-      console.error("Error al crear reserva:", err);
-      alert("❌ Error al crear reserva.");
+      console.error('Error al crear reserva:', err);
+      alert('❌ Error al crear reserva.');
     }
   };
 
@@ -77,7 +81,13 @@ export default function CreateBookingPage() {
         {/* Cliente */}
         <div>
           <label className="block font-medium">Cliente</label>
-          <select name="clientId" value={form.clientId} onChange={handleChange} required className="w-full border px-3 py-2 rounded">
+          <select
+            name="clientId"
+            value={form.clientId}
+            onChange={handleChange}
+            required
+            className="w-full border px-3 py-2 rounded"
+          >
             <option value={0}>Selecciona un cliente</option>
             {clients.map((c) => (
               <option key={c.id} value={c.id}>
@@ -90,11 +100,17 @@ export default function CreateBookingPage() {
         {/* Apartamento */}
         <div>
           <label className="block font-medium">Apartamento</label>
-          <select name="apartmentId" value={form.apartmentId} onChange={handleChange} required className="w-full border px-3 py-2 rounded">
+          <select
+            name="apartmentId"
+            value={form.apartmentId}
+            onChange={handleChange}
+            required
+            className="w-full border px-3 py-2 rounded"
+          >
             <option value={0}>Selecciona un apartamento</option>
             {apartments.map((a) => (
               <option key={a.id} value={a.id}>
-                ID {a.id} - {a.name ?? "Sin nombre"}
+                ID {a.id} - {a.name ?? 'Sin nombre'}
               </option>
             ))}
           </select>
@@ -103,31 +119,65 @@ export default function CreateBookingPage() {
         {/* Huéspedes */}
         <div>
           <label className="block font-medium">Número de huéspedes</label>
-          <input type="number" name="guests" value={form.guests} onChange={handleChange} min={1} required className="w-full border px-3 py-2 rounded" />
+          <input
+            type="number"
+            name="guests"
+            value={form.guests}
+            onChange={handleChange}
+            min={1}
+            required
+            className="w-full border px-3 py-2 rounded"
+          />
         </div>
 
         {/* Fecha inicio */}
         <div>
           <label className="block font-medium">Fecha de inicio</label>
-          <input type="date" name="startDate" value={form.startDate} onChange={handleChange} required className="w-full border px-3 py-2 rounded" />
+          <input
+            type="date"
+            name="startDate"
+            value={form.startDate}
+            onChange={handleChange}
+            required
+            className="w-full border px-3 py-2 rounded"
+          />
         </div>
 
         {/* Fecha fin */}
         <div>
           <label className="block font-medium">Fecha de fin</label>
-          <input type="date" name="endDate" value={form.endDate} onChange={handleChange} required className="w-full border px-3 py-2 rounded" />
+          <input
+            type="date"
+            name="endDate"
+            value={form.endDate}
+            onChange={handleChange}
+            required
+            className="w-full border px-3 py-2 rounded"
+          />
         </div>
 
         {/* Notas */}
         <div>
           <label className="block font-medium">Notas</label>
-          <textarea name="notes" value={form.notes} onChange={handleChange} className="w-full border px-3 py-2 rounded" rows={3}></textarea>
+          <textarea
+            name="notes"
+            value={form.notes}
+            onChange={handleChange}
+            className="w-full border px-3 py-2 rounded"
+            rows={3}
+          ></textarea>
         </div>
 
         {/* Estado */}
         <div>
           <label className="block font-medium">Estado</label>
-          <select name="status" value={form.status} onChange={handleChange} required className="w-full border px-3 py-2 rounded">
+          <select
+            name="status"
+            value={form.status}
+            onChange={handleChange}
+            required
+            className="w-full border px-3 py-2 rounded"
+          >
             {STATUS_OPTIONS.map(({ label, value }) => (
               <option key={value} value={value}>
                 {label}
@@ -138,10 +188,17 @@ export default function CreateBookingPage() {
 
         {/* Botones */}
         <div className="flex justify-end space-x-2">
-          <button type="button" onClick={() => router.push("/admin/bookings")} className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
+          <button
+            type="button"
+            onClick={() => router.push('/admin/bookings')}
+            className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
+          >
             Cancelar
           </button>
-          <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+          <button
+            type="submit"
+            className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+          >
             Crear reserva
           </button>
         </div>

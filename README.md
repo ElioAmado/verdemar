@@ -24,7 +24,6 @@ El frontend consume los endpoints expuestos por la API para realizar operaciones
 ├── package.json # Información del proyecto y scripts
 ├── pnpm-lock.yaml # Lockfile de dependencias con pnpm
 
-
 ---
 
 ## ⚙️ Variables de entorno
@@ -58,3 +57,4 @@ pnpm run build
 ▶️ Ejecutar en producción
 
 pnpm start
+```

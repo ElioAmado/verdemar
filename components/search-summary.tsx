@@ -1,20 +1,26 @@
-import { useLanguage } from "@/contexts/language-context"
-import { Calendar, Users, Building } from "lucide-react"
+import { useLanguage } from '@/contexts/language-context';
+import { Calendar, Users, Building } from 'lucide-react';
 
 interface SearchSummaryProps {
   formattedDates: {
-    start: string
-    end: string
-  } | null
-  adults: string | null
-  children: string | null
-  type: string | null
-  numberOfNights: number
+    start: string;
+    end: string;
+  } | null;
+  adults: string | null;
+  children: string | null;
+  type: string | null;
+  numberOfNights: number;
 }
 
-export function SearchSummary({ formattedDates, adults, children, type, numberOfNights }: SearchSummaryProps) {
-  if (!formattedDates) return null
-  const {t} = useLanguage();
+export function SearchSummary({
+  formattedDates,
+  adults,
+  children,
+  type,
+  numberOfNights,
+}: SearchSummaryProps) {
+  if (!formattedDates) return null;
+  const { t } = useLanguage();
 
   return (
     <div className="bg-muted/50 rounded-lg p-4 mb-6">
@@ -44,9 +50,9 @@ export function SearchSummary({ formattedDates, adults, children, type, numberOf
       </div>
       {numberOfNights > 0 && (
         <div className="mt-2 text-sm text-muted-foreground">
-          {numberOfNights} {numberOfNights === 1 ? "noche" : "noches"}
+          {numberOfNights} {numberOfNights === 1 ? 'noche' : 'noches'}
         </div>
       )}
     </div>
-  )
+  );
 }

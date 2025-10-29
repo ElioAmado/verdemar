@@ -12,7 +12,7 @@ export const metadata = {
   title: 'Apartamentos Verde Mar',
   icons: {
     icon: '/logo.png',
-  }
+  },
 };
 
 export default function RootLayout({

@@ -1,19 +1,38 @@
-"use client"
+'use client';
 
-import { useEffect, useState, useMemo } from "react"
-import { useRouter } from "next/navigation"
-import { getAllBookings, deleteBooking} from "@/api/booking"
-import { format, isAfter, isBefore, isToday, parseISO } from "date-fns"
-import { es } from "date-fns/locale"
+import { useEffect, useState, useMemo } from 'react';
+import { useRouter } from 'next/navigation';
+import { getAllBookings, deleteBooking } from '@/api/booking';
+import { format, isAfter, isBefore, isToday, parseISO } from 'date-fns';
+import { es } from 'date-fns/locale';
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Skeleton } from "@/components/ui/skeleton"
-import { Alert, AlertDescription } from "@/components/ui/alert"
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Input } from '@/components/ui/input';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import { Skeleton } from '@/components/ui/skeleton';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 import {
   Dialog,
   DialogContent,
@@ -21,7 +40,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog"
+} from '@/components/ui/dialog';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -29,7 +48,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from '@/components/ui/dropdown-menu';
 
 import {
   Search,
@@ -50,76 +69,87 @@ import {
   Clock,
   XCircle,
   Eye,
-} from "lucide-react"
-import { SiteHeaderAdmin } from "@/components/site-header-admin"
-import { Booking } from "@/types/booking"
+} from 'lucide-react';
+import { SiteHeaderAdmin } from '@/components/site-header-admin';
+import { Booking } from '@/types/booking';
 
-type BookingStatus = "PENDING" | "CONFIRMED" | "CANCELLED" | "COMPLETED"
-type SortField = "id" | "startDate" | "endDate" | "totalPrice" | "guests" | "status"
-type SortDirection = "asc" | "desc"
+type BookingStatus = 'PENDING' | 'CONFIRMED' | 'CANCELLED' | 'COMPLETED';
+type SortField =
+  | 'id'
+  | 'startDate'
+  | 'endDate'
+  | 'totalPrice'
+  | 'guests'
+  | 'status';
+type SortDirection = 'asc' | 'desc';
 
 interface BookingStats {
-  total: number
-  pending: number
-  confirmed: number
-  cancelled: number
-  completed: number
-  totalRevenue: number
-  upcomingCheckIns: number
+  total: number;
+  pending: number;
+  confirmed: number;
+  cancelled: number;
+  completed: number;
+  totalRevenue: number;
+  upcomingCheckIns: number;
 }
 
 export default function AdminBookingsPage() {
-  const router = useRouter()
-  const [bookings, setBookings] = useState<Booking[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-  const [searchTerm, setSearchTerm] = useState("")
-  const [statusFilter, setStatusFilter] = useState<string>("all")
-  const [dateFilter, setDateFilter] = useState<string>("all")
-  const [sortField, setSortField] = useState<SortField>("startDate")
-  const [sortDirection, setSortDirection] = useState<SortDirection>("desc")
-  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
-  const [bookingToDelete, setBookingToDelete] = useState<Booking | null>(null)
-  const [refreshing, setRefreshing] = useState(false)
+  const router = useRouter();
+  const [bookings, setBookings] = useState<Booking[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [statusFilter, setStatusFilter] = useState<string>('all');
+  const [dateFilter, setDateFilter] = useState<string>('all');
+  const [sortField, setSortField] = useState<SortField>('startDate');
+  const [sortDirection, setSortDirection] = useState<SortDirection>('desc');
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [bookingToDelete, setBookingToDelete] = useState<Booking | null>(null);
+  const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
-    fetchBookings()
-  }, [])
+    fetchBookings();
+  }, []);
 
   const fetchBookings = async () => {
     try {
-      setLoading(true)
-      setError(null)
-      const data = await getAllBookings()
-      setBookings(data)
+      setLoading(true);
+      setError(null);
+      const data = await getAllBookings();
+      setBookings(data);
     } catch (err) {
-      setError("Error al obtener las reservas")
-      console.error(err)
+      setError('Error al obtener las reservas');
+      console.error(err);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleRefresh = async () => {
-    setRefreshing(true)
-    await fetchBookings()
-    setRefreshing(false)
-  }
+    setRefreshing(true);
+    await fetchBookings();
+    setRefreshing(false);
+  };
 
   // Calculate statistics
   const stats: BookingStats = useMemo(() => {
-    const total = bookings.length
-    const pending = bookings.filter((b) => b.status === "PENDING").length
-    const confirmed = bookings.filter((b) => b.status === "CONFIRMED").length
-    const cancelled = bookings.filter((b) => b.status === "CANCELLED").length
-    const completed = bookings.filter((b) => b.status === "COMPLETED").length
-    const totalRevenue = bookings.filter((b) => b.status !== "CANCELLED").reduce((sum, b) => sum + b.totalPrice, 0)
+    const total = bookings.length;
+    const pending = bookings.filter((b) => b.status === 'PENDING').length;
+    const confirmed = bookings.filter((b) => b.status === 'CONFIRMED').length;
+    const cancelled = bookings.filter((b) => b.status === 'CANCELLED').length;
+    const completed = bookings.filter((b) => b.status === 'COMPLETED').length;
+    const totalRevenue = bookings
+      .filter((b) => b.status !== 'CANCELLED')
+      .reduce((sum, b) => sum + b.totalPrice, 0);
     const upcomingCheckIns = bookings.filter(
       (b) =>
-        b.status === "CONFIRMED" &&
+        b.status === 'CONFIRMED' &&
         isAfter(parseISO(b.startDate), new Date()) &&
-        isBefore(parseISO(b.startDate), new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)),
-    ).length
+        isBefore(
+          parseISO(b.startDate),
+          new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+        )
+    ).length;
 
     return {
       total,
@@ -129,175 +159,205 @@ export default function AdminBookingsPage() {
       completed,
       totalRevenue,
       upcomingCheckIns,
-    }
-  }, [bookings])
+    };
+  }, [bookings]);
 
   // Filter and sort bookings
   const filteredAndSortedBookings = useMemo(() => {
-    let filtered = bookings
+    let filtered = bookings;
 
     // Search filter
     if (searchTerm) {
       filtered = filtered.filter(
         (booking) =>
-          booking.client?.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          booking.client?.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          booking.client?.name
+            .toLowerCase()
+            .includes(searchTerm.toLowerCase()) ||
+          booking.client?.email
+            .toLowerCase()
+            .includes(searchTerm.toLowerCase()) ||
           booking.id?.toString().includes(searchTerm) ||
-          booking.apartmentId?.toString().includes(searchTerm),
-      )
+          booking.apartmentId?.toString().includes(searchTerm)
+      );
     }
 
     // Status filter
-    if (statusFilter !== "all") {
-      filtered = filtered.filter((booking) => booking.status === statusFilter)
+    if (statusFilter !== 'all') {
+      filtered = filtered.filter((booking) => booking.status === statusFilter);
     }
 
     // Date filter
-    if (dateFilter !== "all") {
-      const today = new Date()
+    if (dateFilter !== 'all') {
+      const today = new Date();
       filtered = filtered.filter((booking) => {
-        const startDate = parseISO(booking.startDate)
-        const endDate = parseISO(booking.endDate)
+        const startDate = parseISO(booking.startDate);
+        const endDate = parseISO(booking.endDate);
 
         switch (dateFilter) {
-          case "today":
-            return isToday(startDate) || isToday(endDate)
-          case "upcoming":
-            return isAfter(startDate, today)
-          case "current":
-            return isBefore(startDate, today) && isAfter(endDate, today)
-          case "past":
-            return isBefore(endDate, today)
+          case 'today':
+            return isToday(startDate) || isToday(endDate);
+          case 'upcoming':
+            return isAfter(startDate, today);
+          case 'current':
+            return isBefore(startDate, today) && isAfter(endDate, today);
+          case 'past':
+            return isBefore(endDate, today);
           default:
-            return true
+            return true;
         }
-      })
+      });
     }
 
     // Sort
     return filtered.sort((a, b) => {
-      let aValue: any
-      let bValue: any
+      let aValue: any;
+      let bValue: any;
 
       switch (sortField) {
-        case "id":
-          aValue = a.id || 0
-          bValue = b.id || 0
-          break
-        case "startDate":
-          aValue = new Date(a.startDate)
-          bValue = new Date(b.startDate)
-          break
-        case "endDate":
-          aValue = new Date(a.endDate)
-          bValue = new Date(b.endDate)
-          break
-        case "totalPrice":
-          aValue = a.totalPrice
-          bValue = b.totalPrice
-          break
-        case "guests":
-          aValue = a.guests
-          bValue = b.guests
-          break
-        case "status":
-          aValue = a.status
-          bValue = b.status
-          break
+        case 'id':
+          aValue = a.id || 0;
+          bValue = b.id || 0;
+          break;
+        case 'startDate':
+          aValue = new Date(a.startDate);
+          bValue = new Date(b.startDate);
+          break;
+        case 'endDate':
+          aValue = new Date(a.endDate);
+          bValue = new Date(b.endDate);
+          break;
+        case 'totalPrice':
+          aValue = a.totalPrice;
+          bValue = b.totalPrice;
+          break;
+        case 'guests':
+          aValue = a.guests;
+          bValue = b.guests;
+          break;
+        case 'status':
+          aValue = a.status;
+          bValue = b.status;
+          break;
         default:
-          return 0
+          return 0;
       }
 
-      if (sortDirection === "asc") {
-        return aValue < bValue ? -1 : aValue > bValue ? 1 : 0
+      if (sortDirection === 'asc') {
+        return aValue < bValue ? -1 : aValue > bValue ? 1 : 0;
       } else {
-        return aValue > bValue ? -1 : aValue < bValue ? 1 : 0
+        return aValue > bValue ? -1 : aValue < bValue ? 1 : 0;
       }
-    })
-  }, [bookings, searchTerm, statusFilter, dateFilter, sortField, sortDirection])
+    });
+  }, [
+    bookings,
+    searchTerm,
+    statusFilter,
+    dateFilter,
+    sortField,
+    sortDirection,
+  ]);
 
   const handleSort = (field: SortField) => {
     if (sortField === field) {
-      setSortDirection(sortDirection === "asc" ? "desc" : "asc")
+      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
     } else {
-      setSortField(field)
-      setSortDirection("asc")
+      setSortField(field);
+      setSortDirection('asc');
     }
-  }
+  };
 
   const handleDeleteClick = (booking: Booking) => {
-    setBookingToDelete(booking)
-    setDeleteDialogOpen(true)
-  }
+    setBookingToDelete(booking);
+    setDeleteDialogOpen(true);
+  };
 
   const handleDeleteConfirm = async () => {
-    if (!bookingToDelete?.id) return
+    if (!bookingToDelete?.id) return;
 
     try {
-      await deleteBooking(bookingToDelete.id)
-      setBookings((prev) => prev.filter((b) => b.id !== bookingToDelete.id))
-      setDeleteDialogOpen(false)
-      setBookingToDelete(null)
+      await deleteBooking(bookingToDelete.id);
+      setBookings((prev) => prev.filter((b) => b.id !== bookingToDelete.id));
+      setDeleteDialogOpen(false);
+      setBookingToDelete(null);
     } catch (err) {
-      console.error("Error al eliminar reserva:", err)
-      alert("❌ Error al eliminar la reserva.")
+      console.error('Error al eliminar reserva:', err);
+      alert('❌ Error al eliminar la reserva.');
     }
-  }
+  };
 
   const getStatusBadge = (status: string) => {
     const statusConfig = {
-      PENDING: { variant: "secondary" as const, icon: Clock, label: "Pendiente" },
-      CONFIRMED: { variant: "default" as const, icon: CheckCircle, label: "Confirmada" },
-      CANCELLED: { variant: "destructive" as const, icon: XCircle, label: "Cancelada" },
-      COMPLETED: { variant: "outline" as const, icon: CheckCircle, label: "Completada" },
-    }
+      PENDING: {
+        variant: 'secondary' as const,
+        icon: Clock,
+        label: 'Pendiente',
+      },
+      CONFIRMED: {
+        variant: 'default' as const,
+        icon: CheckCircle,
+        label: 'Confirmada',
+      },
+      CANCELLED: {
+        variant: 'destructive' as const,
+        icon: XCircle,
+        label: 'Cancelada',
+      },
+      COMPLETED: {
+        variant: 'outline' as const,
+        icon: CheckCircle,
+        label: 'Completada',
+      },
+    };
 
-    const config = statusConfig[status as keyof typeof statusConfig] || statusConfig.PENDING
-    const Icon = config.icon
+    const config =
+      statusConfig[status as keyof typeof statusConfig] || statusConfig.PENDING;
+    const Icon = config.icon;
 
     return (
       <Badge variant={config.variant} className="flex items-center gap-1">
         <Icon className="h-3 w-3" />
         {config.label}
       </Badge>
-    )
-  }
+    );
+  };
 
   const exportToCSV = () => {
     const headers = [
-      "ID",
-      "Cliente",
-      "Email",
-      "Apartamento",
-      "Fecha Inicio",
-      "Fecha Fin",
-      "Huéspedes",
-      "Precio Total",
-      "Estado",
-      "Notas",
-    ]
+      'ID',
+      'Cliente',
+      'Email',
+      'Apartamento',
+      'Fecha Inicio',
+      'Fecha Fin',
+      'Huéspedes',
+      'Precio Total',
+      'Estado',
+      'Notas',
+    ];
     const csvData = filteredAndSortedBookings.map((booking) => [
       booking.id,
       booking.client?.name || `ID: ${booking.clientId}`,
-      booking.client?.email || "",
+      booking.client?.email || '',
       booking.apartment?.id || booking.apartmentId,
       booking.startDate,
       booking.endDate,
       booking.guests,
       booking.totalPrice,
       booking.status,
-      booking.notes || "",
-    ])
+      booking.notes || '',
+    ]);
 
-    const csvContent = [headers, ...csvData].map((row) => row.join(",")).join("\n")
-    const blob = new Blob([csvContent], { type: "text/csv" })
-    const url = window.URL.createObjectURL(blob)
-    const a = document.createElement("a")
-    a.href = url
-    a.download = `reservas-${format(new Date(), "yyyy-MM-dd")}.csv`
-    a.click()
-    window.URL.revokeObjectURL(url)
-  }
+    const csvContent = [headers, ...csvData]
+      .map((row) => row.join(','))
+      .join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `reservas-${format(new Date(), 'yyyy-MM-dd')}.csv`;
+    a.click();
+    window.URL.revokeObjectURL(url);
+  };
 
   if (loading) {
     return (
@@ -336,7 +396,7 @@ export default function AdminBookingsPage() {
           </CardContent>
         </Card>
       </div>
-    )
+    );
   }
 
   if (error) {
@@ -351,7 +411,7 @@ export default function AdminBookingsPage() {
           Reintentar
         </Button>
       </div>
-    )
+    );
   }
 
   return (
@@ -362,18 +422,26 @@ export default function AdminBookingsPage() {
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
             <h1 className="text-3xl font-bold">Gestión de Reservas</h1>
-            <p className="text-muted-foreground">Administra todas las reservas del sistema</p>
+            <p className="text-muted-foreground">
+              Administra todas las reservas del sistema
+            </p>
           </div>
           <div className="flex gap-2">
-            <Button variant="outline" onClick={() => router.push("/admin")}>
+            <Button variant="outline" onClick={() => router.push('/admin')}>
               <ArrowLeft className="h-4 w-4 mr-2" />
               Volver al panel
             </Button>
-            <Button onClick={handleRefresh} variant="outline" disabled={refreshing}>
-              <RefreshCw className={`h-4 w-4 mr-2 ${refreshing ? "animate-spin" : ""}`} />
+            <Button
+              onClick={handleRefresh}
+              variant="outline"
+              disabled={refreshing}
+            >
+              <RefreshCw
+                className={`h-4 w-4 mr-2 ${refreshing ? 'animate-spin' : ''}`}
+              />
               Actualizar
             </Button>
-            <Button onClick={() => router.push("/admin/bookings/create")}>
+            <Button onClick={() => router.push('/admin/bookings/create')}>
               <Plus className="h-4 w-4 mr-2" />
               Nueva reserva
             </Button>
@@ -385,23 +453,33 @@ export default function AdminBookingsPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Reservas</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              Total Reservas
+            </CardTitle>
             <Calendar className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{stats.total}</div>
-            <p className="text-xs text-muted-foreground">{stats.upcomingCheckIns} check-ins próximos</p>
+            <p className="text-xs text-muted-foreground">
+              {stats.upcomingCheckIns} check-ins próximos
+            </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Ingresos Totales</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              Ingresos Totales
+            </CardTitle>
             <Euro className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">€{stats.totalRevenue.toFixed(2)}</div>
-            <p className="text-xs text-muted-foreground">Excluyendo canceladas</p>
+            <div className="text-2xl font-bold">
+              €{stats.totalRevenue.toFixed(2)}
+            </div>
+            <p className="text-xs text-muted-foreground">
+              Excluyendo canceladas
+            </p>
           </CardContent>
         </Card>
 
@@ -412,20 +490,29 @@ export default function AdminBookingsPage() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{stats.confirmed}</div>
-            <p className="text-xs text-muted-foreground">{stats.pending} pendientes</p>
+            <p className="text-xs text-muted-foreground">
+              {stats.pending} pendientes
+            </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Tasa de Cancelación</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              Tasa de Cancelación
+            </CardTitle>
             <XCircle className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
-              {stats.total > 0 ? ((stats.cancelled / stats.total) * 100).toFixed(1) : 0}%
+              {stats.total > 0
+                ? ((stats.cancelled / stats.total) * 100).toFixed(1)
+                : 0}
+              %
             </div>
-            <p className="text-xs text-muted-foreground">{stats.cancelled} canceladas</p>
+            <p className="text-xs text-muted-foreground">
+              {stats.cancelled} canceladas
+            </p>
           </CardContent>
         </Card>
       </div>
@@ -487,7 +574,11 @@ export default function AdminBookingsPage() {
 
             <div className="space-y-2">
               <label className="text-sm font-medium">Acciones</label>
-              <Button onClick={exportToCSV} variant="outline" className="w-full">
+              <Button
+                onClick={exportToCSV}
+                variant="outline"
+                className="w-full"
+              >
                 <Download className="h-4 w-4 mr-2" />
                 Exportar CSV
               </Button>
@@ -512,30 +603,59 @@ export default function AdminBookingsPage() {
           {filteredAndSortedBookings.length === 0 ? (
             <div className="text-center py-12">
               <Calendar className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-              <h3 className="text-lg font-semibold mb-2">No se encontraron reservas</h3>
-              <p className="text-muted-foreground">No hay reservas que coincidan con los filtros seleccionados.</p>
+              <h3 className="text-lg font-semibold mb-2">
+                No se encontraron reservas
+              </h3>
+              <p className="text-muted-foreground">
+                No hay reservas que coincidan con los filtros seleccionados.
+              </p>
             </div>
           ) : (
             <div className="overflow-x-auto">
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead className="cursor-pointer hover:bg-muted/50" onClick={() => handleSort("id")}>
-                      ID {sortField === "id" && (sortDirection === "asc" ? "↑" : "↓")}
+                    <TableHead
+                      className="cursor-pointer hover:bg-muted/50"
+                      onClick={() => handleSort('id')}
+                    >
+                      ID{' '}
+                      {sortField === 'id' &&
+                        (sortDirection === 'asc' ? '↑' : '↓')}
                     </TableHead>
                     <TableHead>Cliente</TableHead>
                     <TableHead>Apartamento</TableHead>
-                    <TableHead className="cursor-pointer hover:bg-muted/50" onClick={() => handleSort("startDate")}>
-                      Fechas {sortField === "startDate" && (sortDirection === "asc" ? "↑" : "↓")}
+                    <TableHead
+                      className="cursor-pointer hover:bg-muted/50"
+                      onClick={() => handleSort('startDate')}
+                    >
+                      Fechas{' '}
+                      {sortField === 'startDate' &&
+                        (sortDirection === 'asc' ? '↑' : '↓')}
                     </TableHead>
-                    <TableHead className="cursor-pointer hover:bg-muted/50" onClick={() => handleSort("guests")}>
-                      Huéspedes {sortField === "guests" && (sortDirection === "asc" ? "↑" : "↓")}
+                    <TableHead
+                      className="cursor-pointer hover:bg-muted/50"
+                      onClick={() => handleSort('guests')}
+                    >
+                      Huéspedes{' '}
+                      {sortField === 'guests' &&
+                        (sortDirection === 'asc' ? '↑' : '↓')}
                     </TableHead>
-                    <TableHead className="cursor-pointer hover:bg-muted/50" onClick={() => handleSort("totalPrice")}>
-                      Precio {sortField === "totalPrice" && (sortDirection === "asc" ? "↑" : "↓")}
+                    <TableHead
+                      className="cursor-pointer hover:bg-muted/50"
+                      onClick={() => handleSort('totalPrice')}
+                    >
+                      Precio{' '}
+                      {sortField === 'totalPrice' &&
+                        (sortDirection === 'asc' ? '↑' : '↓')}
                     </TableHead>
-                    <TableHead className="cursor-pointer hover:bg-muted/50" onClick={() => handleSort("status")}>
-                      Estado {sortField === "status" && (sortDirection === "asc" ? "↑" : "↓")}
+                    <TableHead
+                      className="cursor-pointer hover:bg-muted/50"
+                      onClick={() => handleSort('status')}
+                    >
+                      Estado{' '}
+                      {sortField === 'status' &&
+                        (sortDirection === 'asc' ? '↑' : '↓')}
                     </TableHead>
                     <TableHead>Acciones</TableHead>
                   </TableRow>
@@ -543,12 +663,18 @@ export default function AdminBookingsPage() {
                 <TableBody>
                   {filteredAndSortedBookings.map((booking) => (
                     <TableRow key={booking.id} className="hover:bg-muted/50">
-                      <TableCell className="font-medium">#{booking.id}</TableCell>
+                      <TableCell className="font-medium">
+                        #{booking.id}
+                      </TableCell>
                       <TableCell>
                         <div className="space-y-1">
-                          <div className="font-medium">{booking.client?.name || `ID: ${booking.clientId}`}</div>
+                          <div className="font-medium">
+                            {booking.client?.name || `ID: ${booking.clientId}`}
+                          </div>
                           {booking.client?.email && (
-                            <div className="text-sm text-muted-foreground">{booking.client.email}</div>
+                            <div className="text-sm text-muted-foreground">
+                              {booking.client.email}
+                            </div>
                           )}
                         </div>
                       </TableCell>
@@ -561,10 +687,16 @@ export default function AdminBookingsPage() {
                       <TableCell>
                         <div className="space-y-1">
                           <div className="text-sm">
-                            {format(parseISO(booking.startDate), "dd MMM yyyy", { locale: es })}
+                            {format(
+                              parseISO(booking.startDate),
+                              'dd MMM yyyy',
+                              { locale: es }
+                            )}
                           </div>
                           <div className="text-sm text-muted-foreground">
-                            {format(parseISO(booking.endDate), "dd MMM yyyy", { locale: es })}
+                            {format(parseISO(booking.endDate), 'dd MMM yyyy', {
+                              locale: es,
+                            })}
                           </div>
                         </div>
                       </TableCell>
@@ -590,16 +722,29 @@ export default function AdminBookingsPage() {
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="end">
                             <DropdownMenuLabel>Acciones</DropdownMenuLabel>
-                            <DropdownMenuItem onClick={() => alert(`Ver detalles de reserva ID: ${booking.id}`)}>
+                            <DropdownMenuItem
+                              onClick={() =>
+                                alert(
+                                  `Ver detalles de reserva ID: ${booking.id}`
+                                )
+                              }
+                            >
                               <Eye className="h-4 w-4 mr-2" />
                               Ver detalles
                             </DropdownMenuItem>
-                            <DropdownMenuItem onClick={() => alert(`Editar reserva ID: ${booking.id}`)}>
+                            <DropdownMenuItem
+                              onClick={() =>
+                                alert(`Editar reserva ID: ${booking.id}`)
+                              }
+                            >
                               <Edit className="h-4 w-4 mr-2" />
                               Editar
                             </DropdownMenuItem>
                             <DropdownMenuSeparator />
-                            <DropdownMenuItem onClick={() => handleDeleteClick(booking)} className="text-destructive">
+                            <DropdownMenuItem
+                              onClick={() => handleDeleteClick(booking)}
+                              className="text-destructive"
+                            >
                               <Trash2 className="h-4 w-4 mr-2" />
                               Eliminar
                             </DropdownMenuItem>
@@ -621,15 +766,21 @@ export default function AdminBookingsPage() {
           <DialogHeader>
             <DialogTitle>Confirmar eliminación</DialogTitle>
             <DialogDescription>
-              ¿Estás seguro de que quieres eliminar la reserva #{bookingToDelete?.id}?
+              ¿Estás seguro de que quieres eliminar la reserva #
+              {bookingToDelete?.id}?
               {bookingToDelete?.client && (
-                <span className="block mt-2 font-medium">Cliente: {bookingToDelete.client.name}</span>
+                <span className="block mt-2 font-medium">
+                  Cliente: {bookingToDelete.client.name}
+                </span>
               )}
               Esta acción no se puede deshacer.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <Button variant="outline" onClick={() => setDeleteDialogOpen(false)}>
+            <Button
+              variant="outline"
+              onClick={() => setDeleteDialogOpen(false)}
+            >
               Cancelar
             </Button>
             <Button variant="destructive" onClick={handleDeleteConfirm}>
@@ -640,5 +791,5 @@ export default function AdminBookingsPage() {
         </DialogContent>
       </Dialog>
     </div>
-  )
+  );
 }

@@ -37,7 +37,6 @@ export default function PaymentPage() {
   });
 
   useEffect(() => {
-    
     if (stored) {
       const parsed: BookingData = JSON.parse(stored);
       setBooking(parsed);
@@ -54,36 +53,36 @@ export default function PaymentPage() {
     setClient((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-const handlePayment = async () => {
-  if (!booking) return;
+  const handlePayment = async () => {
+    if (!booking) return;
 
-  try {
-    // 1. Crear cliente en el backend
-    const savedClient: Client = await createClient(client);
+    try {
+      // 1. Crear cliente en el backend
+      const savedClient: Client = await createClient(client);
 
-    // 2. Crear reserva con clientId y datos de booking
-    const newBooking = {
-      clientId: savedClient.id!,
-      apartmentId: booking.apartmentId,
-      startDate: booking.startDate,
-      endDate: booking.endDate,
-      totalPrice: price || 0,
-      status: 'CONFIRMED', // o lo que uses por defecto
-      notes: ''
-    };
+      // 2. Crear reserva con clientId y datos de booking
+      const newBooking = {
+        clientId: savedClient.id!,
+        apartmentId: booking.apartmentId,
+        startDate: booking.startDate,
+        endDate: booking.endDate,
+        totalPrice: price || 0,
+        status: 'CONFIRMED', // o lo que uses por defecto
+        notes: '',
+      };
 
-    await updateBooking(stored, newBooking);
+      await updateBooking(stored, newBooking);
 
-    // 3. Limpiar y confirmar
-    alert(`Reserva confirmada para ${savedClient.name} ${savedClient.lastName}`);
-    localStorage.removeItem('pendingBookingId');
-
-  } catch (error) {
-    console.error("Error en el proceso de pago:", error);
-    alert("❌ Hubo un problema al confirmar la reserva.");
-  }
-};
-
+      // 3. Limpiar y confirmar
+      alert(
+        `Reserva confirmada para ${savedClient.name} ${savedClient.lastName}`
+      );
+      localStorage.removeItem('pendingBookingId');
+    } catch (error) {
+      console.error('Error en el proceso de pago:', error);
+      alert('❌ Hubo un problema al confirmar la reserva.');
+    }
+  };
 
   if (!booking) {
     return <p className="p-6">Cargando datos de reserva...</p>;
@@ -98,12 +97,25 @@ const handlePayment = async () => {
             <CardTitle>Resumen de reserva</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4 text-sm text-muted-foreground">
-            <div><strong>Entrada:</strong> {format(new Date(booking.startDate), 'dd/MM/yyyy')}</div>
-            <div><strong>Salida:</strong> {format(new Date(booking.endDate), 'dd/MM/yyyy')}</div>
-            <div><strong>Apartamento:</strong> {booking.apartmentId}</div>
-            <div><strong>Huéspedes:</strong> {booking.guests}</div>
+            <div>
+              <strong>Entrada:</strong>{' '}
+              {format(new Date(booking.startDate), 'dd/MM/yyyy')}
+            </div>
+            <div>
+              <strong>Salida:</strong>{' '}
+              {format(new Date(booking.endDate), 'dd/MM/yyyy')}
+            </div>
+            <div>
+              <strong>Apartamento:</strong> {booking.apartmentId}
+            </div>
+            <div>
+              <strong>Huéspedes:</strong> {booking.guests}
+            </div>
             <Separator />
-            <div className="text-lg"><strong>Total:</strong> {price !== null ? `${price.toFixed(2)} €` : '—'}</div>
+            <div className="text-lg">
+              <strong>Total:</strong>{' '}
+              {price !== null ? `${price.toFixed(2)} €` : '—'}
+            </div>
           </CardContent>
         </Card>
       </aside>
@@ -119,19 +131,44 @@ const handlePayment = async () => {
           <div className="space-y-4">
             <div>
               <Label htmlFor="name">Nombre</Label>
-              <Input id="name" name="name" value={client.name} onChange={handleChange} required />
+              <Input
+                id="name"
+                name="name"
+                value={client.name}
+                onChange={handleChange}
+                required
+              />
             </div>
             <div>
               <Label htmlFor="lastName">Apellidos</Label>
-              <Input id="lastName" name="lastName" value={client.lastName} onChange={handleChange} required />
+              <Input
+                id="lastName"
+                name="lastName"
+                value={client.lastName}
+                onChange={handleChange}
+                required
+              />
             </div>
             <div>
               <Label htmlFor="phone">Teléfono</Label>
-              <Input id="phone" name="phone" value={client.phone} onChange={handleChange} required />
+              <Input
+                id="phone"
+                name="phone"
+                value={client.phone}
+                onChange={handleChange}
+                required
+              />
             </div>
             <div>
               <Label htmlFor="email">Email</Label>
-              <Input id="email" name="email" type="email" value={client.email} onChange={handleChange} required />
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                value={client.email}
+                onChange={handleChange}
+                required
+              />
             </div>
           </div>
 

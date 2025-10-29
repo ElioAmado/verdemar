@@ -1,11 +1,11 @@
-import axios from "axios";
-import { DateRange } from "react-day-picker";
-import { Booking } from "@/types/booking";
+import axios from 'axios';
+import { DateRange } from 'react-day-picker';
+import { Booking } from '@/types/booking';
 
 function getBookingBaseUrl(): string {
   const base = process.env.NEXT_PUBLIC_API_BASE_URL;
   if (!base) {
-    throw new Error("❌ NEXT_PUBLIC_API_BASE_URL is not defined");
+    throw new Error('❌ NEXT_PUBLIC_API_BASE_URL is not defined');
   }
   return `${base}/booking`;
 }
@@ -29,7 +29,10 @@ export const createBooking = async (booking: Booking): Promise<Booking> => {
 };
 
 // ✅ Actualizar una reserva
-export const updateBooking = async (id: number, booking: Booking): Promise<Booking> => {
+export const updateBooking = async (
+  id: number,
+  booking: Booking
+): Promise<Booking> => {
   const res = await axios.put<Booking>(`${getBookingBaseUrl()}/${id}`, booking);
   return res.data;
 };
@@ -45,17 +48,17 @@ export const getTotalPrice = async (
   startDate: string,
   endDate: string
 ): Promise<number> => {
-  const res = await axios.get<number>(
-    `${getBookingBaseUrl()}/check`,
-    {
-      params: { apartmentId, startDate, endDate },
-    }
-  );
+  const res = await axios.get<number>(`${getBookingBaseUrl()}/check`, {
+    params: { apartmentId, startDate, endDate },
+  });
   return res.data;
 };
 
-export const getDatesByApartmentId = async (apartmentId: number): Promise<DateRange[]> => {
-  const res = await axios.get<DateRange[]>(`${getBookingBaseUrl()}/getDates/${apartmentId}`);
+export const getDatesByApartmentId = async (
+  apartmentId: number
+): Promise<DateRange[]> => {
+  const res = await axios.get<DateRange[]>(
+    `${getBookingBaseUrl()}/getDates/${apartmentId}`
+  );
   return res.data;
-}
-
+};

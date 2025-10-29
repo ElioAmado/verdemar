@@ -179,8 +179,7 @@
     "notes": "Besondere Hinweise (optional)",
     "notes_placeholder": "Haben Sie besondere Wünsche?",
     "guest_title": "Gästeinformationen",
-    "guest_description": "Geben Sie die Angaben der Gäste ein"
-    ,
+    "guest_description": "Geben Sie die Angaben der Gäste ein",
     "cancel": "Abbrechen"
   },
   "form": {

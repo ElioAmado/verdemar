@@ -1,5 +1,5 @@
-'use client'
-import { useEffect } from "react";
+'use client';
+import { useEffect } from 'react';
 
 interface MapaProps {
   zoomLevel?: number;
@@ -22,7 +22,7 @@ export const Mapa = ({ zoomLevel = 15.5 }: MapaProps) => {
     // Define global callback for Google Maps
     (window as any).initMap = function () {
       const map = new google.maps.Map(
-        document.getElementById("map") as HTMLElement,
+        document.getElementById('map') as HTMLElement,
         {
           center: { lat: 38.722110140342515, lng: 1.4594708860911132 }, // Formentera 38.721409067867036, 1.4593396266257508
           zoom: zoomLevel,
@@ -34,12 +34,12 @@ export const Mapa = ({ zoomLevel = 15.5 }: MapaProps) => {
       new google.maps.Marker({
         position: { lat: 38.722110140342515, lng: 1.4594708860911132 },
         map,
-        title: "Apartamentos Verde Mar",
+        title: 'Apartamentos Verde Mar',
       });
     };
 
     // Create script tag for Google Maps
-    const script = document.createElement("script");
+    const script = document.createElement('script');
     script.src = `https://maps.googleapis.com/maps/api/js?key=${
       process.env.NEXT_PUBLIC_API_KEY_MAP
     }&callback=initMap`; // 👈 solo callback, sin librerías raras
@@ -55,18 +55,16 @@ export const Mapa = ({ zoomLevel = 15.5 }: MapaProps) => {
     };
   }, []);
 
-return (
-  <>
-    <style jsx>{`
-      .map-container {
-        width: 100%;
-        height: 100%;
-      }
-    `}</style>
+  return (
+    <>
+      <style jsx>{`
+        .map-container {
+          width: 100%;
+          height: 100%;
+        }
+      `}</style>
 
-    <div id="map" className="map-container" />
-  </>
-);
-
-
+      <div id="map" className="map-container" />
+    </>
+  );
 };

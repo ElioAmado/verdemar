@@ -110,7 +110,7 @@ export default function SignInPage() {
 
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <Label htmlFor="password">{t("signIn.password")}</Label>
+                    <Label htmlFor="password">{t('signIn.password')}</Label>
                   </div>
                   <div className="relative">
                     <Input
@@ -167,7 +167,10 @@ export default function SignInPage() {
                 </div>
 
                 <Button type="submit" className="w-full">
-                  <Link href="/admin/dashboard" className="flex items-center justify-center">
+                  <Link
+                    href="/admin/dashboard"
+                    className="flex items-center justify-center"
+                  >
                     {t('signIn.signInButton')}
                   </Link>
                 </Button>
@@ -179,8 +182,7 @@ export default function SignInPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
-              </div>
+              <div className="grid grid-cols-2 gap-4"></div>
             </CardContent>
           </Card>
         </div>

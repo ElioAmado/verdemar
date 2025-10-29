@@ -1,12 +1,12 @@
-import axios from "axios";
-import { Apartment } from "@/types/apartment";
-import { Price } from "@/types/prices";
+import axios from 'axios';
+import { Apartment } from '@/types/apartment';
+import { Price } from '@/types/prices';
 
 export interface PriceRequestDTO {
   price: number;
 }
 
-const base = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8080";
+const base = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8080';
 const priceBaseUrl = `${base}/price`;
 
 /**
@@ -28,8 +28,13 @@ export async function getAllPricesDto(): Promise<Price[]> {
 /**
  * Get a specific price by apartment ID and date
  */
-export async function getPriceById(apartmentId: number, date: string): Promise<Price> {
-  const response = await axios.get<Price>(`${priceBaseUrl}/${apartmentId}/${date}`);
+export async function getPriceById(
+  apartmentId: number,
+  date: string
+): Promise<Price> {
+  const response = await axios.get<Price>(
+    `${priceBaseUrl}/${apartmentId}/${date}`
+  );
   return response.data;
 }
 
@@ -41,14 +46,20 @@ export async function updatePrice(
   date: string,
   priceData: PriceRequestDTO
 ): Promise<Price> {
-  const response = await axios.put<Price>(`${priceBaseUrl}/${apartmentId}/${date}`, priceData);
+  const response = await axios.put<Price>(
+    `${priceBaseUrl}/${apartmentId}/${date}`,
+    priceData
+  );
   return response.data;
 }
 
 /**
  * Delete a price (if the endpoint is re-enabled later)
  */
-export async function deletePrice(apartmentId: number, date: string): Promise<void> {
+export async function deletePrice(
+  apartmentId: number,
+  date: string
+): Promise<void> {
   await axios.delete(`${priceBaseUrl}/${apartmentId}/${date}`);
 }
 

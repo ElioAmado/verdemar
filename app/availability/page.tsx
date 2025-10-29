@@ -1,33 +1,47 @@
-"use client"
+'use client';
 
-import { useState } from "react"
-import { useRouter } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Edit3, ArrowLeft, AlertCircle } from "lucide-react"
-import { SiteHeader } from "@/components/site-header"
-import { SearchForm } from "@/components/search-form"
-import { SearchSummary } from "@/components/search-summary"
-import { FilterControls } from "@/components/filter-controls"
-import { ApartmentCard } from "@/components/apartment-card"
-import { EmptyState } from "@/components/empty-state"
-import { LoadingSkeleton } from "@/components/loading-skeleton"
-import { useAvailabilitySearch } from "@/hooks/use-availability-search"
-import { useApartmentFilters } from "@/hooks/use-apartment-filters"
-import { handleReservation } from "@/utils/booking-utils"
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Edit3, ArrowLeft, AlertCircle } from 'lucide-react';
+import { SiteHeader } from '@/components/site-header';
+import { SearchForm } from '@/components/search-form';
+import { SearchSummary } from '@/components/search-summary';
+import { FilterControls } from '@/components/filter-controls';
+import { ApartmentCard } from '@/components/apartment-card';
+import { EmptyState } from '@/components/empty-state';
+import { LoadingSkeleton } from '@/components/loading-skeleton';
+import { useAvailabilitySearch } from '@/hooks/use-availability-search';
+import { useApartmentFilters } from '@/hooks/use-apartment-filters';
+import { handleReservation } from '@/utils/booking-utils';
 
 export default function AvailabilityPage() {
-  const router = useRouter()
-  const [showSearchForm, setShowSearchForm] = useState(false)
+  const router = useRouter();
+  const [showSearchForm, setShowSearchForm] = useState(false);
 
-  const { apartments, loading, error, searchParams, numberOfNights, formattedDates } = useAvailabilitySearch()
+  const {
+    apartments,
+    loading,
+    error,
+    searchParams,
+    numberOfNights,
+    formattedDates,
+  } = useAvailabilitySearch();
 
-  const { sortBy, setSortBy, filterByAvailability, setFilterByAvailability, filteredAndSortedApartments } =
-    useApartmentFilters(apartments)
+  const {
+    sortBy,
+    setSortBy,
+    filterByAvailability,
+    setFilterByAvailability,
+    filteredAndSortedApartments,
+  } = useApartmentFilters(apartments);
 
   const handleReserve = async (apartmentId: number) => {
-    const apartment = apartments.find((apt) => apt.apartment.id === apartmentId)
-    if (!apartment?.price) return
+    const apartment = apartments.find(
+      (apt) => apt.apartment.id === apartmentId
+    );
+    if (!apartment?.price) return;
 
     await handleReservation(
       apartmentId,
@@ -36,13 +50,13 @@ export default function AvailabilityPage() {
       searchParams.adults!,
       searchParams.children,
       apartment.price,
-      router,
-    )
-  }
+      router
+    );
+  };
 
   const handleGoBack = () => {
-    router.back()
-  }
+    router.back();
+  };
 
   if (loading) {
     return (
@@ -52,7 +66,7 @@ export default function AvailabilityPage() {
           <LoadingSkeleton />
         </div>
       </div>
-    )
+    );
   }
 
   if (error) {
@@ -70,7 +84,7 @@ export default function AvailabilityPage() {
           </Button>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -95,11 +109,11 @@ export default function AvailabilityPage() {
           {showSearchForm && (
             <SearchForm
               initialData={{
-                startDate: searchParams.startDate || "",
-                endDate: searchParams.endDate || "",
-                type: searchParams.type || "",
-                adults: searchParams.adults || "1",
-                children: searchParams.children || "0",
+                startDate: searchParams.startDate || '',
+                endDate: searchParams.endDate || '',
+                type: searchParams.type || '',
+                adults: searchParams.adults || '1',
+                children: searchParams.children || '0',
               }}
               onClose={() => setShowSearchForm(false)}
             />
@@ -126,15 +140,22 @@ export default function AvailabilityPage() {
 
         {/* Results */}
         {filteredAndSortedApartments.length === 0 ? (
-          <EmptyState onModifySearch={() => setShowSearchForm(true)} onGoBack={handleGoBack} />
+          <EmptyState
+            onModifySearch={() => setShowSearchForm(true)}
+            onGoBack={handleGoBack}
+          />
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredAndSortedApartments.map((apartment) => (
-              <ApartmentCard key={apartment.apartment.id} apartment={apartment} onReserve={handleReserve} />
+              <ApartmentCard
+                key={apartment.apartment.id}
+                apartment={apartment}
+                onReserve={handleReserve}
+              />
             ))}
           </div>
         )}
       </div>
     </div>
-  )
+  );
 }

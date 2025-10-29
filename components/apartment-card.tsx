@@ -1,30 +1,47 @@
-"use client"
+'use client';
 
-import Image from "next/image"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Skeleton } from "@/components/ui/skeleton"
-import { Separator } from "@/components/ui/separator"
-import { Users, Bed, Euro, MapPin, CheckCircle, XCircle } from "lucide-react"
-import type { ExtendedApartmentAvailability } from "@/types/availability"
-import { useLanguage } from "@/contexts/language-context"
+import Image from 'next/image';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Skeleton } from '@/components/ui/skeleton';
+import { Separator } from '@/components/ui/separator';
+import { Users, Bed, Euro, MapPin, CheckCircle, XCircle } from 'lucide-react';
+import type { ExtendedApartmentAvailability } from '@/types/availability';
+import { useLanguage } from '@/contexts/language-context';
 
 interface ApartmentCardProps {
-  apartment: ExtendedApartmentAvailability
-  onReserve: (apartmentId: number) => void
+  apartment: ExtendedApartmentAvailability;
+  onReserve: (apartmentId: number) => void;
 }
 
 export function ApartmentCard({ apartment, onReserve }: ApartmentCardProps) {
   const { t } = useLanguage();
-  const { apartment: apt, available, price, pricePerNight, loading: priceLoading, error: priceError } = apartment
+  const {
+    apartment: apt,
+    available,
+    price,
+    pricePerNight,
+    loading: priceLoading,
+    error: priceError,
+  } = apartment;
 
   return (
-    <Card className={`overflow-hidden transition-all hover:shadow-lg ${!available ? "opacity-75" : ""}`}>
+    <Card
+      className={`overflow-hidden transition-all hover:shadow-lg ${!available ? 'opacity-75' : ''}`}
+    >
       <div className="relative h-48">
-        <Image src={`/apartments/${apt.id}/index.jpg`} alt={`Apartamento ${apt.id}`} fill className="object-cover" />
+        <Image
+          src={`/apartments/${apt.id}/index.jpg`}
+          alt={`Apartamento ${apt.id}`}
+          fill
+          className="object-cover"
+        />
         <div className="absolute top-3 right-3">
-          <Badge variant={available ? "default" : "destructive"} className="shadow-sm">
+          <Badge
+            variant={available ? 'default' : 'destructive'}
+            className="shadow-sm"
+          >
             {available ? (
               <>
                 <CheckCircle className="h-3 w-3 mr-1" /> Disponible
@@ -63,7 +80,11 @@ export function ApartmentCard({ apartment, onReserve }: ApartmentCardProps) {
         </div>
 
         {/* Description */}
-        {apt.description && <p className="text-sm text-muted-foreground line-clamp-2">{apt.description}</p>}
+        {apt.description && (
+          <p className="text-sm text-muted-foreground line-clamp-2">
+            {apt.description}
+          </p>
+        )}
 
         <Separator />
 
@@ -79,10 +100,14 @@ export function ApartmentCard({ apartment, onReserve }: ApartmentCardProps) {
           ) : (
             <>
               {pricePerNight && (
-                <div className="text-sm text-muted-foreground">{pricePerNight.toFixed(2)} € por noche</div>
+                <div className="text-sm text-muted-foreground">
+                  {pricePerNight.toFixed(2)} € por noche
+                </div>
               )}
               <div className="flex items-center gap-2">
-                <span className="text-lg font-bold">{price?.toFixed(2)} € total</span>
+                <span className="text-lg font-bold">
+                  {price?.toFixed(2)} € total
+                </span>
               </div>
             </>
           )}
@@ -93,17 +118,17 @@ export function ApartmentCard({ apartment, onReserve }: ApartmentCardProps) {
           className="w-full"
           onClick={() => onReserve(apt.id)}
           disabled={!available || priceLoading || !!priceError}
-          variant={available ? "default" : "secondary"}
+          variant={available ? 'default' : 'secondary'}
         >
           {!available
-            ? "No disponible"
+            ? 'No disponible'
             : priceLoading
-              ? "Calculando precio..."
+              ? 'Calculando precio...'
               : priceError
-                ? "Error en precio"
-                : "Reservar ahora"}
+                ? 'Error en precio'
+                : 'Reservar ahora'}
         </Button>
       </CardContent>
     </Card>
-  )
+  );
 }

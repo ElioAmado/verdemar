@@ -179,8 +179,7 @@
     "notes": "Special Notes (Optional)",
     "notes_placeholder": "Do you have any special requests?",
     "guest_title": "Guest Information",
-    "guest_description": "Provide the details of the guests staying"
-    ,
+    "guest_description": "Provide the details of the guests staying",
     "cancel": "Cancel"
   },
   "form": {

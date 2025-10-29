@@ -30,16 +30,28 @@ export function SiteHeader() {
 
         {/* Nav escritorio */}
         <nav className="hidden md:flex gap-6">
-          <Link href="/" className="text-sm font-medium transition-colors hover:text-primary">
+          <Link
+            href="/"
+            className="text-sm font-medium transition-colors hover:text-primary"
+          >
             {t('common.home')}
           </Link>
-          <Link href="/amenities" className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
+          <Link
+            href="/amenities"
+            className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+          >
             {t('common.amenities')}
           </Link>
-          <Link href="/gallery" className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
+          <Link
+            href="/gallery"
+            className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+          >
             {t('common.gallery')}
           </Link>
-          <Link href="/contact" className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
+          <Link
+            href="/contact"
+            className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+          >
             {t('common.contact')}
           </Link>
         </nav>
@@ -81,19 +93,39 @@ export function SiteHeader() {
       {/* Menú móvil */}
       {isOpen && (
         <nav className="md:hidden bg-background border-t shadow-lg p-4 space-y-2">
-          <Link href="/" onClick={() => setIsOpen(false)} className="block text-sm font-medium">
+          <Link
+            href="/"
+            onClick={() => setIsOpen(false)}
+            className="block text-sm font-medium"
+          >
             {t('common.home')}
           </Link>
-          <Link href="/rooms" onClick={() => setIsOpen(false)} className="block text-sm font-medium">
+          <Link
+            href="/rooms"
+            onClick={() => setIsOpen(false)}
+            className="block text-sm font-medium"
+          >
             {t('common.rooms')}
           </Link>
-          <Link href="/amenities" onClick={() => setIsOpen(false)} className="block text-sm font-medium">
+          <Link
+            href="/amenities"
+            onClick={() => setIsOpen(false)}
+            className="block text-sm font-medium"
+          >
             {t('common.amenities')}
           </Link>
-          <Link href="/gallery" onClick={() => setIsOpen(false)} className="block text-sm font-medium">
+          <Link
+            href="/gallery"
+            onClick={() => setIsOpen(false)}
+            className="block text-sm font-medium"
+          >
             {t('common.gallery')}
           </Link>
-          <Link href="/contact" onClick={() => setIsOpen(false)} className="block text-sm font-medium">
+          <Link
+            href="/contact"
+            onClick={() => setIsOpen(false)}
+            className="block text-sm font-medium"
+          >
             {t('common.contact')}
           </Link>
         </nav>

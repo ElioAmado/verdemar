@@ -1,4 +1,4 @@
-import { ApartmentType } from "./apartmentType";
+import { ApartmentType } from './apartmentType';
 
 export interface Apartment {
   id: number;

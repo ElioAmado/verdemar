@@ -1,13 +1,19 @@
-const handleStripeCheckout = async (totalPrice: number, reservationId: string) => {
+const handleStripeCheckout = async (
+  totalPrice: number,
+  reservationId: string
+) => {
   try {
-    const res = await fetch('http://localhost:8080/api/create-checkout-session', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        amount: totalPrice,
-        reservationId: reservationId,
-      }),
-    });
+    const res = await fetch(
+      'http://localhost:8080/api/create-checkout-session',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          amount: totalPrice,
+          reservationId: reservationId,
+        }),
+      }
+    );
 
     if (!res.ok) {
       throw new Error('Failed to create checkout session');

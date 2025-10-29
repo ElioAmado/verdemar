@@ -1,5 +1,5 @@
-import { Apartment } from "./apartment";
-import { Client } from "./client";
+import { Apartment } from './apartment';
+import { Client } from './client';
 
 export interface Booking {
   id?: number;

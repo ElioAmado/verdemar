@@ -31,7 +31,6 @@ export const languages: Language[] = [
   { code: 'pt', name: 'Português', flag: 'pt' },
 ];
 
-
 const translations: Record<string, any> = {
   en: enTranslations,
   es: esTranslations,

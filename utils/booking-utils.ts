@@ -1,5 +1,5 @@
-import { createBooking} from "@/api/booking"
-import { Booking } from "@/types/booking"
+import { createBooking } from '@/api/booking';
+import { Booking } from '@/types/booking';
 
 export async function handleReservation(
   apartmentId: number,
@@ -8,35 +8,37 @@ export async function handleReservation(
   adults: string,
   children: string | null,
   totalPrice: number,
-  router: any,
+  router: any
 ) {
   if (!startDate || !endDate || !adults) {
-    alert("Por favor, selecciona fechas y número de huéspedes válidos.")
-    return
+    alert('Por favor, selecciona fechas y número de huéspedes válidos.');
+    return;
   }
 
   if (totalPrice === undefined) {
-    alert("El precio total aún no está disponible.")
-    return
+    alert('El precio total aún no está disponible.');
+    return;
   }
 
   const booking: Booking = {
-    guests: Number.parseInt(adults, 10) + (children ? Number.parseInt(children, 10) : 0),
+    guests:
+      Number.parseInt(adults, 10) +
+      (children ? Number.parseInt(children, 10) : 0),
     apartmentId: apartmentId,
     startDate: startDate,
     endDate: endDate,
     totalPrice: totalPrice,
-    status: "PENDING",
-  }
+    status: 'PENDING',
+  };
 
   try {
-    const created = await createBooking(booking)
-    
-    console.log("Reserva creada con ID:", created.id)
-    localStorage.setItem("pendingBookingId", JSON.stringify(created.id))
-    router.push("/booking")
+    const created = await createBooking(booking);
+
+    console.log('Reserva creada con ID:', created.id);
+    localStorage.setItem('pendingBookingId', JSON.stringify(created.id));
+    router.push('/booking');
   } catch (error) {
-    console.error("Error al crear la reserva:", error)
-    alert("Hubo un problema al crear la reserva. Intenta de nuevo.")
+    console.error('Error al crear la reserva:', error);
+    alert('Hubo un problema al crear la reserva. Intenta de nuevo.');
   }
 }

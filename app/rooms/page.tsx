@@ -121,20 +121,22 @@ function RoomCard({
         <div className="space-y-4">
           <div className="flex items-center gap-2 text-sm">
             <UsersIcon className="h-4 w-4" />
-            <span>{guests} {t('rooms.guests')}</span>
+            <span>
+              {guests} {t('rooms.guests')}
+            </span>
           </div>
           <div className="flex items-center gap-2 text-sm">
-            {rating? <StarIcon className="h-4 w-4 fill-primary" /> : null}
+            {rating ? <StarIcon className="h-4 w-4 fill-primary" /> : null}
             <span>{rating}</span>
           </div>
           <div className="grid grid-cols-2 gap-2 text-sm">
-            {features?.map((f, i) => (
-              <div key={i}>• {f}</div>
-            ))}
+            {features?.map((f, i) => <div key={i}>• {f}</div>)}
           </div>
           <p className="text-2xl font-bold">
             ${price}
-            <span className="text-sm font-normal text-muted-foreground">/noche</span>
+            <span className="text-sm font-normal text-muted-foreground">
+              /noche
+            </span>
           </p>
         </div>
       </CardContent>

@@ -1,16 +1,16 @@
-import { createBooking } from "@/api/booking";
-import { Booking } from "@/types/booking";
+import { createBooking } from '@/api/booking';
+import { Booking } from '@/types/booking';
 
 /**
  * Parse CSV text into an array of Booking objects.
  */
 const parseCSV = (csv: string): Booking[] => {
-  const lines = csv.split("\n").filter((l) => l.trim() !== "");
-  const header = lines.shift()?.split(",") || [];
+  const lines = csv.split('\n').filter((l) => l.trim() !== '');
+  const header = lines.shift()?.split(',') || [];
 
   return lines.map((line) => {
     const values: string[] = [];
-    let current = "";
+    let current = '';
     let inQuotes = false;
 
     for (let i = 0; i < line.length; i++) {
@@ -18,9 +18,9 @@ const parseCSV = (csv: string): Booking[] => {
 
       if (char === '"') {
         inQuotes = !inQuotes;
-      } else if (char === "," && !inQuotes) {
+      } else if (char === ',' && !inQuotes) {
         values.push(current);
-        current = "";
+        current = '';
       } else {
         current += char;
       }
@@ -48,10 +48,11 @@ const parseCSV = (csv: string): Booking[] => {
 /**
  * Fetches a CSV file and sends bookings to the API.
  */
-export const sendBookings = async (csvUrl: string = "/csv/bookings.csv") => {
+export const sendBookings = async (csvUrl: string = '/csv/bookings.csv') => {
   try {
     const response = await fetch(csvUrl);
-    if (!response.ok) throw new Error(`Failed to fetch CSV: ${response.statusText}`);
+    if (!response.ok)
+      throw new Error(`Failed to fetch CSV: ${response.statusText}`);
 
     const csvContent = await response.text();
     const bookings = parseCSV(csvContent);
@@ -65,6 +66,6 @@ export const sendBookings = async (csvUrl: string = "/csv/bookings.csv") => {
     //   }
     // }
   } catch (err) {
-    console.error("Error fetching CSV:", err);
+    console.error('Error fetching CSV:', err);
   }
 };

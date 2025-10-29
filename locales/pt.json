@@ -179,8 +179,7 @@
     "notes": "Notas Especiais (Opcional)",
     "notes_placeholder": "Tem algum pedido especial?",
     "guest_title": "Informações do Hóspede",
-    "guest_description": "Forneça os detalhes dos hóspedes que ficarão"
-    ,
+    "guest_description": "Forneça os detalhes dos hóspedes que ficarão",
     "cancel": "Cancelar"
   },
   "form": {

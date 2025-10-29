@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import Image from 'next/image';
 import { Mail, MapPin, Phone } from 'lucide-react';
 
@@ -13,8 +13,6 @@ import { useLanguage } from '@/contexts/language-context';
 import { useEffect } from 'react';
 import { SiteFooter } from '@/components/site-footer';
 
-
-
 // Declare google as a global variable for TypeScript
 declare global {
   interface Window {
@@ -26,34 +24,38 @@ declare global {
 
 export default function ContactPage() {
   const { t } = useLanguage();
-  
 
   const Mapa = () => {
     useEffect(() => {
-        // Evitar múltiples inclusiones
-  const existingScript = document.querySelector(`script[src*="maps.googleapis.com/maps/api/js"]`);
-  if (existingScript) {
-    if (window.google) {
-      window.initMap(); // Ejecutar callback si ya está cargado
-    }
-    return;
-  }
-  
+      // Evitar múltiples inclusiones
+      const existingScript = document.querySelector(
+        `script[src*="maps.googleapis.com/maps/api/js"]`
+      );
+      if (existingScript) {
+        if (window.google) {
+          window.initMap(); // Ejecutar callback si ya está cargado
+        }
+        return;
+      }
+
       // Define global initMap callback
       (window as any).initMap = function () {
-        const map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
-          center: { lat: 38.722110140342515, lng: 1.4594708860911132 }, // Coordenadas de ejemplo: Formentera
-          zoom: 15.5,
-        });
+        const map = new google.maps.Map(
+          document.getElementById('map') as HTMLElement,
+          {
+            center: { lat: 38.722110140342515, lng: 1.4594708860911132 }, // Coordenadas de ejemplo: Formentera
+            zoom: 15.5,
+          }
+        );
 
         new google.maps.Marker({
-          position: { lat: 38.722110140342515, lng: 1.4594708860911132 }, 
+          position: { lat: 38.722110140342515, lng: 1.4594708860911132 },
           map,
-          title: "Apartamentos Verde Mar",
+          title: 'Apartamentos Verde Mar',
         });
       };
 
-      const script = document.createElement("script");
+      const script = document.createElement('script');
       script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_API_KEY_MAP}&callback=initMap&libraries=maps,marker&v=beta`;
       script.async = true;
       document.body.appendChild(script);
@@ -64,7 +66,7 @@ export default function ContactPage() {
       };
     }, []);
 
-    return <div id="map" style={{ height: "400px", width: "100%" }} />;
+    return <div id="map" style={{ height: '400px', width: '100%' }} />;
   };
 
   return (
@@ -90,38 +92,62 @@ export default function ContactPage() {
           <div className="container px-4 md:px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <div>
-                <h2 className="text-2xl font-bold mb-6">{t('contact.formTitle')}</h2>
+                <h2 className="text-2xl font-bold mb-6">
+                  {t('contact.formTitle')}
+                </h2>
                 <form className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <Label htmlFor="first-name">{t('contact.firstName')}</Label>
-                      <Input id="first-name" placeholder={t('contact.firstNamePlaceholder')} />
+                      <Label htmlFor="first-name">
+                        {t('contact.firstName')}
+                      </Label>
+                      <Input
+                        id="first-name"
+                        placeholder={t('contact.firstNamePlaceholder')}
+                      />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="last-name">{t('contact.lastName')}</Label>
-                      <Input id="last-name" placeholder={t('contact.lastNamePlaceholder')} />
+                      <Input
+                        id="last-name"
+                        placeholder={t('contact.lastNamePlaceholder')}
+                      />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="email">{t('contact.email')}</Label>
-                      <Input id="email" type="email" placeholder={t('contact.emailPlaceholder')} />
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder={t('contact.emailPlaceholder')}
+                      />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="phone">{t('contact.phone')}</Label>
-                      <Input id="phone" placeholder={t('contact.phonePlaceholder')} />
+                      <Input
+                        id="phone"
+                        placeholder={t('contact.phonePlaceholder')}
+                      />
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="subject">{t('contact.subject')}</Label>
-                    <Input id="subject" placeholder={t('contact.subjectPlaceholder')} />
+                    <Input
+                      id="subject"
+                      placeholder={t('contact.subjectPlaceholder')}
+                    />
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="message">{t('contact.message')}</Label>
-                    <Textarea id="message" placeholder={t('contact.messagePlaceholder')} className="min-h-[150px]" />
+                    <Textarea
+                      id="message"
+                      placeholder={t('contact.messagePlaceholder')}
+                      className="min-h-[150px]"
+                    />
                   </div>
 
                   <Button type="submit" className="w-full">
@@ -132,12 +158,16 @@ export default function ContactPage() {
 
               <div className="space-y-8">
                 <div>
-                  <h2 className="text-2xl font-bold mb-6">{t('contact.infoTitle')}</h2>
+                  <h2 className="text-2xl font-bold mb-6">
+                    {t('contact.infoTitle')}
+                  </h2>
                   <div className="space-y-4">
                     <div className="flex items-start gap-4">
                       <MapPin className="h-5 w-5 text-primary mt-1" />
                       <div>
-                        <h3 className="font-semibold">{t('contact.address')}</h3>
+                        <h3 className="font-semibold">
+                          {t('contact.address')}
+                        </h3>
                         <p className="text-muted-foreground">
                           Camp D'es Pou 3877, Es Pujols
                         </p>
@@ -148,7 +178,9 @@ export default function ContactPage() {
                       <Phone className="h-5 w-5 text-primary mt-1" />
                       <div>
                         <h3 className="font-semibold">{t('contact.phone')}</h3>
-                        <p className="text-muted-foreground">+34 626 70 39 85</p>
+                        <p className="text-muted-foreground">
+                          +34 626 70 39 85
+                        </p>
                       </div>
                     </div>
 
@@ -156,14 +188,18 @@ export default function ContactPage() {
                       <Mail className="h-5 w-5 text-primary mt-1" />
                       <div>
                         <h3 className="font-semibold">{t('contact.email')}</h3>
-                        <p className="text-muted-foreground">aptosverdemar@gmail.com</p>
+                        <p className="text-muted-foreground">
+                          aptosverdemar@gmail.com
+                        </p>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <h2 className="text-2xl font-bold mb-6">{t('contact.locationTitle')}</h2>
+                  <h2 className="text-2xl font-bold mb-6">
+                    {t('contact.locationTitle')}
+                  </h2>
                   <div className="aspect-video relative rounded-xl overflow-hidden border">
                     <Mapa />
                   </div>
@@ -408,7 +444,6 @@ export default function ContactPage() {
             </div>
           </div>
         </section> */}
-
       </main>
       <SiteFooter />
     </div>

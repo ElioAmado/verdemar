@@ -33,7 +33,7 @@ if (userConfig) {
   try {
     // ESM imports will have a "default" property
     const config = userConfig.default || userConfig;
-    console.log("Array next.config.mjs");
+    console.log('Array next.config.mjs');
 
     for (const key in config) {
       try {
@@ -53,9 +53,8 @@ if (userConfig) {
         throw innerError; // Vuelve a lanzar el error para que se registre globalmente si es necesario
       }
     }
-
   } catch (error) {
-    console.error("Error al procesar el archivo de configuración:", error);
+    console.error('Error al procesar el archivo de configuración:', error);
   }
 }
 

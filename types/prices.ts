@@ -1,6 +1,6 @@
 import { apartments } from '@/consts/apartaments';
 // src/types/price.ts
-import { Apartment } from "./apartment";
+import { Apartment } from './apartment';
 
 /**
  * Represents a daily price associated with a specific apartment.
@@ -17,13 +17,13 @@ export interface Price {
 }
 
 export interface CreatePriceRequest {
-  apartmentId: number
-  date: string
-  price: number
+  apartmentId: number;
+  date: string;
+  price: number;
 }
 
 export interface UpdatePriceRequest {
-  apartmentId: number
-  date: string
-  price: number
+  apartmentId: number;
+  date: string;
+  price: number;
 }
