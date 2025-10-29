@@ -13,9 +13,9 @@ import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
 import { useLanguage } from '@/contexts/language-context';
 import RoomsSearch from '@/components/rooms-search';
-import { apartments } from '@/consts/apartaments';
+import { apartments } from '@/constants/apartaments';
 import { Card, CardContent } from '@/components/ui/card';
-import { Mapa } from '@/consts/maps';
+import { Mapa } from '@/constants/maps';
 
 export default function HomePage() {
   const { t } = useLanguage();

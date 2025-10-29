@@ -1,4 +1,4 @@
-import { apartments } from '@/consts/apartaments';
+import { apartments } from '@/constants/apartaments';
 // src/types/price.ts
 import { Apartment } from './apartment';
 

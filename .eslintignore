@@ -1,0 +1,6 @@
+# Ignorar la carpeta UI components
+components/ui/
+node_modules/
+.next/
+dist/
+components/ui/

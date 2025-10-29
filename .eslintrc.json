@@ -1,10 +1,4 @@
 {
-<<<<<<< HEAD
-  "extends": [
-    "next/core-web-vitals",
-    "next/typescript"
-  ]
-=======
   "root": true,
   "extends": [
     "next",
@@ -16,9 +10,8 @@
   "plugins": ["react", "prettier"],
   "rules": {
     "prettier/prettier": ["error"],
-    "react/react-in-jsx-scope": "off",  // innecesario en Next.js 12+
+    "react/react-in-jsx-scope": "off", // innecesario en Next.js 12+
     "no-unused-vars": "warn",
-    "react/prop-types": "off"  // si no usas PropTypes
+    "react/prop-types": "off" // si no usas PropTypes
   }
->>>>>>> main
 }

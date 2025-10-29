@@ -1,5 +1,5 @@
 'use client';
-import { amenities } from '@/consts/amenities';
+import { amenities } from '@/constants/amenities';
 import { useLanguage } from '@/contexts/language-context';
 import { CheckCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
