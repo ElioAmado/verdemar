@@ -1,6 +1,5 @@
-import { useLanguage } from '@/contexts/language-context';
 
-const { t } = useLanguage();
+
 export const photos = [
   {
     category: 'rooms',
@@ -8,7 +7,7 @@ export const photos = [
     alt: 'Spacious and modern room with sea view',
     apartamentId: 1,
     descriptionKey: 'room1',
-    figcaption: t('two_bedroom'),
+    figcaption: 'two_bedroom',
   },
   {
     category: 'rooms',
@@ -16,7 +15,7 @@ export const photos = [
     alt: 'Room image 2',
     apartamentId: 2,
     descriptionKey: 'room1',
-    figcaption: t('two_bedroom'),
+    figcaption: 'two_bedroom',
   },
   // {
   //   category: 'rooms',
@@ -102,7 +101,7 @@ export const photos = [
     alt: 'Room image 5',
     apartamentId: 5,
     descriptionKey: 'room1',
-    figcaption: t('one_bedroom'),
+    figcaption: 'one_bedroom',
   },
   {
     category: 'rooms',
@@ -110,7 +109,7 @@ export const photos = [
     alt: 'Room image 6',
     apartamentId: 6,
     descriptionKey: 'room1',
-    figcaption: t('one_bedroom'),
+    figcaption: 'one_bedroom',
   },
   {
     category: 'rooms',
@@ -118,7 +117,7 @@ export const photos = [
     alt: 'Room image 5', // cambiar
     apartamentId: null,
     descriptionKey: 'room1',
-    figcaption: t('two_bedroom'),
+    figcaption: 'two_bedroom',
   },
   {
     category: 'rooms',
@@ -126,7 +125,7 @@ export const photos = [
     alt: 'Room image 5', // cambiar
     apartamentId: 5,
     descriptionKey: 'room1',
-    figcaption: t('one_bedroom'),
+    figcaption: 'one_bedroom',
   },
   // {
   //   category: 'amenities',
