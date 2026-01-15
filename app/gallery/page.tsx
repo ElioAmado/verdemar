@@ -88,6 +88,7 @@ export default function GalleryPage() {
       alt: 'Bathtub amenity image',
       apartamentId: null,
       descriptionKey: 'room1',
+      figcaption: t('gallery.alert_bathtub'),
     },
         {
       category: 'amenities',
