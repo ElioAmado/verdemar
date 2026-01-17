@@ -39,6 +39,31 @@ export async function getPriceById(
 }
 
 /**
+ * Get prices for a specific apartment and month
+ *
+ * @param apartmentId Apartment ID
+ * @param month Month (1-12)
+ * @param year Full year (e.g. 2026)
+ * @returns List of prices
+ */
+export const getPricesByMonth = async (
+  apartmentId: number,
+  month: number,
+  year: number
+): Promise<Price[]> => {
+  console.log(`Fetching prices for Apartment ID: ${apartmentId}, Month: ${month}, Year: ${year}`);
+  const response = await axios.get<Price[]>(`${priceBaseUrl}/bymonth`, {
+    params: {
+      apartmentId,
+      month,
+      year,
+    },
+  });
+  console.log(`Fetched ${response.data.length} prices`);
+  return response.data;
+};
+
+/**
  * Update an existing price
  */
 export async function updatePrice(

@@ -10,7 +10,8 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "eslint . --fix",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "dev:all": "concurrently \" pnpm run dev\" \"cd ../backend && mvn spring-boot:run\""
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
