@@ -6,15 +6,11 @@ import { Apartment } from './apartment';
  * Represents a daily price associated with a specific apartment.
  */
 export interface Price {
-  /** The apartment this price belongs to */
-  apartment: Apartment;
-
-  /** The specific date this price applies to (ISO string format: YYYY-MM-DD) */
-  date: string;
-
-  /** The price value, stored as a decimal number */
-  price: number;
+  apartment?: Apartment
+  date: string
+  price: number
 }
+
 
 export interface CreatePriceRequest {
   apartmentId: number;
@@ -27,3 +23,16 @@ export interface UpdatePriceRequest {
   date: string;
   price: number;
 }
+
+export interface PriceStats {
+  total: number
+  averagePrice: number
+  highestPrice: number
+  lowestPrice: number
+  totalRevenuePotential: number
+  uniqueApartments: number
+  pricesThisMonth: number
+}
+
+export type SortField = "date" | "price" | "apartment.id"
+export type SortDirection = "asc" | "desc"
