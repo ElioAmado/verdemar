@@ -3,44 +3,50 @@
 import type React from "react"
 
 import { useState, useMemo } from "react"
-import { format, startOfMonth, endOfMonth, eachDayOfInterval, addMonths, subMonths, getDay, isToday } from "date-fns"
+import {
+  format,
+  startOfMonth,
+  endOfMonth,
+  eachDayOfInterval,
+  addMonths,
+  subMonths,
+  getDay,
+  isToday,
+} from "date-fns"
 import { es } from "date-fns/locale"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { ChevronLeft, ChevronRight, Calendar, Euro, Check, Loader2 } from "lucide-react"
-import type { Price } from "@/types/prices"
+import type { Price, UpdatePriceRequest } from "@/types/prices"
 import { cn } from "@/lib/utils"
+
+// Lista de apartamentos disponibles por tipo (en producción vendría de la API)
+const APARTMENT_TYPES = [
+  { ids: [1, 2, 3, 4], name: "Apartamento de un dormitorio" },
+  { ids: [5, 6], name: "Apartamento de dos dormitorios" },
+]
 
 interface PricesCalendarProps {
   prices: Price[]
   loading: boolean
-  selectedApartment: number
-  onApartmentChange: (apartmentId: number) => void
+  selectedApartments: number[]
+  onApartmentTypeChange: (apartmentIds: number[]) => void
   onMonthChange: (month: number, year: number) => void
   currentMonth: number
   currentYear: number
   onUpdatePrice: (date: string, price: number) => Promise<void>
   onCreatePrice: (date: string, price: number) => Promise<void>
   onDeletePrice: (date: string) => Promise<void>
-  onBulkUpdatePrices: (dates: string[], price: number) => Promise<void>
+  onBulkUpdatePrices: (prices: UpdatePriceRequest[]) => Promise<void>
 }
-
-// Lista de apartamentos disponibles (en producción vendría de la API)
-const APARTMENTS = [
-  { id: 1, name: "Apartamento 1" },
-  { id: 2, name: "Apartamento 2" },
-  { id: 3, name: "Apartamento 3" },
-  { id: 4, name: "Apartamento 4" },
-  { id: 5, name: "Apartamento 5" },
-]
 
 export function PricesCalendar({
   prices,
   loading,
-  selectedApartment,
-  onApartmentChange,
+  selectedApartments,
+  onApartmentTypeChange,
   onMonthChange,
   currentMonth,
   currentYear,
@@ -55,6 +61,18 @@ export function PricesCalendar({
   const [selectedDates, setSelectedDates] = useState<Set<string>>(new Set())
   const [bulkPrice, setBulkPrice] = useState<string>("")
   const [bulkSaving, setBulkSaving] = useState(false)
+
+  // Encontrar el índice del tipo de apartamento seleccionado
+  const selectedTypeIndex = useMemo(() => {
+    if (selectedApartments.length === 0) return -1
+    return APARTMENT_TYPES.findIndex(
+      (type) =>
+        type.ids.length === selectedApartments.length &&
+        type.ids.every((id) => selectedApartments.includes(id))
+    )
+  }, [selectedApartments])
+
+  const hasSelection = selectedApartments.length > 0
 
   const currentDate = new Date(currentYear, currentMonth - 1, 1)
   const monthStart = startOfMonth(currentDate)
@@ -90,8 +108,15 @@ export function PricesCalendar({
     onMonthChange(today.getMonth() + 1, today.getFullYear())
   }
 
+  const handleTypeChange = (typeIndex: string) => {
+    const index = Number.parseInt(typeIndex)
+    if (index >= 0 && index < APARTMENT_TYPES.length) {
+      onApartmentTypeChange(APARTMENT_TYPES[index].ids)
+    }
+  }
+
   const handleDayClick = (day: Date) => {
-    if (selectedApartment === 0) return
+    if (!hasSelection) return
     const dateKey = format(day, "yyyy-MM-dd")
 
     setSelectedDates((prev) => {
@@ -116,14 +141,31 @@ export function PricesCalendar({
   }
 
   const handleBulkSave = async () => {
-    if (selectedDates.size === 0 || !bulkPrice || selectedApartment === 0) return
+    // Validaciones básicas
+    if (selectedDates.size === 0 || !bulkPrice || !hasSelection) return
 
     const priceValue = Number.parseFloat(bulkPrice)
-    if (isNaN(priceValue) || priceValue < 0) return
+    if (Number.isNaN(priceValue) || priceValue < 0) return
 
     setBulkSaving(true)
     try {
-      await onBulkUpdatePrices(Array.from(selectedDates), priceValue)
+      // Crear updates para cada apartamento del tipo seleccionado y cada fecha
+      const updates: UpdatePriceRequest[] = []
+      
+      for (const date of selectedDates) {
+        for (const apartmentId of selectedApartments) {
+          updates.push({
+            date,
+            price: priceValue,
+            apartmentId,
+          })
+        }
+      }
+
+      // Llamamos al handler que procesará todos los updates
+      await onBulkUpdatePrices(updates)
+
+      // Limpiamos la selección después de guardar
       clearSelection()
     } catch (error) {
       console.error("Error saving bulk prices:", error)
@@ -133,10 +175,10 @@ export function PricesCalendar({
   }
 
   const handleSave = async () => {
-    if (!editingDay || selectedApartment === 0) return
+    if (!editingDay || !hasSelection) return
 
     const priceValue = Number.parseFloat(editValue)
-    if (isNaN(priceValue) || priceValue < 0) {
+    if (Number.isNaN(priceValue) || priceValue < 0) {
       setEditingDay(null)
       return
     }
@@ -159,7 +201,7 @@ export function PricesCalendar({
   }
 
   const handleDelete = async () => {
-    if (!editingDay || selectedApartment === 0) return
+    if (!editingDay || !hasSelection) return
 
     setSaving(true)
     try {
@@ -196,22 +238,22 @@ export function PricesCalendar({
               Calendario de Precios
             </CardTitle>
             <CardDescription>
-              {selectedApartment === 0
-                ? "Selecciona un apartamento para ver y editar precios"
-                : `${prices.length} precio${prices.length !== 1 ? "s" : ""} configurado${prices.length !== 1 ? "s" : ""}`}
+              {!hasSelection
+                ? "Selecciona un tipo de apartamento para ver y editar precios"
+                : `${selectedApartments.length} apartamento${selectedApartments.length !== 1 ? "s" : ""} · ${prices.length} precio${prices.length !== 1 ? "s" : ""} configurado${prices.length !== 1 ? "s" : ""}`}
             </CardDescription>
           </div>
           <Select
-            value={selectedApartment === 0 ? "" : selectedApartment.toString()}
-            onValueChange={(value) => onApartmentChange(Number.parseInt(value))}
+            value={selectedTypeIndex >= 0 ? selectedTypeIndex.toString() : ""}
+            onValueChange={handleTypeChange}
           >
-            <SelectTrigger className="w-[200px]">
-              <SelectValue placeholder="Seleccionar apartamento" />
+            <SelectTrigger className="w-[280px]">
+              <SelectValue placeholder="Seleccionar tipo de apartamento" />
             </SelectTrigger>
             <SelectContent>
-              {APARTMENTS.map((apt) => (
-                <SelectItem key={apt.id} value={apt.id.toString()}>
-                  {apt.name}
+              {APARTMENT_TYPES.map((type, index) => (
+                <SelectItem key={index} value={index.toString()}>
+                  {type.name} ({type.ids.length} aptos)
                 </SelectItem>
               ))}
             </SelectContent>
@@ -225,7 +267,9 @@ export function PricesCalendar({
             <ChevronLeft className="h-4 w-4" />
           </Button>
           <div className="flex items-center gap-2">
-            <h2 className="text-xl font-semibold capitalize">{format(currentDate, "MMMM yyyy", { locale: es })}</h2>
+            <h2 className="text-xl font-semibold capitalize">
+              {format(currentDate, "MMMM yyyy", { locale: es })}
+            </h2>
             <Button variant="ghost" size="sm" onClick={handleToday}>
               Hoy
             </Button>
@@ -235,17 +279,19 @@ export function PricesCalendar({
           </Button>
         </div>
 
-        {/* Mensaje si no hay apartamento seleccionado */}
-        {selectedApartment === 0 && (
+        {/* Mensaje si no hay tipo seleccionado */}
+        {!hasSelection && (
           <div className="text-center py-12 text-muted-foreground">
             <Calendar className="h-12 w-12 mx-auto mb-4 opacity-50" />
-            <p className="text-lg font-medium">Selecciona un apartamento</p>
-            <p className="text-sm">Elige un apartamento del selector de arriba para ver y editar sus precios</p>
+            <p className="text-lg font-medium">Selecciona un tipo de apartamento</p>
+            <p className="text-sm">
+              Elige un tipo de apartamento del selector de arriba para ver y editar sus precios
+            </p>
           </div>
         )}
 
         {/* Calendario */}
-        {selectedApartment !== 0 && (
+        {hasSelection && (
           <>
             <div className="mb-4 p-4 border rounded-lg bg-muted/30">
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
@@ -255,13 +301,20 @@ export function PricesCalendar({
                       ? `${selectedDates.size} día${selectedDates.size !== 1 ? "s" : ""} seleccionado${selectedDates.size !== 1 ? "s" : ""}`
                       : "Haz clic en los días para seleccionarlos"}
                   </p>
-                  <p className="text-xs text-muted-foreground">Selecciona varios días y asigna un precio común</p>
+                  <p className="text-xs text-muted-foreground">
+                    Selecciona varios días y asigna un precio común para los {selectedApartments.length} apartamentos
+                  </p>
                 </div>
                 <div className="flex items-center gap-2">
                   <Button variant="outline" size="sm" onClick={selectAllDays}>
                     Seleccionar todos
                   </Button>
-                  <Button variant="outline" size="sm" onClick={clearSelection} disabled={selectedDates.size === 0}>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={clearSelection}
+                    disabled={selectedDates.size === 0}
+                  >
                     Limpiar
                   </Button>
                 </div>
@@ -270,7 +323,9 @@ export function PricesCalendar({
               {selectedDates.size > 0 && (
                 <div className="mt-4 flex flex-col sm:flex-row items-start sm:items-end gap-3">
                   <div className="flex-1 w-full sm:max-w-xs">
-                    <label className="text-sm font-medium mb-1 block">Precio para días seleccionados</label>
+                    <label className="text-sm font-medium mb-1 block">
+                      Precio para días seleccionados
+                    </label>
                     <div className="relative">
                       <Euro className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                       <Input
@@ -308,7 +363,10 @@ export function PricesCalendar({
               {/* Cabecera de días de la semana */}
               <div className="grid grid-cols-7 bg-muted">
                 {weekDays.map((day) => (
-                  <div key={day} className="p-3 text-center text-sm font-medium text-muted-foreground border-b">
+                  <div
+                    key={day}
+                    className="p-3 text-center text-sm font-medium text-muted-foreground border-b"
+                  >
                     {day}
                   </div>
                 ))}
@@ -329,7 +387,8 @@ export function PricesCalendar({
                   const isEditing = editingDay === dateKey
                   const isSelected = selectedDates.has(dateKey)
                   const isLastRow =
-                    index + adjustedStartDay >= Math.floor((daysInMonth.length + adjustedStartDay - 1) / 7) * 7
+                    index + adjustedStartDay >=
+                    Math.floor((daysInMonth.length + adjustedStartDay - 1) / 7) * 7
 
                   return (
                     <div
@@ -340,7 +399,7 @@ export function PricesCalendar({
                         !isLastRow && "border-b",
                         isCurrentDay && "bg-primary/5",
                         isSelected && "bg-primary/20 ring-2 ring-primary ring-inset",
-                        !isEditing && "cursor-pointer hover:bg-muted/50",
+                        !isEditing && "cursor-pointer hover:bg-muted/50"
                       )}
                     >
                       {/* Número del día */}
@@ -348,7 +407,7 @@ export function PricesCalendar({
                         <span
                           className={cn(
                             "text-sm font-medium h-7 w-7 flex items-center justify-center rounded-full",
-                            isCurrentDay && "bg-primary text-primary-foreground",
+                            isCurrentDay && "bg-primary text-primary-foreground"
                           )}
                         >
                           {format(day, "d")}

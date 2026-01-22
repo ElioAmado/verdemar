@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Apartment } from '@/types/apartment';
-import { Price } from '@/types/prices';
+import { Price, UpdatePriceRequest } from '@/types/prices';
 
 export interface PriceRequestDTO {
   price: number;
@@ -77,6 +77,30 @@ export async function updatePrice(
   );
   return response.data;
 }
+
+/**
+ * Bulk update prices
+ *
+ * @param prices List of prices to update
+ * @returns Updated prices
+ */
+export const bulkUpdatePrices = async (
+  prices: UpdatePriceRequest[]
+): Promise<Price[]> => {
+  console.log(`Bulk updating ${prices.length} prices`);
+  console.log('Prices data:', prices);
+  const response = await axios.put<Price[]>(
+    `${priceBaseUrl}/bulk`,
+    prices, // BODY JSON
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  return response.data;
+};
 
 /**
  * Delete a price (if the endpoint is re-enabled later)
