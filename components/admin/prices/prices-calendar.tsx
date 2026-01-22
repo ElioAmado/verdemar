@@ -18,7 +18,18 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { ChevronLeft, ChevronRight, Calendar, Euro, Check, Loader2 } from "lucide-react"
+import { ChevronLeft, ChevronRight, Calendar, Euro, Check, Loader2, Trash2 } from "lucide-react"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
 import type { Price, UpdatePriceRequest } from "@/types/prices"
 import { cn } from "@/lib/utils"
 
@@ -38,7 +49,8 @@ interface PricesCalendarProps {
   currentYear: number
   onUpdatePrice: (date: string, price: number) => Promise<void>
   onCreatePrice: (date: string, price: number) => Promise<void>
-  onDeletePrice: (date: string) => Promise<void>
+  onDeletePrice: (apartmentId: number, date: string) => Promise<void>
+  onBulkDeletePrices: (apartmentIds: number[], dates: string[]) => Promise<void>
   onBulkUpdatePrices: (prices: UpdatePriceRequest[]) => Promise<void>
 }
 
@@ -53,6 +65,7 @@ export function PricesCalendar({
   onUpdatePrice,
   onCreatePrice,
   onDeletePrice,
+  onBulkDeletePrices,
   onBulkUpdatePrices,
 }: PricesCalendarProps) {
   const [editingDay, setEditingDay] = useState<string | null>(null)
@@ -61,6 +74,7 @@ export function PricesCalendar({
   const [selectedDates, setSelectedDates] = useState<Set<string>>(new Set())
   const [bulkPrice, setBulkPrice] = useState<string>("")
   const [bulkSaving, setBulkSaving] = useState(false)
+  const [bulkDeleting, setBulkDeleting] = useState(false)
 
   // Encontrar el índice del tipo de apartamento seleccionado
   const selectedTypeIndex = useMemo(() => {
@@ -140,6 +154,21 @@ export function PricesCalendar({
     setSelectedDates(new Set(allDates))
   }
 
+  const handleBulkDelete = async () => {
+    if (selectedDates.size === 0 || !hasSelection) return
+
+    setBulkDeleting(true)
+    try {
+      const dates = Array.from(selectedDates)
+      await onBulkDeletePrices(selectedApartments, dates)
+      clearSelection()
+    } catch (error) {
+      console.error("Error deleting bulk prices:", error)
+    } finally {
+      setBulkDeleting(false)
+    }
+  }
+
   const handleBulkSave = async () => {
     // Validaciones básicas
     if (selectedDates.size === 0 || !bulkPrice || !hasSelection) return
@@ -205,7 +234,10 @@ export function PricesCalendar({
 
     setSaving(true)
     try {
-      await onDeletePrice(editingDay)
+      // Eliminar precio de todos los apartamentos del tipo seleccionado
+      for (const apartmentId of selectedApartments) {
+        await onDeletePrice(apartmentId, editingDay)
+      }
     } catch (error) {
       console.error("Error deleting price:", error)
     } finally {
@@ -355,6 +387,51 @@ export function PricesCalendar({
                       </>
                     )}
                   </Button>
+
+                  <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                      <Button
+                        variant="destructive"
+                        disabled={bulkDeleting || selectedDates.size === 0}
+                        className="w-full sm:w-auto"
+                      >
+                        {bulkDeleting ? (
+                          <>
+                            <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                            Eliminando...
+                          </>
+                        ) : (
+                          <>
+                            <Trash2 className="h-4 w-4 mr-2" />
+                            Eliminar precios
+                          </>
+                        )}
+                      </Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                      <AlertDialogHeader>
+                        <AlertDialogTitle>Eliminar precios</AlertDialogTitle>
+                        <AlertDialogDescription>
+                          Esta accion eliminara los precios de {selectedDates.size} dia{selectedDates.size !== 1 ? "s" : ""} para {selectedApartments.length} apartamento{selectedApartments.length !== 1 ? "s" : ""}. 
+                          <br />
+                          <span className="font-medium text-destructive">
+                            Se eliminaran {selectedDates.size * selectedApartments.length} registro{selectedDates.size * selectedApartments.length !== 1 ? "s" : ""} en total.
+                          </span>
+                          <br />
+                          Esta accion no se puede deshacer.
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                        <AlertDialogAction
+                          onClick={handleBulkDelete}
+                          className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                        >
+                          Eliminar
+                        </AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
                 </div>
               )}
             </div>

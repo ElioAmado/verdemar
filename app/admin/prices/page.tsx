@@ -98,15 +98,57 @@ export default function AdminPricesPage() {
     await fetchPrices()
   }
 
-  const handleDeletePrice = async (date: string) => {
-    // Elimina el precio del primer apartamento
-    await deletePrice(primaryApartmentId, date)
+  const handleDeletePrice = async (apartmentId: number, date: string) => {
+    await deletePrice(apartmentId, date)
+    await fetchPrices()
+  }
+
+  const handleBulkDeletePrices = async (apartmentIds: number[], dates: string[]) => {
+    // Elimina precios para todos los apartamentos y fechas seleccionadas
+    const deletePromises: Promise<void>[] = []
+    for (const apartmentId of apartmentIds) {
+      for (const date of dates) {
+        deletePromises.push(deletePrice(apartmentId, date))
+      }
+    }
+    await Promise.all(deletePromises)
     await fetchPrices()
   }
 
   // Recibe updates para múltiples apartamentos y fechas
+  // Crea o actualiza precios según si ya existen
   const handleBulkUpdatePrices = async (priceUpdates: UpdatePriceRequest[]) => {
-    await bulkUpdatePrices(priceUpdates)
+    // Obtener fechas que ya tienen precio
+    const existingDates = new Set(prices.map((p) => p.date))
+    
+    // Separar entre crear y actualizar
+    const toCreate: CreatePriceRequest[] = []
+    const toUpdate: UpdatePriceRequest[] = []
+    
+    for (const update of priceUpdates) {
+      if (existingDates.has(update.date)) {
+        toUpdate.push(update)
+      } else {
+        toCreate.push({
+          apartmentId: update.apartmentId,
+          date: update.date,
+          price: update.price,
+        })
+      }
+    }
+    
+    // Ejecutar creaciones y actualizaciones en paralelo
+    const promises: Promise<unknown>[] = []
+    
+    if (toCreate.length > 0) {
+      promises.push(createPrices(toCreate))
+    }
+    
+    if (toUpdate.length > 0) {
+      promises.push(bulkUpdatePrices(toUpdate))
+    }
+    
+    await Promise.all(promises)
     await fetchPrices()
   }
 
@@ -229,6 +271,7 @@ export default function AdminPricesPage() {
           onUpdatePrice={handleUpdatePrice}
           onCreatePrice={handleCreatePrice}
           onDeletePrice={handleDeletePrice}
+          onBulkDeletePrices={handleBulkDeletePrices}
           onBulkUpdatePrices={handleBulkUpdatePrices}
         />
       </div>

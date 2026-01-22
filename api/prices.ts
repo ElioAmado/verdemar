@@ -115,12 +115,13 @@ export async function deletePrice(
 /**
  * Example of creating a price (if you re-enable POST later)
  */
-export async function createPrice(priceData: Price): Promise<Price> {
-  const response = await axios.post<Price>(priceBaseUrl, priceData);
+export async function createPrice(priceData: UpdatePriceRequest): Promise<Price> {
+  const response = await axios.post<Price>(`${priceBaseUrl}/bulk`, priceData);
   return response.data;
 }
 
-export async function createPrices(priceData: Price[]): Promise<Price> {
-  const response = await axios.post<Price>(priceBaseUrl, priceData);
+// Unenabled bulk create function
+export async function createPrices(priceData: UpdatePriceRequest[]): Promise<Price> {
+  const response = await axios.post<Price>(`${priceBaseUrl}/bulk`, priceData,);
   return response.data;
 }
