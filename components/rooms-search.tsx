@@ -16,7 +16,7 @@ export default function RoomsSearch() {
     to: undefined,
   };
   const [dateRange, setDateRange] = useState<DateRange>(defaultDateRange);
-  const [roomType, setRoomType] = useState<string>('');
+
   const [guests, setGuests] = useState<{ adults: number; children: number }>({
     adults: 2,
     children: 0,
@@ -40,12 +40,6 @@ export default function RoomsSearch() {
       return;
     }
 
-    if (typeof roomType === 'string' && roomType.trim() !== '') {
-      params.append('type', roomType);
-    } else {
-      console.warn('Tipo de habitación inválido o no definido');
-    }
-
     // Añadimos adultos y niños por separado
     if (guests.adults >= 1) {
       params.append('adults', guests.adults.toString());
@@ -65,19 +59,12 @@ export default function RoomsSearch() {
   return (
     <Card className="border shadow-lg">
       <CardContent className="p-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="space-y-2">
             <label className="text-sm font-medium leading-none">
               {t('home.search.checkIn')}
             </label>
             <DatePickerWithRange onRangeChange={setDateRange} />
-          </div>
-
-          <div className="space-y-2">
-            <label className="text-sm font-medium leading-none">
-              {t('home.search.roomType')}
-            </label>
-            <RoomTypeSelector onChange={setRoomType} />
           </div>
 
           <div className="space-y-2">

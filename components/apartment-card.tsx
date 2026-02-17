@@ -79,13 +79,6 @@ export function ApartmentCard({ apartment, onReserve }: ApartmentCardProps) {
           </div>
         </div>
 
-        {/* Description */}
-        {apt.description && (
-          <p className="text-sm text-muted-foreground line-clamp-2">
-            {apt.description}
-          </p>
-        )}
-
         <Separator />
 
         {/* Pricing */}

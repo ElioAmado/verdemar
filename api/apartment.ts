@@ -57,21 +57,40 @@ export interface ApartmentAvailability {
   available: boolean;
 }
 
+// export const getAvailableApartments = async ({
+//   startDate,
+//   endDate,
+//   type,
+// }: {
+//   startDate: string | null;
+//   endDate: string | null;
+//   type: ApartmentType | null;
+// }): Promise<ApartmentAvailability[]> => {
+//   const res = await axios.get<ApartmentAvailability[]>(
+//     `${getBaseUrl()}/available`,
+//     {
+//       params: { type, startDate, endDate },
+//     }
+//   );
+
+//   return res.data;
+// };
+
 export const getAvailableApartments = async ({
   startDate,
   endDate,
-  type,
 }: {
   startDate: string | null;
   endDate: string | null;
   type: ApartmentType | null;
 }): Promise<ApartmentAvailability[]> => {
   const res = await axios.get<ApartmentAvailability[]>(
-    `${getBaseUrl()}/available`,
+    `${getBaseUrl()}/availableWithoutType`,
     {
-      params: { type, startDate, endDate },
+      params: {startDate, endDate },
     }
   );
 
   return res.data;
 };
+

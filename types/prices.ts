@@ -11,7 +11,6 @@ export interface Price {
   price: number
 }
 
-
 export interface CreatePriceRequest {
   apartmentId: number;
   date: string;
