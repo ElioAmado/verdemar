@@ -84,11 +84,12 @@ export default function GalleryPage() {
     // },
         {
       category: 'amenities',
-      src: '/amenities/bathtub.jpg',
+      // src: '/amenities/bathtub.jpg',
+      src: '/amenities/new_bathroom.jpeg',
       alt: 'Bathtub amenity image',
       apartamentId: null,
       descriptionKey: 'room1',
-      figcaption: t('gallery.alert_bathtub'),
+      // figcaption: t('gallery.alert_bathtub'),
     },
         {
       category: 'amenities',
