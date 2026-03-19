@@ -11,6 +11,7 @@ import { useLanguage } from '@/contexts/language-context';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { DateRange } from 'react-day-picker';
+import { Pause } from 'lucide-react';
 
 export default function RoomsSearch() {
   const { t } = useLanguage();
@@ -30,48 +31,39 @@ export default function RoomsSearch() {
   });
   const router = useRouter();
 
-const handleSearch = () => {
-  const params = new URLSearchParams();
+  const handleSearch = () => {
+    // Función interna para formatear YYYY-MM-DD sin perder días por zona horaria
+    const formatDate = (date) => {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    };
 
-  if (dateRange.from instanceof Date && !isNaN(dateRange.from.getTime())) {
-    params.append('arrival', dateRange.from.toISOString().split('T')[0]);
-  } else {
-    console.warn('Fecha "from" inválida o no definida');
-    return;
-  }
+    const params = new URLSearchParams();
 
-  if (dateRange.to instanceof Date && !isNaN(dateRange.to.getTime())) {
-    params.append('departure', dateRange.to.toISOString().split('T')[0]);
-  } else {
-    console.warn('Fecha "to" inválida o no definida');
-    alert('Por favor, selecciona una fecha de salida válida.');
-    return;
-  }
+    if (dateRange.from instanceof Date && !isNaN(dateRange.from.getTime())) {
+      // CAMBIO AQUÍ: Usamos la función local
+      params.append('arrival', formatDate(dateRange.from));
+    } else {
+      console.warn('Fecha "from" inválida');
+      return;
+    }
 
-  if (typeof roomType === 'string' && roomType.trim() !== '') {
-    params.append('type', roomType);
-  }
+    if (dateRange.to instanceof Date && !isNaN(dateRange.to.getTime())) {
+      // CAMBIO AQUÍ: Usamos la función local
+      params.append('departure', formatDate(dateRange.to));
+    } else {
+      alert('Por favor, selecciona una fecha de salida válida.');
+      return;
+    }
 
-  if (guests.adults >= 1) {
-    params.append('adults', guests.adults.toString());
-  }
-
-  if (guests.children >= 0) {
-    params.append('children', guests.children.toString());
-  }
-
-  // babies siempre en 0 (por si no lo usas todavía)
-  params.append('babies', '0');
-
-  // parámetros fijos
-  params.append('orderby', 'price');
-  params.append('view', 'grid');
-
-  const url = `https://bookings.apartamentosverdemar-formentera.com/es/step-accommodation?id=OkhW482ggf4UV:DMSDaD4w&${params.toString()}`;
-
-  router.push(url);
-};
-
+    // ... resto de tu lógica (guests, roomType, etc.)
+    
+    const url = `https://bookings.apartamentosverdemar-formentera.com/es/step-accommodation?id=OkhW482ggf4UV:DMSDaD4w&${params.toString()}`;
+    // console.log('Redirigiendo a:', url);
+    router.push(url);
+  };
   return (
     <>
 

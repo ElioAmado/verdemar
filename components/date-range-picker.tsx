@@ -37,6 +37,7 @@ export function DatePickerWithRange({
     setDate(range);
     if (onRangeChange) onRangeChange(range);
     if (range?.from && range?.to) setOpen(false);
+    // console.log('Rango seleccionado:', range);
   };
 
   const numberOfMonths = useIsMobile() ? 1 : 2;
