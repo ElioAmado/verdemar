@@ -17,6 +17,9 @@ import { apartments } from '@/constants/apartaments';
 import { Card, CardContent } from '@/components/ui/card';
 import { Mapa } from '@/constants/maps';
 
+import { LexChatbot } from '@/components/lex-chatbot';
+
+
 export default function HomePage() {
   const { t } = useLanguage();
 
@@ -191,6 +194,8 @@ export default function HomePage() {
           </div>
         </section>
       </main>
+            {/* Amazon Lex Chatbot */}
+      <LexChatbot />
       <SiteFooter />
     </div>
   );
