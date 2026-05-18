@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { DateRange } from 'react-day-picker';
 import { Booking } from '@/types/booking';
+import { SpringPage } from '@/types/pages';
 
 function getBookingBaseUrl(): string {
   const base = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -11,8 +12,13 @@ function getBookingBaseUrl(): string {
 }
 
 // ✅ Obtener todas las reservas
-export const getAllBookings = async (): Promise<Booking[]> => {
-  const res = await axios.get<Booking[]>(getBookingBaseUrl());
+export const getAllBookings = async (page = 0, size = 10): Promise<SpringPage<Booking>> => {
+  const res = await axios.get<SpringPage<Booking>>(getBookingBaseUrl(), {
+    params: {
+      page,
+      size
+    }
+  });
   return res.data;
 };
 
