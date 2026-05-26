@@ -121,34 +121,31 @@ export default function DashboardPage() {
             </div>
           )}
 
-          {/* KPI Cards */}
-          <div className="mb-6">
-            {isLoading ? (
-              <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
-                {[...Array(4)].map((_, i) => (
-                  <Card key={i} className="bg-card">
-                    <CardHeader className="pb-2">
-                      <Skeleton className="h-4 w-24" />
-                    </CardHeader>
-                    <CardContent>
-                      <Skeleton className="h-8 w-32 mb-2" />
-                      <Skeleton className="h-3 w-20" />
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            ) : kpis ? (
-              <KPICards
-                currentOccupancy={kpis.current_occupancy}
-                totalRevenue={kpis.total_revenue}
-                activeBookings={kpis.active_bookings}
-                upcomingCheckins={kpis.upcoming_checkins}
-                occupancyChange={kpis.occupancy_change_percentage}
-                revenueChange={kpis.revenue_change_percentage}
-              />
-            ) : null}
-          </div>
-
+         {/* KPI Cards */}
+<div className="mb-6">
+  {isLoading ? (
+    <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
+      {[...Array(4)].map((_, i) => (
+        <Card key={i} className="bg-card">
+          <CardHeader className="pb-2">
+            <Skeleton className="h-4 w-24" />
+          </CardHeader>
+          <CardContent>
+            <Skeleton className="h-8 w-32 mb-2" />
+            <Skeleton className="h-3 w-20" />
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  ) : kpis ? (
+    <KPICards
+      totalRevenue={kpis.totalRevenue}
+      totalBookings={kpis.totalBookings}
+      totalNights={kpis.totalNights}
+      averageRevenuePerBooking={kpis.averageRevenuePerBooking}
+    />
+  ) : null}
+</div>
           {/* Charts Grid */}
 
 {/* Charts Grid */}

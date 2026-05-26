@@ -1,15 +1,15 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { CalendarIcon, SlidersHorizontal } from 'lucide-react';
-import { format } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { cn } from '@/lib/utils';
 import { DashboardFilters, ApartmentType } from '@/types/booking';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Calendar from '@/components/calendar'; // Asegúrate de que apunte a tu archivo corregido de arriba
 
 interface DashboardFiltersProps {
   filters: DashboardFilters;
@@ -17,10 +17,17 @@ interface DashboardFiltersProps {
 }
 
 export function DashboardFiltersComponent({ filters, onFiltersChange }: DashboardFiltersProps) {
-  const [dateRange, setDateRange] = useState<{ from: Date | undefined; to: Date | undefined }>({
-    from: new Date(filters.date_range.start),
-    to: new Date(filters.date_range.end),
+  const [dateRange, setDateRange] = useState<{ from: Date | null; to: Date | null }>({
+    from: filters.date_range.start ? parseISO(filters.date_range.start) : null,
+    to: filters.date_range.end ? parseISO(filters.date_range.end) : null,
   });
+
+  useEffect(() => {
+    setDateRange({
+      from: filters.date_range.start ? parseISO(filters.date_range.start) : null,
+      to: filters.date_range.end ? parseISO(filters.date_range.end) : null,
+    });
+  }, [filters.date_range.start, filters.date_range.end]);
 
   const handleYearChange = (year: string) => {
     onFiltersChange({
@@ -36,6 +43,22 @@ export function DashboardFiltersComponent({ filters, onFiltersChange }: Dashboar
     });
   };
 
+  const handleCalendarRangeChange = (range: { from: Date | null; to: Date | undefined }) => {
+    const fromDate = range.from;
+    const toDate = range.to || null;
+
+    setDateRange({ from: fromDate, to: toDate });
+
+    // Se actualiza el estado global de forma reactiva en cada paso de selección
+    onFiltersChange({
+      ...filters,
+      date_range: {
+        start: fromDate ? format(fromDate, 'yyyy-MM-dd') : '',
+        end: toDate ? format(toDate, 'yyyy-MM-dd') : '',
+      },
+    });
+  };
+
   const availableYears = [2025, 2026, 2027, 2028, 2029];
 
   return (
@@ -46,7 +69,7 @@ export function DashboardFiltersComponent({ filters, onFiltersChange }: Dashboar
       </div>
       
       <div className="flex flex-wrap gap-3">
-        {/* Year Selector */}
+        {/* Selector de Año */}
         <Select value={filters.year.toString()} onValueChange={handleYearChange}>
           <SelectTrigger className="w-[120px] bg-secondary border-border">
             <SelectValue placeholder="Año" />
@@ -60,7 +83,7 @@ export function DashboardFiltersComponent({ filters, onFiltersChange }: Dashboar
           </SelectContent>
         </Select>
 
-        {/* Apartment Type Selector */}
+        {/* Selector de Tipo de Apartamento */}
         <Select value={filters.apartment_type} onValueChange={handleApartmentTypeChange}>
           <SelectTrigger className="w-[160px] bg-secondary border-border">
             <SelectValue placeholder="Tipo apartamento" />
@@ -73,13 +96,13 @@ export function DashboardFiltersComponent({ filters, onFiltersChange }: Dashboar
           </SelectContent>
         </Select>
 
-        {/* Date Range Picker */}
+        {/* Selector de Rango de Fechas */}
         <Popover>
           <PopoverTrigger asChild>
             <Button
               variant="outline"
               className={cn(
-                "justify-start text-left font-normal bg-secondary border-border",
+                "justify-start text-left font-normal bg-secondary border-border min-w-[240px]",
                 !dateRange.from && "text-muted-foreground"
               )}
             >
@@ -98,24 +121,11 @@ export function DashboardFiltersComponent({ filters, onFiltersChange }: Dashboar
               )}
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="w-auto p-0" align="start">
+          <PopoverContent className="w-auto p-0 border-none" align="start">
             <Calendar
-              initialFocus
-              mode="range"
-              defaultMonth={dateRange.from}
-              selected={dateRange}
-              onSelect={(range) => {
-                setDateRange({ from: range?.from, to: range?.to });
-                if (range?.from && range?.to) {
-                  onFiltersChange({
-                    ...filters,
-                    date_range: {
-                      start: format(range.from, 'yyyy-MM-dd'),
-                      end: format(range.to, 'yyyy-MM-dd'),
-                    },
-                  });
-                }
-              }}
+              initialStartDate={dateRange.from}
+              initialEndDate={dateRange.to}
+              onRangeChange={handleCalendarRangeChange}
               numberOfMonths={2}
             />
           </PopoverContent>

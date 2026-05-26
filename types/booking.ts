@@ -119,7 +119,7 @@ export interface OccupancyChartData {
 // INTERFACES PARA KPIs
 // ===========================
 
-interface DashboardKPIs {
+export interface DashboardKPIs {
   averageRevenuePerBooking: number;
   totalBookings: number;
   apartmentTypeFiltered: string;

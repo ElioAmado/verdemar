@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useParams } from 'next/navigation'; // 🔥 Importamos useParams
 import { ArrowLeftIcon, StarIcon, UsersIcon } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -25,12 +25,14 @@ import { createClient, Client } from '@/api/client';
 import { Booking } from '@/types/booking';
 import { Apartment } from '@/types/apartment';
 import { useLanguage } from '@/contexts/language-context';
-import handleStripeCheckout from './component/handleStripeCheckout';
+import handleStripeCheckout from '../component/handleStripeCheckout';
 import { getApartmentById } from '@/api/apartment';
 
 export default function BookingPage() {
   const { t } = useLanguage();
   const router = useRouter();
+  const params = useParams(); // 🔥 Captura los parámetros de la URL dinámicamente
+
   const [apartment, setApartment] = useState<Apartment | null>(null);
   const [booking, setBooking] = useState<Booking | null>(null);
   const [loading, setLoading] = useState(true);
@@ -40,15 +42,23 @@ export default function BookingPage() {
     email: '',
     phone: '',
   });
-  let error: String | null = null;
 
   useEffect(() => {
     async function fetchBooking() {
-      const storedId = localStorage.getItem('pendingBookingId');
-      console.log('Stored Booking ID:', storedId);
+      // 1. Intentar sacar el ID desde la URL (ej: si la ruta es /booking/[id])
+      // Asegúrate de que tu carpeta contenedora se llame [id]
+      let bookingId = params?.id; 
 
-      const id = Number(storedId);
-      if (isNaN(id)) return setLoading(false);
+      console.log('Booking ID from URL:', bookingId);
+
+      // 2. Si no viene en la URL, lo buscamos en el localStorage como fallback
+      if (!bookingId) {
+        bookingId = localStorage.getItem('pendingBookingId') || '';
+        console.log('Fallback to Stored Booking ID:', bookingId);
+      }
+
+      const id = Number(bookingId);
+      if (isNaN(id) || id <= 0) return setLoading(false);
 
       try {
         const bookingData = await getBookingById(id);
@@ -62,7 +72,7 @@ export default function BookingPage() {
       }
     }
     fetchBooking();
-  }, []);
+  }, [params]); // 🔥 Se vuelve a ejecutar si cambian los parámetros de la URL
 
   const handleConfirmBooking = async () => {
     try {
@@ -95,7 +105,6 @@ export default function BookingPage() {
   }
 
   if (!booking || !apartment) {
-    console.log(booking);
     return (
       <div className="text-center mt-20 text-destructive">
         {t('booking.not_found')}
