@@ -27,19 +27,27 @@ export function LexChatbot() {
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [sessionId] = useState(() => `session-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`);
-  const scrollAreaRef = useRef<HTMLDivElement>(null);
+  
+  // Inicializamos vacío para evitar errores de hidratación entre servidor y cliente
+  const [sessionId, setSessionId] = useState('');
+  
+  // Usamos una referencia a un elemento inferior para un scroll automático más robusto
+  const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // Seteamos la sesión únicamente una vez montado en el navegador
   useEffect(() => {
-    if (scrollAreaRef.current) {
-      scrollAreaRef.current.scrollTop = scrollAreaRef.current.scrollHeight;
-    }
-  }, [messages]);
+    setSessionId(`session-${Date.now()}-${Math.random().toString(36).substring(2, 11)}`);
+  }, []);
+
+  // Desplazamiento automático al recibir nuevos mensajes
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages, isLoading]);
 
   useEffect(() => {
     if (isOpen && inputRef.current) {
-      inputRef.current.focus();
+      setTimeout(() => inputRef.current?.focus(), 100);
     }
   }, [isOpen]);
 
@@ -74,24 +82,18 @@ export function LexChatbot() {
       if (response.ok) {
         const botMessage: Message = {
           id: `bot-${Date.now()}`,
-          text: data.message,
+          text: data.message || 'Procesando tu solicitud...',
           sender: 'bot',
           timestamp: new Date(),
         };
         setMessages((prev) => [...prev, botMessage]);
       } else {
-        const errorMessage: Message = {
-          id: `bot-${Date.now()}`,
-          text: 'Lo siento, ha ocurrido un error. Por favor, intenta de nuevo.',
-          sender: 'bot',
-          timestamp: new Date(),
-        };
-        setMessages((prev) => [...prev, errorMessage]);
+        throw new Error('API Response Error');
       }
     } catch (error) {
       const errorMessage: Message = {
         id: `bot-${Date.now()}`,
-        text: 'Lo siento, no puedo conectar con el servidor. Por favor, intenta más tarde.',
+        text: 'Lo siento, ha ocurrido un error al conectar con el asistente. Inténtalo de nuevo.',
         sender: 'bot',
         timestamp: new Date(),
       };
@@ -110,7 +112,7 @@ export function LexChatbot() {
 
   return (
     <>
-      {/* Chat Toggle Button */}
+      {/* Botón de alternancia del chat */}
       <Button
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
@@ -120,14 +122,10 @@ export function LexChatbot() {
         size="icon"
         aria-label={isOpen ? 'Cerrar chat' : 'Abrir chat'}
       >
-        {isOpen ? (
-          <X className="h-6 w-6" />
-        ) : (
-          <MessageCircle className="h-6 w-6" />
-        )}
+        {isOpen ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
       </Button>
 
-      {/* Chat Window */}
+      {/* Ventana de Chat */}
       <Card
         className={cn(
           'fixed bottom-24 right-6 z-50 w-[360px] shadow-2xl transition-all duration-300 ease-in-out',
@@ -143,8 +141,8 @@ export function LexChatbot() {
           </CardTitle>
         </CardHeader>
         <CardContent className="p-0">
-          {/* Messages Area */}
-          <ScrollArea className="h-[350px] p-4" ref={scrollAreaRef}>
+          {/* Área de Mensajes */}
+          <ScrollArea className="h-[350px] p-4">
             <div className="flex flex-col gap-3">
               {messages.map((message) => (
                 <div
@@ -157,16 +155,10 @@ export function LexChatbot() {
                   <div
                     className={cn(
                       'flex h-8 w-8 shrink-0 items-center justify-center rounded-full',
-                      message.sender === 'user'
-                        ? 'bg-primary text-primary-foreground'
-                        : 'bg-muted'
+                      message.sender === 'user' ? 'bg-primary text-primary-foreground' : 'bg-muted'
                     )}
                   >
-                    {message.sender === 'user' ? (
-                      <User className="h-4 w-4" />
-                    ) : (
-                      <Bot className="h-4 w-4" />
-                    )}
+                    {message.sender === 'user' ? <User className="h-4 w-4" /> : <Bot className="h-4 w-4" />}
                   </div>
                   <div
                     className={cn(
@@ -180,6 +172,7 @@ export function LexChatbot() {
                   </div>
                 </div>
               ))}
+
               {isLoading && (
                 <div className="flex gap-2 max-w-[85%]">
                   <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-muted">
@@ -194,10 +187,12 @@ export function LexChatbot() {
                   </div>
                 </div>
               )}
+              {/* Elemento de anclaje invisible para el final del scroll */}
+              <div ref={messagesEndRef} />
             </div>
           </ScrollArea>
 
-          {/* Input Area */}
+          {/* Área de Entrada de Texto */}
           <div className="border-t p-4">
             <div className="flex gap-2">
               <Input
