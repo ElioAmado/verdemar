@@ -42,8 +42,10 @@ export function LexChatbot() {
 
   // Desplazamiento automático al recibir nuevos mensajes
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages, isLoading]);
+    if (isOpen) {
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [messages, isLoading, isOpen]);
 
   useEffect(() => {
     if (isOpen && inputRef.current) {
@@ -52,17 +54,19 @@ export function LexChatbot() {
   }, [isOpen]);
 
   const sendMessage = async () => {
-    if (!inputValue.trim() || isLoading) return;
+    const textToSend = inputValue.trim();
+    if (!textToSend || isLoading) return;
 
     const userMessage: Message = {
       id: `user-${Date.now()}`,
-      text: inputValue.trim(),
+      text: textToSend,
       sender: 'user',
       timestamp: new Date(),
     };
 
-    setMessages((prev) => [...prev, userMessage]);
+    // Actualizamos el input inmediatamente y agregamos el mensaje del usuario
     setInputValue('');
+    setMessages((prev) => [...prev, userMessage]);
     setIsLoading(true);
 
     try {
@@ -72,25 +76,30 @@ export function LexChatbot() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          message: userMessage.text,
+          message: textToSend, // Usamos la variable local limpia
           sessionId,
         }),
       });
 
       const data = await response.json();
 
-      if (response.ok) {
+      if (response.ok && data) {
+        // Validación estricta para garantizar que el string se procese correctamente
+        const textReply = typeof data === 'string' ? data : (data.message || data.reply);
+        
         const botMessage: Message = {
           id: `bot-${Date.now()}`,
-          text: data.message || 'Procesando tu solicitud...',
+          text: textReply || 'Procesando tu solicitud...',
           sender: 'bot',
           timestamp: new Date(),
         };
+        
         setMessages((prev) => [...prev, botMessage]);
       } else {
         throw new Error('API Response Error');
       }
     } catch (error) {
+      console.error("Error en la interfaz del Chatbot:", error);
       const errorMessage: Message = {
         id: `bot-${Date.now()}`,
         text: 'Lo siento, ha ocurrido un error al conectar con el asistente. Inténtalo de nuevo.',
@@ -162,7 +171,7 @@ export function LexChatbot() {
                   </div>
                   <div
                     className={cn(
-                      'rounded-2xl px-4 py-2 text-sm',
+                      'rounded-2xl px-4 py-2 text-sm whitespace-pre-wrap break-words',
                       message.sender === 'user'
                         ? 'bg-primary text-primary-foreground rounded-tr-none'
                         : 'bg-muted rounded-tl-none'
