@@ -10,8 +10,6 @@ import { Label } from '@/components/ui/label';
 import { createClient, Client } from '@/api/client';
 import { createBooking, updateBooking } from '@/api/booking';
 
-const stored = localStorage.getItem('pendingBookingId');
-
 interface BookingData {
   apartmentId: number;
   startDate: string;
@@ -29,6 +27,10 @@ interface ClientForm {
 export default function PaymentPage() {
   const [booking, setBooking] = useState<BookingData | null>(null);
   const [price, setPrice] = useState<number | null>(null);
+  
+  // Guardamos también la key que venía de localStorage en un estado
+  const [storedKey, setStoredKey] = useState<string | null>(null);
+
   const [client, setClient] = useState<ClientForm>({
     name: '',
     lastName: '',
@@ -36,16 +38,23 @@ export default function PaymentPage() {
     email: '',
   });
 
+  // useEffect se ejecuta EXCLUSIVAMENTE en el cliente (navegador)
   useEffect(() => {
+    const stored = localStorage.getItem('pendingBookingId');
     if (stored) {
-      const parsed: BookingData = JSON.parse(stored);
-      setBooking(parsed);
+      try {
+        setStoredKey(stored);
+        const parsed: BookingData = JSON.parse(stored);
+        setBooking(parsed);
 
-      const start = new Date(parsed.startDate);
-      const end = new Date(parsed.endDate);
-      const nights = (end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24);
-      const basePrice = 100;
-      setPrice(Math.round(nights * basePrice));
+        const start = new Date(parsed.startDate);
+        const end = new Date(parsed.endDate);
+        const nights = (end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24);
+        const basePrice = 100;
+        setPrice(Math.round(nights * basePrice));
+      } catch (err) {
+        console.error("Error al parsear el localStorage:", err);
+      }
     }
   }, []);
 
@@ -54,7 +63,8 @@ export default function PaymentPage() {
   };
 
   const handlePayment = async () => {
-    if (!booking) return;
+    // Aseguramos que existan tanto el booking como la key guardada
+    if (!booking || !storedKey) return;
 
     try {
       // 1. Crear cliente en el backend
@@ -67,16 +77,15 @@ export default function PaymentPage() {
         startDate: booking.startDate,
         endDate: booking.endDate,
         totalPrice: price || 0,
-        status: 'CONFIRMED', // o lo que uses por defecto
+        status: 'CONFIRMED',
         notes: '',
       };
 
-      await updateBooking(stored, newBooking);
+      // Usamos la key guardada en el estado
+      await updateBooking(storedKey, newBooking);
 
       // 3. Limpiar y confirmar
-      alert(
-        `Reserva confirmada para ${savedClient.name} ${savedClient.lastName}`
-      );
+      alert(`Reserva confirmada para ${savedClient.name} ${savedClient.lastName}`);
       localStorage.removeItem('pendingBookingId');
     } catch (error) {
       console.error('Error en el proceso de pago:', error);

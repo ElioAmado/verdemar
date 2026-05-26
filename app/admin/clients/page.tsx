@@ -34,6 +34,8 @@ export default function AdminPricesPage() {
   const [apartmentIdForDays, setApartmentIdForDays] = useState<string>("")
   const [bulkSaving, setBulkSaving] = useState(false)
 
+
+
   useEffect(() => {
     console.log("Selected Apartment, Month, Year changed:", selectedApartment, currentMonth, currentYear)
     if (selectedApartment > 0) {
@@ -106,20 +108,39 @@ export default function AdminPricesPage() {
     await fetchPrices()
   }
 
-  const stats: PriceStats = useMemo(() => {
-    const total = prices.length
-    const priceValues = prices.map((p) => p.price)
-    const averagePrice = total > 0 ? priceValues.reduce((sum, p) => sum + p, 0) / total : 0
-    const highestPrice = total > 0 ? Math.max(...priceValues) : 0
-    const lowestPrice = total > 0 ? Math.min(...priceValues) : 0
-    const totalRevenuePotential = priceValues.reduce((sum, p) => sum + p, 0)
-    const currentDate = new Date()
-    const monthStart = startOfMonth(currentDate)
-    const monthEnd = endOfMonth(currentDate)
-    const pricesThisMonth = prices.filter((p) => {
-      const priceDate = parseISO(p.date)
-      return priceDate >= monthStart && priceDate <= monthEnd
-    }).length
+const stats: PriceStats = useMemo(() => {
+  const defaultStats: PriceStats = {
+    total: 0,
+    averagePrice: 0,
+    highestPrice: 0,
+    lowestPrice: 0,
+    totalRevenuePotential: 0,
+    uniqueApartments: selectedApartment > 0 ? 1 : 0,
+    pricesThisMonth: 0,
+  };
+
+  try {
+    const safePrices = prices ?? []; // <-- esto es el fix clave
+    if (!Array.isArray(safePrices) || safePrices.length === 0) {
+      return defaultStats;
+    }
+
+    const total = safePrices.length;
+    const priceValues = safePrices.map((p) => p?.price ?? 0);
+    const averagePrice = priceValues.reduce((sum, p) => sum + p, 0) / total;
+    const highestPrice = Math.max(...priceValues);
+    const lowestPrice = Math.min(...priceValues);
+    const totalRevenuePotential = priceValues.reduce((sum, p) => sum + p, 0);
+
+    const currentDate = new Date();
+    const monthStart = startOfMonth(currentDate);
+    const monthEnd = endOfMonth(currentDate);
+
+    const pricesThisMonth = safePrices.filter((p) => {
+      if (!p?.date) return false;
+      const priceDate = parseISO(p.date);
+      return priceDate >= monthStart && priceDate <= monthEnd;
+    }).length;
 
     return {
       total,
@@ -129,8 +150,12 @@ export default function AdminPricesPage() {
       totalRevenuePotential,
       uniqueApartments: selectedApartment > 0 ? 1 : 0,
       pricesThisMonth,
-    }
-  }, [prices, selectedApartment])
+    };
+  } catch (error) {
+    console.error("Error calculando estadísticas de precios:", error);
+    return defaultStats;
+  }
+}, [prices, selectedApartment]);
 
   const toggleDay = (day: number) => {
     setSelectedDays((prev) =>
