@@ -1,8 +1,11 @@
 {
-  "two_bedroom": "Apartamento de 1 dormitorio",
-  "one_bedroom": "Apartamento de 2 dormitorios",
+  "two_bedroom": "Apartamento de 2 dormitorios",
+  "one_bedroom": "Apartamento de 1 dormitorio",
   "ONE_BEDROOM": "Apartamento de 1 dormitorio",
   "TWO_BEDROOM": "Apartamento de 2 dormitorios",
+
+  "Apartments": "Apartamentos",
+  "brand_name": "Verde Mar",
 
   "common": {
     "home": "Inicio",
@@ -32,6 +35,18 @@
       "title": "Bienvenido a tu Hogar en Formentera",
       "subtitle": "Apartamentos de lujo frente al mar para una escapada inolvidable.",
       "cta": "Reserva tu Estancia"
+    },
+    "about": {
+      "text": "Descubre un oasis de tranquilidad en Es Pujols. Nuestros apartamentos combinan la esencia del mediterráneo con el confort moderno para ofrecerte una estancia inigualable a pocos pasos de las aguas turquesas de Formentera.",
+      "title_waves": "Frente al Mar",
+      "text_waves": "Despierta cada mañana con la brisa marina y las vistas idílicas del mar mediterráneo.",
+      "title_MapPin": "Ubicación Ideal",
+      "text_MapPin": "Situados en el corazón de Es Pujols, rodeados de los mejores restaurantes y servicios locales.",
+      "title_Home": "Tu Hogar",
+      "text_Home": "Espacios completamente equipados y diseñados para tu máximo confort y descanso absoluto."
+    },
+    "map": {
+      "title": "Encuéntranos en el Mapa"
     },
     "search": {
       "checkIn": "Entrada / Salida",
@@ -180,7 +195,6 @@
     "notes_placeholder": "¿Tienes alguna solicitud especial?",
     "guest_title": "Información del Huésped",
     "guest_description": "Proporciona los detalles de los huéspedes que se alojarán",
-
     "cancel": "Cancelar"
   },
   "form": {
@@ -194,7 +208,6 @@
     "phone_placeholder": "Introduce tu número de teléfono",
     "submit": "Enviar"
   },
-
   "calendar": {
     "monthNames": [
       "Enero",
