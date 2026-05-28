@@ -386,3 +386,28 @@ export function combineRealAndPredictedData(
 
   return combined.sort((a, b) => a.date.localeCompare(b.date));
 }
+// ==========================================
+// NUEVA FUNCIÓN UNIFICADA (Consistente con Axiox)
+// ==========================================
+
+export const fetchAndCombineData = async (filters: DashboardFilters): Promise<OccupancyDataPoint[]> => {
+  try {
+    const params = {
+      startDate: filters.date_range.start,
+      endDate: filters.date_range.end,
+    };
+
+    // La respuesta de tu endpoint /api/booking/dashboard/occupancy 
+    // es un array de objetos que encaja con la interfaz OccupancyDataPoint
+    const res = await api.get<OccupancyDataPoint[]>('/booking/dashboard/occupancy', { params });
+    console.log('Datos unificados recibidos del backend:', res.data);
+    // Devolvemos los datos directamente si existen
+    return res.data || [];
+
+  } catch (error) {
+    console.error("Error al obtener los datos unificados del Dashboard:", error);
+    
+    // Retorno de seguridad: array vacío o un punto de datos que no rompa la gráfica
+    return [];
+  }
+};

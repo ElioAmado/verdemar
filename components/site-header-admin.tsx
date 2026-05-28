@@ -26,14 +26,20 @@ export function SiteHeaderAdmin() {
         </Link>
         <nav className="hidden md:flex gap-6">
           <Link
-            href="/admin/dashboard"
-            className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+            href="/admin/home"
+            className="text-sm font-medium transition-colors hover:text-primary"
           >
             Inicio
           </Link>
           <Link
+            href="/admin/dashboard"
+            className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+          >
+            Dashboard
+          </Link>
+          <Link
             href="/admin/bookings"
-            className="text-sm font-medium transition-colors hover:text-primary"
+            className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
           >
             Reservas
           </Link>

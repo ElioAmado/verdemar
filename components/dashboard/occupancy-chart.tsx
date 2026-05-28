@@ -1,169 +1,271 @@
-'use client';
+"use client";
 
-import { useMemo } from 'react';
+import { useMemo } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import {
   Area,
   AreaChart,
-  CartesianGrid,
   XAxis,
   YAxis,
-  Legend,
+  CartesianGrid,
   ResponsiveContainer,
+  Tooltip,
+  Legend,
   ReferenceLine,
-} from 'recharts';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from '@/components/ui/chart';
-import { OccupancyDataPoint } from '@/types/booking';
+} from "recharts";
+import { OccupancyDataPoint } from "@/types/booking";
+import { Info } from "lucide-react";
 
 interface OccupancyChartProps {
   data: OccupancyDataPoint[];
-  averageOccupancy: number;
-  averagePredicted: number;
+  loading?: boolean;
+  title?: string;
+  showLegend?: boolean;
 }
 
-const chartConfig = {
-  occupancy_real: {
-    label: 'Ocupación Real',
-    color: 'var(--chart-1)',
-  },
-  occupancy_predicted: {
-    label: 'Predicción IA',
-    color: 'var(--chart-2)',
-  },
-};
-
-function formatMonth(dateStr: string): string {
-  const [year, month] = dateStr.split('-');
-  const months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
-  return `${months[parseInt(month) - 1]} ${year.slice(2)}`;
-}
-
-export function OccupancyChart({ data, averageOccupancy, averagePredicted }: OccupancyChartProps) {
+/**
+ * Componente principal de gráfica de ocupación
+ * 
+ * Muestra datos reales (históricos) y predicciones de IA en una sola visualización
+ * 
+ * Cálculo matemático de ocupación:
+ * 
+ * Ocupación Diaria (%) = (Apartamentos Ocupados / Total Apartamentos) × 100
+ * 
+ * Donde:
+ * - Apartamentos Ocupados = COUNT de apartments con booking activo para esa fecha
+ * - Un booking está activo si: check_in_date <= fecha <= check_out_date
+ */
+export function OccupancyChart({
+  data,
+  loading = false,
+  title = "Ocupación",
+  showLegend = true,
+}: OccupancyChartProps) {
+  // Procesar datos para la gráfica
   const chartData = useMemo(() => {
-    return data.map(point => ({
-      month: formatMonth(point.date),
+    return data.map((point) => ({
+      date: new Date(point.date).toLocaleDateString("es-ES", {
+        day: "2-digit",
+        month: "short",
+      }),
       fullDate: point.date,
-      occupancy_real: point.occupancy_real,
-      occupancy_predicted: point.occupancy_predicted,
-      is_prediction: point.is_prediction,
+      actual: point.actual_occupancy_rate,
+      predicted: point.predicted_occupancy_rate,
+      confidence: point.prediction_confidence,
+      isHistorical: point.is_historical,
+      isPrediction: point.is_prediction,
     }));
   }, [data]);
 
-  // Find the transition point between real and predicted data
-  const transitionIndex = chartData.findIndex(d => d.is_prediction);
+  // Encontrar la fecha de transición (hoy)
+  const todayIndex = useMemo(() => {
+    const today = new Date().toISOString().split("T")[0];
+    return chartData.findIndex((d) => d.fullDate >= today);
+  }, [chartData]);
+
+  if (loading) {
+    return (
+      <Card className="border-border bg-card shadow-sm">
+        <CardHeader className="flex flex-row items-center justify-between pb-2">
+          <CardTitle className="text-lg font-semibold">{title}</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="h-[300px] w-full animate-pulse rounded-lg bg-muted" />
+        </CardContent>
+      </Card>
+    );
+  }
+
+  // Colores del tema - Verde azulado (primary) y Azul (secondary)
+  const primaryColor = "hsl(175, 70%, 41%)";
+  const secondaryColor = "hsl(210, 100%, 50%)";
+  const mutedColor = "hsl(215, 16%, 47%)";
+  const borderColor = "hsl(214, 32%, 91%)";
 
   return (
-    <Card className="bg-card border-border col-span-full lg:col-span-2">
-      <CardHeader>
-        <div className="flex items-center justify-between">
-          <div>
-            <CardTitle className="text-foreground">Gráfica de Ocupación</CardTitle>
-            <CardDescription className="text-muted-foreground">
-              Ocupación real vs. predicción de IA para los próximos 12 meses
-            </CardDescription>
+    <Card className="border-border bg-card shadow-sm">
+      <CardHeader className="flex flex-row items-center justify-between pb-2">
+        <div className="flex items-center gap-3">
+          <CardTitle className="text-lg font-semibold">{title}</CardTitle>
+          <div className="flex items-center gap-2">
+            <Badge
+              variant="outline"
+              className="border-primary/50 bg-primary/10 text-primary"
+            >
+              <span className="mr-1.5 h-2 w-2 rounded-full bg-primary" />
+              Real
+            </Badge>
+            <Badge
+              variant="outline"
+              className="border-secondary/50 bg-secondary/10 text-secondary"
+            >
+              <span className="mr-1.5 h-2 w-2 rounded-full bg-secondary" />
+              Predicción IA
+            </Badge>
           </div>
-          <div className="flex items-center gap-6 text-sm">
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full" style={{ backgroundColor: 'var(--chart-1)' }} />
-              <span className="text-muted-foreground">
-                Real: <span className="text-foreground font-medium">{averageOccupancy.toFixed(1)}%</span>
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full" style={{ backgroundColor: 'var(--chart-2)' }} />
-              <span className="text-muted-foreground">
-                Predicción: <span className="text-foreground font-medium">{averagePredicted.toFixed(1)}%</span>
-              </span>
-            </div>
-          </div>
+        </div>
+        <div className="flex items-center gap-1 text-xs text-muted-foreground">
+          <Info className="h-3.5 w-3.5" />
+          <span>Hover para ver detalles</span>
         </div>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig} className="h-[300px] w-full">
+        <div className="h-[300px] w-full">
           <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+            <AreaChart
+              data={chartData}
+              margin={{ top: 10, right: 10, left: 0, bottom: 0 }}
+            >
               <defs>
-                <linearGradient id="realGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="var(--chart-1)" stopOpacity={0.3} />
-                  <stop offset="95%" stopColor="var(--chart-1)" stopOpacity={0} />
+                <linearGradient id="actualGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop
+                    offset="0%"
+                    stopColor={primaryColor}
+                    stopOpacity={0.4}
+                  />
+                  <stop
+                    offset="100%"
+                    stopColor={primaryColor}
+                    stopOpacity={0.05}
+                  />
                 </linearGradient>
-                <linearGradient id="predictedGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="var(--chart-2)" stopOpacity={0.3} />
-                  <stop offset="95%" stopColor="var(--chart-2)" stopOpacity={0} />
+                <linearGradient
+                  id="predictedGradient"
+                  x1="0"
+                  y1="0"
+                  x2="0"
+                  y2="1"
+                >
+                  <stop
+                    offset="0%"
+                    stopColor={secondaryColor}
+                    stopOpacity={0.3}
+                  />
+                  <stop
+                    offset="100%"
+                    stopColor={secondaryColor}
+                    stopOpacity={0.05}
+                  />
                 </linearGradient>
               </defs>
-              <CartesianGrid 
-                strokeDasharray="3 3" 
-                stroke="var(--border)" 
+              <CartesianGrid
+                strokeDasharray="3 3"
+                stroke={borderColor}
                 vertical={false}
               />
               <XAxis
-                dataKey="month"
-                axisLine={false}
+                dataKey="date"
+                stroke={mutedColor}
+                fontSize={11}
                 tickLine={false}
-                tick={{ fill: 'var(--muted-foreground)', fontSize: 12 }}
-                tickMargin={8}
+                axisLine={false}
+                tick={{ fill: mutedColor }}
               />
               <YAxis
-                domain={[0, 100]}
-                axisLine={false}
+                stroke={mutedColor}
+                fontSize={11}
                 tickLine={false}
-                tick={{ fill: 'var(--muted-foreground)', fontSize: 12 }}
+                axisLine={false}
                 tickFormatter={(value) => `${value}%`}
-                tickMargin={8}
+                domain={[0, 100]}
+                tick={{ fill: mutedColor }}
               />
-              <ChartTooltip 
-                content={
-                  <ChartTooltipContent
-                    formatter={(value, name) => {
-                      const label = name === 'occupancy_real' ? 'Ocupación Real' : 'Predicción IA';
-                      return [`${Number(value).toFixed(1)}%`, label];
-                    }}
-                  />
-                }
+              <Tooltip
+                content={({ active, payload, label }) => {
+                  if (active && payload && payload.length) {
+                    const data = payload[0].payload;
+                    return (
+                      <div className="rounded-lg border border-border bg-popover p-3 shadow-lg">
+                        <p className="mb-2 font-medium text-foreground">
+                          {label}
+                        </p>
+                        {data.actual !== null && (
+                          <div className="flex items-center gap-2 text-sm">
+                            <span className="h-2 w-2 rounded-full bg-primary" />
+                            <span className="text-muted-foreground">Real:</span>
+                            <span className="font-semibold text-primary">
+                              {data.actual.toFixed(1)}%
+                            </span>
+                          </div>
+                        )}
+                        {data.predicted !== null && (
+                          <div className="flex items-center gap-2 text-sm">
+                            <span className="h-2 w-2 rounded-full bg-secondary" />
+                            <span className="text-muted-foreground">
+                              Predicción:
+                            </span>
+                            <span className="font-semibold text-secondary">
+                              {data.predicted.toFixed(1)}%
+                            </span>
+                            {data.confidence && (
+                              <span className="text-xs text-muted-foreground">
+                                (±{((1 - data.confidence) * 10).toFixed(1)}%)
+                              </span>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  }
+                  return null;
+                }}
               />
-              {transitionIndex > 0 && (
+              {showLegend && (
+                <Legend
+                  verticalAlign="top"
+                  height={36}
+                  content={() => null}
+                />
+              )}
+              {todayIndex > 0 && (
                 <ReferenceLine
-                  x={chartData[transitionIndex]?.month}
-                  stroke="var(--muted-foreground)"
-                  strokeDasharray="5 5"
-                  strokeOpacity={0.5}
+                  x={chartData[todayIndex]?.date}
+                  stroke={mutedColor}
+                  strokeDasharray="4 4"
                   label={{
-                    value: 'Predicciones',
-                    position: 'insideTopRight',
-                    fill: 'var(--muted-foreground)',
+                    value: "Hoy",
+                    position: "top",
+                    fill: mutedColor,
                     fontSize: 11,
                   }}
                 />
               )}
               <Area
                 type="monotone"
-                dataKey="occupancy_real"
-                stroke="var(--chart-1)"
+                dataKey="actual"
+                stroke={primaryColor}
                 strokeWidth={2}
-                fill="url(#realGradient)"
-                connectNulls={false}
-                dot={{ fill: 'var(--chart-1)', strokeWidth: 0, r: 3 }}
-                activeDot={{ r: 5, fill: 'var(--chart-1)' }}
+                fill="url(#actualGradient)"
+                dot={false}
+                activeDot={{
+                  r: 4,
+                  fill: primaryColor,
+                  stroke: "#ffffff",
+                  strokeWidth: 2,
+                }}
+                connectNulls
               />
               <Area
                 type="monotone"
-                dataKey="occupancy_predicted"
-                stroke="var(--chart-2)"
+                dataKey="predicted"
+                stroke={secondaryColor}
                 strokeWidth={2}
                 strokeDasharray="5 5"
                 fill="url(#predictedGradient)"
-                connectNulls={false}
-                dot={{ fill: 'var(--chart-2)', strokeWidth: 0, r: 3 }}
-                activeDot={{ r: 5, fill: 'var(--chart-2)' }}
+                dot={false}
+                activeDot={{
+                  r: 4,
+                  fill: secondaryColor,
+                  stroke: "#ffffff",
+                  strokeWidth: 2,
+                }}
+                connectNulls
               />
             </AreaChart>
           </ResponsiveContainer>
-        </ChartContainer>
+        </div>
       </CardContent>
     </Card>
   );
